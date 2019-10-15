@@ -46,6 +46,16 @@
 /*
                          Main application
  */
+
+int timer;
+
+void Timer(){
+    C_Toggle();
+    if(timer%3 == 0){
+        
+    }
+}
+
 void main(void)
 {
     // initialize the device
@@ -57,8 +67,10 @@ void main(void)
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
     
-    TMR1_SetInterruptHandler(C_Toggle);
-
+    timer = 0;
+        
+    TMR1_SetInterruptHandler(Timer);
+    
     // Enable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptEnable();
 
@@ -73,7 +85,6 @@ void main(void)
         // Add your application code
     }
 }
-
 
 /**
  End of File
