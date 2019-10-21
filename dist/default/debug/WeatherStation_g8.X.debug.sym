@@ -387,8 +387,8 @@ config 1000E 10017 CONFIG 1000E 0
 bssCOMMON 70 7A COMMON 70 1
 nvBANK0 20 29 BANK0 20 1
 %locals
-dist/default/production\WeatherStation_g8.X.production.o
-C:\Users\SCE\AppData\Local\Temp\s604.s
+dist/default/debug\WeatherStation_g8.X.debug.o
+C:\Users\SCE\AppData\Local\Temp\s7ak.s
 7962 27 0 CODE 0
 7965 27 0 CODE 0
 7997 27 0 CODE 0

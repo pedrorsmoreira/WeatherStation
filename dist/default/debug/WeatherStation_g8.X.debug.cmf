@@ -11,11 +11,11 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\SCE\AppData\Local\Temp\s604.o
+$C:\Users\SCE\AppData\Local\Temp\s7ak.o
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 25 25 2 2
 config CONFIG 0 8007 8007 5 2
-$dist/default/production\WeatherStation_g8.X.production.o
+$dist/default/debug\WeatherStation_g8.X.debug.o
 cinit CODE 0 27 27 15 2
 text1 CODE 0 137 137 10 2
 text2 CODE 0 DA DA 1F 2
@@ -132,26 +132,26 @@ STRING 189-1FFF 2
 # are in ascending order of addresses.
 # All other numeric values are in decimal.
 %LINETAB
-$dist/default/production\WeatherStation_g8.X.production.o
-27 cinit CODE >7962:C:\Users\SCE\AppData\Local\Temp\s604.s
-27 cinit CODE >7965:C:\Users\SCE\AppData\Local\Temp\s604.s
-27 cinit CODE >7997:C:\Users\SCE\AppData\Local\Temp\s604.s
-2A cinit CODE >7998:C:\Users\SCE\AppData\Local\Temp\s604.s
-2B cinit CODE >7999:C:\Users\SCE\AppData\Local\Temp\s604.s
-2E cinit CODE >8000:C:\Users\SCE\AppData\Local\Temp\s604.s
-2F cinit CODE >8005:C:\Users\SCE\AppData\Local\Temp\s604.s
-30 cinit CODE >8006:C:\Users\SCE\AppData\Local\Temp\s604.s
-31 cinit CODE >8007:C:\Users\SCE\AppData\Local\Temp\s604.s
-32 cinit CODE >8008:C:\Users\SCE\AppData\Local\Temp\s604.s
-33 cinit CODE >8009:C:\Users\SCE\AppData\Local\Temp\s604.s
-34 cinit CODE >8010:C:\Users\SCE\AppData\Local\Temp\s604.s
-35 cinit CODE >8011:C:\Users\SCE\AppData\Local\Temp\s604.s
-36 cinit CODE >8012:C:\Users\SCE\AppData\Local\Temp\s604.s
-37 cinit CODE >8013:C:\Users\SCE\AppData\Local\Temp\s604.s
-38 cinit CODE >8019:C:\Users\SCE\AppData\Local\Temp\s604.s
-38 cinit CODE >8021:C:\Users\SCE\AppData\Local\Temp\s604.s
-39 cinit CODE >8022:C:\Users\SCE\AppData\Local\Temp\s604.s
-3A cinit CODE >8023:C:\Users\SCE\AppData\Local\Temp\s604.s
+$dist/default/debug\WeatherStation_g8.X.debug.o
+27 cinit CODE >7962:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+27 cinit CODE >7965:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+27 cinit CODE >7997:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+2A cinit CODE >7998:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+2B cinit CODE >7999:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+2E cinit CODE >8000:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+2F cinit CODE >8005:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+30 cinit CODE >8006:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+31 cinit CODE >8007:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+32 cinit CODE >8008:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+33 cinit CODE >8009:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+34 cinit CODE >8010:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+35 cinit CODE >8011:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+36 cinit CODE >8012:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+37 cinit CODE >8013:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+38 cinit CODE >8019:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+38 cinit CODE >8021:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+39 cinit CODE >8022:C:\Users\SCE\AppData\Local\Temp\s7ak.s
+3A cinit CODE >8023:C:\Users\SCE\AppData\Local\Temp\s7ak.s
 4 intentry CODE >52:C:\Users\SCE\Desktop\WeatherStation_g8.X\mcc_generated_files/interrupt_manager.c
 6 intentry CODE >55:C:\Users\SCE\Desktop\WeatherStation_g8.X\mcc_generated_files/interrupt_manager.c
 F intentry CODE >57:C:\Users\SCE\Desktop\WeatherStation_g8.X\mcc_generated_files/interrupt_manager.c
@@ -308,7 +308,7 @@ F8 text2 CODE >97:C:\Users\SCE\Desktop\WeatherStation_g8.X\mcc_generated_files/t
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-___latbits 2 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+___latbits 2 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __LdataBANK0 0 0 ABS 0 dataBANK0 -
 __Hspace_0 800C 0 ABS 0 - -
 __Hspace_1 7B 0 ABS 0 - -
@@ -316,94 +316,94 @@ __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __HidataBANK0 0 0 ABS 0 idataBANK0 -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
-__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INT_CallBack 2AA 0 CODE 0 text15 dist/default/production\WeatherStation_g8.X.production.o
-_T1CONbits 20E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__size_of_EXT_INT_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD_Initialize 2D6 0 CODE 0 text4 dist/default/production\WeatherStation_g8.X.production.o
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INT_CallBack 2AA 0 CODE 0 text15 dist/default/debug\WeatherStation_g8.X.debug.o
+_T1CONbits 20E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_EXT_INT_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD_Initialize 2D6 0 CODE 0 text4 dist/default/debug\WeatherStation_g8.X.debug.o
 __Hstrings 0 0 ABS 0 strings -
-__CFG_WDTCCS$SC 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_LATA 16 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_LATB 17 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_LATC 18 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_LATD 19 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_LATE 1A 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD0 796 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD1 797 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD2 798 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD3 799 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD4 79A 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMD5 79B 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PMON 26 0 BANK0 1 dataBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_WPUA F39 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_WPUB F44 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_WPUC F4F 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_WPUD F5A 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_WPUE F65 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\SCE\AppData\Local\Temp\s604.o
-_main 220 0 CODE 0 maintext dist/default/production\WeatherStation_g8.X.production.o
-btemp 7E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-start 4A 0 CODE 0 init C:\Users\SCE\AppData\Local\Temp\s604.o
-__size_of_main 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_WDTCCS$SC 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_LATA 16 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_LATB 17 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_LATC 18 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_LATD 19 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_LATE 1A 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD0 796 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD1 797 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD2 798 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD3 799 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD4 79A 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMD5 79B 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PMON 26 0 BANK0 1 dataBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_WPUA F39 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_WPUB F44 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_WPUC F4F 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_WPUD F5A 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_WPUE F65 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+___sp 0 0 STACK 2 stack C:\Users\SCE\AppData\Local\Temp\s7ak.o
+_main 220 0 CODE 0 maintext dist/default/debug\WeatherStation_g8.X.debug.o
+btemp 7E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+start 4A 0 CODE 0 init C:\Users\SCE\AppData\Local\Temp\s7ak.o
+__size_of_main 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
-__CFG_SCANE$available 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_SCANE$available 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-__size_of_TMR1_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__size_of_TMR1_WriteTimer 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s604.o
-__size_of_INT_CallBack 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__size_of_TMR1_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_TMR1_WriteTimer 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\SCE\AppData\Local\Temp\s7ak.o
+__size_of_INT_CallBack 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-wtemp0 7E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+wtemp0 7E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Hfunctab 0 0 ENTRY 0 functab -
-__end_of_PMD_Initialize 2E6 0 CODE 0 text4 dist/default/production\WeatherStation_g8.X.production.o
-__size_of_TMR1_DefaultInterruptHandler 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__end_of_PMD_Initialize 2E6 0 CODE 0 text4 dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_TMR1_DefaultInterruptHandler 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Hclrtext 0 0 ABS 0 clrtext -
-__end_of_TMR1_DefaultInterruptHandler 310 0 CODE 0 text11 dist/default/production\WeatherStation_g8.X.production.o
-_ANSELA F38 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ANSELB F43 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ANSELC F4E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ANSELD F59 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ANSELE F64 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_INT_CallBack 2C4 0 CODE 0 text15 dist/default/production\WeatherStation_g8.X.production.o
-__end_of_INTERRUPT_InterruptManager 4A 0 CODE 0 intentry dist/default/production\WeatherStation_g8.X.production.o
-__size_of_TMR1_SetInterruptHandler 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__end_of_TMR1_DefaultInterruptHandler 310 0 CODE 0 text11 dist/default/debug\WeatherStation_g8.X.debug.o
+_ANSELA F38 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ANSELB F43 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ANSELC F4E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ANSELD F59 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ANSELE F64 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_INT_CallBack 2C4 0 CODE 0 text15 dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_INTERRUPT_InterruptManager 4A 0 CODE 0 intentry dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_TMR1_SetInterruptHandler 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lmaintext 0 0 ABS 0 maintext -
 __LnvBANK0 0 0 ABS 0 nvBANK0 -
-__size_of_INT_SetInterruptHandler 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_FEXTOSC$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INLVLA F3C 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INLVLB F47 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INLVLC F52 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INLVLD F5D 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INLVLE F68 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INTPPS E90 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-___stackhi 23EF 0 ABS 0 - C:\Users\SCE\AppData\Local\Temp\s604.o
-___stacklo 200A 0 ABS 0 - C:\Users\SCE\AppData\Local\Temp\s604.o
-__size_of_Timer 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__size_of_INT_ISR 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PIN_MANAGER_Initialize 13A 0 CODE 0 text5 dist/default/production\WeatherStation_g8.X.production.o
-start_initialization 4E 0 CODE 0 cinit dist/default/production\WeatherStation_g8.X.production.o
-_ODCONA F3A 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ODCONB F45 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ODCONC F50 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ODCOND F5B 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_ODCONE F66 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_OSCFRQ 893 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_WDTCPS$WDTCPS_31 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_SYSTEM_Initialize 28E 0 CODE 0 text1 dist/default/production\WeatherStation_g8.X.production.o
-__pcstackBANK0 28 0 BANK0 1 cstackBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_T1GATE 210 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_T1GCON 20F 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_TMR1_SetInterruptHandler 2F2 0 CODE 0 text3 dist/default/production\WeatherStation_g8.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\SCE\AppData\Local\Temp\s604.o
+__size_of_INT_SetInterruptHandler 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_FEXTOSC$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INLVLA F3C 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INLVLB F47 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INLVLC F52 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INLVLD F5D 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INLVLE F68 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INTPPS E90 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+___stackhi 23EF 0 ABS 0 - C:\Users\SCE\AppData\Local\Temp\s7ak.o
+___stacklo 200A 0 ABS 0 - C:\Users\SCE\AppData\Local\Temp\s7ak.o
+__size_of_Timer 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_INT_ISR 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PIN_MANAGER_Initialize 13A 0 CODE 0 text5 dist/default/debug\WeatherStation_g8.X.debug.o
+start_initialization 4E 0 CODE 0 cinit dist/default/debug\WeatherStation_g8.X.debug.o
+_ODCONA F3A 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ODCONB F45 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ODCONC F50 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ODCOND F5B 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_ODCONE F66 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCFRQ 893 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_WDTCPS$WDTCPS_31 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_SYSTEM_Initialize 28E 0 CODE 0 text1 dist/default/debug\WeatherStation_g8.X.debug.o
+__pcstackBANK0 28 0 BANK0 1 cstackBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_T1GATE 210 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_T1GCON 20F 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_TMR1_SetInterruptHandler 2F2 0 CODE 0 text3 dist/default/debug\WeatherStation_g8.X.debug.o
+___int_sp 0 0 STACK 2 stack C:\Users\SCE\AppData\Local\Temp\s7ak.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -415,9 +415,9 @@ __Hbank7 0 0 ABS 0 bank7 -
 __Hbank8 0 0 ABS 0 bank8 -
 __Hbank9 0 0 ABS 0 bank9 -
 __Hcinit 78 0 CODE 0 cinit -
-_INT_DefaultInterruptHandler 310 0 CODE 0 text16 dist/default/production\WeatherStation_g8.X.production.o
+_INT_DefaultInterruptHandler 310 0 CODE 0 text16 dist/default/debug\WeatherStation_g8.X.debug.o
 __Hidloc 0 0 IDLOC 0 idloc -
-__size_of_OSCILLATOR_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__size_of_OSCILLATOR_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Hsfr10 0 0 ABS 0 sfr10 -
 __Hsfr11 0 0 ABS 0 sfr11 -
 __Hsfr12 0 0 ABS 0 sfr12 -
@@ -478,7 +478,7 @@ __Lbank7 0 0 ABS 0 bank7 -
 __Lbank8 0 0 ABS 0 bank8 -
 __Lbank9 0 0 ABS 0 bank9 -
 __Lcinit 4E 0 CODE 0 cinit -
-_T1GCONbits 20F 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+_T1GCONbits 20F 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lsfr10 0 0 ABS 0 sfr10 -
 __Lsfr11 0 0 ABS 0 sfr11 -
@@ -503,7 +503,7 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-_INTCONbits B 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+_INTCONbits B 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hinit 4A 0 CODE 0 init -
@@ -532,40 +532,40 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-__pnvBANK0 20 0 BANK0 1 nvBANK0 dist/default/production\WeatherStation_g8.X.production.o
-__CFG_WDTCWS$WDTCWS_7 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__pnvBANK0 20 0 BANK0 1 nvBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_WDTCWS$WDTCWS_7 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-int$flags 7E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_INT_ISR 30A 0 CODE 0 text14 dist/default/production\WeatherStation_g8.X.production.o
+int$flags 7E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_INT_ISR 30A 0 CODE 0 text14 dist/default/debug\WeatherStation_g8.X.debug.o
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__size_of_INTERRUPT_InterruptManager 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__size_of_INTERRUPT_InterruptManager 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __S0 800C 0 ABS 0 - -
 __S1 7B 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-__size_of_TMR1_ISR 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_SYSTEM_Initialize 26E 0 CODE 0 text1 dist/default/production\WeatherStation_g8.X.production.o
-__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__size_of_TMR1_ISR 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_SYSTEM_Initialize 26E 0 CODE 0 text1 dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __HnvBANK0 0 0 ABS 0 nvBANK0 -
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\SCE\AppData\Local\Temp\s604.o
-__pdataBANK0 26 0 BANK0 1 dataBANK0 dist/default/production\WeatherStation_g8.X.production.o
-__CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_INT_InterruptHandler 20 0 BANK0 1 nvBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_INTERRUPT_InterruptManager 8 0 CODE 0 intentry dist/default/production\WeatherStation_g8.X.production.o
-__size_of_PMD_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PIE0bits 716 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PIE4bits 71A 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_EXT_INT_Initialize 2AA 0 CODE 0 text7 dist/default/production\WeatherStation_g8.X.production.o
-_TMR1_ISR 1F2 0 CODE 0 text10 dist/default/production\WeatherStation_g8.X.production.o
-__ptext10 1F2 0 CODE 0 text10 dist/default/production\WeatherStation_g8.X.production.o
-__ptext11 30E 0 CODE 0 text11 dist/default/production\WeatherStation_g8.X.production.o
-__ptext12 78 0 CODE 0 text12 dist/default/production\WeatherStation_g8.X.production.o
-__ptext13 24C 0 CODE 0 text13 dist/default/production\WeatherStation_g8.X.production.o
-__ptext14 2FE 0 CODE 0 text14 dist/default/production\WeatherStation_g8.X.production.o
-__ptext15 2AA 0 CODE 0 text15 dist/default/production\WeatherStation_g8.X.production.o
-__ptext16 310 0 CODE 0 text16 dist/default/production\WeatherStation_g8.X.production.o
-__end_of_PIN_MANAGER_Initialize 1B4 0 CODE 0 text5 dist/default/production\WeatherStation_g8.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\SCE\AppData\Local\Temp\s7ak.o
+__pdataBANK0 26 0 BANK0 1 dataBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_FCMEN$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_INT_InterruptHandler 20 0 BANK0 1 nvBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_INTERRUPT_InterruptManager 8 0 CODE 0 intentry dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_PMD_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PIE0bits 716 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PIE4bits 71A 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_EXT_INT_Initialize 2AA 0 CODE 0 text7 dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1_ISR 1F2 0 CODE 0 text10 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext10 1F2 0 CODE 0 text10 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext11 30E 0 CODE 0 text11 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext12 78 0 CODE 0 text12 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext13 24C 0 CODE 0 text13 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext14 2FE 0 CODE 0 text14 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext15 2AA 0 CODE 0 text15 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext16 310 0 CODE 0 text16 dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_PIN_MANAGER_Initialize 1B4 0 CODE 0 text5 dist/default/debug\WeatherStation_g8.X.debug.o
 __Lbank10 0 0 ABS 0 bank10 -
 __Lbank11 0 0 ABS 0 bank11 -
 __Lbank12 0 0 ABS 0 bank12 -
@@ -588,108 +588,108 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 220 0 CODE 0 maintext dist/default/production\WeatherStation_g8.X.production.o
+__pmaintext 220 0 CODE 0 maintext dist/default/debug\WeatherStation_g8.X.debug.o
 __Lbigram 0 0 ABS 0 bigram -
-__CFG_BORV$LO 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_RSTOSC$HFINT1 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_BORV$LO 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_RSTOSC$HFINT1 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
-__CFG_CP$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_TMR1_ISR 220 0 CODE 0 text10 dist/default/production\WeatherStation_g8.X.production.o
-_LATAbits 16 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_timer1 78 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-_EXT_INT_Initialize 28E 0 CODE 0 text7 dist/default/production\WeatherStation_g8.X.production.o
-_seconds 74 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-_OSCCON1 88D 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_OSCCON3 88F 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_OSCTUNE 892 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_CP$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_TMR1_ISR 220 0 CODE 0 text10 dist/default/debug\WeatherStation_g8.X.debug.o
+_LATAbits 16 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_timer1 78 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+_EXT_INT_Initialize 28E 0 CODE 0 text7 dist/default/debug\WeatherStation_g8.X.debug.o
+_seconds 74 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCCON1 88D 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCCON3 88F 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCTUNE 892 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__pbssCOMMON 70 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-__CFG_LPBOREN$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__pbssCOMMON 70 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_LPBOREN$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-_PIR0bits 70C 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_PIR4bits 710 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+_PIR0bits 70C 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_PIR4bits 710 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lend_init 4A 0 CODE 0 end_init -
-__CFG_LVP$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_CSWEN$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_LVP$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_CSWEN$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-__CFG_ZCD$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-end_of_initialization 70 0 CODE 0 cinit dist/default/production\WeatherStation_g8.X.production.o
+__CFG_ZCD$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+end_of_initialization 70 0 CODE 0 cinit dist/default/debug\WeatherStation_g8.X.debug.o
 __Hintentry 4A 0 CODE 0 intentry -
-__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 4 0 CODE 0 reset_vec -
-TMR1_SetInterruptHandler@InterruptHandler 28 0 BANK0 1 cstackBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_INT_SetInterruptHandler 2F2 0 CODE 0 text8 dist/default/production\WeatherStation_g8.X.production.o
-__end_of_INT_SetInterruptHandler 2FE 0 CODE 0 text8 dist/default/production\WeatherStation_g8.X.production.o
-__ptext1 26E 0 CODE 0 text1 dist/default/production\WeatherStation_g8.X.production.o
-__ptext2 1B4 0 CODE 0 text2 dist/default/production\WeatherStation_g8.X.production.o
-__ptext3 2E6 0 CODE 0 text3 dist/default/production\WeatherStation_g8.X.production.o
-__ptext4 2D6 0 CODE 0 text4 dist/default/production\WeatherStation_g8.X.production.o
-__ptext5 13A 0 CODE 0 text5 dist/default/production\WeatherStation_g8.X.production.o
-__ptext6 2C4 0 CODE 0 text6 dist/default/production\WeatherStation_g8.X.production.o
-__ptext7 28E 0 CODE 0 text7 dist/default/production\WeatherStation_g8.X.production.o
-__ptext8 2F2 0 CODE 0 text8 dist/default/production\WeatherStation_g8.X.production.o
+TMR1_SetInterruptHandler@InterruptHandler 28 0 BANK0 1 cstackBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_INT_SetInterruptHandler 2F2 0 CODE 0 text8 dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_INT_SetInterruptHandler 2FE 0 CODE 0 text8 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext1 26E 0 CODE 0 text1 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext2 1B4 0 CODE 0 text2 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext3 2E6 0 CODE 0 text3 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext4 2D6 0 CODE 0 text4 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext5 13A 0 CODE 0 text5 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext6 2C4 0 CODE 0 text6 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext7 28E 0 CODE 0 text7 dist/default/debug\WeatherStation_g8.X.debug.o
+__ptext8 2F2 0 CODE 0 text8 dist/default/debug\WeatherStation_g8.X.debug.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-TMR1_WriteTimer@timerVal 79 0 COMMON 1 cstackCOMMON dist/default/production\WeatherStation_g8.X.production.o
-__end_of_TMR1_Initialize 1F2 0 CODE 0 text2 dist/default/production\WeatherStation_g8.X.production.o
-__end_of_TMR1_WriteTimer 26E 0 CODE 0 text13 dist/default/production\WeatherStation_g8.X.production.o
+TMR1_WriteTimer@timerVal 79 0 COMMON 1 cstackCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_TMR1_Initialize 1F2 0 CODE 0 text2 dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_TMR1_WriteTimer 26E 0 CODE 0 text13 dist/default/debug\WeatherStation_g8.X.debug.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_SLRCONA F3B 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_SLRCONB F46 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_SLRCONC F51 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_SLRCOND F5C 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_SLRCONE F67 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of__initialization 70 0 CODE 0 cinit dist/default/production\WeatherStation_g8.X.production.o
-_INT_ISR 2FE 0 CODE 0 text14 dist/default/production\WeatherStation_g8.X.production.o
+_SLRCONA F3B 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_SLRCONB F46 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_SLRCONC F51 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_SLRCOND F5C 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_SLRCONE F67 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of__initialization 70 0 CODE 0 cinit dist/default/debug\WeatherStation_g8.X.debug.o
+_INT_ISR 2FE 0 CODE 0 text14 dist/default/debug\WeatherStation_g8.X.debug.o
 __Lfunctab 0 0 ENTRY 0 functab -
-__pidataBANK0 30A 0 CODE 0 idataBANK0 dist/default/production\WeatherStation_g8.X.production.o
+__pidataBANK0 30A 0 CODE 0 idataBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
 __Lclrtext 0 0 ABS 0 clrtext -
-_timer1ReloadVal 24 0 BANK0 1 nvBANK0 dist/default/production\WeatherStation_g8.X.production.o
-INT_SetInterruptHandler@InterruptHandler 28 0 BANK0 1 cstackBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_TMR1_DefaultInterruptHandler 30E 0 CODE 0 text11 dist/default/production\WeatherStation_g8.X.production.o
-__pcstackCOMMON 79 0 COMMON 1 cstackCOMMON dist/default/production\WeatherStation_g8.X.production.o
+_timer1ReloadVal 24 0 BANK0 1 nvBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+INT_SetInterruptHandler@InterruptHandler 28 0 BANK0 1 cstackBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1_DefaultInterruptHandler 30E 0 CODE 0 text11 dist/default/debug\WeatherStation_g8.X.debug.o
+__pcstackCOMMON 79 0 COMMON 1 cstackCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
 __Hend_init 4E 0 CODE 0 end_init -
-__size_of_INT_DefaultInterruptHandler 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_main 24C 0 CODE 0 maintext dist/default/production\WeatherStation_g8.X.production.o
-__end_of_Timer 13A 0 CODE 0 text12 dist/default/production\WeatherStation_g8.X.production.o
-_OSCEN 891 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_T1CLK 211 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_T1CON 20E 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TMR1H 20D 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TMR1L 20C 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TRISA 11 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TRISB 12 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TRISC 13 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TRISD 14 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TRISE 15 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_minutes 72 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-_Timer 78 0 CODE 0 text12 dist/default/production\WeatherStation_g8.X.production.o
+__size_of_INT_DefaultInterruptHandler 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_main 24C 0 CODE 0 maintext dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_Timer 13A 0 CODE 0 text12 dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCEN 891 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_T1CLK 211 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_T1CON 20E 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1H 20D 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1L 20C 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TRISA 11 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TRISB 12 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TRISC 13 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TRISD 14 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TRISE 15 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_minutes 72 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+_Timer 78 0 CODE 0 text12 dist/default/debug\WeatherStation_g8.X.debug.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-_TMR1_Initialize 1B4 0 CODE 0 text2 dist/default/production\WeatherStation_g8.X.production.o
-_TMR1_WriteTimer 24C 0 CODE 0 text13 dist/default/production\WeatherStation_g8.X.production.o
-_hours 70 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_timer 76 0 COMMON 1 bssCOMMON dist/default/production\WeatherStation_g8.X.production.o
-__size_of_PIN_MANAGER_Initialize 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__pintentry 8 0 CODE 0 intentry dist/default/production\WeatherStation_g8.X.production.o
+_TMR1_Initialize 1B4 0 CODE 0 text2 dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1_WriteTimer 24C 0 CODE 0 text13 dist/default/debug\WeatherStation_g8.X.debug.o
+_hours 70 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_timer 76 0 COMMON 1 bssCOMMON dist/default/debug\WeatherStation_g8.X.debug.o
+__size_of_PIN_MANAGER_Initialize 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__pintentry 8 0 CODE 0 intentry dist/default/debug\WeatherStation_g8.X.debug.o
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
-__end_of_OSCILLATOR_Initialize 2D6 0 CODE 0 text6 dist/default/production\WeatherStation_g8.X.production.o
-__CFG_PPS1WAY$ON 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__initialization 4E 0 CODE 0 cinit dist/default/production\WeatherStation_g8.X.production.o
-__CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-__end_of_INT_DefaultInterruptHandler 312 0 CODE 0 text16 dist/default/production\WeatherStation_g8.X.production.o
-__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\WeatherStation_g8.X.production.o
-_TMR1_SetInterruptHandler 2E6 0 CODE 0 text3 dist/default/production\WeatherStation_g8.X.production.o
-_TMR1_InterruptHandler 22 0 BANK0 1 nvBANK0 dist/default/production\WeatherStation_g8.X.production.o
-_OSCILLATOR_Initialize 2C4 0 CODE 0 text6 dist/default/production\WeatherStation_g8.X.production.o
+__end_of_OSCILLATOR_Initialize 2D6 0 CODE 0 text6 dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_PPS1WAY$ON 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__initialization 4E 0 CODE 0 cinit dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+__end_of_INT_DefaultInterruptHandler 312 0 CODE 0 text16 dist/default/debug\WeatherStation_g8.X.debug.o
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1_SetInterruptHandler 2E6 0 CODE 0 text3 dist/default/debug\WeatherStation_g8.X.debug.o
+_TMR1_InterruptHandler 22 0 BANK0 1 nvBANK0 dist/default/debug\WeatherStation_g8.X.debug.o
+_OSCILLATOR_Initialize 2C4 0 CODE 0 text6 dist/default/debug\WeatherStation_g8.X.debug.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.

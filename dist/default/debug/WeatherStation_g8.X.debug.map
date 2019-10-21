@@ -3,11 +3,10 @@ Microchip MPLAB XC8 Compiler V2.10 ()
 Linker command line:
 
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
-  -cs -h+dist/default/production\WeatherStation_g8.X.production.sym \
-  --cmf=dist/default/production\WeatherStation_g8.X.production.cmf -z \
-  -Q16F18875 -oC:\Users\SCE\AppData\Local\Temp\s604.2 \
-  --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/WeatherStation_g8.X.production.map -E1 -ver=XC8 \
+  -cs -h+dist/default/debug\WeatherStation_g8.X.debug.sym \
+  --cmf=dist/default/debug\WeatherStation_g8.X.debug.cmf -z -Q16F18875 \
+  -oC:\Users\SCE\AppData\Local\Temp\s7ak.2 --defsym=__MPLAB_BUILD=1 \
+  -Mdist/default/debug/WeatherStation_g8.X.debug.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0200Ah-023EFh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
   -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh \
@@ -33,8 +32,8 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\SCE\AppData\Local\Temp\s604.o \
-  dist/default/production\WeatherStation_g8.X.production.o 
+  C:\Users\SCE\AppData\Local\Temp\s7ak.o \
+  dist/default/debug\WeatherStation_g8.X.debug.o 
 
 Object code version is 3.11
 
@@ -43,11 +42,11 @@ Machine type is 16F18875
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\SCE\AppData\Local\Temp\s604.o
+C:\Users\SCE\AppData\Local\Temp\s7ak.o
                 end_init                             25       25        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        5    1000E       0
-dist/default/production\WeatherStation_g8.X.production.o
+dist/default/debug\WeatherStation_g8.X.debug.o
                 cinit                                27       27       15        8       0
                 intentry                              4        4       21        8       0
                 text16                              188      188        1        8       0

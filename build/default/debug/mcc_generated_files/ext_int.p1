@@ -1,19 +1,22 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"956 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 956:     struct {
-[s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S53 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
-"955
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 955: typedef union {
-[u S52 `S53 1 ]
-[n S52 . . ]
-"967
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 967: extern volatile LATAbits_t LATAbits __attribute__((address(0x016)));
-[v _LATAbits `VS52 ~T0 @X0 0 e@22 ]
-[p mainexit ]
-"71 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
-[v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+[v F12226 `(v ~T0 @X0 0 tf ]
+"21418 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21418:     struct {
+[s S971 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S971 . INTF . IOCIF TMR0IF ]
+"21417
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21417: typedef union {
+[u S970 `S971 1 ]
+[n S970 . . ]
+"21425
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21425: extern volatile PIR0bits_t PIR0bits __attribute__((address(0x70C)));
+[v _PIR0bits `VS970 ~T0 @X0 0 e@1804 ]
+"296 mcc_generated_files/ext_int.h
+[; ;mcc_generated_files/ext_int.h: 296: void INT_CallBack(void);
+[v _INT_CallBack `(v ~T0 @X0 0 ef ]
+[v F12229 `(v ~T0 @X0 0 tf ]
+[v F12231 `(v ~T0 @X0 0 tf ]
+[v F12233 `(v ~T0 @X0 0 tf ]
 "357 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 357:     struct {
 [s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -25,11 +28,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "364
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 364: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-[v F12258 `(v ~T0 @X0 0 tf ]
-"385 ./mcc_generated_files/tmr1.h
-[; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12258 ]
-[v F12603 `(v ~T0 @X0 0 tf ]
+"21840
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21840:     struct {
+[s S990 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S990 . INTE . IOCIE TMR0IE ]
+"21839
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21839: typedef union {
+[u S989 `S990 1 ]
+[n S989 . . ]
+"21847
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21847: extern volatile PIE0bits_t PIE0bits __attribute__((address(0x716)));
+[v _PIE0bits `VS989 ~T0 @X0 0 e@1814 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1668,168 +1677,97 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36645
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 36645: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"52 main.c
-[; ;main.c: 52: int volatile timer = 0;
-[v _timer `Vi ~T0 @X0 1 e ]
-[i _timer
--> 0 `i
-]
-"53
-[; ;main.c: 53: int volatile seconds = 0;
-[v _seconds `Vi ~T0 @X0 1 e ]
-[i _seconds
--> 0 `i
-]
+"30 mcc_generated_files/ext_int.c
+[; ;mcc_generated_files/ext_int.c: 30: void (*INT_InterruptHandler)(void);
+[v _INT_InterruptHandler `*F12226 ~T0 @X0 1 e ]
+"32
+[; ;mcc_generated_files/ext_int.c: 32: void INT_ISR(void)
+[v _INT_ISR `(v ~T0 @X0 1 ef ]
+"33
+[; ;mcc_generated_files/ext_int.c: 33: {
+{
+[e :U _INT_ISR ]
+[f ]
+"34
+[; ;mcc_generated_files/ext_int.c: 34:     (PIR0bits.INTF = 0);
+[e = . . _PIR0bits 0 0 -> -> 0 `i `uc ]
+"37
+[; ;mcc_generated_files/ext_int.c: 37:     INT_CallBack();
+[e ( _INT_CallBack ..  ]
+"38
+[; ;mcc_generated_files/ext_int.c: 38: }
+[e :UE 1625 ]
+}
+"41
+[; ;mcc_generated_files/ext_int.c: 41: void INT_CallBack(void)
+[v _INT_CallBack `(v ~T0 @X0 1 ef ]
+"42
+[; ;mcc_generated_files/ext_int.c: 42: {
+{
+[e :U _INT_CallBack ]
+[f ]
+"44
+[; ;mcc_generated_files/ext_int.c: 44:     if(INT_InterruptHandler)
+[e $ ! != _INT_InterruptHandler -> -> 0 `i `*F12229 1627  ]
+"45
+[; ;mcc_generated_files/ext_int.c: 45:     {
+{
+"46
+[; ;mcc_generated_files/ext_int.c: 46:         INT_InterruptHandler();
+[e ( *U _INT_InterruptHandler ..  ]
+"47
+[; ;mcc_generated_files/ext_int.c: 47:     }
+}
+[e :U 1627 ]
+"48
+[; ;mcc_generated_files/ext_int.c: 48: }
+[e :UE 1626 ]
+}
+"50
+[; ;mcc_generated_files/ext_int.c: 50: void INT_SetInterruptHandler(void (* InterruptHandler)(void)){
+[v _INT_SetInterruptHandler `(v ~T0 @X0 1 ef1`*F12231 ]
+{
+[e :U _INT_SetInterruptHandler ]
+[v _InterruptHandler `*F12233 ~T0 @X0 1 r1 ]
+[f ]
+"51
+[; ;mcc_generated_files/ext_int.c: 51:     INT_InterruptHandler = InterruptHandler;
+[e = _INT_InterruptHandler _InterruptHandler ]
+"52
+[; ;mcc_generated_files/ext_int.c: 52: }
+[e :UE 1628 ]
+}
 "54
-[; ;main.c: 54: int volatile minutes = 0;
-[v _minutes `Vi ~T0 @X0 1 e ]
-[i _minutes
--> 0 `i
-]
-"55
-[; ;main.c: 55: int volatile hours = 0;
-[v _hours `Vi ~T0 @X0 1 e ]
-[i _hours
--> 0 `i
-]
-"56
-[; ;main.c: 56: int PMON = 5;
-[v _PMON `i ~T0 @X0 1 e ]
-[i _PMON
--> 5 `i
-]
+[; ;mcc_generated_files/ext_int.c: 54: void INT_DefaultInterruptHandler(void){
+[v _INT_DefaultInterruptHandler `(v ~T0 @X0 1 ef ]
+{
+[e :U _INT_DefaultInterruptHandler ]
+[f ]
+"57
+[; ;mcc_generated_files/ext_int.c: 57: }
+[e :UE 1629 ]
+}
 "59
-[; ;main.c: 59: volatile _Bool timer1 = 0;
-[v _timer1 `Va ~T0 @X0 1 e ]
-[i _timer1
--> -> 0 `i `a
-]
-"61
-[; ;main.c: 61: void Timer(){
-[v _Timer `(v ~T0 @X0 1 ef ]
+[; ;mcc_generated_files/ext_int.c: 59: void EXT_INT_Initialize(void)
+[v _EXT_INT_Initialize `(v ~T0 @X0 1 ef ]
+"60
+[; ;mcc_generated_files/ext_int.c: 60: {
 {
-[e :U _Timer ]
+[e :U _EXT_INT_Initialize ]
 [f ]
-"62
-[; ;main.c: 62:     do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
-[e :U 1630 ]
-{
-[e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
-}
-[e :U 1629 ]
-"63
-[; ;main.c: 63:     if(++timer >= PMON){
-[e $ ! >= =+ _timer -> -> 1 `i `Vi _PMON 1631  ]
-{
 "64
-[; ;main.c: 64:         timer = 0;
-[e = _timer -> 0 `i ]
+[; ;mcc_generated_files/ext_int.c: 64:     (PIR0bits.INTF = 0);
+[e = . . _PIR0bits 0 0 -> -> 0 `i `uc ]
 "65
-[; ;main.c: 65:         timer1 = 1;
-[e = _timer1 -> -> 1 `i `a ]
-"66
-[; ;main.c: 66:     }
-}
-[e :U 1631 ]
+[; ;mcc_generated_files/ext_int.c: 65:     (INTCONbits.INTEDG = 1);
+[e = . . _INTCONbits 0 0 -> -> 1 `i `uc ]
+"67
+[; ;mcc_generated_files/ext_int.c: 67:     INT_SetInterruptHandler(INT_DefaultInterruptHandler);
+[e ( _INT_SetInterruptHandler (1 &U _INT_DefaultInterruptHandler ]
 "68
-[; ;main.c: 68:     if(seconds < 59)
-[e $ ! < _seconds -> 59 `i 1632  ]
-"69
-[; ;main.c: 69:         seconds++;
-[e ++ _seconds -> -> 1 `i `Vi ]
-[e $U 1633  ]
+[; ;mcc_generated_files/ext_int.c: 68:     (PIE0bits.INTE = 1);
+[e = . . _PIE0bits 0 0 -> -> 1 `i `uc ]
 "70
-[; ;main.c: 70:     else{
-[e :U 1632 ]
-{
-"71
-[; ;main.c: 71:         seconds = 0;
-[e = _seconds -> 0 `i ]
-"72
-[; ;main.c: 72:         if(minutes < 59)
-[e $ ! < _minutes -> 59 `i 1634  ]
-"73
-[; ;main.c: 73:             minutes++;
-[e ++ _minutes -> -> 1 `i `Vi ]
-[e $U 1635  ]
-"74
-[; ;main.c: 74:         else{
-[e :U 1634 ]
-{
-"75
-[; ;main.c: 75:             minutes = 0;
-[e = _minutes -> 0 `i ]
-"76
-[; ;main.c: 76:             if(hours < 23)
-[e $ ! < _hours -> 23 `i 1636  ]
-"77
-[; ;main.c: 77:                 hours++;
-[e ++ _hours -> -> 1 `i `Vi ]
-[e $U 1637  ]
-"78
-[; ;main.c: 78:             else
-[e :U 1636 ]
-"79
-[; ;main.c: 79:                 hours = 0;
-[e = _hours -> 0 `i ]
-[e :U 1637 ]
-"80
-[; ;main.c: 80:         }
-}
-[e :U 1635 ]
-"81
-[; ;main.c: 81:     }
-}
-[e :U 1633 ]
-"82
-[; ;main.c: 82: }
-[e :UE 1627 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"84
-[; ;main.c: 84: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
-"85
-[; ;main.c: 85: {
-{
-[e :U _main ]
-[f ]
-"87
-[; ;main.c: 87:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"93
-[; ;main.c: 93:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"96
-[; ;main.c: 96:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"98
-[; ;main.c: 98:     TMR1_SetInterruptHandler(Timer);
-[e ( _TMR1_SetInterruptHandler (1 -> &U _Timer `*F12603 ]
-"107
-[; ;main.c: 107:     while (1)
-[e :U 1640 ]
-"108
-[; ;main.c: 108:     {
-{
-"109
-[; ;main.c: 109:         if(timer1){
-[e $ ! != -> _timer1 `i -> 0 `i 1642  ]
-{
-"110
-[; ;main.c: 110:             timer1 = 0;
-[e = _timer1 -> -> 0 `i `a ]
-"112
-[; ;main.c: 112:         }
-}
-[e :U 1642 ]
-"113
-[; ;main.c: 113:     }
-}
-[e :U 1639 ]
-[e $U 1640  ]
-[e :U 1641 ]
-"114
-[; ;main.c: 114: }
-[e :UE 1638 ]
+[; ;mcc_generated_files/ext_int.c: 70: }
+[e :UE 1630 ]
 }

@@ -42,17 +42,42 @@
 */
 
 #include "mcc_generated_files/mcc.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
                          Main application
  */
 
-int timer;
+int volatile timer = 0;
+int volatile seconds = 0;
+int volatile minutes = 0;
+int volatile hours = 0;
+int PMON = 5;
+
+
+volatile bool timer1 = false;
 
 void Timer(){
     C_Toggle();
-    if(timer%3 == 0){
-        
+    if(++timer >= PMON){
+        timer = 0;
+        timer1 = true;
+    }
+
+    if(seconds < 59)
+        seconds++;
+    else{
+        seconds = 0;
+        if(minutes < 59)
+            minutes++;
+        else{
+            minutes = 0;
+            if(hours < 23)
+                hours++;
+            else
+                hours = 0;
+        }
     }
 }
 
@@ -67,12 +92,10 @@ void main(void)
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
     
-    timer = 0;
-        
-    TMR1_SetInterruptHandler(Timer);
-    
     // Enable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
+    
+    TMR1_SetInterruptHandler(Timer);
 
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
@@ -80,9 +103,13 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
+    
     while (1)
     {
-        // Add your application code
+        if(timer1){
+            timer1 = false;
+            //read 
+        }
     }
 }
 
