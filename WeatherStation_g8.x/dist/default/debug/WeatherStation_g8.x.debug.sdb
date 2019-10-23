@@ -1,0 +1,631 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18875 ]
+[d frameptr 6 ]
+"106 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+[e E12246 . `uc
+channel_VSS 60
+channel_Temp 61
+channel_DAC1 62
+channel_FVR_buf1 63
+]
+"10 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"63 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/main.c
+[v _Timer Timer `(v  1 e 1 0 ]
+"101
+[v _xor_eeprom xor_eeprom `(uc  1 e 1 0 ]
+"115
+[v _set_xor_eeprom set_xor_eeprom `(v  1 e 1 0 ]
+"125
+[v _eeprom_setup eeprom_setup `(v  1 e 1 0 ]
+"142
+[v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
+"149
+[v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
+"183
+[v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
+"213
+[v _main main `(v  1 e 1 0 ]
+"63 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+[v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
+"32 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+[v _INT_ISR INT_ISR `(v  1 e 1 0 ]
+"41
+[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
+"50
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+"54
+[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
+"59
+[v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
+"52 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"50 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"60
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"74
+[v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
+"58 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+"94
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"149
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+"180
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"202
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+"55 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"64 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"127
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+"164
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+"178
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+"182
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+[s S237 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"364 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/include/pic16f18875.h
+[u S242 . 1 `S237 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES242  1 e 1 @11 ]
+"670
+[v _TRISA TRISA `VEuc  1 e 1 @17 ]
+"732
+[v _TRISB TRISB `VEuc  1 e 1 @18 ]
+"794
+[v _TRISC TRISC `VEuc  1 e 1 @19 ]
+"856
+[v _TRISD TRISD `VEuc  1 e 1 @20 ]
+"918
+[v _TRISE TRISE `VEuc  1 e 1 @21 ]
+"950
+[v _LATA LATA `VEuc  1 e 1 @22 ]
+[s S409 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"967
+[u S418 . 1 `S409 1 . 1 0 ]
+[v _LATAbits LATAbits `VES418  1 e 1 @22 ]
+"1012
+[v _LATB LATB `VEuc  1 e 1 @23 ]
+"1074
+[v _LATC LATC `VEuc  1 e 1 @24 ]
+"1136
+[v _LATD LATD `VEuc  1 e 1 @25 ]
+"1198
+[v _LATE LATE `VEuc  1 e 1 @26 ]
+"1805
+[v _ADRESL ADRESL `VEuc  1 e 1 @140 ]
+"1825
+[v _ADRESH ADRESH `VEuc  1 e 1 @141 ]
+"1839
+[v _ADPREVL ADPREVL `VEuc  1 e 1 @142 ]
+"1909
+[v _ADPREVH ADPREVH `VEuc  1 e 1 @143 ]
+"1986
+[v _ADACCL ADACCL `VEuc  1 e 1 @144 ]
+"2056
+[v _ADACCH ADACCH `VEuc  1 e 1 @145 ]
+"2126
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @147 ]
+[s S548 . 1 `uc 1 ADGO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM 1 0 :2:2 
+`uc 1 ADCS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ADCONT 1 0 :1:6 
+`uc 1 ADON 1 0 :1:7 
+]
+"2162
+[s S556 . 1 `uc 1 DONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFRM 1 0 :2:2 
+]
+[s S560 . 1 `uc 1 nDONE 1 0 :1:0 
+]
+[s S562 . 1 `uc 1 GO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM0 1 0 :1:2 
+`uc 1 ADFM1 1 0 :1:3 
+]
+[s S567 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFRM0 1 0 :1:2 
+`uc 1 ADFRM1 1 0 :1:3 
+]
+[u S572 . 1 `S548 1 . 1 0 `S556 1 . 1 0 `S560 1 . 1 0 `S562 1 . 1 0 `S567 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES572  1 e 1 @147 ]
+"2237
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @148 ]
+[s S700 . 1 `uc 1 ADDSEN 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 ADGPOL 1 0 :1:5 
+`uc 1 ADIPEN 1 0 :1:6 
+`uc 1 ADPPOL 1 0 :1:7 
+]
+"2251
+[u S706 . 1 `S700 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES706  1 e 1 @148 ]
+"2276
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @149 ]
+[s S636 . 1 `uc 1 ADMD 1 0 :3:0 
+`uc 1 ADACLR 1 0 :1:3 
+`uc 1 ADCRS 1 0 :3:4 
+`uc 1 ADPSIS 1 0 :1:7 
+]
+"2298
+[s S641 . 1 `uc 1 ADMD0 1 0 :1:0 
+`uc 1 ADMD1 1 0 :1:1 
+`uc 1 ADMD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCRS0 1 0 :1:4 
+`uc 1 ADCRS1 1 0 :1:5 
+`uc 1 ADCRS2 1 0 :1:6 
+]
+[u S649 . 1 `S636 1 . 1 0 `S641 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES649  1 e 1 @149 ]
+"2353
+[v _ADCON3 ADCON3 `VEuc  1 e 1 @150 ]
+[s S606 . 1 `uc 1 ADTMD0 1 0 :1:0 
+`uc 1 ADTMD1 1 0 :1:1 
+`uc 1 ADTMD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCALC0 1 0 :1:4 
+`uc 1 ADCALC1 1 0 :1:5 
+`uc 1 ADCALC2 1 0 :1:6 
+]
+"2374
+[s S614 . 1 `uc 1 ADTMD 1 0 :3:0 
+`uc 1 ADSOI 1 0 :1:3 
+`uc 1 ADCALC 1 0 :3:4 
+]
+[u S618 . 1 `S606 1 . 1 0 `S614 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES618  1 e 1 @150 ]
+"2424
+[v _ADSTAT ADSTAT `VEuc  1 e 1 @151 ]
+[s S668 . 1 `uc 1 ADSTAT 1 0 :3:0 
+`uc 1 ADMACT 1 0 :1:3 
+`uc 1 ADMATH 1 0 :1:4 
+`uc 1 ADLTHR 1 0 :1:5 
+`uc 1 ADUTHR 1 0 :1:6 
+`uc 1 ADAOV 1 0 :1:7 
+]
+"2444
+[s S675 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+`uc 1 ADSTAT1 1 0 :1:1 
+`uc 1 ADSTAT2 1 0 :1:2 
+]
+[u S679 . 1 `S668 1 . 1 0 `S675 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES679  1 e 1 @151 ]
+"2494
+[v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
+"2552
+[v _ADACT ADACT `VEuc  1 e 1 @153 ]
+"2604
+[v _ADREF ADREF `VEuc  1 e 1 @154 ]
+"2645
+[v _ADCAP ADCAP `VEuc  1 e 1 @155 ]
+"2697
+[v _ADPRE ADPRE `VEuc  1 e 1 @156 ]
+"2767
+[v _ADACQ ADACQ `VEuc  1 e 1 @157 ]
+"2837
+[v _ADPCH ADPCH `VEuc  1 e 1 @158 ]
+"2895
+[v _ADCNT ADCNT `VEuc  1 e 1 @268 ]
+"2965
+[v _ADRPT ADRPT `VEuc  1 e 1 @269 ]
+"3042
+[v _ADLTHL ADLTHL `VEuc  1 e 1 @270 ]
+"3112
+[v _ADLTHH ADLTHH `VEuc  1 e 1 @271 ]
+"3189
+[v _ADUTHL ADUTHL `VEuc  1 e 1 @272 ]
+"3259
+[v _ADUTHH ADUTHH `VEuc  1 e 1 @273 ]
+"3336
+[v _ADSTPTL ADSTPTL `VEuc  1 e 1 @274 ]
+"3406
+[v _ADSTPTH ADSTPTH `VEuc  1 e 1 @275 ]
+"3483
+[v _ADFLTRL ADFLTRL `VEuc  1 e 1 @276 ]
+"3553
+[v _ADFLTRH ADFLTRH `VEuc  1 e 1 @277 ]
+"3630
+[v _ADERRL ADERRL `VEuc  1 e 1 @278 ]
+"3700
+[v _ADERRH ADERRH `VEuc  1 e 1 @279 ]
+"6508
+[v _TMR1L TMR1L `VEuc  1 e 1 @524 ]
+"6678
+[v _TMR1H TMR1H `VEuc  1 e 1 @525 ]
+"6798
+[v _T1CON T1CON `VEuc  1 e 1 @526 ]
+[s S73 . 1 `uc 1 ON 1 0 :1:0 
+`uc 1 RD16 1 0 :1:1 
+`uc 1 nSYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CKPS 1 0 :2:4 
+]
+"6829
+[s S79 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 T1RD16 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+]
+[s S86 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+]
+[s S90 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RD161 1 0 :1:1 
+]
+[u S93 . 1 `S73 1 . 1 0 `S79 1 . 1 0 `S86 1 . 1 0 `S90 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES93  1 e 1 @526 ]
+"6894
+[v _T1GCON T1GCON `VEuc  1 e 1 @527 ]
+[s S119 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 GVAL 1 0 :1:2 
+`uc 1 GGO_nDONE 1 0 :1:3 
+`uc 1 GSPM 1 0 :1:4 
+`uc 1 GTM 1 0 :1:5 
+`uc 1 GPOL 1 0 :1:6 
+`uc 1 GE 1 0 :1:7 
+]
+"6928
+[s S127 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 T1GE 1 0 :1:7 
+]
+[s S135 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO 1 0 :1:3 
+]
+[u S138 . 1 `S119 1 . 1 0 `S127 1 . 1 0 `S135 1 . 1 0 ]
+[v _T1GCONbits T1GCONbits `VES138  1 e 1 @527 ]
+"7090
+[v _T1GATE T1GATE `VEuc  1 e 1 @528 ]
+"7256
+[v _T1CLK T1CLK `VEuc  1 e 1 @529 ]
+[s S217 . 1 `uc 1 INTF 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIF 1 0 :1:4 
+`uc 1 TMR0IF 1 0 :1:5 
+]
+"21425
+[u S222 . 1 `S217 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES222  1 e 1 @1804 ]
+[s S28 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 TMR3IF 1 0 :1:2 
+`uc 1 TMR4IF 1 0 :1:3 
+`uc 1 TMR5IF 1 0 :1:4 
+`uc 1 TMR6IF 1 0 :1:5 
+]
+"21582
+[u S35 . 1 `S28 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES35  1 e 1 @1808 ]
+[s S250 . 1 `uc 1 INTE 1 0 :1:0 
+`uc 1 . 1 0 :3:1 
+`uc 1 IOCIE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+"21847
+[u S255 . 1 `S250 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES255  1 e 1 @1814 ]
+[s S45 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 TMR3IE 1 0 :1:2 
+`uc 1 TMR4IE 1 0 :1:3 
+`uc 1 TMR5IE 1 0 :1:4 
+`uc 1 TMR6IE 1 0 :1:5 
+]
+"22004
+[u S52 . 1 `S45 1 . 1 0 ]
+[v _PIE4bits PIE4bits `VES52  1 e 1 @1818 ]
+"22256
+[v _PMD0 PMD0 `VEuc  1 e 1 @1942 ]
+"22313
+[v _PMD1 PMD1 `VEuc  1 e 1 @1943 ]
+"22384
+[v _PMD2 PMD2 `VEuc  1 e 1 @1944 ]
+"22429
+[v _PMD3 PMD3 `VEuc  1 e 1 @1945 ]
+"22485
+[v _PMD4 PMD4 `VEuc  1 e 1 @1946 ]
+"22536
+[v _PMD5 PMD5 `VEuc  1 e 1 @1947 ]
+"23257
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @2074 ]
+"23319
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @2075 ]
+"23375
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
+"23437
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
+[s S785 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 NVMREGS 1 0 :1:6 
+]
+"23503
+[u S793 . 1 `S785 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES793  1 e 1 @2078 ]
+"23543
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
+"23607
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2189 ]
+"23747
+[v _OSCCON3 OSCCON3 `VEuc  1 e 1 @2191 ]
+"23844
+[v _OSCEN OSCEN `VEuc  1 e 1 @2193 ]
+"23895
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @2194 ]
+"23953
+[v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
+"30066
+[v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
+"33838
+[v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
+"33900
+[v _WPUA WPUA `VEuc  1 e 1 @3897 ]
+"33962
+[v _ODCONA ODCONA `VEuc  1 e 1 @3898 ]
+"34024
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @3899 ]
+"34086
+[v _INLVLA INLVLA `VEuc  1 e 1 @3900 ]
+"34458
+[v _ANSELB ANSELB `VEuc  1 e 1 @3907 ]
+"34520
+[v _WPUB WPUB `VEuc  1 e 1 @3908 ]
+"34582
+[v _ODCONB ODCONB `VEuc  1 e 1 @3909 ]
+"34644
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @3910 ]
+"34706
+[v _INLVLB INLVLB `VEuc  1 e 1 @3911 ]
+"35078
+[v _ANSELC ANSELC `VEuc  1 e 1 @3918 ]
+"35140
+[v _WPUC WPUC `VEuc  1 e 1 @3919 ]
+"35202
+[v _ODCONC ODCONC `VEuc  1 e 1 @3920 ]
+"35264
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @3921 ]
+"35326
+[v _INLVLC INLVLC `VEuc  1 e 1 @3922 ]
+"35698
+[v _ANSELD ANSELD `VEuc  1 e 1 @3929 ]
+"35760
+[v _WPUD WPUD `VEuc  1 e 1 @3930 ]
+"35822
+[v _ODCOND ODCOND `VEuc  1 e 1 @3931 ]
+"35884
+[v _SLRCOND SLRCOND `VEuc  1 e 1 @3932 ]
+"35946
+[v _INLVLD INLVLD `VEuc  1 e 1 @3933 ]
+"36132
+[v _ANSELE ANSELE `VEuc  1 e 1 @3940 ]
+"36164
+[v _WPUE WPUE `VEuc  1 e 1 @3941 ]
+"36202
+[v _ODCONE ODCONE `VEuc  1 e 1 @3942 ]
+"36234
+[v _SLRCONE SLRCONE `VEuc  1 e 1 @3943 ]
+"36266
+[v _INLVLE INLVLE `VEuc  1 e 1 @3944 ]
+"54 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/main.c
+[v _timer timer `VEuc  1 e 1 0 ]
+"55
+[v _seconds seconds `VEuc  1 e 1 0 ]
+"56
+[v _minutes minutes `VEuc  1 e 1 0 ]
+"57
+[v _hours hours `VEuc  1 e 1 0 ]
+"58
+[v _PMON PMON `uc  1 e 1 0 ]
+"61
+[v _timer1 timer1 `VEa  1 e 1 0 ]
+"201
+[v _x1 x1 `uc  1 e 1 0 ]
+"202
+[v _x2 x2 `uc  1 e 1 0 ]
+"203
+[v _x3 x3 `uc  1 e 1 0 ]
+"204
+[v _x4 x4 `uc  1 e 1 0 ]
+"205
+[v _x5 x5 `uc  1 e 1 0 ]
+"206
+[v _x6 x6 `uc  1 e 1 0 ]
+"207
+[v _h h `uc  1 e 1 0 ]
+"208
+[v _m m `uc  1 e 1 0 ]
+"30 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+[v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
+"57 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEus  1 e 2 0 ]
+"58
+[v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
+"213 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"262
+} 0
+"183
+[v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
+{
+"186
+} 0
+"125
+[v _eeprom_setup eeprom_setup `(v  1 e 1 0 ]
+{
+[v eeprom_setup@reset_buffer reset_buffer `a  1 a 1 wreg ]
+[v eeprom_setup@reset_buffer reset_buffer `a  1 a 1 wreg ]
+[v eeprom_setup@nreg nreg `uc  1 p 1 8 ]
+[v eeprom_setup@pmon pmon `uc  1 p 1 9 ]
+[v eeprom_setup@tala tala `uc  1 p 1 10 ]
+"126
+[v eeprom_setup@alat alat `uc  1 p 1 11 ]
+[v eeprom_setup@alal alal `uc  1 p 1 12 ]
+[v eeprom_setup@alaf alaf `uc  1 p 1 13 ]
+[v eeprom_setup@clkh clkh `uc  1 p 1 14 ]
+[v eeprom_setup@clkm clkm `uc  1 p 1 15 ]
+"128
+[v eeprom_setup@reset_buffer reset_buffer `a  1 a 1 16 ]
+"140
+} 0
+"115
+[v _set_xor_eeprom set_xor_eeprom `(v  1 e 1 0 ]
+{
+"116
+[v set_xor_eeprom@xor xor `uc  1 a 1 8 ]
+"118
+} 0
+"101
+[v _xor_eeprom xor_eeprom `(uc  1 e 1 0 ]
+{
+"106
+[v xor_eeprom@rbuf rbuf `uc  1 a 1 6 ]
+"105
+[v xor_eeprom@wbuf wbuf `uc  1 a 1 5 ]
+"102
+[v xor_eeprom@xor xor `uc  1 a 1 4 ]
+"113
+} 0
+"202 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `us  1 p 2 2 ]
+"212
+} 0
+"180
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+"182
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 5 ]
+"180
+[v DATAEE_WriteByte@bAdd bAdd `us  1 p 2 2 ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 4 ]
+"200
+} 0
+"50 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"58
+} 0
+"64 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"97
+} 0
+"178
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 2 ]
+"180
+} 0
+"74 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+[v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
+{
+"88
+} 0
+"55 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"128
+} 0
+"60 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"59 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+[v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
+{
+"70
+} 0
+"50
+[v _INT_SetInterruptHandler INT_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 2 ]
+"52
+} 0
+"63 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+[v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
+{
+"104
+} 0
+"52 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"74
+} 0
+"164 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+{
+"175
+} 0
+"182
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"185
+} 0
+"63 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/main.c
+[v _Timer Timer `(v  1 e 1 0 ]
+{
+"84
+} 0
+"127 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+{
+[v TMR1_WriteTimer@timerVal timerVal `us  1 p 2 0 ]
+"147
+} 0
+"32 /home/pedromoreira/Desktop/cadeiras/SCE/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+[v _INT_ISR INT_ISR `(v  1 e 1 0 ]
+{
+"38
+} 0
+"41
+[v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
+{
+"48
+} 0
+"54
+[v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"57
+} 0

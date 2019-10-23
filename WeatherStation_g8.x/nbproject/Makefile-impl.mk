@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=WeatherStation_g8.X
+PROJECTNAME=WeatherStation_g8.x
 
 # Active Configuration
 DEFAULTCONF=default
