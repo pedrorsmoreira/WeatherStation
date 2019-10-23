@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "mcc_generated_files/adcc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-# 44 "main.c"
-# 1 "./mcc_generated_files/mcc.h" 1
-# 49 "./mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/adcc.c" 2
+# 51 "mcc_generated_files/adcc.c"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20793,18 +20791,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 49 "./mcc_generated_files/mcc.h" 2
+# 51 "mcc_generated_files/adcc.c" 2
 
-# 1 "./mcc_generated_files/device_config.h" 1
-# 50 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/pin_manager.h" 1
-# 238 "./mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-# 250 "./mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_IOC(void);
-# 51 "./mcc_generated_files/mcc.h" 2
-
+# 1 "mcc_generated_files/adcc.h" 1
+# 55 "mcc_generated_files/adcc.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -20888,16 +20878,96 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 139 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdint.h" 2 3
-# 52 "./mcc_generated_files/mcc.h" 2
+# 55 "mcc_generated_files/adcc.h" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdbool.h" 1 3
-# 53 "./mcc_generated_files/mcc.h" 2
+# 56 "mcc_generated_files/adcc.h" 2
+# 72 "mcc_generated_files/adcc.h"
+typedef uint16_t adc_result_t;
+# 86 "mcc_generated_files/adcc.h"
+typedef enum
+{
+    ILLUM = 0x0,
+    channel_VSS = 0x3C,
+    channel_Temp = 0x3D,
+    channel_DAC1 = 0x3E,
+    channel_FVR_buf1 = 0x3F
+} adcc_channel_t;
+# 127 "mcc_generated_files/adcc.h"
+void ADCC_Initialize(void);
+# 156 "mcc_generated_files/adcc.h"
+void ADCC_StartConversion(adcc_channel_t channel);
+# 186 "mcc_generated_files/adcc.h"
+_Bool ADCC_IsConversionDone();
+# 218 "mcc_generated_files/adcc.h"
+adc_result_t ADCC_GetConversionResult(void);
+# 249 "mcc_generated_files/adcc.h"
+adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
+# 274 "mcc_generated_files/adcc.h"
+void ADCC_StopConversion(void);
+# 301 "mcc_generated_files/adcc.h"
+void ADCC_SetStopOnInterrupt(void);
+# 326 "mcc_generated_files/adcc.h"
+void ADCC_DischargeSampleCapacitor(void);
+# 352 "mcc_generated_files/adcc.h"
+void ADCC_LoadAcquisitionRegister(uint8_t);
+# 378 "mcc_generated_files/adcc.h"
+void ADCC_SetPrechargeTime(uint8_t);
+# 403 "mcc_generated_files/adcc.h"
+void ADCC_SetRepeatCount(uint8_t);
+# 431 "mcc_generated_files/adcc.h"
+uint8_t ADCC_GetCurrentCountofConversions(void);
+# 455 "mcc_generated_files/adcc.h"
+void ADCC_ClearAccumulator(void);
+# 480 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetAccumulatorValue(void);
+# 508 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasAccumulatorOverflowed(void);
+# 533 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetFilterValue(void);
+# 561 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetPreviousResult(void);
+# 587 "mcc_generated_files/adcc.h"
+void ADCC_DefineSetPoint(uint16_t);
+# 613 "mcc_generated_files/adcc.h"
+void ADCC_SetUpperThreshold(uint16_t);
+# 639 "mcc_generated_files/adcc.h"
+void ADCC_SetLowerThreshold(uint16_t);
+# 666 "mcc_generated_files/adcc.h"
+uint16_t ADCC_GetErrorCalculation(void);
+# 693 "mcc_generated_files/adcc.h"
+void ADCC_EnableDoubleSampling(void);
+# 717 "mcc_generated_files/adcc.h"
+void ADCC_EnableContinuousConversion(void);
+# 741 "mcc_generated_files/adcc.h"
+void ADCC_DisableContinuousConversion(void);
+# 769 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasErrorCrossedUpperThreshold(void);
+# 797 "mcc_generated_files/adcc.h"
+_Bool ADCC_HasErrorCrossedLowerThreshold(void);
+# 824 "mcc_generated_files/adcc.h"
+uint8_t ADCC_GetConversionStageStatus(void);
+# 52 "mcc_generated_files/adcc.c" 2
 
-# 1 "./mcc_generated_files/interrupt_manager.h" 1
-# 54 "./mcc_generated_files/mcc.h" 2
+# 1 "mcc_generated_files/mcc.h" 1
+# 50 "mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/device_config.h" 1
+# 50 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/i2c1_driver.h" 1
-# 26 "./mcc_generated_files/i2c1_driver.h"
+# 1 "mcc_generated_files/pin_manager.h" 1
+# 238 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+# 250 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_IOC(void);
+# 51 "mcc_generated_files/mcc.h" 2
+
+
+
+# 1 "mcc_generated_files/interrupt_manager.h" 1
+# 54 "mcc_generated_files/mcc.h" 2
+
+# 1 "mcc_generated_files/i2c1_driver.h" 1
+# 26 "mcc_generated_files/i2c1_driver.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -21036,7 +21106,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 26 "./mcc_generated_files/i2c1_driver.h" 2
+# 26 "mcc_generated_files/i2c1_driver.h" 2
 
 
 
@@ -21091,260 +21161,288 @@ __attribute__((inline)) void i2c1_driver_setBusCollisionISR(interruptHandler han
 __attribute__((inline)) void i2c1_driver_setI2cISR(interruptHandler handler);
 void (*i2c1_driver_busCollisionISR)(void);
 void (*i2c1_driver_i2cISR)(void);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 55 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/adcc.h" 1
-# 72 "./mcc_generated_files/adcc.h"
-typedef uint16_t adc_result_t;
-# 86 "./mcc_generated_files/adcc.h"
-typedef enum
-{
-    ILLUM = 0x0,
-    channel_VSS = 0x3C,
-    channel_Temp = 0x3D,
-    channel_DAC1 = 0x3E,
-    channel_FVR_buf1 = 0x3F
-} adcc_channel_t;
-# 127 "./mcc_generated_files/adcc.h"
-void ADCC_Initialize(void);
-# 156 "./mcc_generated_files/adcc.h"
-void ADCC_StartConversion(adcc_channel_t channel);
-# 186 "./mcc_generated_files/adcc.h"
-_Bool ADCC_IsConversionDone();
-# 218 "./mcc_generated_files/adcc.h"
-adc_result_t ADCC_GetConversionResult(void);
-# 249 "./mcc_generated_files/adcc.h"
-adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-# 274 "./mcc_generated_files/adcc.h"
-void ADCC_StopConversion(void);
-# 301 "./mcc_generated_files/adcc.h"
-void ADCC_SetStopOnInterrupt(void);
-# 326 "./mcc_generated_files/adcc.h"
-void ADCC_DischargeSampleCapacitor(void);
-# 352 "./mcc_generated_files/adcc.h"
-void ADCC_LoadAcquisitionRegister(uint8_t);
-# 378 "./mcc_generated_files/adcc.h"
-void ADCC_SetPrechargeTime(uint8_t);
-# 403 "./mcc_generated_files/adcc.h"
-void ADCC_SetRepeatCount(uint8_t);
-# 431 "./mcc_generated_files/adcc.h"
-uint8_t ADCC_GetCurrentCountofConversions(void);
-# 455 "./mcc_generated_files/adcc.h"
-void ADCC_ClearAccumulator(void);
-# 480 "./mcc_generated_files/adcc.h"
-uint16_t ADCC_GetAccumulatorValue(void);
-# 508 "./mcc_generated_files/adcc.h"
-_Bool ADCC_HasAccumulatorOverflowed(void);
-# 533 "./mcc_generated_files/adcc.h"
-uint16_t ADCC_GetFilterValue(void);
-# 561 "./mcc_generated_files/adcc.h"
-uint16_t ADCC_GetPreviousResult(void);
-# 587 "./mcc_generated_files/adcc.h"
-void ADCC_DefineSetPoint(uint16_t);
-# 613 "./mcc_generated_files/adcc.h"
-void ADCC_SetUpperThreshold(uint16_t);
-# 639 "./mcc_generated_files/adcc.h"
-void ADCC_SetLowerThreshold(uint16_t);
-# 666 "./mcc_generated_files/adcc.h"
-uint16_t ADCC_GetErrorCalculation(void);
-# 693 "./mcc_generated_files/adcc.h"
-void ADCC_EnableDoubleSampling(void);
-# 717 "./mcc_generated_files/adcc.h"
-void ADCC_EnableContinuousConversion(void);
-# 741 "./mcc_generated_files/adcc.h"
-void ADCC_DisableContinuousConversion(void);
-# 769 "./mcc_generated_files/adcc.h"
-_Bool ADCC_HasErrorCrossedUpperThreshold(void);
-# 797 "./mcc_generated_files/adcc.h"
-_Bool ADCC_HasErrorCrossedLowerThreshold(void);
-# 824 "./mcc_generated_files/adcc.h"
-uint8_t ADCC_GetConversionStageStatus(void);
-# 56 "./mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/ext_int.h" 1
-# 250 "./mcc_generated_files/ext_int.h"
+# 1 "mcc_generated_files/ext_int.h" 1
+# 250 "mcc_generated_files/ext_int.h"
 void EXT_INT_Initialize(void);
-# 272 "./mcc_generated_files/ext_int.h"
+# 272 "mcc_generated_files/ext_int.h"
 void INT_ISR(void);
-# 296 "./mcc_generated_files/ext_int.h"
+# 296 "mcc_generated_files/ext_int.h"
 void INT_CallBack(void);
-# 319 "./mcc_generated_files/ext_int.h"
+# 319 "mcc_generated_files/ext_int.h"
 void INT_SetInterruptHandler(void (* InterruptHandler)(void));
-# 343 "./mcc_generated_files/ext_int.h"
+# 343 "mcc_generated_files/ext_int.h"
 extern void (*INT_InterruptHandler)(void);
-# 367 "./mcc_generated_files/ext_int.h"
+# 367 "mcc_generated_files/ext_int.h"
 void INT_DefaultInterruptHandler(void);
-# 57 "./mcc_generated_files/mcc.h" 2
+# 57 "mcc_generated_files/mcc.h" 2
 
-# 1 "./mcc_generated_files/tmr1.h" 1
-# 100 "./mcc_generated_files/tmr1.h"
+# 1 "mcc_generated_files/tmr1.h" 1
+# 100 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
-# 129 "./mcc_generated_files/tmr1.h"
+# 129 "mcc_generated_files/tmr1.h"
 void TMR1_StartTimer(void);
-# 161 "./mcc_generated_files/tmr1.h"
+# 161 "mcc_generated_files/tmr1.h"
 void TMR1_StopTimer(void);
-# 196 "./mcc_generated_files/tmr1.h"
+# 196 "mcc_generated_files/tmr1.h"
 uint16_t TMR1_ReadTimer(void);
-# 235 "./mcc_generated_files/tmr1.h"
+# 235 "mcc_generated_files/tmr1.h"
 void TMR1_WriteTimer(uint16_t timerVal);
-# 271 "./mcc_generated_files/tmr1.h"
+# 271 "mcc_generated_files/tmr1.h"
 void TMR1_Reload(void);
-# 310 "./mcc_generated_files/tmr1.h"
+# 310 "mcc_generated_files/tmr1.h"
 void TMR1_StartSinglePulseAcquisition(void);
-# 349 "./mcc_generated_files/tmr1.h"
+# 349 "mcc_generated_files/tmr1.h"
 uint8_t TMR1_CheckGateValueStatus(void);
-# 367 "./mcc_generated_files/tmr1.h"
+# 367 "mcc_generated_files/tmr1.h"
 void TMR1_ISR(void);
-# 385 "./mcc_generated_files/tmr1.h"
+# 385 "mcc_generated_files/tmr1.h"
  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
-# 403 "./mcc_generated_files/tmr1.h"
+# 403 "mcc_generated_files/tmr1.h"
 extern void (*TMR1_InterruptHandler)(void);
-# 421 "./mcc_generated_files/tmr1.h"
+# 421 "mcc_generated_files/tmr1.h"
 void TMR1_DefaultInterruptHandler(void);
-# 58 "./mcc_generated_files/mcc.h" 2
-# 73 "./mcc_generated_files/mcc.h"
+# 58 "mcc_generated_files/mcc.h" 2
+# 73 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 86 "./mcc_generated_files/mcc.h"
+# 86 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 99 "./mcc_generated_files/mcc.h"
+# 99 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 44 "main.c" 2
-
-
-
-# 1 "./I2C/i2c.h" 1
-# 154 "./I2C/i2c.h"
-void OpenI2C( unsigned char sync_mode, unsigned char slew );
-
-signed char WriteI2C( unsigned char data_out );
-
-signed char putsI2C( unsigned char *wrptr );
-
-unsigned char ReadI2C( void );
-# 281 "./I2C/i2c.h"
-signed char WriteI2C( unsigned char data_out );
-
-signed char getsI2C( unsigned char *rdptr, unsigned char length );
-# 47 "main.c" 2
-
-
-
-
-
-
-int volatile timer = 0;
-int volatile seconds = 0;
-int volatile minutes = 0;
-int volatile hours = 0;
-int PMON = 5;
-int NREG = 30;
-int TALA = 3;
-int ALAT = 25;
-int ALAL = 2;
-int ALAF = 0;
-int CLKH = 0;
-int CLKM = 0;
-int illum = -1;
-int temp = -1;
-
-volatile _Bool timer1 = 0;
-
-int ReadIllum(){
-    return ADCC_GetSingleConversion(ILLUM)>> 14;
-}
-
-void Timer(){
-    do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
-    if(++timer >= PMON){
-        timer = 0;
-        timer1 = 1;
-    }
-
-    if(seconds < 59)
-        seconds++;
-    else{
-        seconds = 0;
-        if(minutes < 59)
-            minutes++;
-        else{
-            minutes = 0;
-            if(hours < 23)
-                hours++;
-            else
-                hours = 0;
-        }
-    }
-}
-
-int ReadTemp(void){
- unsigned char value;
-
-    do{
-        while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-
-        WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-        SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
-    } while (!(value & 0x40));
-
- while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
- SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
-
- return (int) value;
-}
-
-
-
-void main(void)
+# 53 "mcc_generated_files/adcc.c" 2
+# 63 "mcc_generated_files/adcc.c"
+void ADCC_Initialize(void)
 {
 
-    SYSTEM_Initialize();
+
+    ADLTHL = 0x00;
+
+    ADLTHH = 0x00;
+
+    ADUTHL = 0x00;
+
+    ADUTHH = 0x00;
+
+    ADSTPTL = 0x00;
+
+    ADSTPTH = 0x00;
+
+    ADRPT = 0x00;
+
+    ADPCH = 0x00;
+
+    ADCAP = 0x00;
+
+    ADCON1 = 0x00;
+
+    ADCON2 = 0x00;
+
+    ADCON3 = 0x00;
+
+    ADSTAT = 0x00;
+
+    ADREF = 0x00;
+
+    ADACT = 0x00;
+
+    ADCLK = 0x00;
+
+    ADCON0 = 0x80;
+
+    ADACQ = 0x00;
 
 
+}
+
+void ADCC_StartConversion(adcc_channel_t channel)
+{
+
+    ADPCH = channel;
 
 
-
-    (INTCONbits.GIE = 1);
-
-
-    (INTCONbits.PEIE = 1);
-
-    TMR1_SetInterruptHandler(Timer);
+    ADCON0bits.ADON = 1;
 
 
+    ADCON0bits.ADGO = 1;
+}
+
+_Bool ADCC_IsConversionDone()
+{
+
+    return ((unsigned char)(!ADCON0bits.ADGO));
+}
+
+adc_result_t ADCC_GetConversionResult(void)
+{
+
+    return ((adc_result_t)((ADRESH << 8) + ADRESL));
+}
+
+adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel)
+{
+
+    ADPCH = channel;
 
 
+    ADCON0bits.ADON = 1;
 
 
+    ADCON0bits.ADCONT = 0;
 
-    i2c1_driver_open();
-    TRISCbits.TRISC3 = 1;
-    TRISCbits.TRISC4 = 1;
-    WPUC3 = 1;
-    WPUC4 = 1;
 
-    while (1)
+    ADCON0bits.ADGO = 1;
+
+
+    __nop();
+
+
+    while (ADCON0bits.ADGO)
     {
-        if(timer1){
-            timer1 = 0;
-            illum = ReadIllum();
-            LATAbits.LATA4 = illum & 1;
-            LATAbits.LATA5 = (illum & 2) >> 1;
-            temp = ReadTemp();
-            LATAbits.LATA6 = "0.5";
-            __nop();
-        }
     }
+
+
+
+    return ((adc_result_t)((ADRESH << 8) + ADRESL));
+}
+
+void ADCC_StopConversion(void)
+{
+
+    ADCON0bits.ADGO = 0;
+}
+
+void ADCC_SetStopOnInterrupt(void)
+{
+
+    ADCON3bits.ADSOI = 1;
+}
+
+void ADCC_DischargeSampleCapacitor(void)
+{
+
+    ADPCH = 0x3c;
+}
+
+void ADCC_LoadAcquisitionRegister(uint8_t acquisitionValue)
+{
+
+    ADACQ = acquisitionValue;
+}
+
+void ADCC_SetPrechargeTime(uint8_t prechargeTime)
+{
+
+    ADPRE = prechargeTime;
+}
+
+void ADCC_SetRepeatCount(uint8_t repeatCount)
+{
+
+    ADRPT = repeatCount;
+}
+
+uint8_t ADCC_GetCurrentCountofConversions(void)
+{
+
+    return ADCNT;
+}
+
+void ADCC_ClearAccumulator(void)
+{
+
+    ADCON2bits.ADACLR = 1;
+}
+
+uint16_t ADCC_GetAccumulatorValue(void)
+{
+
+    return ((uint16_t)((ADACCH << 8) + ADACCL));
+}
+
+_Bool ADCC_HasAccumulatorOverflowed(void)
+{
+
+    return ADSTATbits.ADAOV;
+}
+
+uint16_t ADCC_GetFilterValue(void)
+{
+
+    return ((uint16_t)((ADFLTRH << 8) + ADFLTRL));
+}
+
+uint16_t ADCC_GetPreviousResult(void)
+{
+
+    return ((uint16_t)((ADPREVH << 8) + ADPREVL));
+}
+
+void ADCC_DefineSetPoint(uint16_t setPoint)
+{
+
+    ADSTPTH = setPoint >> 8;
+    ADSTPTL = setPoint;
+}
+
+void ADCC_SetUpperThreshold(uint16_t upperThreshold)
+{
+
+    ADUTHH = upperThreshold >> 8;
+    ADUTHL = upperThreshold;
+}
+
+void ADCC_SetLowerThreshold(uint16_t lowerThreshold)
+{
+
+    ADLTHH = lowerThreshold >> 8;
+    ADLTHL = lowerThreshold;
+}
+
+uint16_t ADCC_GetErrorCalculation(void)
+{
+
+
+
+
+
+ return ((uint16_t)((ADERRH << 8) + ADERRL));
+
+}
+
+void ADCC_EnableDoubleSampling(void)
+{
+
+    ADCON1bits.ADDSEN = 1;
+}
+
+void ADCC_EnableContinuousConversion(void)
+{
+
+    ADCON0bits.ADCONT = 1;
+}
+
+void ADCC_DisableContinuousConversion(void)
+{
+
+    ADCON0bits.ADCONT = 0;
+}
+
+_Bool ADCC_HasErrorCrossedUpperThreshold(void)
+{
+
+    return ADSTATbits.ADUTHR;
+}
+
+_Bool ADCC_HasErrorCrossedLowerThreshold(void)
+{
+
+    return ADSTATbits.ADLTHR;
+}
+
+uint8_t ADCC_GetConversionStageStatus(void)
+{
+
+    return ADSTATbits.ADSTAT;
 }

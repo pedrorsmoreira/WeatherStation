@@ -44,6 +44,7 @@
 #include "mcc_generated_files/mcc.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "I2C/i2c.h"
 
 /*
                          Main application
@@ -53,10 +54,22 @@ int volatile timer = 0;
 int volatile seconds = 0;
 int volatile minutes = 0;
 int volatile hours = 0;
-int PMON = 5;
-
+int PMON = 5; // monitoring period
+int NREG = 30; // number of data registers
+int TALA = 3; // duration of alarm signal (PWM)
+int ALAT = 25; // threshold for temperature alarm
+int ALAL = 2; // threshold for luminosity level alarm
+int ALAF = 0; // alarm flag ? initially disabled
+int CLKH = 0; // initial value for clock hours
+int CLKM = 0; // initial value for clock minutes
+int illum = -1;
+int temp = -1;
 
 volatile bool timer1 = false;
+
+int ReadIllum(){
+    return ADCC_GetSingleConversion(ILLUM)>> 14;
+}
 
 void Timer(){
     C_Toggle();
@@ -81,6 +94,37 @@ void Timer(){
     }
 }
 
+int ReadTemp(void){
+	unsigned char value;
+  //  return "a";
+    do{
+        IdleI2C();
+        StartI2C(); IdleI2C();
+
+        WriteI2C(0x9a | 0x00); IdleI2C();
+        WriteI2C(0x01); IdleI2C();
+        RestartI2C(); IdleI2C();
+        WriteI2C(0x9a | 0x01); IdleI2C();
+        value = ReadI2C(); IdleI2C();
+        NotAckI2C(); IdleI2C();
+        StopI2C();
+    } while (!(value & 0x40));
+
+	IdleI2C();
+	StartI2C(); IdleI2C();
+	WriteI2C(0x9a | 0x00); IdleI2C();
+	WriteI2C(0x00); IdleI2C();
+	RestartI2C(); IdleI2C();
+	WriteI2C(0x9a | 0x01); IdleI2C();
+	value = ReadI2C(); IdleI2C();
+	NotAckI2C(); IdleI2C();
+	StopI2C();
+
+	return (int) value;
+}
+
+
+
 void main(void)
 {
     // initialize the device
@@ -96,19 +140,30 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     
     TMR1_SetInterruptHandler(Timer);
+    
 
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
-
+        
+    i2c1_driver_open();
+    I2C_SCL = 1;
+    I2C_SDA = 1;
+    WPUC3 = 1;
+    WPUC4 = 1;
     
     while (1)
     {
         if(timer1){
             timer1 = false;
-            //read 
+            illum = ReadIllum();
+            L0_LAT = illum & 1;
+            L1_LAT = (illum & 2) >> 1;
+            temp = ReadTemp();
+            A_LAT = "0.5";
+            NOP();
         }
     }
 }

@@ -1,55 +1,123 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F12646 `(v ~T0 @X0 0 tf ]
-[v F12648 `(v ~T0 @X0 0 tf ]
-[t ~ __interrupt . k ]
-[t T1 __interrupt ]
-"21840 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21840:     struct {
-[s S990 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S990 . INTE . IOCIE TMR0IE ]
-"21839
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21839: typedef union {
-[u S989 `S990 1 ]
-[n S989 . . ]
-"21847
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21847: extern volatile PIE0bits_t PIE0bits __attribute__((address(0x716)));
-[v _PIE0bits `VS989 ~T0 @X0 0 e@1814 ]
-"21418
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21418:     struct {
-[s S971 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S971 . INTF . IOCIF TMR0IF ]
-"21417
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21417: typedef union {
-[u S970 `S971 1 ]
-[n S970 . . ]
-"21425
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21425: extern volatile PIR0bits_t PIR0bits __attribute__((address(0x70C)));
-[v _PIR0bits `VS970 ~T0 @X0 0 e@1804 ]
-"272 mcc_generated_files/ext_int.h
-[; ;mcc_generated_files/ext_int.h: 272: void INT_ISR(void);
-[v _INT_ISR `(v ~T0 @X0 0 ef ]
-"357 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 357:     struct {
-[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S31 . INTEDG . PEIE GIE ]
-"356
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 356: typedef union {
-[u S30 `S31 1 ]
-[n S30 . . ]
-"364
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 364: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-"21945
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21945:     struct {
-[s S996 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S996 . SSP1IE BCL1IE SSP2IE BCL2IE TXIE RCIE ]
-"21944
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21944: typedef union {
-[u S995 `S996 1 ]
-[n S995 . . ]
-"21954
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21954: extern volatile PIE3bits_t PIE3bits __attribute__((address(0x719)));
-[v _PIE3bits `VS995 ~T0 @X0 0 e@1817 ]
+"5189 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5189: extern volatile unsigned char SSP1CON1 __attribute__((address(0x190)));
+[v _SSP1CON1 `Vuc ~T0 @X0 0 e@400 ]
+"5315
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5315:     struct {
+[s S252 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S252 . SEN RSEN PEN RCEN ACKEN ACKDT ACKSTAT GCEN ]
+"5325
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5325:     struct {
+[s S253 :1 `uc 1 :5 `uc 1 ]
+[n S253 . . ADMSK ]
+"5329
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5329:     struct {
+[s S254 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S254 . . ADMSK1 ADMSK2 ADMSK3 ADMSK4 ADMSK5 ]
+"5337
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5337:     struct {
+[s S255 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S255 . SEN1 ADMSK11 ADMSK21 ADMSK31 ACKEN1 ACKDT1 ACKSTAT1 GCEN1 ]
+"5347
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5347:     struct {
+[s S256 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S256 . . RSEN1 PEN1 RCEN1 ADMSK41 ADMSK51 ]
+"5314
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5314: typedef union {
+[u S251 `S252 1 `S253 1 `S254 1 `S255 1 `S256 1 ]
+[n S251 . . . . . . ]
+"5356
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5356: extern volatile SSP1CON2bits_t SSP1CON2bits __attribute__((address(0x191)));
+[v _SSP1CON2bits `VS251 ~T0 @X0 0 e@401 ]
+"4831
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4831:     struct {
+[s S232 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S232 . BF UA R_nW S P D_nA CKE SMP ]
+"4841
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4841:     struct {
+[s S233 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S233 . . R_W . D_A ]
+"4847
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4847:     struct {
+[s S234 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S234 . . nW . nA ]
+"4853
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4853:     struct {
+[s S235 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S235 . . nWRITE . nADDRESS ]
+"4859
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4859:     struct {
+[s S236 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S236 . . READ_WRITE . DATA_ADDRESS ]
+"4865
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4865:     struct {
+[s S237 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S237 . . I2C_READ I2C_START I2C_STOP I2C_DAT ]
+"4872
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4872:     struct {
+[s S238 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S238 . BF1 UA1 R START STOP D CKE1 SMP1 ]
+"4882
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4882:     struct {
+[s S239 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S239 . . RW START1 STOP1 DA ]
+"4889
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4889:     struct {
+[s S240 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S240 . . RW1 I2C_START1 I2C_STOP2 DA1 ]
+"4896
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4896:     struct {
+[s S241 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S241 . . I2C_READ1 S2 P2 DATA_ADDRESS1 ]
+"4903
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4903:     struct {
+[s S242 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S242 . . READ_WRITE1 . D_A1 ]
+"4909
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4909:     struct {
+[s S243 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S243 . . R_W1 . D_nA1 ]
+"4915
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4915:     struct {
+[s S244 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S244 . . R_nW1 . I2C_DAT1 ]
+"4921
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4921:     struct {
+[s S245 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S245 . . nW2 . nA2 ]
+"4927
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4927:     struct {
+[s S246 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S246 . . nWRITE1 . nADDRESS1 ]
+"4830
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4830: typedef union {
+[u S231 `S232 1 `S233 1 `S234 1 `S235 1 `S236 1 `S237 1 `S238 1 `S239 1 `S240 1 `S241 1 `S242 1 `S243 1 `S244 1 `S245 1 `S246 1 ]
+[n S231 . . . . . . . . . . . . . . . . ]
+"4934
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4934: extern volatile SSP1STATbits_t SSP1STATbits __attribute__((address(0x18F)));
+[v _SSP1STATbits `VS231 ~T0 @X0 0 e@399 ]
+"4615
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 4615: extern volatile unsigned char SSP1BUF __attribute__((address(0x18C)));
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@396 ]
+"5195
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5195:     struct {
+[s S248 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S248 . SSPM CKP SSPEN SSPOV WCOL ]
+"5202
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5202:     struct {
+[s S249 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S249 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"5208
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5208:     struct {
+[s S250 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S250 . SSPM01 SSPM11 SSPM21 SSPM31 CKP1 SSPEN1 SSPOV1 WCOL1 ]
+"5194
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5194: typedef union {
+[u S247 `S248 1 `S249 1 `S250 1 ]
+[n S247 . . . . ]
+"5219
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5219: extern volatile SSP1CON1bits_t SSP1CON1bits __attribute__((address(0x190)));
+[v _SSP1CON1bits `VS247 ~T0 @X0 0 e@400 ]
 "21523
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21523:     struct {
 [s S977 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -61,31 +129,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21532
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21532: extern volatile PIR3bits_t PIR3bits __attribute__((address(0x70F)));
 [v _PIR3bits `VS976 ~T0 @X0 0 e@1807 ]
-"21995
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21995:     struct {
-[s S998 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S998 . TMR1IE TMR2IE TMR3IE TMR4IE TMR5IE TMR6IE ]
-"21994
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21994: typedef union {
-[u S997 `S998 1 ]
-[n S997 . . ]
-"22004
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 22004: extern volatile PIE4bits_t PIE4bits __attribute__((address(0x71A)));
-[v _PIE4bits `VS997 ~T0 @X0 0 e@1818 ]
-"21573
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21573:     struct {
-[s S979 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S979 . TMR1IF TMR2IF TMR3IF TMR4IF TMR5IF TMR6IF ]
-"21572
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21572: typedef union {
-[u S978 `S979 1 ]
-[n S978 . . ]
-"21582
-[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 21582: extern volatile PIR4bits_t PIR4bits __attribute__((address(0x710)));
-[v _PIR4bits `VS978 ~T0 @X0 0 e@1808 ]
-"367 mcc_generated_files/tmr1.h
-[; ;mcc_generated_files/tmr1.h: 367: void TMR1_ISR(void);
-[v _TMR1_ISR `(v ~T0 @X0 0 ef ]
+"5309
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 5309: extern volatile unsigned char SSP1CON2 __attribute__((address(0x191)));
+[v _SSP1CON2 `Vuc ~T0 @X0 0 e@401 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1724,110 +1770,177 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36645
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 36645: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"78 mcc_generated_files/i2c1_driver.h
-[; ;mcc_generated_files/i2c1_driver.h: 78: void (*i2c1_driver_busCollisionISR)(void);
-[v _i2c1_driver_busCollisionISR `*F12646 ~T0 @X0 1 e ]
-"79
-[; ;mcc_generated_files/i2c1_driver.h: 79: void (*i2c1_driver_i2cISR)(void);
-[v _i2c1_driver_i2cISR `*F12648 ~T0 @X0 1 e ]
-[v $root$_INTERRUPT_InterruptManager `(v ~T0 @X0 0 e ]
-"52 mcc_generated_files/interrupt_manager.c
-[; ;mcc_generated_files/interrupt_manager.c: 52: void __attribute__((picinterrupt(("")))) INTERRUPT_InterruptManager (void)
-[v _INTERRUPT_InterruptManager `(v ~T1 @X0 1 ef ]
-"53
-[; ;mcc_generated_files/interrupt_manager.c: 53: {
+"12 I2C/i2c.c
+[; ;I2C/i2c.c: 12: void OpenI2C( unsigned char sync_mode, unsigned char slew )
+[v _OpenI2C `(v ~T0 @X0 1 ef2`uc`uc ]
+"13
+[; ;I2C/i2c.c: 13: {
 {
-[e :U _INTERRUPT_InterruptManager ]
+[e :U _OpenI2C ]
+"12
+[; ;I2C/i2c.c: 12: void OpenI2C( unsigned char sync_mode, unsigned char slew )
+[v _sync_mode `uc ~T0 @X0 1 r1 ]
+[v _slew `uc ~T0 @X0 1 r2 ]
+"13
+[; ;I2C/i2c.c: 13: {
 [f ]
-"55
-[; ;mcc_generated_files/interrupt_manager.c: 55:     if(PIE0bits.INTE == 1 && PIR0bits.INTF == 1)
-[e $ ! && == -> . . _PIE0bits 0 0 `i -> 1 `i == -> . . _PIR0bits 0 0 `i -> 1 `i 1628  ]
-"56
-[; ;mcc_generated_files/interrupt_manager.c: 56:     {
-{
-"57
-[; ;mcc_generated_files/interrupt_manager.c: 57:         INT_ISR();
-[e ( _INT_ISR ..  ]
-"58
-[; ;mcc_generated_files/interrupt_manager.c: 58:     }
+"24
+[; ;I2C/i2c.c: 24: }
+[e :UE 1625 ]
 }
-[e $U 1629  ]
-"59
-[; ;mcc_generated_files/interrupt_manager.c: 59:     else if(INTCONbits.PEIE == 1)
+"32
+[; ;I2C/i2c.c: 32: unsigned char ReadI2C( void )
+[v _ReadI2C `(uc ~T0 @X0 1 ef ]
+"33
+[; ;I2C/i2c.c: 33: {
+{
+[e :U _ReadI2C ]
+[f ]
+"34
+[; ;I2C/i2c.c: 34: if( ((SSP1CON1&0x0F)==0x08) || ((SSP1CON1&0x0F)==0x0B) )
+[e $ ! || == & -> _SSP1CON1 `i -> 15 `i -> 8 `i == & -> _SSP1CON1 `i -> 15 `i -> 11 `i 1627  ]
+"35
+[; ;I2C/i2c.c: 35:   SSP1CON2bits.RCEN = 1;
+[e = . . _SSP1CON2bits 0 3 -> -> 1 `i `uc ]
+[e :U 1627 ]
+"36
+[; ;I2C/i2c.c: 36:   while ( !SSP1STATbits.BF );
+[e $U 1628  ]
+[e :U 1629 ]
 [e :U 1628 ]
-[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 1630  ]
+[e $ ! != -> . . _SSP1STATbits 0 0 `i -> 0 `i 1629  ]
+[e :U 1630 ]
+"37
+[; ;I2C/i2c.c: 37:   return ( SSP1BUF );
+[e ) _SSP1BUF ]
+[e $UE 1626  ]
+"38
+[; ;I2C/i2c.c: 38: }
+[e :UE 1626 ]
+}
+"47
+[; ;I2C/i2c.c: 47: signed char WriteI2C( unsigned char data_out )
+[v _WriteI2C `(c ~T0 @X0 1 ef1`uc ]
+"48
+[; ;I2C/i2c.c: 48: {
+{
+[e :U _WriteI2C ]
+"47
+[; ;I2C/i2c.c: 47: signed char WriteI2C( unsigned char data_out )
+[v _data_out `uc ~T0 @X0 1 r1 ]
+"48
+[; ;I2C/i2c.c: 48: {
+[f ]
+"49
+[; ;I2C/i2c.c: 49:   SSP1BUF = data_out;
+[e = _SSP1BUF _data_out ]
+"50
+[; ;I2C/i2c.c: 50:   if ( SSP1CON1bits.WCOL )
+[e $ ! != -> . . _SSP1CON1bits 0 4 `i -> 0 `i 1632  ]
+"51
+[; ;I2C/i2c.c: 51:    return ( -1 );
+[e ) -> -U -> 1 `i `c ]
+[e $UE 1631  ]
+[e $U 1633  ]
+"52
+[; ;I2C/i2c.c: 52:   else
+[e :U 1632 ]
+"53
+[; ;I2C/i2c.c: 53:   {
+{
+"54
+[; ;I2C/i2c.c: 54:  if( ((SSP1CON1&0x0F)!=0x08) && ((SSP1CON1&0x0F)!=0x0B) )
+[e $ ! && != & -> _SSP1CON1 `i -> 15 `i -> 8 `i != & -> _SSP1CON1 `i -> 15 `i -> 11 `i 1634  ]
+"55
+[; ;I2C/i2c.c: 55:  {
+{
+"56
+[; ;I2C/i2c.c: 56:        SSP1CON1bits.CKP = 1;
+[e = . . _SSP1CON1bits 0 1 -> -> 1 `i `uc ]
+"57
+[; ;I2C/i2c.c: 57:        while ( !PIR3bits.SSP1IF );
+[e $U 1635  ]
+[e :U 1636 ]
+[e :U 1635 ]
+[e $ ! != -> . . _PIR3bits 0 0 `i -> 0 `i 1636  ]
+[e :U 1637 ]
+"59
+[; ;I2C/i2c.c: 59:        if ( ( !SSP1STATbits.R_W ) && ( !SSP1STATbits.BF ) )
+[e $ ! && ! != -> . . _SSP1STATbits 1 1 `i -> 0 `i ! != -> . . _SSP1STATbits 0 0 `i -> 0 `i 1638  ]
 "60
-[; ;mcc_generated_files/interrupt_manager.c: 60:     {
+[; ;I2C/i2c.c: 60:        {
 {
 "61
-[; ;mcc_generated_files/interrupt_manager.c: 61:         if(PIE3bits.BCL1IE == 1 && PIR3bits.BCL1IF == 1)
-[e $ ! && == -> . . _PIE3bits 0 1 `i -> 1 `i == -> . . _PIR3bits 0 1 `i -> 1 `i 1631  ]
+[; ;I2C/i2c.c: 61:          return ( -2 );
+[e ) -> -U -> 2 `i `c ]
+[e $UE 1631  ]
 "62
-[; ;mcc_generated_files/interrupt_manager.c: 62:         {
-{
+[; ;I2C/i2c.c: 62:        }
+}
+[e $U 1639  ]
 "63
-[; ;mcc_generated_files/interrupt_manager.c: 63:             i2c1_driver_busCollisionISR();
-[e ( *U _i2c1_driver_busCollisionISR ..  ]
+[; ;I2C/i2c.c: 63:     else
+[e :U 1638 ]
 "64
-[; ;mcc_generated_files/interrupt_manager.c: 64:         }
-}
-[e $U 1632  ]
+[; ;I2C/i2c.c: 64:     {
+{
 "65
-[; ;mcc_generated_files/interrupt_manager.c: 65:         else if(PIE3bits.SSP1IE == 1 && PIR3bits.SSP1IF == 1)
-[e :U 1631 ]
-[e $ ! && == -> . . _PIE3bits 0 0 `i -> 1 `i == -> . . _PIR3bits 0 0 `i -> 1 `i 1633  ]
+[; ;I2C/i2c.c: 65:    return ( 0 );
+[e ) -> -> 0 `i `c ]
+[e $UE 1631  ]
 "66
-[; ;mcc_generated_files/interrupt_manager.c: 66:         {
-{
+[; ;I2C/i2c.c: 66:     }
+}
+[e :U 1639 ]
 "67
-[; ;mcc_generated_files/interrupt_manager.c: 67:             i2c1_driver_i2cISR();
-[e ( *U _i2c1_driver_i2cISR ..  ]
+[; ;I2C/i2c.c: 67:  }
+}
+[e $U 1640  ]
 "68
-[; ;mcc_generated_files/interrupt_manager.c: 68:         }
-}
-[e $U 1634  ]
-"69
-[; ;mcc_generated_files/interrupt_manager.c: 69:         else if(PIE4bits.TMR1IE == 1 && PIR4bits.TMR1IF == 1)
-[e :U 1633 ]
-[e $ ! && == -> . . _PIE4bits 0 0 `i -> 1 `i == -> . . _PIR4bits 0 0 `i -> 1 `i 1635  ]
-"70
-[; ;mcc_generated_files/interrupt_manager.c: 70:         {
-{
-"71
-[; ;mcc_generated_files/interrupt_manager.c: 71:             TMR1_ISR();
-[e ( _TMR1_ISR ..  ]
-"72
-[; ;mcc_generated_files/interrupt_manager.c: 72:         }
-}
-[e $U 1636  ]
-"73
-[; ;mcc_generated_files/interrupt_manager.c: 73:         else
-[e :U 1635 ]
-"74
-[; ;mcc_generated_files/interrupt_manager.c: 74:         {
-{
-"76
-[; ;mcc_generated_files/interrupt_manager.c: 76:         }
-}
-[e :U 1636 ]
+[; ;I2C/i2c.c: 68:  else if( ((SSP1CON1&0x0F)==0x08) || ((SSP1CON1&0x0F)==0x0B) )
 [e :U 1634 ]
-[e :U 1632 ]
-"77
-[; ;mcc_generated_files/interrupt_manager.c: 77:     }
-}
-[e $U 1637  ]
-"78
-[; ;mcc_generated_files/interrupt_manager.c: 78:     else
-[e :U 1630 ]
-"79
-[; ;mcc_generated_files/interrupt_manager.c: 79:     {
+[e $ ! || == & -> _SSP1CON1 `i -> 15 `i -> 8 `i == & -> _SSP1CON1 `i -> 15 `i -> 11 `i 1641  ]
+"69
+[; ;I2C/i2c.c: 69:  {
 {
-"81
-[; ;mcc_generated_files/interrupt_manager.c: 81:     }
+"70
+[; ;I2C/i2c.c: 70:      while( SSP1STATbits.BF );
+[e $U 1642  ]
+[e :U 1643 ]
+[e :U 1642 ]
+[e $ != -> . . _SSP1STATbits 0 0 `i -> 0 `i 1643  ]
+[e :U 1644 ]
+"71
+[; ;I2C/i2c.c: 71:      while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+[e $U 1645  ]
+[e :U 1646 ]
+[e :U 1645 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1646  ]
+[e :U 1647 ]
+"72
+[; ;I2C/i2c.c: 72:      if ( SSP1CON2bits.ACKSTAT )
+[e $ ! != -> . . _SSP1CON2bits 0 6 `i -> 0 `i 1648  ]
+"73
+[; ;I2C/i2c.c: 73:        return ( -2 );
+[e ) -> -U -> 2 `i `c ]
+[e $UE 1631  ]
+[e $U 1649  ]
+"74
+[; ;I2C/i2c.c: 74:   else return ( 0 );
+[e :U 1648 ]
+[e ) -> -> 0 `i `c ]
+[e $UE 1631  ]
+[e :U 1649 ]
+"75
+[; ;I2C/i2c.c: 75:  }
 }
-[e :U 1637 ]
-[e :U 1629 ]
-"82
-[; ;mcc_generated_files/interrupt_manager.c: 82: }
-[e :UE 1627 ]
+[e :U 1641 ]
+[e :U 1640 ]
+"77
+[; ;I2C/i2c.c: 77:   }
+}
+[e :U 1633 ]
+"78
+[; ;I2C/i2c.c: 78: }
+[e :UE 1631 ]
 }
