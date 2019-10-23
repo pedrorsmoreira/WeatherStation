@@ -1,13 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F12646 `(v ~T0 @X0 0 tf ]
 [v F12648 `(v ~T0 @X0 0 tf ]
-"71 main.c
-[; ;main.c: 71:     return ADCC_GetSingleConversion(ILLUM)>> 14;
-[c E12650 0 60 61 62 63 .. ]
-[n E12650 . ILLUM channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
+"72 main.c
+[; ;main.c: 72:     return ADCC_GetSingleConversion(ILLUM)>> 14;
+[c E12733 0 60 61 62 63 .. ]
+[n E12733 . ILLUM channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "249 ./mcc_generated_files/adcc.h
 [; ;./mcc_generated_files/adcc.h: 249: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12650 ]
+[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12733 ]
 "956 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 956:     struct {
 [s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -122,9 +122,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 "160
 [; ;./I2C/i2c.h: 160: unsigned char ReadI2C( void );
 [v _ReadI2C `(uc ~T0 @X0 0 ef ]
+"30046 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 30046: extern volatile unsigned char PPSLOCK __attribute__((address(0xE8F)));
+[v _PPSLOCK `Vuc ~T0 @X0 0 e@3727 ]
+"30052
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 30052:     struct {
+[s S1321 :1 `uc 1 ]
+[n S1321 . PPSLOCKED ]
+"30051
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 30051: typedef union {
+[u S1320 `S1321 1 ]
+[n S1320 . . ]
+"30056
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 30056: extern volatile PPSLOCKbits_t PPSLOCKbits __attribute__((address(0xE8F)));
+[v _PPSLOCKbits `VS1320 ~T0 @X0 0 e@3727 ]
+"32388
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 32388: extern volatile unsigned char RA6PPS __attribute__((address(0xF16)));
+[v _RA6PPS `Vuc ~T0 @X0 0 e@3862 ]
 [p mainexit ]
-"73 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 73: void SYSTEM_Initialize(void);
+"76 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 76: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "357 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 357:     struct {
@@ -137,11 +154,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "364
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 364: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
-[v F12713 `(v ~T0 @X0 0 tf ]
+[v F12663 `(v ~T0 @X0 0 tf ]
 "385 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12713 ]
-[v F12755 `(v ~T0 @X0 0 tf ]
+[v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12663 ]
+[v F12842 `(v ~T0 @X0 0 tf ]
+[v F12795 `(v ~T0 @X0 0 tf ]
+"319 ./mcc_generated_files/ext_int.h
+[; ;./mcc_generated_files/ext_int.h: 319: void INT_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _INT_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12795 ]
+"464 ./mcc_generated_files/tmr2.h
+[; ;./mcc_generated_files/tmr2.h: 464: void TMR2_StartTimer(void);
+[v _TMR2_StartTimer `(v ~T0 @X0 0 ef ]
 "49 ./mcc_generated_files/i2c1_driver.h
 [; ;./mcc_generated_files/i2c1_driver.h: 49: __bit i2c1_driver_open(void);
 [v _i2c1_driver_open `(b ~T0 @X0 0 ef ]
@@ -162,9 +186,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "45039
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 45039: extern volatile __bit WPUC4 __attribute__((address(0x7A7C)));
 [v _WPUC4 `Vb ~T0 @X0 0 e@31356 ]
-"31 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+"129 ./mcc_generated_files/pwm6.h
+[; ;./mcc_generated_files/pwm6.h: 129:  void PWM6_LoadDutyValue(uint16_t dutyValue);
+[v _PWM6_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1834,188 +1858,194 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 "57
-[; ;main.c: 57: int PMON = 5;
+[; ;main.c: 57: _Bool volatile switch1 = 0;
+[v _switch1 `Va ~T0 @X0 1 e ]
+[i _switch1
+-> -> 0 `i `a
+]
+"58
+[; ;main.c: 58: int PMON = 5;
 [v _PMON `i ~T0 @X0 1 e ]
 [i _PMON
 -> 5 `i
 ]
-"58
-[; ;main.c: 58: int NREG = 30;
+"59
+[; ;main.c: 59: int NREG = 30;
 [v _NREG `i ~T0 @X0 1 e ]
 [i _NREG
 -> 30 `i
 ]
-"59
-[; ;main.c: 59: int TALA = 3;
+"60
+[; ;main.c: 60: int TALA = 3;
 [v _TALA `i ~T0 @X0 1 e ]
 [i _TALA
 -> 3 `i
 ]
-"60
-[; ;main.c: 60: int ALAT = 25;
+"61
+[; ;main.c: 61: int ALAT = 25;
 [v _ALAT `i ~T0 @X0 1 e ]
 [i _ALAT
 -> 25 `i
 ]
-"61
-[; ;main.c: 61: int ALAL = 2;
+"62
+[; ;main.c: 62: int ALAL = 2;
 [v _ALAL `i ~T0 @X0 1 e ]
 [i _ALAL
 -> 2 `i
 ]
-"62
-[; ;main.c: 62: int ALAF = 0;
+"63
+[; ;main.c: 63: int ALAF = 0;
 [v _ALAF `i ~T0 @X0 1 e ]
 [i _ALAF
 -> 0 `i
 ]
-"63
-[; ;main.c: 63: int CLKH = 0;
+"64
+[; ;main.c: 64: int CLKH = 0;
 [v _CLKH `i ~T0 @X0 1 e ]
 [i _CLKH
 -> 0 `i
 ]
-"64
-[; ;main.c: 64: int CLKM = 0;
+"65
+[; ;main.c: 65: int CLKM = 0;
 [v _CLKM `i ~T0 @X0 1 e ]
 [i _CLKM
 -> 0 `i
 ]
-"65
-[; ;main.c: 65: int illum = -1;
+"66
+[; ;main.c: 66: int illum = -1;
 [v _illum `i ~T0 @X0 1 e ]
 [i _illum
 -U -> 1 `i
 ]
-"66
-[; ;main.c: 66: int temp = -1;
+"67
+[; ;main.c: 67: int temp = -1;
 [v _temp `i ~T0 @X0 1 e ]
 [i _temp
 -U -> 1 `i
 ]
-"68
-[; ;main.c: 68: volatile _Bool timer1 = 0;
+"69
+[; ;main.c: 69: volatile _Bool timer1 = 0;
 [v _timer1 `Va ~T0 @X0 1 e ]
 [i _timer1
 -> -> 0 `i `a
 ]
-"70
-[; ;main.c: 70: int ReadIllum(){
+"71
+[; ;main.c: 71: int ReadIllum(){
 [v _ReadIllum `(i ~T0 @X0 1 ef ]
 {
 [e :U _ReadIllum ]
 [f ]
-"71
-[; ;main.c: 71:     return ADCC_GetSingleConversion(ILLUM)>> 14;
-[e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12650 0 `ui -> 14 `i `i ]
-[e $UE 1627  ]
 "72
-[; ;main.c: 72: }
+[; ;main.c: 72:     return ADCC_GetSingleConversion(ILLUM)>> 14;
+[e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12733 0 `ui -> 14 `i `i ]
+[e $UE 1627  ]
+"73
+[; ;main.c: 73: }
 [e :UE 1627 ]
 }
-"74
-[; ;main.c: 74: void Timer(){
+"75
+[; ;main.c: 75: void Timer(){
 [v _Timer `(v ~T0 @X0 1 ef ]
 {
 [e :U _Timer ]
 [f ]
-"75
-[; ;main.c: 75:     do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+"76
+[; ;main.c: 76:     do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
 [e :U 1631 ]
 {
 [e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
 }
 [e :U 1630 ]
-"76
-[; ;main.c: 76:     if(++timer >= PMON){
+"77
+[; ;main.c: 77:     if(++timer >= PMON){
 [e $ ! >= =+ _timer -> -> 1 `i `Vi _PMON 1632  ]
 {
-"77
-[; ;main.c: 77:         timer = 0;
-[e = _timer -> 0 `i ]
 "78
-[; ;main.c: 78:         timer1 = 1;
-[e = _timer1 -> -> 1 `i `a ]
+[; ;main.c: 78:         timer = 0;
+[e = _timer -> 0 `i ]
 "79
-[; ;main.c: 79:     }
+[; ;main.c: 79:         timer1 = 1;
+[e = _timer1 -> -> 1 `i `a ]
+"80
+[; ;main.c: 80:     }
 }
 [e :U 1632 ]
-"81
-[; ;main.c: 81:     if(seconds < 59)
-[e $ ! < _seconds -> 59 `i 1633  ]
 "82
-[; ;main.c: 82:         seconds++;
+[; ;main.c: 82:     if(seconds < 59)
+[e $ ! < _seconds -> 59 `i 1633  ]
+"83
+[; ;main.c: 83:         seconds++;
 [e ++ _seconds -> -> 1 `i `Vi ]
 [e $U 1634  ]
-"83
-[; ;main.c: 83:     else{
+"84
+[; ;main.c: 84:     else{
 [e :U 1633 ]
 {
-"84
-[; ;main.c: 84:         seconds = 0;
-[e = _seconds -> 0 `i ]
 "85
-[; ;main.c: 85:         if(minutes < 59)
-[e $ ! < _minutes -> 59 `i 1635  ]
+[; ;main.c: 85:         seconds = 0;
+[e = _seconds -> 0 `i ]
 "86
-[; ;main.c: 86:             minutes++;
+[; ;main.c: 86:         if(minutes < 59)
+[e $ ! < _minutes -> 59 `i 1635  ]
+"87
+[; ;main.c: 87:             minutes++;
 [e ++ _minutes -> -> 1 `i `Vi ]
 [e $U 1636  ]
-"87
-[; ;main.c: 87:         else{
+"88
+[; ;main.c: 88:         else{
 [e :U 1635 ]
 {
-"88
-[; ;main.c: 88:             minutes = 0;
-[e = _minutes -> 0 `i ]
 "89
-[; ;main.c: 89:             if(hours < 23)
-[e $ ! < _hours -> 23 `i 1637  ]
+[; ;main.c: 89:             minutes = 0;
+[e = _minutes -> 0 `i ]
 "90
-[; ;main.c: 90:                 hours++;
+[; ;main.c: 90:             if(hours < 23)
+[e $ ! < _hours -> 23 `i 1637  ]
+"91
+[; ;main.c: 91:                 hours++;
 [e ++ _hours -> -> 1 `i `Vi ]
 [e $U 1638  ]
-"91
-[; ;main.c: 91:             else
-[e :U 1637 ]
 "92
-[; ;main.c: 92:                 hours = 0;
+[; ;main.c: 92:             else
+[e :U 1637 ]
+"93
+[; ;main.c: 93:                 hours = 0;
 [e = _hours -> 0 `i ]
 [e :U 1638 ]
-"93
-[; ;main.c: 93:         }
+"94
+[; ;main.c: 94:         }
 }
 [e :U 1636 ]
-"94
-[; ;main.c: 94:     }
+"95
+[; ;main.c: 95:     }
 }
 [e :U 1634 ]
-"95
-[; ;main.c: 95: }
+"96
+[; ;main.c: 96: }
 [e :UE 1628 ]
 }
-"97
-[; ;main.c: 97: int ReadTemp(void){
+"98
+[; ;main.c: 98: int ReadTemp(void){
 [v _ReadTemp `(i ~T0 @X0 1 ef ]
 {
 [e :U _ReadTemp ]
 [f ]
-"98
-[; ;main.c: 98:  unsigned char value;
+"99
+[; ;main.c: 99:  unsigned char value;
 [v _value `uc ~T0 @X0 1 a ]
-"100
-[; ;main.c: 100:     do{
+"101
+[; ;main.c: 101:     do{
 [e :U 1642 ]
 {
-"101
-[; ;main.c: 101:         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"102
+[; ;main.c: 102:         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1643  ]
 [e :U 1644 ]
 [e :U 1643 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1644  ]
 [e :U 1645 ]
-"102
-[; ;main.c: 102:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"103
+[; ;main.c: 103:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
 [e $U 1646  ]
 [e :U 1647 ]
@@ -2027,24 +2057,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1649 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1650  ]
 [e :U 1651 ]
-"104
-[; ;main.c: 104:         WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"105
+[; ;main.c: 105:         WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
 [e $U 1652  ]
 [e :U 1653 ]
 [e :U 1652 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1653  ]
 [e :U 1654 ]
-"105
-[; ;main.c: 105:         WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"106
+[; ;main.c: 106:         WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 1 `i `uc ]
 [e $U 1655  ]
 [e :U 1656 ]
 [e :U 1655 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1656  ]
 [e :U 1657 ]
-"106
-[; ;main.c: 106:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"107
+[; ;main.c: 107:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
 [e $U 1658  ]
 [e :U 1659 ]
@@ -2056,24 +2086,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1661 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1662  ]
 [e :U 1663 ]
-"107
-[; ;main.c: 107:         WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"108
+[; ;main.c: 108:         WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
 [e $U 1664  ]
 [e :U 1665 ]
 [e :U 1664 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1665  ]
 [e :U 1666 ]
-"108
-[; ;main.c: 108:         value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"109
+[; ;main.c: 109:         value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
 [e $U 1667  ]
 [e :U 1668 ]
 [e :U 1667 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1668  ]
 [e :U 1669 ]
-"109
-[; ;main.c: 109:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"110
+[; ;main.c: 110:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
 [e $U 1670  ]
@@ -2086,28 +2116,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1673 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1674  ]
 [e :U 1675 ]
-"110
-[; ;main.c: 110:         SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
+"111
+[; ;main.c: 111:         SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
 [e $U 1676  ]
 [e :U 1677 ]
 [e :U 1676 ]
 [e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1677  ]
 [e :U 1678 ]
-"111
-[; ;main.c: 111:     } while (!(value & 0x40));
+"112
+[; ;main.c: 112:     } while (!(value & 0x40));
 }
 [e $ ! != & -> _value `i -> 64 `i -> 0 `i 1642  ]
 [e :U 1641 ]
-"113
-[; ;main.c: 113:  while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"114
+[; ;main.c: 114:  while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1679  ]
 [e :U 1680 ]
 [e :U 1679 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1680  ]
 [e :U 1681 ]
-"114
-[; ;main.c: 114:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"115
+[; ;main.c: 115:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
 [e $U 1682  ]
 [e :U 1683 ]
@@ -2119,24 +2149,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1685 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1686  ]
 [e :U 1687 ]
-"115
-[; ;main.c: 115:  WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"116
+[; ;main.c: 116:  WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
 [e $U 1688  ]
 [e :U 1689 ]
 [e :U 1688 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1689  ]
 [e :U 1690 ]
-"116
-[; ;main.c: 116:  WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"117
+[; ;main.c: 117:  WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 0 `i `uc ]
 [e $U 1691  ]
 [e :U 1692 ]
 [e :U 1691 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1692  ]
 [e :U 1693 ]
-"117
-[; ;main.c: 117:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"118
+[; ;main.c: 118:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
 [e $U 1694  ]
 [e :U 1695 ]
@@ -2148,24 +2178,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1697 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1698  ]
 [e :U 1699 ]
-"118
-[; ;main.c: 118:  WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"119
+[; ;main.c: 119:  WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
 [e $U 1700  ]
 [e :U 1701 ]
 [e :U 1700 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1701  ]
 [e :U 1702 ]
-"119
-[; ;main.c: 119:  value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"120
+[; ;main.c: 120:  value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
 [e $U 1703  ]
 [e :U 1704 ]
 [e :U 1703 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1704  ]
 [e :U 1705 ]
-"120
-[; ;main.c: 120:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"121
+[; ;main.c: 121:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
 [e $U 1706  ]
@@ -2178,101 +2208,171 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1709 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1710  ]
 [e :U 1711 ]
-"121
-[; ;main.c: 121:  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
+"122
+[; ;main.c: 122:  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
 [e $U 1712  ]
 [e :U 1713 ]
 [e :U 1712 ]
 [e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1713  ]
 [e :U 1714 ]
-"123
-[; ;main.c: 123:  return (int) value;
+"124
+[; ;main.c: 124:  return (int) value;
 [e ) -> _value `i ]
 [e $UE 1639  ]
-"124
-[; ;main.c: 124: }
+"125
+[; ;main.c: 125: }
 [e :UE 1639 ]
 }
-[v $root$_main `(v ~T0 @X0 0 e ]
+"127
+[; ;main.c: 127: void Switch1(void){
+[v _Switch1 `(v ~T0 @X0 1 ef ]
+{
+[e :U _Switch1 ]
+[f ]
 "128
-[; ;main.c: 128: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
+[; ;main.c: 128:     switch1 = 1;
+[e = _switch1 -> -> 1 `i `a ]
 "129
-[; ;main.c: 129: {
+[; ;main.c: 129: }
+[e :UE 1715 ]
+}
+"131
+[; ;main.c: 131: void PWM_Output_D5_Enable (void){
+[v _PWM_Output_D5_Enable `(v ~T0 @X0 1 ef ]
+{
+[e :U _PWM_Output_D5_Enable ]
+[f ]
+"132
+[; ;main.c: 132:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"133
+[; ;main.c: 133:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"134
+[; ;main.c: 134:     PPSLOCKbits.PPSLOCKED = 0x00;
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
+"136
+[; ;main.c: 136:     RA6PPS = 0x0E;
+[e = _RA6PPS -> -> 14 `i `uc ]
+"137
+[; ;main.c: 137:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"138
+[; ;main.c: 138:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"139
+[; ;main.c: 139:     PPSLOCKbits.PPSLOCKED = 0x01;
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"140
+[; ;main.c: 140: }
+[e :UE 1716 ]
+}
+"142
+[; ;main.c: 142: void PWM_Output_D5_Disable (void){
+[v _PWM_Output_D5_Disable `(v ~T0 @X0 1 ef ]
+{
+[e :U _PWM_Output_D5_Disable ]
+[f ]
+"143
+[; ;main.c: 143:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"144
+[; ;main.c: 144:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"145
+[; ;main.c: 145:     PPSLOCKbits.PPSLOCKED = 0x00;
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
+"147
+[; ;main.c: 147:     RA6PPS = 0x00;
+[e = _RA6PPS -> -> 0 `i `uc ]
+"148
+[; ;main.c: 148:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"149
+[; ;main.c: 149:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"150
+[; ;main.c: 150:     PPSLOCKbits.PPSLOCKED = 0x01;
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"151
+[; ;main.c: 151: }
+[e :UE 1717 ]
+}
+"153
+[; ;main.c: 153: void Alarm(void){
+[v _Alarm `(v ~T0 @X0 1 ef ]
+{
+[e :U _Alarm ]
+[f ]
+"155
+[; ;main.c: 155: }
+[e :UE 1718 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"157
+[; ;main.c: 157: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"158
+[; ;main.c: 158: {
 {
 [e :U _main ]
 [f ]
-"131
-[; ;main.c: 131:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"137
-[; ;main.c: 137:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"140
-[; ;main.c: 140:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"142
-[; ;main.c: 142:     TMR1_SetInterruptHandler(Timer);
-[e ( _TMR1_SetInterruptHandler (1 -> &U _Timer `*F12755 ]
-"150
-[; ;main.c: 150:     i2c1_driver_open();
-[e ( _i2c1_driver_open ..  ]
-"151
-[; ;main.c: 151:     TRISCbits.TRISC3 = 1;
-[e = . . _TRISCbits 0 3 -> -> 1 `i `uc ]
-"152
-[; ;main.c: 152:     TRISCbits.TRISC4 = 1;
-[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
-"153
-[; ;main.c: 153:     WPUC3 = 1;
-[e = _WPUC3 -> -> 1 `i `b ]
-"154
-[; ;main.c: 154:     WPUC4 = 1;
-[e = _WPUC4 -> -> 1 `i `b ]
-"156
-[; ;main.c: 156:     while (1)
-[e :U 1717 ]
-"157
-[; ;main.c: 157:     {
-{
-"158
-[; ;main.c: 158:         if(timer1){
-[e $ ! != -> _timer1 `i -> 0 `i 1719  ]
-{
-"159
-[; ;main.c: 159:             timer1 = 0;
-[e = _timer1 -> -> 0 `i `a ]
 "160
-[; ;main.c: 160:             illum = ReadIllum();
-[e = _illum ( _ReadIllum ..  ]
-"161
-[; ;main.c: 161:             LATAbits.LATA4 = illum & 1;
-[e = . . _LATAbits 0 4 -> & _illum -> 1 `i `uc ]
-"162
-[; ;main.c: 162:             LATAbits.LATA5 = (illum & 2) >> 1;
-[e = . . _LATAbits 0 5 -> >> & _illum -> 2 `i -> 1 `i `uc ]
-"163
-[; ;main.c: 163:             temp = ReadTemp();
-[e = _temp ( _ReadTemp ..  ]
-"164
-[; ;main.c: 164:             LATAbits.LATA6 = "0.5";
-[e = . . _LATAbits 0 6 -> :s 1C `uc ]
-"165
-[; ;main.c: 165:             __nop();
-[e ( ___nop ..  ]
+[; ;main.c: 160:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "166
-[; ;main.c: 166:         }
+[; ;main.c: 166:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+"169
+[; ;main.c: 169:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+"171
+[; ;main.c: 171:     TMR1_SetInterruptHandler(Timer);
+[e ( _TMR1_SetInterruptHandler (1 -> &U _Timer `*F12842 ]
+"172
+[; ;main.c: 172:     INT_SetInterruptHandler(Switch1);
+[e ( _INT_SetInterruptHandler (1 &U _Switch1 ]
+"173
+[; ;main.c: 173:     PWM_Output_D5_Enable();
+[e ( _PWM_Output_D5_Enable ..  ]
+"174
+[; ;main.c: 174:     TMR2_StartTimer();
+[e ( _TMR2_StartTimer ..  ]
+"183
+[; ;main.c: 183:     i2c1_driver_open();
+[e ( _i2c1_driver_open ..  ]
+"184
+[; ;main.c: 184:     TRISCbits.TRISC3 = 1;
+[e = . . _TRISCbits 0 3 -> -> 1 `i `uc ]
+"185
+[; ;main.c: 185:     TRISCbits.TRISC4 = 1;
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+"186
+[; ;main.c: 186:     WPUC3 = 1;
+[e = _WPUC3 -> -> 1 `i `b ]
+"187
+[; ;main.c: 187:     WPUC4 = 1;
+[e = _WPUC4 -> -> 1 `i `b ]
+"189
+[; ;main.c: 189:     while (1)
+[e :U 1721 ]
+"190
+[; ;main.c: 190:     {
+{
+"191
+[; ;main.c: 191:         illum = ADCC_GetSingleConversion(ILLUM) >> 6;
+[e = _illum -> >> -> ( _ADCC_GetSingleConversion (1 . `E12733 0 `ui -> 6 `i `i ]
+"192
+[; ;main.c: 192:         PWM6_LoadDutyValue(illum);
+[e ( _PWM6_LoadDutyValue (1 -> _illum `us ]
+"209
+[; ;main.c: 209:     }
 }
-[e :U 1719 ]
-"167
-[; ;main.c: 167:     }
+[e :U 1720 ]
+[e $U 1721  ]
+[e :U 1722 ]
+"210
+[; ;main.c: 210: }
+[e :UE 1719 ]
 }
-[e :U 1716 ]
-[e $U 1717  ]
-[e :U 1718 ]
-"168
-[; ;main.c: 168: }
-[e :UE 1715 ]
-}
-[a 1C 48 46 53 0 ]

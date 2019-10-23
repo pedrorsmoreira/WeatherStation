@@ -54,6 +54,7 @@ int volatile timer = 0;
 int volatile seconds = 0;
 int volatile minutes = 0;
 int volatile hours = 0;
+bool volatile switch1 = false;
 int PMON = 5; // monitoring period
 int NREG = 30; // number of data registers
 int TALA = 3; // duration of alarm signal (PWM)
@@ -123,7 +124,35 @@ int ReadTemp(void){
 	return (int) value;
 }
 
+void Switch1(void){
+    switch1 = true;
+}
 
+void PWM_Output_D5_Enable (void){
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
+    // Set D5 as the output of PWM6
+    RA6PPS = 0x0E;
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
+}
+
+void PWM_Output_D5_Disable (void){
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
+    // Set D5 as GPIO pin
+    RA6PPS = 0x00;
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
+}
+
+void Alarm(void){
+    
+}
 
 void main(void)
 {
@@ -140,6 +169,9 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
     
     TMR1_SetInterruptHandler(Timer);
+    INT_SetInterruptHandler(Switch1);
+    PWM_Output_D5_Enable();
+    TMR2_StartTimer();
     
 
     // Disable the Global Interrupts
@@ -156,15 +188,24 @@ void main(void)
     
     while (1)
     {
-        if(timer1){
+        illum = ADCC_GetSingleConversion(ILLUM) >> 6;
+        PWM6_LoadDutyValue(illum);
+        
+       /* if(timer1){
             timer1 = false;
             illum = ReadIllum();
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
-            A_LAT = "0.5";
-            NOP();
+            if(illum < ALAL)
+                Alarm();
         }
+        if(switch1){
+            switch1 = false;
+            A_Toggle();
+        }    
+        * */
+        
     }
 }
 

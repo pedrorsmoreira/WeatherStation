@@ -16,6 +16,8 @@
         <itemPath>mcc_generated_files/i2c1_driver.h</itemPath>
         <itemPath>mcc_generated_files/adcc.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
+        <itemPath>mcc_generated_files/tmr2.h</itemPath>
+        <itemPath>mcc_generated_files/pwm6.h</itemPath>
       </logicalFolder>
       <itemPath>I2C/i2c.h</itemPath>
     </logicalFolder>
@@ -38,6 +40,8 @@
         <itemPath>mcc_generated_files/adcc.c</itemPath>
         <itemPath>mcc_generated_files/i2c1_driver.c</itemPath>
         <itemPath>mcc_generated_files/memory.c</itemPath>
+        <itemPath>mcc_generated_files/pwm6.c</itemPath>
+        <itemPath>mcc_generated_files/tmr2.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>I2C/i2c.c</itemPath>
@@ -177,6 +181,7 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>

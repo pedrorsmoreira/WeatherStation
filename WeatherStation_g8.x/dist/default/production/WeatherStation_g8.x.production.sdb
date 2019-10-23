@@ -11,13 +11,58 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-"71 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
-[e E12650 . `uc
+"72 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
+[e E12733 . `uc
 ILLUM 0
 channel_VSS 60
 channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
+]
+"88 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr2.c
+[e E12245 . `uc
+TMR2_ROP_STARTS_TMRON 0
+TMR2_ROP_STARTS_TMRON_ERSHIGH 1
+TMR2_ROP_STARTS_TMRON_ERSLOW 2
+TMR2_ROP_RESETS_ERSBOTHEDGE 3
+TMR2_ROP_RESETS_ERSRISINGEDGE 4
+TMR2_ROP_RESETS_ERSFALLINGEDGE 5
+TMR2_ROP_RESETS_ERSLOW 6
+TMR2_ROP_RESETS_ERSHIGH 7
+TMR2_OS_STARTS_TMRON 8
+TMR2_OS_STARTS_ERSRISINGEDGE 9
+TMR2_OS_STARTS_ERSFALLINGEDGE 10
+TMR2_OS_STARTS_ERSBOTHEDGE 11
+TMR2_OS_STARTS_ERSFIRSTRISINGEDGE 12
+TMR2_OS_STARTS_ERSFIRSTFALLINGEDGE 13
+TMR2_OS_STARTS_ERSRISINGEDGEDETECT 14
+TMR2_OS_STARTS_ERSFALLINGEDGEDETECT 15
+TMR2_OS_STARTS_TMRON_ERSHIGH 22
+TMR2_OS_STARTS_TMRON_ERSLOW 23
+TMR2_MS_STARTS_TMRON_ERSRISINGEDGEDETECT 17
+TMR2_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT 18
+TMR2_MS_STARTS_TMRON_ERSBOTHEDGE 19
+]
+"94
+[e E12268 . `uc
+TMR2_T2INPPS 0
+TMR2_RESERVED 1
+TMR2_T4POSTSCALED 2
+TMR2_T6POSTSCALED 3
+TMR2_CCP1_OUT 4
+TMR2_CCP2_OUT 5
+TMR2_CCP3_OUT 6
+TMR2_CCP4_OUT 7
+TMR2_CCP5_OUT 8
+TMR2_PWM6_OUT 9
+TMR2_PWM7_OUT 10
+TMR2_C1_OUT_SYNC 11
+TMR2_C2_OUT_SYNC 12
+TMR2_ZCD_OUTPUT 13
+TMR2_CLC1_OUT 14
+TMR2_CLC2_OUT 15
+TMR2_CLC3_OUT 16
+TMR2_CLC4_OUT 17
 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
@@ -31,13 +76,13 @@ channel_FVR_buf1 63
 [v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
 "47
 [v _WriteI2C WriteI2C `(c  1 e 1 0 ]
-"70 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
-[v _ReadIllum ReadIllum `(i  1 e 2 0 ]
-"74
+"75 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
 [v _Timer Timer `(v  1 e 1 0 ]
-"97
-[v _ReadTemp ReadTemp `(i  1 e 2 0 ]
-"128
+"127
+[v _Switch1 Switch1 `(v  1 e 1 0 ]
+"131
+[v _PWM_Output_D5_Enable PWM_Output_D5_Enable `(v  1 e 1 0 ]
+"157
 [v _main main `(v  1 e 1 0 ]
 "63 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
@@ -59,12 +104,22 @@ channel_FVR_buf1 63
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 "50 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"60
+"62
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-"74
+"76
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
+"58 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+"94
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"149
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
 "55 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"58 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/pwm6.c
+[v _PWM6_Initialize PWM6_Initialize `(v  1 e 1 0 ]
+"74
+[v _PWM6_LoadDutyValue PWM6_LoadDutyValue `(v  1 e 1 0 ]
 "64 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr1.c
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
 "127
@@ -75,6 +130,20 @@ channel_FVR_buf1 63
 [v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
 "182
 [v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+"62 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+"100
+[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
+"106
+[v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
+"111
+[v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
+"122
+[v _TMR2_Counter8BitGet TMR2_Counter8BitGet `(uc  1 e 1 0 ]
+"136
+[v _TMR2_Counter8BitSet TMR2_Counter8BitSet `(v  1 e 1 0 ]
+"147
+[v _TMR2_Period8BitSet TMR2_Period8BitSet `(v  1 e 1 0 ]
 "78 C:\Users\SCE\Desktop\WeatherStation_g8.x/mcc_generated_files/i2c1_driver.h
 [v _i2c1_driver_busCollisionISR i2c1_driver_busCollisionISR `*.37(v  1 e 2 0 ]
 "79
@@ -93,7 +162,7 @@ channel_FVR_buf1 63
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "794
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S1374 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S1474 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -103,15 +172,15 @@ channel_FVR_buf1 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "811
-[u S1383 . 1 `S1374 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES1383  1 e 1 @19 ]
+[u S1483 . 1 `S1474 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1483  1 e 1 @19 ]
 "856
 [v _TRISD TRISD `VEuc  1 e 1 @20 ]
 "918
 [v _TRISE TRISE `VEuc  1 e 1 @21 ]
 "950
 [v _LATA LATA `VEuc  1 e 1 @22 ]
-[s S1184 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S1269 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -121,8 +190,8 @@ channel_FVR_buf1 63
 `uc 1 LATA7 1 0 :1:7 
 ]
 "967
-[u S1193 . 1 `S1184 1 . 1 0 ]
-[v _LATAbits LATAbits `VES1193  1 e 1 @22 ]
+[u S1278 . 1 `S1269 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1278  1 e 1 @22 ]
 "1012
 [v _LATB LATB `VEuc  1 e 1 @23 ]
 "1074
@@ -145,7 +214,7 @@ channel_FVR_buf1 63
 [v _ADACCH ADACCH `VEuc  1 e 1 @145 ]
 "2126
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @147 ]
-[s S495 . 1 `uc 1 ADGO 1 0 :1:0 
+[s S503 . 1 `uc 1 ADGO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM 1 0 :2:2 
 `uc 1 ADCS 1 0 :1:4 
@@ -154,44 +223,44 @@ channel_FVR_buf1 63
 `uc 1 ADON 1 0 :1:7 
 ]
 "2162
-[s S503 . 1 `uc 1 DONE 1 0 :1:0 
+[s S511 . 1 `uc 1 DONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM 1 0 :2:2 
 ]
-[s S507 . 1 `uc 1 nDONE 1 0 :1:0 
+[s S515 . 1 `uc 1 nDONE 1 0 :1:0 
 ]
-[s S509 . 1 `uc 1 GO 1 0 :1:0 
+[s S517 . 1 `uc 1 GO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM0 1 0 :1:2 
 `uc 1 ADFM1 1 0 :1:3 
 ]
-[s S514 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+[s S522 . 1 `uc 1 GO_nDONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM0 1 0 :1:2 
 `uc 1 ADFRM1 1 0 :1:3 
 ]
-[u S519 . 1 `S495 1 . 1 0 `S503 1 . 1 0 `S507 1 . 1 0 `S509 1 . 1 0 `S514 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES519  1 e 1 @147 ]
+[u S527 . 1 `S503 1 . 1 0 `S511 1 . 1 0 `S515 1 . 1 0 `S517 1 . 1 0 `S522 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES527  1 e 1 @147 ]
 "2237
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @148 ]
-[s S650 . 1 `uc 1 ADDSEN 1 0 :1:0 
+[s S658 . 1 `uc 1 ADDSEN 1 0 :1:0 
 `uc 1 . 1 0 :4:1 
 `uc 1 ADGPOL 1 0 :1:5 
 `uc 1 ADIPEN 1 0 :1:6 
 `uc 1 ADPPOL 1 0 :1:7 
 ]
 "2251
-[u S656 . 1 `S650 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES656  1 e 1 @148 ]
+[u S664 . 1 `S658 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES664  1 e 1 @148 ]
 "2276
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @149 ]
-[s S586 . 1 `uc 1 ADMD 1 0 :3:0 
+[s S594 . 1 `uc 1 ADMD 1 0 :3:0 
 `uc 1 ADACLR 1 0 :1:3 
 `uc 1 ADCRS 1 0 :3:4 
 `uc 1 ADPSIS 1 0 :1:7 
 ]
 "2298
-[s S591 . 1 `uc 1 ADMD0 1 0 :1:0 
+[s S599 . 1 `uc 1 ADMD0 1 0 :1:0 
 `uc 1 ADMD1 1 0 :1:1 
 `uc 1 ADMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -199,11 +268,11 @@ channel_FVR_buf1 63
 `uc 1 ADCRS1 1 0 :1:5 
 `uc 1 ADCRS2 1 0 :1:6 
 ]
-[u S599 . 1 `S586 1 . 1 0 `S591 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES599  1 e 1 @149 ]
+[u S607 . 1 `S594 1 . 1 0 `S599 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES607  1 e 1 @149 ]
 "2353
 [v _ADCON3 ADCON3 `VEuc  1 e 1 @150 ]
-[s S556 . 1 `uc 1 ADTMD0 1 0 :1:0 
+[s S564 . 1 `uc 1 ADTMD0 1 0 :1:0 
 `uc 1 ADTMD1 1 0 :1:1 
 `uc 1 ADTMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -212,15 +281,15 @@ channel_FVR_buf1 63
 `uc 1 ADCALC2 1 0 :1:6 
 ]
 "2374
-[s S564 . 1 `uc 1 ADTMD 1 0 :3:0 
+[s S572 . 1 `uc 1 ADTMD 1 0 :3:0 
 `uc 1 ADSOI 1 0 :1:3 
 `uc 1 ADCALC 1 0 :3:4 
 ]
-[u S568 . 1 `S556 1 . 1 0 `S564 1 . 1 0 ]
-[v _ADCON3bits ADCON3bits `VES568  1 e 1 @150 ]
+[u S576 . 1 `S564 1 . 1 0 `S572 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES576  1 e 1 @150 ]
 "2424
 [v _ADSTAT ADSTAT `VEuc  1 e 1 @151 ]
-[s S618 . 1 `uc 1 ADSTAT 1 0 :3:0 
+[s S626 . 1 `uc 1 ADSTAT 1 0 :3:0 
 `uc 1 ADMACT 1 0 :1:3 
 `uc 1 ADMATH 1 0 :1:4 
 `uc 1 ADLTHR 1 0 :1:5 
@@ -228,12 +297,12 @@ channel_FVR_buf1 63
 `uc 1 ADAOV 1 0 :1:7 
 ]
 "2444
-[s S625 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+[s S633 . 1 `uc 1 ADSTAT0 1 0 :1:0 
 `uc 1 ADSTAT1 1 0 :1:1 
 `uc 1 ADSTAT2 1 0 :1:2 
 ]
-[u S629 . 1 `S618 1 . 1 0 `S625 1 . 1 0 ]
-[v _ADSTATbits ADSTATbits `VES629  1 e 1 @151 ]
+[u S637 . 1 `S626 1 . 1 0 `S633 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES637  1 e 1 @151 ]
 "2494
 [v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
 "2552
@@ -280,7 +349,7 @@ channel_FVR_buf1 63
 [v _SSP1MSK SSP1MSK `VEuc  1 e 1 @398 ]
 "4825
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
-[s S883 . 1 `uc 1 BF 1 0 :1:0 
+[s S891 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -290,33 +359,33 @@ channel_FVR_buf1 63
 `uc 1 SMP 1 0 :1:7 
 ]
 "4934
-[s S892 . 1 `uc 1 . 1 0 :2:0 
+[s S900 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S897 . 1 `uc 1 . 1 0 :2:0 
+[s S905 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S902 . 1 `uc 1 . 1 0 :2:0 
+[s S910 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S907 . 1 `uc 1 . 1 0 :2:0 
+[s S915 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S912 . 1 `uc 1 . 1 0 :2:0 
+[s S920 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S918 . 1 `uc 1 BF1 1 0 :1:0 
+[s S926 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -325,66 +394,66 @@ channel_FVR_buf1 63
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S927 . 1 `uc 1 . 1 0 :2:0 
+[s S935 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S933 . 1 `uc 1 . 1 0 :2:0 
+[s S941 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 I2C_START1 1 0 :1:3 
 `uc 1 I2C_STOP2 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S939 . 1 `uc 1 . 1 0 :2:0 
+[s S947 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ1 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS1 1 0 :1:5 
 ]
-[s S945 . 1 `uc 1 . 1 0 :2:0 
+[s S953 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A1 1 0 :1:5 
 ]
-[s S950 . 1 `uc 1 . 1 0 :2:0 
+[s S958 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA1 1 0 :1:5 
 ]
-[s S955 . 1 `uc 1 . 1 0 :2:0 
+[s S963 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT1 1 0 :1:5 
 ]
-[s S960 . 1 `uc 1 . 1 0 :2:0 
+[s S968 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S965 . 1 `uc 1 . 1 0 :2:0 
+[s S973 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS1 1 0 :1:5 
 ]
-[u S970 . 1 `S883 1 . 1 0 `S892 1 . 1 0 `S897 1 . 1 0 `S902 1 . 1 0 `S907 1 . 1 0 `S912 1 . 1 0 `S918 1 . 1 0 `S927 1 . 1 0 `S933 1 . 1 0 `S939 1 . 1 0 `S945 1 . 1 0 `S950 1 . 1 0 `S955 1 . 1 0 `S960 1 . 1 0 `S965 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES970  1 e 1 @399 ]
+[u S978 . 1 `S891 1 . 1 0 `S900 1 . 1 0 `S905 1 . 1 0 `S910 1 . 1 0 `S915 1 . 1 0 `S920 1 . 1 0 `S926 1 . 1 0 `S935 1 . 1 0 `S941 1 . 1 0 `S947 1 . 1 0 `S953 1 . 1 0 `S958 1 . 1 0 `S963 1 . 1 0 `S968 1 . 1 0 `S973 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES978  1 e 1 @399 ]
 "5189
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S729 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S737 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5219
-[s S735 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S743 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S740 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S748 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -393,11 +462,11 @@ channel_FVR_buf1 63
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S749 . 1 `S729 1 . 1 0 `S735 1 . 1 0 `S740 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES749  1 e 1 @400 ]
+[u S757 . 1 `S737 1 . 1 0 `S743 1 . 1 0 `S748 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES757  1 e 1 @400 ]
 "5309
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @401 ]
-[s S804 . 1 `uc 1 SEN 1 0 :1:0 
+[s S812 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -407,17 +476,17 @@ channel_FVR_buf1 63
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5356
-[s S813 . 1 `uc 1 . 1 0 :1:0 
+[s S821 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S816 . 1 `uc 1 . 1 0 :1:0 
+[s S824 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S823 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S831 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -426,15 +495,15 @@ channel_FVR_buf1 63
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S832 . 1 `uc 1 . 1 0 :1:0 
+[s S840 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S839 . 1 `S804 1 . 1 0 `S813 1 . 1 0 `S816 1 . 1 0 `S823 1 . 1 0 `S832 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES839  1 e 1 @401 ]
+[u S847 . 1 `S812 1 . 1 0 `S821 1 . 1 0 `S824 1 . 1 0 `S831 1 . 1 0 `S840 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES847  1 e 1 @401 ]
 "6508
 [v _TMR1L TMR1L `VEuc  1 e 1 @524 ]
 "6678
@@ -492,6 +561,114 @@ channel_FVR_buf1 63
 [v _T1GATE T1GATE `VEuc  1 e 1 @528 ]
 "7256
 [v _T1CLK T1CLK `VEuc  1 e 1 @529 ]
+[s S1751 . 1 `uc 1 C5TSEL 1 0 :2:0 
+`uc 1 P6TSEL 1 0 :2:2 
+`uc 1 P7TSEL 1 0 :2:4 
+]
+"9300
+[s S1755 . 1 `uc 1 C5TSEL0 1 0 :1:0 
+`uc 1 C5TSEL1 1 0 :1:1 
+`uc 1 P6TSEL0 1 0 :1:2 
+`uc 1 P6TSEL1 1 0 :1:3 
+`uc 1 P7TSEL0 1 0 :1:4 
+`uc 1 P7TSEL1 1 0 :1:5 
+]
+[u S1762 . 1 `S1751 1 . 1 0 `S1755 1 . 1 0 ]
+[v _CCPTMRS1bits CCPTMRS1bits `VES1762  1 e 1 @543 ]
+"9350
+[v _T2TMR T2TMR `VEuc  1 e 1 @652 ]
+"9355
+[v _TMR2 TMR2 `VEuc  1 e 1 @652 ]
+"9388
+[v _T2PR T2PR `VEuc  1 e 1 @653 ]
+"9393
+[v _PR2 PR2 `VEuc  1 e 1 @653 ]
+"9426
+[v _T2CON T2CON `VEuc  1 e 1 @654 ]
+[s S1928 . 1 `uc 1 OUTPS 1 0 :4:0 
+`uc 1 CKPS 1 0 :3:4 
+`uc 1 ON 1 0 :1:7 
+]
+"9462
+[s S1932 . 1 `uc 1 T2OUTPS 1 0 :4:0 
+`uc 1 T2CKPS 1 0 :3:4 
+`uc 1 T2ON 1 0 :1:7 
+]
+[s S1936 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
+`uc 1 T2OUTPS1 1 0 :1:1 
+`uc 1 T2OUTPS2 1 0 :1:2 
+`uc 1 T2OUTPS3 1 0 :1:3 
+`uc 1 T2CKPS0 1 0 :1:4 
+`uc 1 T2CKPS1 1 0 :1:5 
+`uc 1 T2CKPS2 1 0 :1:6 
+]
+[s S1944 . 1 `uc 1 OUTPS0 1 0 :1:0 
+`uc 1 OUTPS1 1 0 :1:1 
+`uc 1 OUTPS2 1 0 :1:2 
+`uc 1 OUTPS3 1 0 :1:3 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+`uc 1 CKPS2 1 0 :1:6 
+`uc 1 TMR2ON 1 0 :1:7 
+]
+[u S1953 . 1 `S1928 1 . 1 0 `S1932 1 . 1 0 `S1936 1 . 1 0 `S1944 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES1953  1 e 1 @654 ]
+"9572
+[v _T2HLT T2HLT `VEuc  1 e 1 @655 ]
+[s S1821 . 1 `uc 1 MODE 1 0 :5:0 
+`uc 1 CKSYNC 1 0 :1:5 
+`uc 1 CKPOL 1 0 :1:6 
+`uc 1 PSYNC 1 0 :1:7 
+]
+"9605
+[s S1826 . 1 `uc 1 MODE0 1 0 :1:0 
+`uc 1 MODE1 1 0 :1:1 
+`uc 1 MODE2 1 0 :1:2 
+`uc 1 MODE3 1 0 :1:3 
+`uc 1 MODE4 1 0 :1:4 
+]
+[s S1832 . 1 `uc 1 T2MODE 1 0 :5:0 
+`uc 1 T2CKSYNC 1 0 :1:5 
+`uc 1 T2CKPOL 1 0 :1:6 
+`uc 1 T2PSYNC 1 0 :1:7 
+]
+[s S1837 . 1 `uc 1 T2MODE0 1 0 :1:0 
+`uc 1 T2MODE1 1 0 :1:1 
+`uc 1 T2MODE2 1 0 :1:2 
+`uc 1 T2MODE3 1 0 :1:3 
+`uc 1 T2MODE4 1 0 :1:4 
+]
+[u S1843 . 1 `S1821 1 . 1 0 `S1826 1 . 1 0 `S1832 1 . 1 0 `S1837 1 . 1 0 ]
+[v _T2HLTbits T2HLTbits `VES1843  1 e 1 @655 ]
+"9700
+[v _T2CLKCON T2CLKCON `VEuc  1 e 1 @656 ]
+"9858
+[v _T2RST T2RST `VEuc  1 e 1 @657 ]
+[s S1890 . 1 `uc 1 RSEL 1 0 :5:0 
+]
+"9885
+[s S1892 . 1 `uc 1 RSEL0 1 0 :1:0 
+`uc 1 RSEL1 1 0 :1:1 
+`uc 1 RSEL2 1 0 :1:2 
+`uc 1 RSEL3 1 0 :1:3 
+`uc 1 RSEL4 1 0 :1:4 
+]
+[s S1898 . 1 `uc 1 T2RSEL 1 0 :5:0 
+]
+[s S1900 . 1 `uc 1 T2RSEL0 1 0 :1:0 
+`uc 1 T2RSEL1 1 0 :1:1 
+`uc 1 T2RSEL2 1 0 :1:2 
+`uc 1 T2RSEL3 1 0 :1:3 
+`uc 1 T2RSEL4 1 0 :1:4 
+]
+[u S1906 . 1 `S1890 1 . 1 0 `S1892 1 . 1 0 `S1898 1 . 1 0 `S1900 1 . 1 0 ]
+[v _T2RSTbits T2RSTbits `VES1906  1 e 1 @657 ]
+"12447
+[v _PWM6DCL PWM6DCL `VEuc  1 e 1 @908 ]
+"12513
+[v _PWM6DCH PWM6DCH `VEuc  1 e 1 @909 ]
+"12683
+[v _PWM6CON PWM6CON `VEuc  1 e 1 @910 ]
 [s S217 . 1 `uc 1 INTF 1 0 :1:0 
 `uc 1 . 1 0 :3:1 
 `uc 1 IOCIF 1 0 :1:4 
@@ -560,6 +737,27 @@ channel_FVR_buf1 63
 [v _PMD4 PMD4 `VEuc  1 e 1 @1946 ]
 "22536
 [v _PMD5 PMD5 `VEuc  1 e 1 @1947 ]
+"23257
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @2074 ]
+"23319
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @2075 ]
+"23375
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
+"23437
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
+[s S1193 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 NVMREGS 1 0 :1:6 
+]
+"23503
+[u S1201 . 1 `S1193 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES1201  1 e 1 @2078 ]
+"23543
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
 "23607
 [v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2189 ]
 "23747
@@ -570,12 +768,21 @@ channel_FVR_buf1 63
 [v _OSCTUNE OSCTUNE `VEuc  1 e 1 @2194 ]
 "23953
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
+"30046
+[v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3727 ]
+[s S1447 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+]
+"30056
+[u S1449 . 1 `S1447 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES1449  1 e 1 @3727 ]
 "30066
 [v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
 "31672
 [v _SSP1CLKPPS SSP1CLKPPS `VEuc  1 e 1 @3781 ]
 "31724
 [v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @3782 ]
+"32388
+[v _RA6PPS RA6PPS `VEuc  1 e 1 @3862 ]
 "33038
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @3875 ]
 "33088
@@ -643,12 +850,12 @@ channel_FVR_buf1 63
 "56
 [v _hours hours `VEi  1 e 2 0 ]
 "57
+[v _switch1 switch1 `VEa  1 e 1 0 ]
+"58
 [v _PMON PMON `i  1 e 2 0 ]
-"65
-[v _illum illum `i  1 e 2 0 ]
 "66
-[v _temp temp `i  1 e 2 0 ]
-"68
+[v _illum illum `i  1 e 2 0 ]
+"69
 [v _timer1 timer1 `VEa  1 e 1 0 ]
 "30 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/ext_int.c
 [v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
@@ -656,20 +863,35 @@ channel_FVR_buf1 63
 [v _timer1ReloadVal timer1ReloadVal `VEus  1 e 2 0 ]
 "58
 [v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
-"128 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
+"157 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"168
+"210
 } 0
 "84 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/i2c1_driver.c
 [v _i2c1_driver_open i2c1_driver_open `(b  1 e 0 0 ]
 {
 "96
 } 0
+"106 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr2.c
+[v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
+{
+"109
+} 0
+"100
+[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
+{
+"104
+} 0
 "50 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"58
+"60
+} 0
+"62 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr2.c
+[v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
+{
+"86
 } 0
 "64 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr1.c
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
@@ -682,20 +904,25 @@ channel_FVR_buf1 63
 [v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 2 ]
 "180
 } 0
-"74 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
+"58 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/pwm6.c
+[v _PWM6_Initialize PWM6_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"76 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
-"88
+"90
 } 0
 "55 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "132
 } 0
-"60 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
+"62 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"72
+"74
 } 0
 "59 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
@@ -713,31 +940,16 @@ channel_FVR_buf1 63
 {
 "104
 } 0
-"97 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
-[v _ReadTemp ReadTemp `(i  1 e 2 0 ]
+"131 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
+[v _PWM_Output_D5_Enable PWM_Output_D5_Enable `(v  1 e 1 0 ]
 {
-"98
-[v ReadTemp@value value `uc  1 a 1 8 ]
-"124
+"140
 } 0
-"47 C:\Users\SCE\Desktop\WeatherStation_g8.x\I2C/i2c.c
-[v _WriteI2C WriteI2C `(c  1 e 1 0 ]
+"74 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/pwm6.c
+[v _PWM6_LoadDutyValue PWM6_LoadDutyValue `(v  1 e 1 0 ]
 {
-[v WriteI2C@data_out data_out `uc  1 a 1 wreg ]
-[v WriteI2C@data_out data_out `uc  1 a 1 wreg ]
-"49
-[v WriteI2C@data_out data_out `uc  1 a 1 3 ]
-"78
-} 0
-"32
-[v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
-{
-"38
-} 0
-"70 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
-[v _ReadIllum ReadIllum `(i  1 e 2 0 ]
-{
-"72
+[v PWM6_LoadDutyValue@dutyValue dutyValue `us  1 p 2 2 ]
+"81
 } 0
 "130 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/adcc.c
 [v _ADCC_GetSingleConversion ADCC_GetSingleConversion `(us  1 e 2 0 ]
@@ -763,10 +975,10 @@ channel_FVR_buf1 63
 {
 "185
 } 0
-"74 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
+"75 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
 [v _Timer Timer `(v  1 e 1 0 ]
 {
-"95
+"96
 } 0
 "127 C:\Users\SCE\Desktop\WeatherStation_g8.x\mcc_generated_files/tmr1.c
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
@@ -788,4 +1000,9 @@ channel_FVR_buf1 63
 [v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "57
+} 0
+"127 C:\Users\SCE\Desktop\WeatherStation_g8.x\main.c
+[v _Switch1 Switch1 `(v  1 e 1 0 ]
+{
+"129
 } 0
