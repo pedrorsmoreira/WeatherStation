@@ -8,3 +8,4 @@
 - O Ring Buffer é para fazer checksum?
 - confirmar se fazemos assim o check dos butões.
 - fica preso no SLEEP()?
+
