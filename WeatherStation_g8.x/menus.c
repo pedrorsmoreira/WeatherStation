@@ -90,7 +90,7 @@ void Menus (void) {
     ShowOnLEDs(0);
     TMR1_SetInterruptHandler(Blink);
     
-    while(mode <= 3){
+    while(mode < 4){
         checkButtonS1();
         checkButtonS2();
         if (s1flag){

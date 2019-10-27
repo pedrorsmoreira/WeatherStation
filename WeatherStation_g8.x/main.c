@@ -179,7 +179,7 @@ void main(void)
 
     while (1)
     {   
-        //SLEEP();
+        SLEEP();
         
         INTERRUPT_PeripheralInterruptDisable();
         if(flag_timer){
