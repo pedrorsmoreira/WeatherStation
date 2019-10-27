@@ -147,8 +147,15 @@ uint8_t xor(uint8_t x, uint8_t y){
 
 void main(void)
 {
-    
+    /*
+    #ifdef CHECKSUM
+    set_check_up_value();
+    #else
     set_check_up_value(xor);
+    #endif
+    */
+    
+    load_eeprom();
     
     // initialize the device
     SYSTEM_Initialize();

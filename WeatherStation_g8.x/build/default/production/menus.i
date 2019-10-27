@@ -21470,12 +21470,25 @@ signed char getsI2C( unsigned char *rdptr, unsigned char length );
 # 1 "./utils.h" 1
 # 18 "./utils.h" 2
 # 1 "./eeprom.h" 1
-# 27 "./eeprom.h"
-uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t));
+# 33 "./eeprom.h"
+uint8_t get_check_up_value(void);
 
-void set_check_up_value( uint8_t (*func) (uint8_t, uint8_t));
 
-_Bool check_corruption( uint8_t (*func) (uint8_t, uint8_t));
+
+
+
+void set_check_up_value(void);
+
+
+
+
+
+_Bool check_corruption(void);
+
+
+
+
+
 
 void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm);
@@ -21483,6 +21496,25 @@ void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm);
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L);
+
+_Bool used(void);
+
+
+
+uint8_t read_nreg(void);
+uint8_t read_pmon(void);
+uint8_t read_tala(void);
+uint8_t read_alat(void);
+uint8_t read_alal(void);
+uint8_t read_alaf(void);
+uint8_t read_clkh(void);
+uint8_t read_clkm(void);
+void write_nreg(uint8_t x);
+void write_pmon(uint8_t x);
+void write_tala(uint8_t x);
+void write_alat(uint8_t x);
+void write_alal(uint8_t x);
+void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
 
 
@@ -21512,7 +21544,7 @@ void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
-
+void load_eeprom(void);
 void eeprom_default_setup(void);
 void update_clk(void);
 _Bool ring_buffer(void);

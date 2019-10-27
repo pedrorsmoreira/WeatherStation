@@ -21442,12 +21442,25 @@ void OSCILLATOR_Initialize(void);
 void PMD_Initialize(void);
 # 2 "eeprom.c" 2
 # 1 "./eeprom.h" 1
-# 27 "./eeprom.h"
-uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t));
+# 33 "./eeprom.h"
+uint8_t get_check_up_value(void);
 
-void set_check_up_value( uint8_t (*func) (uint8_t, uint8_t));
 
-_Bool check_corruption( uint8_t (*func) (uint8_t, uint8_t));
+
+
+
+void set_check_up_value(void);
+
+
+
+
+
+_Bool check_corruption(void);
+
+
+
+
+
 
 void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm);
@@ -21455,42 +21468,95 @@ void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm);
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L);
+
+_Bool used(void);
+
+
+
+uint8_t read_nreg(void);
+uint8_t read_pmon(void);
+uint8_t read_tala(void);
+uint8_t read_alat(void);
+uint8_t read_alal(void);
+uint8_t read_alaf(void);
+uint8_t read_clkh(void);
+uint8_t read_clkm(void);
+void write_nreg(uint8_t x);
+void write_pmon(uint8_t x);
+void write_tala(uint8_t x);
+void write_alat(uint8_t x);
+void write_alal(uint8_t x);
+void write_alaf(uint8_t x);
 # 3 "eeprom.c" 2
 
-uint8_t ALAF;
 
-uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t)){
-
-    uint8_t check = func(DATAEE_ReadByte(0x7001), func(DATAEE_ReadByte(0x7002),
-            func(DATAEE_ReadByte(0x7003), func(DATAEE_ReadByte(0x7004), func(DATAEE_ReadByte(0x7005),
-            func(DATAEE_ReadByte(0x7006), func(DATAEE_ReadByte(0x7007), DATAEE_ReadByte(0x7008))))))));
+uint8_t get_check_up_value(void){
 
 
-    uint8_t wbuf = DATAEE_ReadByte(0x7009);
-    uint8_t rbuf = DATAEE_ReadByte(0x700A);
-    check = func(check, func(wbuf, rbuf));
 
-    while (rbuf < wbuf)
-        check = func(check, DATAEE_ReadByte(++rbuf));
+    uint8_t check;
+
+    check = DATAEE_ReadByte(0x7001) + DATAEE_ReadByte(0x7002) + DATAEE_ReadByte(0x7003) +
+            DATAEE_ReadByte(0x7004) + DATAEE_ReadByte(0x7005) + DATAEE_ReadByte(0x7006) +
+            DATAEE_ReadByte(0x7007) + DATAEE_ReadByte(0x7008);
+
+
+
+
+
+
+    uint8_t wbuf = DATAEE_ReadByte(0x700A);
+    uint8_t rbuf = DATAEE_ReadByte(0x700B);
+
+
+    check += wbuf + rbuf;
+
+
+
+
+    while (rbuf < wbuf){
+
+        check += DATAEE_ReadByte(++rbuf);
+
+
+
+
+    }
 
     return check;
 }
 
-void set_check_up_value( uint8_t (*func) (uint8_t, uint8_t)){
-    uint8_t check = get_check_up_value(func);
+
+void set_check_up_value(void){
+
+
+
+
+    uint8_t check = get_check_up_value();
+
+
+
     DATAEE_WriteByte(0x7000, check);
 }
 
-_Bool check_corruption( uint8_t (*func) (uint8_t, uint8_t)){
+
+_Bool check_corruption(void){
+
+
+
     uint8_t check = DATAEE_ReadByte(0x7000);
-    return get_check_up_value(func) == check;
+
+    return get_check_up_value() == check;
+
+
+
 }
 
 void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
 
     if (reset_buffer)
-        DATAEE_WriteByte(0x7009, 0);
+        DATAEE_WriteByte(0x700A, 0);
 
     DATAEE_WriteByte(0x7001, nreg);
     DATAEE_WriteByte(0x7002, pmon);
@@ -21500,6 +21566,7 @@ void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
     DATAEE_WriteByte(0x7006, alaf);
     DATAEE_WriteByte(0x7007, clkh);
     DATAEE_WriteByte(0x7008, clkm);
+    DATAEE_WriteByte(0x7009, 0xAA);
 }
 
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
@@ -21509,15 +21576,15 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
 
-    uint16_t ring_pos = 0x700A + DATAEE_ReadByte(0x7009);
+    uint16_t ring_pos = 0x700B + DATAEE_ReadByte(0x700A);
 
 
     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
         return 0;
 
 
-    if (ring_pos > (0x700A + DATAEE_ReadByte(0x7001) - 5) )
-        ring_pos = 0x700A;
+    if (ring_pos > (0x700B + DATAEE_ReadByte(0x7001) - 5) )
+        ring_pos = 0x700B;
 
     DATAEE_WriteByte(ring_pos , h);
     DATAEE_WriteByte(ring_pos+1, m);
@@ -21526,7 +21593,61 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(ring_pos+4, L);
 
 
-    DATAEE_WriteByte(0x7009, ring_pos+5-0x700A);
+    DATAEE_WriteByte(0x700A, ring_pos+5-0x700B);
 
     return 1;
+}
+
+_Bool used(void) {return 0xAA == DATAEE_ReadByte(0x7009); }
+
+
+uint8_t read_nreg(void) { return DATAEE_ReadByte(0x7001); }
+uint8_t read_pmon(void) { return DATAEE_ReadByte(0x7002); }
+uint8_t read_tala(void) { return DATAEE_ReadByte(0x7003); }
+uint8_t read_alat(void) { return DATAEE_ReadByte(0x7004); }
+uint8_t read_alal(void) { return DATAEE_ReadByte(0x7005); }
+uint8_t read_alaf(void) { return DATAEE_ReadByte(0x7006); }
+uint8_t read_clkh(void) { return DATAEE_ReadByte(0x7007); }
+uint8_t read_clkm(void) { return DATAEE_ReadByte(0x7008); }
+
+void write_nreg(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7001, x);
+}
+
+void write_pmon(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7002, x);
+}
+
+void write_tala(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7003, x);
+}
+
+void write_alat(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7004, x);
+}
+
+void write_alal(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7005, x);
+}
+
+void write_alaf(uint8_t x) {
+
+    DATAEE_WriteByte(0x7000, x - DATAEE_ReadByte(0x7001));
+
+    DATAEE_WriteByte(0x7006, x);
 }

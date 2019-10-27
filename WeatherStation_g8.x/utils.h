@@ -44,7 +44,7 @@ void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
-
+void load_eeprom(void);
 void eeprom_default_setup(void);
 void update_clk(void);
 bool ring_buffer(void);
