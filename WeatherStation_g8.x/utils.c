@@ -3,11 +3,11 @@
 #include "utils.h"
 //#include "eeprom.h"
 
-int ReadIllum(void){
+uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
 }
 
-int ReadTemp(void){
+uint8_t ReadTemp(void){
 	unsigned char value;
     return 10;
     do{
@@ -39,7 +39,7 @@ int ReadTemp(void){
             ; IdleI2C();
 	StopI2C();
 
-	return (int) value;
+	return (uint8_t) value;
 }
 
 void PWM_Output_D4_Enable (void){
@@ -64,7 +64,7 @@ void PWM_Output_D4_Disable (void){
     PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
 }
 
-void ShowOnLEDs(int num){
+void ShowOnLEDs(uint8_t num){
     LEDs = num << 4;
 }
 
@@ -99,9 +99,9 @@ void eeprom_default_setup(void){
 }
 
 void update_clk(void){
-    eeprom_clk_update(hours, minutes);
+    eeprom_clk_update(CLKH, CLKM);
 }
 
 bool ring_buffer(void){
-    return ring_buffer_write(hours, minutes, seconds, temp, illum);
+    return ring_buffer_write(CLKH, CLKM, seconds, temp, illum);
 }

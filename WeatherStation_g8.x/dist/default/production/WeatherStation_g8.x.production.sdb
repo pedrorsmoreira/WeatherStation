@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F18875 ]
 [d frameptr 6 ]
-"106 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+"106 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [e E12246 . `uc
 ILLUM 0
 channel_VSS 60
@@ -11,7 +11,7 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-"96 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"96 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [e E12245 . `uc
 TMR2_ROP_STARTS_TMRON 0
 TMR2_ROP_STARTS_TMRON_ERSHIGH 1
@@ -56,7 +56,7 @@ TMR2_CLC2_OUT 15
 TMR2_CLC3_OUT 16
 TMR2_CLC4_OUT 17
 ]
-"7 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
+"7 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [e E12741 . `uc
 ILLUM 0
 channel_VSS 60
@@ -64,51 +64,53 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-"5 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/awdiv.c
+"5 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"5 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/awmod.c
+"5 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"10 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/sprcadd.c
+"10 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"15 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/Umul16.c
+"15 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
-"4 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/Umul8_16.c
+"4 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"6 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/pic/__eeprom.c
+"6 /Applications/microchip/xc8/v2.10/pic/sources/c99/pic/__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"4 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/eeprom.c
+"6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _get_check_up_value get_check_up_value `(uc  1 e 1 0 ]
-"21
+"23
 [v _set_check_up_value set_check_up_value `(v  1 e 1 0 ]
-"31
+"33
 [v _eeprom_setup eeprom_setup `(v  1 e 1 0 ]
-"47
+"49
 [v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
-"52
+"54
 [v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
-"32 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
+"32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
 [v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
 "47
 [v _WriteI2C WriteI2C `(c  1 e 1 0 ]
-"84 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
+"81 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Timer Timer `(v  1 e 1 0 ]
-"107
+"112
 [v _ClearAlarm ClearAlarm `(v  1 e 1 0 ]
-"114
+"118
 [v _Switch1 Switch1 `(v  1 e 1 0 ]
-"132
+"137
 [v _Alarm Alarm `(v  1 e 1 0 ]
-"140
-[v _teste teste `(uc  1 e 1 0 ]
-"144
+"145
+[v _xor xor `(uc  1 e 1 0 ]
+"149
 [v _main main `(v  1 e 1 0 ]
-"63 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+"63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "130
 [v _ADCC_GetSingleConversion ADCC_GetSingleConversion `(us  1 e 2 0 ]
-"32 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+"32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _INT_ISR INT_ISR `(v  1 e 1 0 ]
 "41
 [v _INT_CallBack INT_CallBack `(v  1 e 1 0 ]
@@ -118,17 +120,17 @@ channel_FVR_buf1 63
 [v _INT_DefaultInterruptHandler INT_DefaultInterruptHandler `(v  1 e 1 0 ]
 "59
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
-"84 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.c
+"84 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.c
 [v _i2c1_driver_open i2c1_driver_open `(b  1 e 0 0 ]
-"52 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
+"52 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"50 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 "62
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "76
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"58 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
+"58 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
 "94
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
@@ -138,20 +140,18 @@ channel_FVR_buf1 63
 [v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
 "202
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
-"55 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
+"55 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"58 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
+"58 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
 [v _PWM6_Initialize PWM6_Initialize `(v  1 e 1 0 ]
 "74
 [v _PWM6_LoadDutyValue PWM6_LoadDutyValue `(v  1 e 1 0 ]
-"64 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"64 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
 "99
 [v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
 "105
 [v _TMR1_StopTimer TMR1_StopTimer `(v  1 e 1 0 ]
-"111
-[v _TMR1_ReadTimer TMR1_ReadTimer `(us  1 e 2 0 ]
 "127
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
 "164
@@ -160,7 +160,7 @@ channel_FVR_buf1 63
 [v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
 "182
 [v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
-"64 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"64 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 "108
 [v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
@@ -170,8 +170,6 @@ channel_FVR_buf1 63
 [v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
 "130
 [v _TMR2_Counter8BitGet TMR2_Counter8BitGet `(uc  1 e 1 0 ]
-"139
-[v _TMR2_ReadTimer TMR2_ReadTimer `(uc  1 e 1 0 ]
 "144
 [v _TMR2_Counter8BitSet TMR2_Counter8BitSet `(v  1 e 1 0 ]
 "155
@@ -184,26 +182,26 @@ channel_FVR_buf1 63
 [v _TMR2_SetInterruptHandler TMR2_SetInterruptHandler `(v  1 e 1 0 ]
 "190
 [v _TMR2_DefaultInterruptHandler TMR2_DefaultInterruptHandler `(v  1 e 1 0 ]
-"6 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.c
+"6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Menu Menu `(v  1 e 1 0 ]
 "27
 [v _Update Update `(uc  1 e 1 0 ]
 "46
 [v _submenu_clock submenu_clock `(v  1 e 1 0 ]
-"67
+"68
 [v _submenu_alarm submenu_alarm `(v  1 e 1 0 ]
-"71
+"72
 [v _submenu_temp submenu_temp `(v  1 e 1 0 ]
-"82
+"83
 [v _submenu_illum submenu_illum `(v  1 e 1 0 ]
-"87
+"88
 [v _Menus Menus `(v  1 e 1 0 ]
-"111
+"110
 [v _Blink Blink `(v  1 e 1 0 ]
-"6 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
-[v _ReadIllum ReadIllum `(i  1 e 2 0 ]
+"6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+[v _ReadIllum ReadIllum `(uc  1 e 1 0 ]
 "10
-[v _ReadTemp ReadTemp `(i  1 e 2 0 ]
+[v _ReadTemp ReadTemp `(uc  1 e 1 0 ]
 "45
 [v _PWM_Output_D4_Enable PWM_Output_D4_Enable `(v  1 e 1 0 ]
 "56
@@ -214,25 +212,29 @@ channel_FVR_buf1 63
 [v _checkButtonS1 checkButtonS1 `(v  1 e 1 0 ]
 "83
 [v _checkButtonS2 checkButtonS2 `(v  1 e 1 0 ]
-"78 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.h
+"101
+[v _update_clk update_clk `(v  1 e 1 0 ]
+"105
+[v _ring_buffer ring_buffer `(a  1 e 1 0 ]
+"78 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.h
 [v _i2c1_driver_busCollisionISR i2c1_driver_busCollisionISR `*.37(v  1 e 2 0 ]
 "79
 [v _i2c1_driver_i2cISR i2c1_driver_i2cISR `*.37(v  1 e 2 0 ]
-"18 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.h
-[v _mode mode `i  1 e 2 0 ]
-"26 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.h
+"18 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.h
+[v _mode mode `uc  1 e 1 0 ]
+"24 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.h
 [v _btn1State btn1State `a  1 e 1 0 ]
-"27
+"25
 [v _btn2State btn2State `a  1 e 1 0 ]
 [s S237 . 1 `uc 1 INTEDG 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-"364 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/include/pic16f18875.h
+"364 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [u S242 . 1 `S237 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES242  1 e 1 @11 ]
-[s S2222 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2217 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -242,9 +244,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "463
-[u S2231 . 1 `S2222 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2231  1 e 1 @13 ]
-[s S2246 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2226 . 1 `S2217 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2226  1 e 1 @13 ]
+[s S2241 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -254,15 +256,15 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "525
-[u S2255 . 1 `S2246 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2255  1 e 1 @14 ]
+[u S2250 . 1 `S2241 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2250  1 e 1 @14 ]
 "670
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "732
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "794
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S1631 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S1630 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -272,8 +274,8 @@ channel_FVR_buf1 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "811
-[u S1640 . 1 `S1631 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES1640  1 e 1 @19 ]
+[u S1639 . 1 `S1630 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1639  1 e 1 @19 ]
 "856
 [v _TRISD TRISD `VEuc  1 e 1 @20 ]
 "918
@@ -294,7 +296,7 @@ channel_FVR_buf1 63
 [v _LATAbits LATAbits `VES1586  1 e 1 @22 ]
 "1012
 [v _LATB LATB `VEuc  1 e 1 @23 ]
-[s S1671 . 1 `uc 1 LATB0 1 0 :1:0 
+[s S1669 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
 `uc 1 LATB2 1 0 :1:2 
 `uc 1 LATB3 1 0 :1:3 
@@ -304,8 +306,8 @@ channel_FVR_buf1 63
 `uc 1 LATB7 1 0 :1:7 
 ]
 "1029
-[u S1680 . 1 `S1671 1 . 1 0 ]
-[v _LATBbits LATBbits `VES1680  1 e 1 @23 ]
+[u S1678 . 1 `S1669 1 . 1 0 ]
+[v _LATBbits LATBbits `VES1678  1 e 1 @23 ]
 "1074
 [v _LATC LATC `VEuc  1 e 1 @24 ]
 "1136
@@ -882,11 +884,11 @@ channel_FVR_buf1 63
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
 "30046
 [v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3727 ]
-[s S2213 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+[s S2208 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
 ]
 "30056
-[u S2215 . 1 `S2213 1 . 1 0 ]
-[v _PPSLOCKbits PPSLOCKbits `VES2215  1 e 1 @3727 ]
+[u S2210 . 1 `S2208 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES2210  1 e 1 @3727 ]
 "30066
 [v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
 "31672
@@ -953,120 +955,120 @@ channel_FVR_buf1 63
 [v _WPUC3 WPUC3 `VEb  1 e 0 @31355 ]
 "45039
 [v _WPUC4 WPUC4 `VEb  1 e 0 @31356 ]
-"57 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
-[v _seconds seconds `VEi  1 e 2 0 ]
-"58
-[v _minutes minutes `VEi  1 e 2 0 ]
-"59
-[v _hours hours `VEi  1 e 2 0 ]
-"60
+"4 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+[v _ALAF ALAF `uc  1 e 1 0 ]
+"56 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _s1flag s1flag `a  1 e 1 0 ]
-"61
+"57
 [v _s2flag s2flag `a  1 e 1 0 ]
-"62
-[v _PMON PMON `i  1 e 2 0 ]
-"65
-[v _ALAT ALAT `i  1 e 2 0 ]
-"66
-[v _ALAL ALAL `i  1 e 2 0 ]
-"67
-[v _ALAF ALAF `i  1 e 2 0 ]
-"72
+"60
 [v _timer timer `VEi  1 e 2 0 ]
-"73
-[v _pwm pwm `VEf  1 e 4 0 ]
-"74
+"61
 [v _switch1 switch1 `VEa  1 e 1 0 ]
-"75
+"62
+[v _flag_timer flag_timer `VEa  1 e 1 0 ]
+"63
 [v _initial_time initial_time `i  1 e 2 0 ]
-"77
+"64
+[v _PMON PMON `uc  1 e 1 0 ]
+"67
+[v _ALAT ALAT `uc  1 e 1 0 ]
+"68
+[v _ALAL ALAL `uc  1 e 1 0 ]
+"70
+[v _CLKH CLKH `VEuc  1 e 1 0 ]
+"71
+[v _CLKM CLKM `VEuc  1 e 1 0 ]
+"72
+[v _temp temp `uc  1 e 1 0 ]
+"73
+[v _illum illum `uc  1 e 1 0 ]
+"74
+[v _seconds seconds `VEuc  1 e 1 0 ]
+"76
 [v _alarm alarm `a  1 e 1 0 ]
-"78
-[v _illum illum `i  1 e 2 0 ]
 "79
-[v _temp temp `i  1 e 2 0 ]
-"82
 [v _timer1 timer1 `VEa  1 e 1 0 ]
-"30 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+"30 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
-"57 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"57 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _timer1ReloadVal timer1ReloadVal `VEus  1 e 2 0 ]
 "58
 [v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
-"58 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"58 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_InterruptHandler TMR2_InterruptHandler `*.37(v  1 e 2 0 ]
-"144 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
+"149 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"200
+"217
 } 0
-"21 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/eeprom.c
+"23 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _set_check_up_value set_check_up_value `(v  1 e 1 0 ]
 {
-"22
-[v set_check_up_value@check check `uc  1 a 1 19 ]
-"21
-[v set_check_up_value@func func `*.37(uc  1 p 2 17 ]
 "24
+[v set_check_up_value@check check `uc  1 a 1 19 ]
+"23
+[v set_check_up_value@func func `*.37(uc  1 p 2 17 ]
+"26
 } 0
-"4
+"6
 [v _get_check_up_value get_check_up_value `(uc  1 e 1 0 ]
 {
-"6
+"8
 [v get_check_up_value@check check `uc  1 a 1 16 ]
-"12
+"14
 [v get_check_up_value@rbuf rbuf `uc  1 a 1 15 ]
-"11
+"13
 [v get_check_up_value@wbuf wbuf `uc  1 a 1 13 ]
-"4
+"6
 [v get_check_up_value@func func `*.37(uc  1 p 2 0 ]
-"19
+"21
 } 0
-"140 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
-[v _teste teste `(uc  1 e 1 0 ]
+"145 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+[v _xor xor `(uc  1 e 1 0 ]
 {
-[v teste@x x `uc  1 p 1 5 ]
-[v teste@y y `uc  1 p 1 6 ]
-"142
+[v xor@x x `uc  1 p 1 5 ]
+[v xor@y y `uc  1 p 1 6 ]
+"147
 } 0
-"202 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
+"105 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+[v _ring_buffer ring_buffer `(a  1 e 1 0 ]
+{
+"107
+} 0
+"54 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+[v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
+{
+[v ring_buffer_write@h h `uc  1 a 1 wreg ]
+"56
+[v ring_buffer_write@ring_pos ring_pos `us  1 a 2 7 ]
+"54
+[v ring_buffer_write@h h `uc  1 a 1 wreg ]
+[v ring_buffer_write@m m `uc  1 p 1 0 ]
+[v ring_buffer_write@s s `uc  1 p 1 1 ]
+[v ring_buffer_write@T T `uc  1 p 1 2 ]
+[v ring_buffer_write@L L `uc  1 p 1 3 ]
+"56
+[v ring_buffer_write@h h `uc  1 a 1 6 ]
+"76
+} 0
+"202 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
 {
 [v DATAEE_ReadByte@bAdd bAdd `us  1 p 2 3 ]
 "212
 } 0
-"180
-[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
-{
-"182
-[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 6 ]
-"180
-[v DATAEE_WriteByte@bAdd bAdd `us  1 p 2 3 ]
-[v DATAEE_WriteByte@bData bData `uc  1 p 1 5 ]
-"200
-} 0
-"84 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.c
+"84 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.c
 [v _i2c1_driver_open i2c1_driver_open `(b  1 e 0 0 ]
 {
 "96
 } 0
-"111 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
-[v _TMR1_ReadTimer TMR1_ReadTimer `(us  1 e 2 0 ]
-{
-"113
-[v TMR1_ReadTimer@readVal readVal `us  1 a 2 5 ]
-"115
-[v TMR1_ReadTimer@readValLow readValLow `uc  1 a 1 8 ]
-"114
-[v TMR1_ReadTimer@readValHigh readValHigh `uc  1 a 1 7 ]
-"125
-} 0
-"50 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
 "60
 } 0
-"64 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"64 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 {
 "94
@@ -1077,32 +1079,32 @@ channel_FVR_buf1 63
 [v TMR2_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 3 ]
 "188
 } 0
-"64 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"64 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
 {
 "97
 } 0
-"58 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
+"58 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
 [v _PWM6_Initialize PWM6_Initialize `(v  1 e 1 0 ]
 {
 "72
 } 0
-"76 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"76 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
 "90
 } 0
-"55 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
+"55 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "132
 } 0
-"62 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"62 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "74
 } 0
-"59 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+"59 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
 {
 "70
@@ -1113,17 +1115,17 @@ channel_FVR_buf1 63
 [v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 3 ]
 "52
 } 0
-"63 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+"63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 {
 "104
 } 0
-"10 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
-[v _ReadTemp ReadTemp `(i  1 e 2 0 ]
+"10 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+[v _ReadTemp ReadTemp `(uc  1 e 1 0 ]
 {
 "43
 } 0
-"47 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
+"47 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
 [v _WriteI2C WriteI2C `(c  1 e 1 0 ]
 {
 [v WriteI2C@data_out data_out `uc  1 a 1 wreg ]
@@ -1137,12 +1139,12 @@ channel_FVR_buf1 63
 {
 "38
 } 0
-"6 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
-[v _ReadIllum ReadIllum `(i  1 e 2 0 ]
+"6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+[v _ReadIllum ReadIllum `(uc  1 e 1 0 ]
 {
 "8
 } 0
-"130 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
+"130 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_GetSingleConversion ADCC_GetSingleConversion `(us  1 e 2 0 ]
 {
 [v ADCC_GetSingleConversion@channel channel `E12246  1 a 1 wreg ]
@@ -1151,61 +1153,90 @@ channel_FVR_buf1 63
 [v ADCC_GetSingleConversion@channel channel `E12246  1 a 1 6 ]
 "155
 } 0
-"87 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.c
+"88 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Menus Menus `(v  1 e 1 0 ]
 {
-"109
+"108
 } 0
-"178 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"178 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
 {
 [v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 3 ]
 "180
 } 0
-"6 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.c
+"6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Menu Menu `(v  1 e 1 0 ]
 {
-[v Menu@mode mode `i  1 p 2 12 ]
+[v Menu@mode mode `uc  1 a 1 wreg ]
+[v Menu@mode mode `uc  1 a 1 wreg ]
+[v Menu@mode mode `uc  1 a 1 13 ]
 "24
 } 0
-"71
+"72
 [v _submenu_temp submenu_temp `(v  1 e 1 0 ]
 {
-"72
-[v submenu_temp@temperature_tens temperature_tens `uc  1 a 1 9 ]
 "73
-[v submenu_temp@temperature_units temperature_units `uc  1 a 1 8 ]
-"80
+[v submenu_temp@temperature_tens temperature_tens `uc  1 a 1 8 ]
+"74
+[v submenu_temp@temperature_units temperature_units `uc  1 a 1 7 ]
+"81
 } 0
-"82
+"83
 [v _submenu_illum submenu_illum `(v  1 e 1 0 ]
 {
-"84
+"85
 } 0
 "46
 [v _submenu_clock submenu_clock `(v  1 e 1 0 ]
 {
 "48
-[v submenu_clock@hours_units hours_units `uc  1 a 1 11 ]
+[v submenu_clock@hours_units hours_units `uc  1 a 1 10 ]
 "47
-[v submenu_clock@hours_tens hours_tens `uc  1 a 1 10 ]
+[v submenu_clock@hours_tens hours_tens `uc  1 a 1 9 ]
 "57
-[v submenu_clock@minutes_units minutes_units `uc  1 a 1 9 ]
+[v submenu_clock@minutes_units minutes_units `uc  1 a 1 8 ]
 "56
-[v submenu_clock@minutes_tens minutes_tens `uc  1 a 1 8 ]
-"63
+[v submenu_clock@minutes_tens minutes_tens `uc  1 a 1 7 ]
+"64
 } 0
-"15 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
+"101 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+[v _update_clk update_clk `(v  1 e 1 0 ]
 {
-"17
-[v ___wmul@product product `ui  1 a 2 0 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 3 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 5 ]
-"53
+"103
 } 0
-"5 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/awmod.c
+"49 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+[v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
+{
+[v eeprom_clk_update@clkh clkh `uc  1 a 1 wreg ]
+[v eeprom_clk_update@clkh clkh `uc  1 a 1 wreg ]
+[v eeprom_clk_update@clkm clkm `uc  1 p 1 7 ]
+[v eeprom_clk_update@clkh clkh `uc  1 a 1 1 ]
+"52
+} 0
+"180 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+"182
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 6 ]
+"180
+[v DATAEE_WriteByte@bAdd bAdd `us  1 p 2 3 ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 5 ]
+"200
+} 0
+"4 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 5 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 3 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 6 ]
+"51
+} 0
+"5 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "10
@@ -1216,7 +1247,7 @@ channel_FVR_buf1 63
 [v ___awmod@dividend dividend `i  1 p 2 5 ]
 "34
 } 0
-"5 /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/common/awdiv.c
+"5 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
@@ -1229,21 +1260,21 @@ channel_FVR_buf1 63
 [v ___awdiv@dividend dividend `i  1 p 2 5 ]
 "41
 } 0
-"67 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.c
+"68 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _submenu_alarm submenu_alarm `(v  1 e 1 0 ]
 {
-"69
+"70
 } 0
 "27
 [v _Update Update `(uc  1 e 1 0 ]
 {
 [v Update@var var `uc  1 a 1 wreg ]
 [v Update@var var `uc  1 a 1 wreg ]
-[v Update@thr thr `i  1 p 2 6 ]
-[v Update@var var `uc  1 a 1 2 ]
+[v Update@thr thr `uc  1 p 1 5 ]
+[v Update@var var `uc  1 a 1 7 ]
 "43
 } 0
-"83 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
+"83 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _checkButtonS2 checkButtonS2 `(v  1 e 1 0 ]
 {
 "93
@@ -1256,10 +1287,12 @@ channel_FVR_buf1 63
 "67
 [v _ShowOnLEDs ShowOnLEDs `(v  1 e 1 0 ]
 {
-[v ShowOnLEDs@num num `i  1 p 2 3 ]
+[v ShowOnLEDs@num num `uc  1 a 1 wreg ]
+[v ShowOnLEDs@num num `uc  1 a 1 wreg ]
+[v ShowOnLEDs@num num `uc  1 a 1 4 ]
 "69
 } 0
-"105 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"105 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_StopTimer TMR1_StopTimer `(v  1 e 1 0 ]
 {
 "109
@@ -1269,12 +1302,22 @@ channel_FVR_buf1 63
 {
 "103
 } 0
-"132 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
+"137 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Alarm Alarm `(v  1 e 1 0 ]
 {
-"138
+"143
 } 0
-"114 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"15 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 0 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 3 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 5 ]
+"53
+} 0
+"114 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
 {
 "117
@@ -1284,35 +1327,23 @@ channel_FVR_buf1 63
 {
 "112
 } 0
-"139
-[v _TMR2_ReadTimer TMR2_ReadTimer `(uc  1 e 1 0 ]
-{
-"142
-} 0
-"130
-[v _TMR2_Counter8BitGet TMR2_Counter8BitGet `(uc  1 e 1 0 ]
-{
-"132
-[v TMR2_Counter8BitGet@readVal readVal `uc  1 a 1 4 ]
-"137
-} 0
-"45 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
+"45 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _PWM_Output_D4_Enable PWM_Output_D4_Enable `(v  1 e 1 0 ]
 {
 "54
 } 0
-"74 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
+"74 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pwm6.c
 [v _PWM6_LoadDutyValue PWM6_LoadDutyValue `(v  1 e 1 0 ]
 {
 [v PWM6_LoadDutyValue@dutyValue dutyValue `us  1 p 2 3 ]
 "81
 } 0
-"52 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
+"52 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "86
 } 0
-"165 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"165 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_ISR TMR2_ISR `(v  1 e 1 0 ]
 {
 "174
@@ -1327,33 +1358,33 @@ channel_FVR_buf1 63
 {
 "193
 } 0
-"164 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"164 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
 {
 "175
 } 0
-"111 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/menus.c
+"110 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Blink Blink `(v  1 e 1 0 ]
 {
-"126
+"125
 } 0
-"182 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"182 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
 {
 "185
 } 0
-"84 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
+"81 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Timer Timer `(v  1 e 1 0 ]
 {
-"105
+"110
 } 0
-"127 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
+"127 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
 {
 [v TMR1_WriteTimer@timerVal timerVal `us  1 p 2 0 ]
 "147
 } 0
-"32 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
+"32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _INT_ISR INT_ISR `(v  1 e 1 0 ]
 {
 "38
@@ -1368,22 +1399,22 @@ channel_FVR_buf1 63
 {
 "57
 } 0
-"114 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/main.c
+"118 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Switch1 Switch1 `(v  1 e 1 0 ]
 {
-"119
+"124
 } 0
-"107
+"112
 [v _ClearAlarm ClearAlarm `(v  1 e 1 0 ]
 {
-"112
+"116
 } 0
-"119 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
+"119 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
 {
 "123
 } 0
-"56 /home/pedromoreira/Downloads/WeatherStation/WeatherStation_g8.x/utils.c
+"56 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _PWM_Output_D4_Disable PWM_Output_D4_Disable `(v  1 e 1 0 ]
 {
 "65

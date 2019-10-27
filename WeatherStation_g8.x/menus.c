@@ -3,7 +3,7 @@
 #include "mcc_generated_files/mcc.h"
 
 // funcao que dita o menu dentro do modificaction mode
-void Menu(int mode) {
+void Menu(uint8_t mode) {
     TMR1_StopTimer();
 	switch(mode){
 		case 0:
@@ -19,12 +19,12 @@ void Menu(int mode) {
 			submenu_illum();
 			break;
 	}
-    ShowOnLEDs(0);
     TMR1_StartTimer();
+    ShowOnLEDs(0);
 }
 
 // funcao generica de update do valor
-uint8_t Update(uint8_t var, int thr){
+uint8_t Update(uint8_t var, uint8_t thr){
 	ShowOnLEDs(var); //funcao de escrita do digito em binario nos leds
 	while(true){
         checkButtonS1();
@@ -44,8 +44,8 @@ uint8_t Update(uint8_t var, int thr){
 
 //FUNCOES DE CADA SUBMENU
 void submenu_clock(void){
-	uint8_t hours_tens = hours/10; //hours tens 
-	uint8_t hours_units = hours%10;  //hours minutes
+	uint8_t hours_tens = CLKH/10; //hours tens 
+	uint8_t hours_units = CLKH%10;  //hours units
 	hours_tens = Update(hours_tens, (uint8_t) 2);
 	if(hours_tens == 2){
 		if(hours_units>3) hours_units = 0;
@@ -53,13 +53,14 @@ void submenu_clock(void){
 	} else 
 		hours_units = Update(hours_units, (uint8_t) 9);
 	
-	uint8_t minutes_tens = minutes/10; // minutes tens
-	uint8_t minutes_units = minutes/10; //minutes units
+	uint8_t minutes_tens = CLKM/10; // minutes tens
+	uint8_t minutes_units = CLKM/10; //minutes units
 	minutes_tens = Update(minutes_tens, (uint8_t) 5);
 	minutes_units = Update(minutes_units, (uint8_t) 9);
 	
-	hours = 10*hours_tens + hours_units;
-	minutes = 10*minutes_tens + minutes_units;
+	CLKH = 10*hours_tens + hours_units;
+	CLKM = 10*minutes_tens + minutes_units;
+    update_clk();
 }
 
 
@@ -103,9 +104,7 @@ void Menus (void) {
         //	stop_blink(ledslista[i]); //para o led de piscar
             Menu(mode++);
         }
-	}
-    EXT_INT_InterruptFlagClear();
-    
+	}    
 }
 
 void Blink(void){

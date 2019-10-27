@@ -20,30 +20,28 @@ extern "C" {
 #define LEDs                LATA
     
     
-extern int volatile seconds;
-extern int volatile minutes;
-extern int volatile hours;
+extern uint8_t volatile seconds;
 bool btn1State = false;
 bool btn2State = false;
 extern bool s1flag; //flag que fica a true quando ha interrupao do S1
 extern bool s2flag; //same mas para S2
-extern int PMON; // monitoring period
-extern int NREG; // number of data registers
-extern int TALA; // duration of alarm signal (PWM)
-extern int ALAT; // threshold for temperature alarm
-extern int ALAL; // threshold for luminosity level alarm
-extern int ALAF; // alarm flag ? initially disabled
-extern int CLKH; // initial value for clock hours
-extern int CLKM; // initial value for clock minutes
+extern uint8_t PMON; // monitoring period
+extern uint8_t NREG; // number of data registers
+extern uint8_t TALA; // duration of alarm signal (PWM)
+extern uint8_t ALAT; // threshold for temperature alarm
+extern uint8_t ALAL; // threshold for luminosity level alarm
+extern uint8_t ALAF; // alarm flag ? initially disabled
+extern volatile uint8_t CLKH; // initial value for clock hours
+extern volatile uint8_t CLKM; // initial value for clock minutes
 
-extern int illum;
-extern int temp;
+extern uint8_t illum;
+extern uint8_t temp;
 
-int ReadIllum(void);
-int ReadTemp(void);
+uint8_t ReadIllum(void);
+uint8_t ReadTemp(void);
 void PWM_Output_D4_Enable (void);
 void PWM_Output_D4_Disable (void);
-void ShowOnLEDs(int);
+void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
 

@@ -1,2 +1,2 @@
 dist/default/production/__eeprom.p1: \
-  /home/pedromoreira/MyPrograms/mplab_SCE/xc8/pic/sources/c99/pic/__eeprom.c
+  /Applications/microchip/xc8/v2.10/pic/sources/c99/pic/__eeprom.c

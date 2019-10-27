@@ -15,9 +15,9 @@ extern "C" {
 #include <stdint.h>
 #include "utils.h"
     
-int mode = 0;
-void Menu(int mode);
-uint8_t Update(uint8_t var, int thr);
+uint8_t mode = 0;
+void Menu(uint8_t mode);
+uint8_t Update(uint8_t var, uint8_t thr);
 void submenu_clock(void);
 void submenu_alarm(void);
 void submenu_temp(void);

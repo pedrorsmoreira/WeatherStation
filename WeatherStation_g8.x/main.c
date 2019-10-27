@@ -53,36 +53,37 @@
                          Main application
  */
 
-
-int volatile seconds = 0;
-int volatile minutes = 0;
-int volatile hours = 0;
 bool s1flag = false; //flag que fica a true quando ha interrupao do S1
 bool s2flag = false; //same mas para S2
-int PMON = 5; // monitoring period
-int NREG = 30; // number of data registers
-int TALA = 3; // duration of alarm signal (PWM)
-int ALAT = 25; // threshold for temperature alarm
-int ALAL = 2; // threshold for luminosity level alarm
-int ALAF = 0; // alarm flag ? initially disabled
-int CLKH = 0; // initial value for clock hours
-int CLKM = 0; // initial value for clock minutes
 
 
 int volatile timer = 0;
-float volatile pwm = 0;
 bool volatile switch1 = false;
+bool volatile flag_timer = false;
 int initial_time = 0;
+uint8_t PMON = 5; // monitoring period
+uint8_t NREG = 30; // number of data registers
+uint8_t TALA = 3; // duration of alarm signal (PWM)
+uint8_t ALAT = 25; // threshold for temperature alarm
+uint8_t ALAL = 2; // threshold for luminosity level alarm
+uint8_t ALAF = 0; // alarm flag ? initially disabled
+volatile uint8_t CLKH = 0; // initial value for clock hours
+volatile uint8_t CLKM = 0; // initial value for clock minutes
+uint8_t temp;
+uint8_t illum;
+volatile uint8_t seconds;
 
 bool alarm = false;
-int illum = -1;
-int temp = -1;
 float incr;
 
 volatile bool timer1 = false;
 
 void Timer(){
     C_Toggle();
+    
+    if(PMON == 0)
+        return;
+    
     if(timer++ >= PMON){
         timer = 0;
         timer1 = true;
@@ -92,22 +93,25 @@ void Timer(){
         seconds++;
     else{
         seconds = 0;
-        if(minutes < 59)
-            minutes++;
+        if(CLKM < 59)
+            CLKM++;
         else{
-            minutes = 0;
-            if(hours < 23)
-                hours++;
+            CLKM = 0;
+            if(CLKH < 23)
+                CLKH++;
             else
-                hours = 0;
+                CLKH = 0;
         }
+    }
+    
+    if(seconds == 0){
+        flag_timer = true;
     }
 }
 
 void ClearAlarm(){
     PWM_Output_D4_Disable();
     TMR2_Stop();
-    pwm = 0;
     alarm = false;
 }
 
@@ -134,7 +138,7 @@ void Alarm(void){
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(PWM_MIN);
     TMR2_StartTimer();
-    initial_time = TMR2_ReadTimer();
+    initial_time = CLKH * 3600 + CLKM * 60 + seconds;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -143,6 +147,7 @@ uint8_t xor(uint8_t x, uint8_t y){
 
 void main(void)
 {
+    
     set_check_up_value(xor);
     
     // initialize the device
@@ -153,14 +158,15 @@ void main(void)
     
     // Enable the Peripheral Interrupts
     INTERRUPT_PeripheralInterruptEnable();
+    
     TMR1_SetInterruptHandler(Timer);
+    INT_SetInterruptHandler(Switch1);
    // TMR2_SetInterruptHandler(Timer2);
 
   //  incr = 1023*1.024/(1000*TALA);
-    INT_SetInterruptHandler(Switch1);
 
     // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
+  //  INTERRUPT_GlobalInterruptDisable();
 
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
@@ -173,19 +179,29 @@ void main(void)
 
     while (1)
     {   
+        //SLEEP();
+        
+        INTERRUPT_PeripheralInterruptDisable();
+        if(flag_timer){
+            flag_timer = false;
+            update_clk();
+        }
         if(timer1){
             timer1 = false;
+            INTERRUPT_PeripheralInterruptEnable();
             illum = ReadIllum();
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
-            if(illum < ALAL)
+            ring_buffer();
+            if((illum < ALAL || temp < ALAT) && ALAF == 1)
                 if(!alarm) Alarm();
-        }
+        } else
+            INTERRUPT_PeripheralInterruptEnable();
         
         if(alarm)
-            if(TMR1_ReadTimer()-initial_time > TALA)
-                    PWM6_LoadDutyValue(PWM_MAX);
+            if(CLKH * 3600 + CLKM * 60 + seconds - initial_time >= TALA)
+                PWM6_LoadDutyValue(PWM_MAX);
         
         EXT_INT_InterruptDisable();
         if(switch1){
@@ -194,6 +210,8 @@ void main(void)
             SWITCH1_SetHigh();
             Menus();
             TMR1_SetInterruptHandler(Timer);
+            EXT_INT_InterruptFlagClear();
+
         }
         EXT_INT_InterruptEnable();
     }

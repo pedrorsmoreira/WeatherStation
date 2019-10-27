@@ -1,6 +1,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "eeprom.h"
 
+uint8_t ALAF;
+
 uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t)){
     
     uint8_t check = func(DATAEE_ReadByte(NREG_), func(DATAEE_ReadByte(PMON_), 
@@ -32,7 +34,7 @@ void eeprom_setup(bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
     
     if (reset_buffer)
-        DATAEE_WriteByte(WBUF_, RBUF_);
+        DATAEE_WriteByte(WBUF_, 0);
     
     DATAEE_WriteByte(NREG_, nreg);
     DATAEE_WriteByte(PMON_, pmon);
@@ -51,7 +53,7 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 
 bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     
-    uint8_t ring_pos = DATAEE_ReadByte(WBUF_);
+    uint16_t ring_pos = RBUF_ + DATAEE_ReadByte(WBUF_);
     
     //none of the values changed, exit without writing
     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
@@ -68,7 +70,7 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(ring_pos+4, L);
     
     //set the next write position
-    DATAEE_WriteByte(WBUF_, ring_pos+5);
+    DATAEE_WriteByte(WBUF_, ring_pos+5-RBUF_);
     
     return true;
 }
