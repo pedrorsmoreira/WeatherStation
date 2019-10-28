@@ -96,17 +96,17 @@ void checkButtonS2(void) {
 void load_eeprom(void){
   //  if(used() && check_corruption()){
     if(used()){
-        NOP();
         PMON = read_pmon(); // monitoring period
         NREG = read_nreg(); // number of data registers
         TALA = read_tala(); // duration of alarm signal (PWM)
         ALAT = read_alat(); // threshold for temperature alarm
         ALAL = read_alal(); // threshold for luminosity level alarm
         ALAF = read_alaf(); // alarm flag ? initially disabled
-        CLKH = 0; // initial value for clock hours
-        CLKM = 0; // initial value for clock minutes
+        CLKH = read_clkh(); // initial value for clock hours
+        CLKM = read_clkm(); // initial value for clock minutes
     } else
         eeprom_default_setup();
+
 }
 
 void eeprom_default_setup(void){

@@ -53,14 +53,14 @@
                          Main application
  */
 
-bool s1flag = false; //flag que fica a true quando ha interrupao do S1
-bool s2flag = false; //same mas para S2
+bool s1flag; //flag que fica a true quando ha interrupao do S1
+bool s2flag; //same mas para S2
 
 
-int volatile timer = 0;
-bool volatile switch1 = false;
-bool volatile flag_timer = false;
-int initial_time = 0;
+int volatile timer;
+bool volatile switch1;
+bool volatile flag_timer;
+int initial_time;
 uint8_t PMON = 5; // monitoring period
 uint8_t NREG = 30; // number of data registers
 uint8_t TALA = 3; // duration of alarm signal (PWM)
@@ -73,7 +73,7 @@ uint8_t temp;
 uint8_t illum;
 volatile uint8_t seconds;
 
-bool alarm = false;
+bool alarm;
 float incr;
 
 volatile bool timer1 = false;
@@ -147,6 +147,15 @@ uint8_t xor(uint8_t x, uint8_t y){
 
 void main(void)
 {
+    
+    timer = 0;
+    switch1 = false;
+    flag_timer = false;
+    initial_time = 0;
+    btn1State = false;
+    btn2State = false;
+    alarm = false;
+
     /*
     #ifdef CHECKSUM
     set_check_up_value();
@@ -155,10 +164,10 @@ void main(void)
     #endif
     */
     
-    load_eeprom();
-    
     // initialize the device
     SYSTEM_Initialize();
+    
+    load_eeprom();
 
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
@@ -201,7 +210,7 @@ void main(void)
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
             ring_buffer();
-            if((illum < ALAL || temp < ALAT) && ALAF == 1)
+            if((illum < ALAL || temp > ALAT) && ALAF == 1)
                 if(!alarm) Alarm();
         } else
             INTERRUPT_PeripheralInterruptEnable();
@@ -216,7 +225,9 @@ void main(void)
             s1flag = false;
             SWITCH1_SetHigh();
             Menus();
+            INTERRUPT_PeripheralInterruptDisable();
             TMR1_SetInterruptHandler(Timer);
+            INTERRUPT_PeripheralInterruptEnable();
             EXT_INT_InterruptFlagClear();
 
         }
