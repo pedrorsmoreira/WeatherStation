@@ -14,18 +14,18 @@
 #include "mcc_generated_files/mcc.h"
 
 //Addresses
-#define CHECK_      0x7000 // EEPROM starting address; holds a corruption checkup value
-#define NREG_       0x7001
-#define PMON_       0x7002
-#define TALA_       0x7003
-#define ALAT_       0x7004
-#define ALAL_       0x7005
-#define ALAF_       0x7006
-#define CLKH_       0x7007
-#define CLKM_       0x7008
-#define USED_       0x7009 //to check if the eeprom was already set  (if so, it holds th value 0xAA)
-#define WBUF_       0x700A //ring buffer current write position 
-#define RBUF_       0x700B // ring buffer starting position
+#define CHECK_      0xF000 // EEPROM starting address; holds a corruption checkup value
+#define NREG_       0xF001
+#define PMON_       0xF002
+#define TALA_       0xF003
+#define ALAT_       0xF004
+#define ALAL_       0xF005
+#define ALAF_       0xF006
+#define CLKH_       0xF007
+#define CLKM_       0xF008
+#define USED_       0xF009 //to check if the eeprom was already set  (if so, it holds th value 0xAA)
+#define WBUF_       0xF00A //ring buffer current write position 
+#define RBUF_       0xF00B // ring buffer starting position
 
 
 //returns the computed check_up_value

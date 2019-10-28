@@ -67,6 +67,7 @@ void submenu_clock(void){
 
 void submenu_alarm(void){
 	ALAF = Update(ALAF, (uint8_t) 1);
+    write_alaf(ALAF);
 }
 
 void submenu_temp(void){
@@ -88,8 +89,9 @@ void submenu_illum(void){
 void Menus (void) {
     mode = 0;
     ShowOnLEDs(0);
+    INTERRUPT_PeripheralInterruptDisable();
     TMR1_SetInterruptHandler(Blink);
-    
+    INTERRUPT_PeripheralInterruptEnable();   
     while(mode < 4){
         checkButtonS1();
         checkButtonS2();
