@@ -79,10 +79,12 @@ void submenu_temp(void){
 		temperature_units = Update(temperature_units, (uint8_t) 9);
 		ALAT = temperature_tens*10 + temperature_units;
 	}
+    write_alat(ALAT);
 }
 
 void submenu_illum(void){
 	ALAL = Update(ALAL, (uint8_t) 3);
+    write_alal(ALAL);
 }
 
 

@@ -111,7 +111,8 @@ void Timer(){
 
 void ClearAlarm(){
     PWM_Output_D4_Disable();
-    TMR2_Stop();
+    A_SetLow();
+    //TMR2_Stop();
     alarm = false;
 }
 
@@ -121,17 +122,6 @@ void Switch1(void){
     else
         switch1 = true;
 }
-
-/*
-void Timer2(void){
-    if(pwm < 1023-incr)
-        pwm += incr;
-    else{
-        pwm = 1023;
-        TMR2_Stop();
-    }
-}
-*/
 
 void Alarm(void){
     alarm = true;
@@ -166,9 +156,10 @@ void main(void)
     
     // initialize the device
     SYSTEM_Initialize();
-    
-    load_eeprom();
 
+    load_eeprom();
+    ClearAlarm();
+    
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
     
@@ -194,9 +185,7 @@ void main(void)
     WPUC4 = 1;
 
     while (1)
-    {   
-        SLEEP();
-        
+    {           
         INTERRUPT_PeripheralInterruptDisable();
         if(flag_timer){
             flag_timer = false;
@@ -215,9 +204,14 @@ void main(void)
         } else
             INTERRUPT_PeripheralInterruptEnable();
         
-        if(alarm)
-            if(CLKH * 3600 + CLKM * 60 + seconds - initial_time >= TALA)
-                PWM6_LoadDutyValue(PWM_MAX);
+        if(alarm){
+            if(CLKH * 3600 + CLKM * 60 + seconds - initial_time >= TALA){
+                PWM_Output_D4_Disable();
+                A_SetHigh();
+                SLEEP();
+            }
+        } else
+            SLEEP();
         
         EXT_INT_InterruptDisable();
         if(switch1){
