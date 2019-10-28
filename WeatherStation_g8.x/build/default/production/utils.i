@@ -21511,8 +21511,8 @@ void write_alaf(uint8_t x);
 
 
 extern uint8_t volatile seconds;
-_Bool btn1State = 0;
-_Bool btn2State = 0;
+_Bool btn1State;
+_Bool btn2State;
 extern _Bool s1flag;
 extern _Bool s2flag;
 extern uint8_t PMON;
@@ -21634,15 +21634,14 @@ void checkButtonS2(void) {
 void load_eeprom(void){
 
     if(used()){
-        __nop();
         PMON = read_pmon();
         NREG = read_nreg();
         TALA = read_tala();
         ALAT = read_alat();
         ALAL = read_alal();
         ALAF = read_alaf();
-        CLKH = 0;
-        CLKM = 0;
+        CLKH = read_clkh();
+        CLKM = read_clkm();
     } else
         eeprom_default_setup();
 }

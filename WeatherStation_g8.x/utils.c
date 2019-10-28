@@ -106,7 +106,6 @@ void load_eeprom(void){
         CLKM = read_clkm(); // initial value for clock minutes
     } else
         eeprom_default_setup();
-
 }
 
 void eeprom_default_setup(void){

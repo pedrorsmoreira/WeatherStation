@@ -102,6 +102,10 @@ channel_FVR_buf1 63
 [v _read_alal read_alal `(uc  1 e 1 0 ]
 "121
 [v _read_alaf read_alaf `(uc  1 e 1 0 ]
+"122
+[v _read_clkh read_clkh `(uc  1 e 1 0 ]
+"123
+[v _read_clkm read_clkm `(uc  1 e 1 0 ]
 "32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
 [v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
 "47
@@ -226,11 +230,11 @@ channel_FVR_buf1 63
 [v _checkButtonS2 checkButtonS2 `(v  1 e 1 0 ]
 "96
 [v _load_eeprom load_eeprom `(v  1 e 1 0 ]
-"112
+"111
 [v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
-"117
+"116
 [v _update_clk update_clk `(v  1 e 1 0 ]
-"121
+"120
 [v _ring_buffer ring_buffer `(a  1 e 1 0 ]
 "78 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.h
 [v _i2c1_driver_busCollisionISR i2c1_driver_busCollisionISR `*.37(v  1 e 2 0 ]
@@ -1022,10 +1026,10 @@ channel_FVR_buf1 63
 {
 "230
 } 0
-"121 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+"120 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _ring_buffer ring_buffer `(a  1 e 1 0 ]
 {
-"123
+"122
 } 0
 "89 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
@@ -1046,7 +1050,7 @@ channel_FVR_buf1 63
 "96 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _load_eeprom load_eeprom `(v  1 e 1 0 ]
 {
-"110
+"109
 } 0
 "113 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _used used `(a  1 e 1 0 ]
@@ -1062,6 +1066,14 @@ channel_FVR_buf1 63
 } 0
 "116
 [v _read_nreg read_nreg `(uc  1 e 1 0 ]
+{
+} 0
+"123
+[v _read_clkm read_clkm `(uc  1 e 1 0 ]
+{
+} 0
+"122
+[v _read_clkh read_clkh `(uc  1 e 1 0 ]
 {
 } 0
 "119
@@ -1082,10 +1094,10 @@ channel_FVR_buf1 63
 [v DATAEE_ReadByte@bAdd bAdd `us  1 p 2 3 ]
 "212
 } 0
-"112 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+"111 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
 {
-"115
+"114
 } 0
 "67 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _eeprom_setup eeprom_setup `(v  1 e 1 0 ]
@@ -1246,10 +1258,10 @@ channel_FVR_buf1 63
 [v submenu_clock@minutes_tens minutes_tens `uc  1 a 1 7 ]
 "64
 } 0
-"117 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+"116 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _update_clk update_clk `(v  1 e 1 0 ]
 {
-"119
+"118
 } 0
 "84 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
