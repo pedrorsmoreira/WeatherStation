@@ -21,8 +21,8 @@ extern "C" {
     
     
 extern uint8_t volatile seconds;
-bool btn1State = false;
-bool btn2State = false;
+bool btn1State;
+bool btn2State;
 extern bool s1flag; //flag que fica a true quando ha interrupao do S1
 extern bool s2flag; //same mas para S2
 extern uint8_t PMON; // monitoring period
