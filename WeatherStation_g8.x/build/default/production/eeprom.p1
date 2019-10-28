@@ -1661,16 +1661,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;eeprom.c: 9:     uint8_t check;
 [v _check `uc ~T0 @X0 1 a ]
 "11
-[; ;eeprom.c: 11:     check = DATAEE_ReadByte(0x7001) + DATAEE_ReadByte(0x7002) + DATAEE_ReadByte(0x7003) +
-[e = _check -> + + + + + + + -> ( _DATAEE_ReadByte (1 -> -> 28673 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28674 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28675 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28676 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28677 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28678 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28679 `i `us `i -> ( _DATAEE_ReadByte (1 -> -> 28680 `i `us `i `uc ]
+[; ;eeprom.c: 11:     check = DATAEE_ReadByte(0xF001) + DATAEE_ReadByte(0xF002) + DATAEE_ReadByte(0xF003) +
+[e = _check -> + + + + + + + -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61447 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61448 `ui `us `i `uc ]
 "20
-[; ;eeprom.c: 20:     uint8_t wbuf = DATAEE_ReadByte(0x700A);
+[; ;eeprom.c: 20:     uint8_t wbuf = DATAEE_ReadByte(0xF00A);
 [v _wbuf `uc ~T0 @X0 1 a ]
-[e = _wbuf ( _DATAEE_ReadByte (1 -> -> 28682 `i `us ]
+[e = _wbuf ( _DATAEE_ReadByte (1 -> -> 61450 `ui `us ]
 "21
-[; ;eeprom.c: 21:     uint8_t rbuf = DATAEE_ReadByte(0x700B);
+[; ;eeprom.c: 21:     uint8_t rbuf = DATAEE_ReadByte(0xF00B);
 [v _rbuf `uc ~T0 @X0 1 a ]
-[e = _rbuf ( _DATAEE_ReadByte (1 -> -> 28683 `i `us ]
+[e = _rbuf ( _DATAEE_ReadByte (1 -> -> 61451 `ui `us ]
 "24
 [; ;eeprom.c: 24:     check += wbuf + rbuf;
 [e =+ _check -> + -> _wbuf `i -> _rbuf `i `uc ]
@@ -1709,8 +1709,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _check `uc ~T0 @X0 1 a ]
 [e = _check ( _get_check_up_value ..  ]
 "51
-[; ;eeprom.c: 51:     DATAEE_WriteByte(0x7000, check);
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us _check ]
+[; ;eeprom.c: 51:     DATAEE_WriteByte(0xF000, check);
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us _check ]
 "52
 [; ;eeprom.c: 52: }
 [e :UE 1631 ]
@@ -1722,9 +1722,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _check_corruption ]
 [f ]
 "59
-[; ;eeprom.c: 59:     uint8_t check = DATAEE_ReadByte(0x7000);
+[; ;eeprom.c: 59:     uint8_t check = DATAEE_ReadByte(0xF000);
 [v _check `uc ~T0 @X0 1 a ]
-[e = _check ( _DATAEE_ReadByte (1 -> -> 28672 `i `us ]
+[e = _check ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us ]
 "61
 [; ;eeprom.c: 61:     return get_check_up_value() == check;
 [e ) -> -> == -> ( _get_check_up_value ..  `i -> _check `i `i `a ]
@@ -1758,36 +1758,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;eeprom.c: 70:     if (reset_buffer)
 [e $ ! != -> _reset_buffer `i -> 0 `i 1634  ]
 "71
-[; ;eeprom.c: 71:         DATAEE_WriteByte(0x700A, 0);
-[e ( _DATAEE_WriteByte (2 , -> -> 28682 `i `us -> -> 0 `i `uc ]
+[; ;eeprom.c: 71:         DATAEE_WriteByte(0xF00A, 0);
+[e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> -> 0 `i `uc ]
 [e :U 1634 ]
 "73
-[; ;eeprom.c: 73:     DATAEE_WriteByte(0x7001, nreg);
-[e ( _DATAEE_WriteByte (2 , -> -> 28673 `i `us _nreg ]
+[; ;eeprom.c: 73:     DATAEE_WriteByte(0xF001, nreg);
+[e ( _DATAEE_WriteByte (2 , -> -> 61441 `ui `us _nreg ]
 "74
-[; ;eeprom.c: 74:     DATAEE_WriteByte(0x7002, pmon);
-[e ( _DATAEE_WriteByte (2 , -> -> 28674 `i `us _pmon ]
+[; ;eeprom.c: 74:     DATAEE_WriteByte(0xF002, pmon);
+[e ( _DATAEE_WriteByte (2 , -> -> 61442 `ui `us _pmon ]
 "75
-[; ;eeprom.c: 75:     DATAEE_WriteByte(0x7003, tala);
-[e ( _DATAEE_WriteByte (2 , -> -> 28675 `i `us _tala ]
+[; ;eeprom.c: 75:     DATAEE_WriteByte(0xF003, tala);
+[e ( _DATAEE_WriteByte (2 , -> -> 61443 `ui `us _tala ]
 "76
-[; ;eeprom.c: 76:     DATAEE_WriteByte(0x7004, alat);
-[e ( _DATAEE_WriteByte (2 , -> -> 28676 `i `us _alat ]
+[; ;eeprom.c: 76:     DATAEE_WriteByte(0xF004, alat);
+[e ( _DATAEE_WriteByte (2 , -> -> 61444 `ui `us _alat ]
 "77
-[; ;eeprom.c: 77:     DATAEE_WriteByte(0x7005, alal);
-[e ( _DATAEE_WriteByte (2 , -> -> 28677 `i `us _alal ]
+[; ;eeprom.c: 77:     DATAEE_WriteByte(0xF005, alal);
+[e ( _DATAEE_WriteByte (2 , -> -> 61445 `ui `us _alal ]
 "78
-[; ;eeprom.c: 78:     DATAEE_WriteByte(0x7006, alaf);
-[e ( _DATAEE_WriteByte (2 , -> -> 28678 `i `us _alaf ]
+[; ;eeprom.c: 78:     DATAEE_WriteByte(0xF006, alaf);
+[e ( _DATAEE_WriteByte (2 , -> -> 61446 `ui `us _alaf ]
 "79
-[; ;eeprom.c: 79:     DATAEE_WriteByte(0x7007, clkh);
-[e ( _DATAEE_WriteByte (2 , -> -> 28679 `i `us _clkh ]
+[; ;eeprom.c: 79:     DATAEE_WriteByte(0xF007, clkh);
+[e ( _DATAEE_WriteByte (2 , -> -> 61447 `ui `us _clkh ]
 "80
-[; ;eeprom.c: 80:     DATAEE_WriteByte(0x7008, clkm);
-[e ( _DATAEE_WriteByte (2 , -> -> 28680 `i `us _clkm ]
+[; ;eeprom.c: 80:     DATAEE_WriteByte(0xF008, clkm);
+[e ( _DATAEE_WriteByte (2 , -> -> 61448 `ui `us _clkm ]
 "81
-[; ;eeprom.c: 81:     DATAEE_WriteByte(0x7009, 0xAA);
-[e ( _DATAEE_WriteByte (2 , -> -> 28681 `i `us -> -> 170 `i `uc ]
+[; ;eeprom.c: 81:     DATAEE_WriteByte(0xF009, 0xAA);
+[e ( _DATAEE_WriteByte (2 , -> -> 61449 `ui `us -> -> 170 `i `uc ]
 "82
 [; ;eeprom.c: 82: }
 [e :UE 1633 ]
@@ -1801,11 +1801,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _clkm `uc ~T0 @X0 1 r2 ]
 [f ]
 "85
-[; ;eeprom.c: 85:     DATAEE_WriteByte(0x7007, clkh);
-[e ( _DATAEE_WriteByte (2 , -> -> 28679 `i `us _clkh ]
+[; ;eeprom.c: 85:     DATAEE_WriteByte(0xF007, clkh);
+[e ( _DATAEE_WriteByte (2 , -> -> 61447 `ui `us _clkh ]
 "86
-[; ;eeprom.c: 86:     DATAEE_WriteByte(0x7008, clkm);
-[e ( _DATAEE_WriteByte (2 , -> -> 28680 `i `us _clkm ]
+[; ;eeprom.c: 86:     DATAEE_WriteByte(0xF008, clkm);
+[e ( _DATAEE_WriteByte (2 , -> -> 61448 `ui `us _clkm ]
 "87
 [; ;eeprom.c: 87: }
 [e :UE 1635 ]
@@ -1822,9 +1822,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _L `uc ~T0 @X0 1 r5 ]
 [f ]
 "91
-[; ;eeprom.c: 91:     uint16_t ring_pos = 0x700B + DATAEE_ReadByte(0x700A);
+[; ;eeprom.c: 91:     uint16_t ring_pos = 0xF00B + DATAEE_ReadByte(0xF00A);
 [v _ring_pos `us ~T0 @X0 1 a ]
-[e = _ring_pos -> + -> 28683 `i -> ( _DATAEE_ReadByte (1 -> -> 28682 `i `us `i `us ]
+[e = _ring_pos -> + -> 61451 `ui -> ( _DATAEE_ReadByte (1 -> -> 61450 `ui `us `ui `us ]
 "94
 [; ;eeprom.c: 94:     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
 [e $ ! && == -> _T `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 2 `i `ui `us `i == -> _L `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 1 `i `ui `us `i 1637  ]
@@ -1834,11 +1834,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $UE 1636  ]
 [e :U 1637 ]
 "98
-[; ;eeprom.c: 98:     if (ring_pos > (0x700B + DATAEE_ReadByte(0x7001) - 5) )
-[e $ ! > -> _ring_pos `ui -> - + -> 28683 `i -> ( _DATAEE_ReadByte (1 -> -> 28673 `i `us `i -> 5 `i `ui 1638  ]
+[; ;eeprom.c: 98:     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) )
+[e $ ! > -> _ring_pos `ui - + -> 61451 `ui -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `ui -> -> 5 `i `ui 1638  ]
 "99
-[; ;eeprom.c: 99:         ring_pos = 0x700B;
-[e = _ring_pos -> -> 28683 `i `us ]
+[; ;eeprom.c: 99:         ring_pos = 0xF00B;
+[e = _ring_pos -> -> 61451 `ui `us ]
 [e :U 1638 ]
 "101
 [; ;eeprom.c: 101:     DATAEE_WriteByte(ring_pos , h);
@@ -1856,8 +1856,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;eeprom.c: 105:     DATAEE_WriteByte(ring_pos+4, L);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 4 `i `ui `us _L ]
 "108
-[; ;eeprom.c: 108:     DATAEE_WriteByte(0x700A, ring_pos+5-0x700B);
-[e ( _DATAEE_WriteByte (2 , -> -> 28682 `i `us -> - + -> _ring_pos `ui -> -> 5 `i `ui -> -> 28683 `i `ui `uc ]
+[; ;eeprom.c: 108:     DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
+[e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui `uc ]
 "110
 [; ;eeprom.c: 110:     return 1;
 [e ) -> -> 1 `i `a ]
@@ -1867,92 +1867,92 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1636 ]
 }
 "113
-[; ;eeprom.c: 113: _Bool used(void) {return 0xAA == DATAEE_ReadByte(0x7009); }
+[; ;eeprom.c: 113: _Bool used(void) {return 0xAA == DATAEE_ReadByte(0xF009); }
 [v _used `(a ~T0 @X0 1 ef ]
 {
 [e :U _used ]
 [f ]
-[e ) -> -> == -> 170 `i -> ( _DATAEE_ReadByte (1 -> -> 28681 `i `us `i `i `a ]
+[e ) -> -> == -> 170 `i -> ( _DATAEE_ReadByte (1 -> -> 61449 `ui `us `i `i `a ]
 [e $UE 1639  ]
 [e :UE 1639 ]
 }
 "116
-[; ;eeprom.c: 116: uint8_t read_nreg(void) { return DATAEE_ReadByte(0x7001); }
+[; ;eeprom.c: 116: uint8_t read_nreg(void) { return DATAEE_ReadByte(0xF001); }
 [v _read_nreg `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_nreg ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28673 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us ]
 [e $UE 1640  ]
 [e :UE 1640 ]
 }
 "117
-[; ;eeprom.c: 117: uint8_t read_pmon(void) { return DATAEE_ReadByte(0x7002); }
+[; ;eeprom.c: 117: uint8_t read_pmon(void) { return DATAEE_ReadByte(0xF002); }
 [v _read_pmon `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_pmon ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28674 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us ]
 [e $UE 1641  ]
 [e :UE 1641 ]
 }
 "118
-[; ;eeprom.c: 118: uint8_t read_tala(void) { return DATAEE_ReadByte(0x7003); }
+[; ;eeprom.c: 118: uint8_t read_tala(void) { return DATAEE_ReadByte(0xF003); }
 [v _read_tala `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_tala ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28675 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us ]
 [e $UE 1642  ]
 [e :UE 1642 ]
 }
 "119
-[; ;eeprom.c: 119: uint8_t read_alat(void) { return DATAEE_ReadByte(0x7004); }
+[; ;eeprom.c: 119: uint8_t read_alat(void) { return DATAEE_ReadByte(0xF004); }
 [v _read_alat `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alat ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28676 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us ]
 [e $UE 1643  ]
 [e :UE 1643 ]
 }
 "120
-[; ;eeprom.c: 120: uint8_t read_alal(void) { return DATAEE_ReadByte(0x7005); }
+[; ;eeprom.c: 120: uint8_t read_alal(void) { return DATAEE_ReadByte(0xF005); }
 [v _read_alal `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alal ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28677 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us ]
 [e $UE 1644  ]
 [e :UE 1644 ]
 }
 "121
-[; ;eeprom.c: 121: uint8_t read_alaf(void) { return DATAEE_ReadByte(0x7006); }
+[; ;eeprom.c: 121: uint8_t read_alaf(void) { return DATAEE_ReadByte(0xF006); }
 [v _read_alaf `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alaf ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28678 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us ]
 [e $UE 1645  ]
 [e :UE 1645 ]
 }
 "122
-[; ;eeprom.c: 122: uint8_t read_clkh(void) { return DATAEE_ReadByte(0x7007); }
+[; ;eeprom.c: 122: uint8_t read_clkh(void) { return DATAEE_ReadByte(0xF007); }
 [v _read_clkh `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_clkh ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28679 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61447 `ui `us ]
 [e $UE 1646  ]
 [e :UE 1646 ]
 }
 "123
-[; ;eeprom.c: 123: uint8_t read_clkm(void) { return DATAEE_ReadByte(0x7008); }
+[; ;eeprom.c: 123: uint8_t read_clkm(void) { return DATAEE_ReadByte(0xF008); }
 [v _read_clkm `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_clkm ]
 [f ]
-[e ) ( _DATAEE_ReadByte (1 -> -> 28680 `i `us ]
+[e ) ( _DATAEE_ReadByte (1 -> -> 61448 `ui `us ]
 [e $UE 1647  ]
 [e :UE 1647 ]
 }
@@ -1964,11 +1964,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "127
-[; ;eeprom.c: 127:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7001));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28673 `i `us `i `uc ]
+[; ;eeprom.c: 127:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF001));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `i `uc ]
 "129
-[; ;eeprom.c: 129:     DATAEE_WriteByte(0x7001, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28673 `i `us _x ]
+[; ;eeprom.c: 129:     DATAEE_WriteByte(0xF001, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61441 `ui `us _x ]
 "130
 [; ;eeprom.c: 130: }
 [e :UE 1648 ]
@@ -1981,11 +1981,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "134
-[; ;eeprom.c: 134:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7002));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28674 `i `us `i `uc ]
+[; ;eeprom.c: 134:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF002));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us `i `uc ]
 "136
-[; ;eeprom.c: 136:     DATAEE_WriteByte(0x7002, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28674 `i `us _x ]
+[; ;eeprom.c: 136:     DATAEE_WriteByte(0xF002, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61442 `ui `us _x ]
 "137
 [; ;eeprom.c: 137: }
 [e :UE 1649 ]
@@ -1998,11 +1998,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "141
-[; ;eeprom.c: 141:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7003));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28675 `i `us `i `uc ]
+[; ;eeprom.c: 141:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF003));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us `i `uc ]
 "143
-[; ;eeprom.c: 143:     DATAEE_WriteByte(0x7003, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28675 `i `us _x ]
+[; ;eeprom.c: 143:     DATAEE_WriteByte(0xF003, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61443 `ui `us _x ]
 "144
 [; ;eeprom.c: 144: }
 [e :UE 1650 ]
@@ -2015,11 +2015,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "148
-[; ;eeprom.c: 148:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7004));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28676 `i `us `i `uc ]
+[; ;eeprom.c: 148:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF004));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us `i `uc ]
 "150
-[; ;eeprom.c: 150:     DATAEE_WriteByte(0x7004, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28676 `i `us _x ]
+[; ;eeprom.c: 150:     DATAEE_WriteByte(0xF004, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61444 `ui `us _x ]
 "151
 [; ;eeprom.c: 151: }
 [e :UE 1651 ]
@@ -2032,11 +2032,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "155
-[; ;eeprom.c: 155:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7005));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28677 `i `us `i `uc ]
+[; ;eeprom.c: 155:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF005));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us `i `uc ]
 "157
-[; ;eeprom.c: 157:     DATAEE_WriteByte(0x7005, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28677 `i `us _x ]
+[; ;eeprom.c: 157:     DATAEE_WriteByte(0xF005, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61445 `ui `us _x ]
 "158
 [; ;eeprom.c: 158: }
 [e :UE 1652 ]
@@ -2049,11 +2049,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
 "162
-[; ;eeprom.c: 162:     DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7006));
-[e ( _DATAEE_WriteByte (2 , -> -> 28672 `i `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 28672 `i `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 28678 `i `us `i `uc ]
+[; ;eeprom.c: 162:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF006));
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us `i `uc ]
 "164
-[; ;eeprom.c: 164:     DATAEE_WriteByte(0x7006, x);
-[e ( _DATAEE_WriteByte (2 , -> -> 28678 `i `us _x ]
+[; ;eeprom.c: 164:     DATAEE_WriteByte(0xF006, x);
+[e ( _DATAEE_WriteByte (2 , -> -> 61446 `ui `us _x ]
 "165
 [; ;eeprom.c: 165: }
 [e :UE 1653 ]

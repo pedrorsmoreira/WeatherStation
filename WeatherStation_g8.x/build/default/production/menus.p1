@@ -46,12 +46,32 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;./utils.h: 33: extern uint8_t ALAF;
 [v _ALAF `uc ~T0 @X0 0 e ]
-"31
+"76 ./eeprom.h
+[; ;./eeprom.h: 76: void write_alaf(uint8_t x);
+[v _write_alaf `(v ~T0 @X0 0 ef1`uc ]
+"31 ./utils.h
 [; ;./utils.h: 31: extern uint8_t ALAT;
 [v _ALAT `uc ~T0 @X0 0 e ]
-"32
+"74 ./eeprom.h
+[; ;./eeprom.h: 74: void write_alat(uint8_t x);
+[v _write_alat `(v ~T0 @X0 0 ef1`uc ]
+"32 ./utils.h
 [; ;./utils.h: 32: extern uint8_t ALAL;
 [v _ALAL `uc ~T0 @X0 0 e ]
+"75 ./eeprom.h
+[; ;./eeprom.h: 75: void write_alal(uint8_t x);
+[v _write_alal `(v ~T0 @X0 0 ef1`uc ]
+"357 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 357:     struct {
+[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S31 . INTEDG . PEIE GIE ]
+"356
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 356: typedef union {
+[u S30 `S31 1 ]
+[n S30 . . ]
+"364
+[; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 364: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
+[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
 [v F12660 `(v ~T0 @X0 0 tf ]
 "385 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
@@ -1715,17 +1735,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/i2c1_driver.h: 79: void (*i2c1_driver_i2cISR)(void);
 [v _i2c1_driver_i2cISR `*F12648 ~T0 @X0 1 e ]
 "24 ./utils.h
-[; ;./utils.h: 24: _Bool btn1State = 0;
+[; ;./utils.h: 24: _Bool btn1State;
 [v _btn1State `a ~T0 @X0 1 e ]
-[i _btn1State
--> -> 0 `i `a
-]
 "25
-[; ;./utils.h: 25: _Bool btn2State = 0;
+[; ;./utils.h: 25: _Bool btn2State;
 [v _btn2State `a ~T0 @X0 1 e ]
-[i _btn2State
--> -> 0 `i `a
-]
 "18 ./menus.h
 [; ;./menus.h: 18: uint8_t mode = 0;
 [v _mode `uc ~T0 @X0 1 e ]
@@ -1947,198 +1961,213 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;menus.c: 69:  ALAF = Update(ALAF, (uint8_t) 1);
 [e = _ALAF ( _Update (2 , _ALAF -> -> 1 `i `uc ]
 "70
-[; ;menus.c: 70: }
+[; ;menus.c: 70:     write_alaf(ALAF);
+[e ( _write_alaf (1 _ALAF ]
+"71
+[; ;menus.c: 71: }
 [e :UE 1646 ]
 }
-"72
-[; ;menus.c: 72: void submenu_temp(void){
+"73
+[; ;menus.c: 73: void submenu_temp(void){
 [v _submenu_temp `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_temp ]
 [f ]
-"73
-[; ;menus.c: 73:  uint8_t temperature_tens = ALAT/10;
+"74
+[; ;menus.c: 74:  uint8_t temperature_tens = ALAT/10;
 [v _temperature_tens `uc ~T0 @X0 1 a ]
 [e = _temperature_tens -> / -> _ALAT `i -> 10 `i `uc ]
-"74
-[; ;menus.c: 74:  uint8_t temperature_units = ALAT % 10;
+"75
+[; ;menus.c: 75:  uint8_t temperature_units = ALAT % 10;
 [v _temperature_units `uc ~T0 @X0 1 a ]
 [e = _temperature_units -> % -> _ALAT `i -> 10 `i `uc ]
-"75
-[; ;menus.c: 75:  temperature_tens = Update(temperature_tens, (uint8_t) 5);
-[e = _temperature_tens ( _Update (2 , _temperature_tens -> -> 5 `i `uc ]
 "76
-[; ;menus.c: 76:  if (temperature_tens == 5) ALAT = 50;
+[; ;menus.c: 76:  temperature_tens = Update(temperature_tens, (uint8_t) 5);
+[e = _temperature_tens ( _Update (2 , _temperature_tens -> -> 5 `i `uc ]
+"77
+[; ;menus.c: 77:  if (temperature_tens == 5) ALAT = 50;
 [e $ ! == -> _temperature_tens `i -> 5 `i 1648  ]
 [e = _ALAT -> -> 50 `i `uc ]
 [e $U 1649  ]
-"77
-[; ;menus.c: 77:  else {
+"78
+[; ;menus.c: 78:  else {
 [e :U 1648 ]
 {
-"78
-[; ;menus.c: 78:   temperature_units = Update(temperature_units, (uint8_t) 9);
-[e = _temperature_units ( _Update (2 , _temperature_units -> -> 9 `i `uc ]
 "79
-[; ;menus.c: 79:   ALAT = temperature_tens*10 + temperature_units;
-[e = _ALAT -> + * -> _temperature_tens `i -> 10 `i -> _temperature_units `i `uc ]
+[; ;menus.c: 79:   temperature_units = Update(temperature_units, (uint8_t) 9);
+[e = _temperature_units ( _Update (2 , _temperature_units -> -> 9 `i `uc ]
 "80
-[; ;menus.c: 80:  }
+[; ;menus.c: 80:   ALAT = temperature_tens*10 + temperature_units;
+[e = _ALAT -> + * -> _temperature_tens `i -> 10 `i -> _temperature_units `i `uc ]
+"81
+[; ;menus.c: 81:  }
 }
 [e :U 1649 ]
-"81
-[; ;menus.c: 81: }
+"82
+[; ;menus.c: 82:     write_alat(ALAT);
+[e ( _write_alat (1 _ALAT ]
+"83
+[; ;menus.c: 83: }
 [e :UE 1647 ]
 }
-"83
-[; ;menus.c: 83: void submenu_illum(void){
+"85
+[; ;menus.c: 85: void submenu_illum(void){
 [v _submenu_illum `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_illum ]
 [f ]
-"84
-[; ;menus.c: 84:  ALAL = Update(ALAL, (uint8_t) 3);
+"86
+[; ;menus.c: 86:  ALAL = Update(ALAL, (uint8_t) 3);
 [e = _ALAL ( _Update (2 , _ALAL -> -> 3 `i `uc ]
-"85
-[; ;menus.c: 85: }
+"87
+[; ;menus.c: 87:     write_alal(ALAL);
+[e ( _write_alal (1 _ALAL ]
+"88
+[; ;menus.c: 88: }
 [e :UE 1650 ]
 }
-"88
-[; ;menus.c: 88: void Menus (void) {
+"91
+[; ;menus.c: 91: void Menus (void) {
 [v _Menus `(v ~T0 @X0 1 ef ]
 {
 [e :U _Menus ]
 [f ]
-"89
-[; ;menus.c: 89:     mode = 0;
+"92
+[; ;menus.c: 92:     mode = 0;
 [e = _mode -> -> 0 `i `uc ]
-"90
-[; ;menus.c: 90:     ShowOnLEDs(0);
-[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"91
-[; ;menus.c: 91:     TMR1_SetInterruptHandler(Blink);
-[e ( _TMR1_SetInterruptHandler (1 &U _Blink ]
 "93
-[; ;menus.c: 93:     while(mode < 4){
+[; ;menus.c: 93:     ShowOnLEDs(0);
+[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+"94
+[; ;menus.c: 94:     (INTCONbits.PEIE = 0);
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"95
+[; ;menus.c: 95:     TMR1_SetInterruptHandler(Blink);
+[e ( _TMR1_SetInterruptHandler (1 &U _Blink ]
+"96
+[; ;menus.c: 96:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+"97
+[; ;menus.c: 97:     while(mode < 4){
 [e $U 1652  ]
 [e :U 1653 ]
 {
-"94
-[; ;menus.c: 94:         checkButtonS1();
+"98
+[; ;menus.c: 98:         checkButtonS1();
 [e ( _checkButtonS1 ..  ]
-"95
-[; ;menus.c: 95:         checkButtonS2();
+"99
+[; ;menus.c: 99:         checkButtonS2();
 [e ( _checkButtonS2 ..  ]
-"96
-[; ;menus.c: 96:         if (s1flag){
+"100
+[; ;menus.c: 100:         if (s1flag){
 [e $ ! != -> _s1flag `i -> 0 `i 1655  ]
 {
-"97
-[; ;menus.c: 97:             s1flag = 0;
-[e = _s1flag -> -> 0 `i `a ]
-"98
-[; ;menus.c: 98:             mode++;
-[e ++ _mode -> -> 1 `i `uc ]
-"99
-[; ;menus.c: 99:             ShowOnLEDs(0);
-[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
 "101
-[; ;menus.c: 101:         } else if (s2flag) {
+[; ;menus.c: 101:             s1flag = 0;
+[e = _s1flag -> -> 0 `i `a ]
+"102
+[; ;menus.c: 102:             mode++;
+[e ++ _mode -> -> 1 `i `uc ]
+"103
+[; ;menus.c: 103:             ShowOnLEDs(0);
+[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+"105
+[; ;menus.c: 105:         } else if (s2flag) {
 }
 [e $U 1656  ]
 [e :U 1655 ]
 [e $ ! != -> _s2flag `i -> 0 `i 1657  ]
 {
-"102
-[; ;menus.c: 102:             s2flag = 0;
-[e = _s2flag -> -> 0 `i `a ]
-"103
-[; ;menus.c: 103:             ShowOnLEDs(0);
-[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"105
-[; ;menus.c: 105:             Menu(mode++);
-[e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
 "106
-[; ;menus.c: 106:         }
+[; ;menus.c: 106:             s2flag = 0;
+[e = _s2flag -> -> 0 `i `a ]
+"107
+[; ;menus.c: 107:             ShowOnLEDs(0);
+[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+"109
+[; ;menus.c: 109:             Menu(mode++);
+[e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
+"110
+[; ;menus.c: 110:         }
 }
 [e :U 1657 ]
 [e :U 1656 ]
-"107
-[; ;menus.c: 107:  }
+"111
+[; ;menus.c: 111:  }
 }
 [e :U 1652 ]
-"93
-[; ;menus.c: 93:     while(mode < 4){
+"97
+[; ;menus.c: 97:     while(mode < 4){
 [e $ < -> _mode `i -> 4 `i 1653  ]
 [e :U 1654 ]
-"108
-[; ;menus.c: 108: }
+"112
+[; ;menus.c: 112: }
 [e :UE 1651 ]
 }
-"110
-[; ;menus.c: 110: void Blink(void){
+"114
+[; ;menus.c: 114: void Blink(void){
 [v _Blink `(v ~T0 @X0 1 ef ]
 {
 [e :U _Blink ]
 [f ]
-"111
-[; ;menus.c: 111:     switch(mode){
+"115
+[; ;menus.c: 115:     switch(mode){
 [e $U 1660  ]
 {
-"112
-[; ;menus.c: 112:         case 0:
+"116
+[; ;menus.c: 116:         case 0:
 [e :U 1661 ]
-"113
-[; ;menus.c: 113:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+"117
+[; ;menus.c: 117:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
 [e :U 1664 ]
 {
 [e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
 }
 [e :U 1663 ]
-"114
-[; ;menus.c: 114:             break;
+"118
+[; ;menus.c: 118:             break;
 [e $U 1659  ]
-"115
-[; ;menus.c: 115:         case 1:
+"119
+[; ;menus.c: 119:         case 1:
 [e :U 1665 ]
-"116
-[; ;menus.c: 116:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
+"120
+[; ;menus.c: 120:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
 [e :U 1668 ]
 {
 [e = . . _LATAbits 0 6 -> ~ -> . . _LATAbits 0 6 `i `uc ]
 }
 [e :U 1667 ]
-"117
-[; ;menus.c: 117:             break;
+"121
+[; ;menus.c: 121:             break;
 [e $U 1659  ]
-"118
-[; ;menus.c: 118:         case 2:
+"122
+[; ;menus.c: 122:         case 2:
 [e :U 1669 ]
-"119
-[; ;menus.c: 119:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
+"123
+[; ;menus.c: 123:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
 [e :U 1672 ]
 {
 [e = . . _LATAbits 0 5 -> ~ -> . . _LATAbits 0 5 `i `uc ]
 }
 [e :U 1671 ]
-"120
-[; ;menus.c: 120:             break;
+"124
+[; ;menus.c: 124:             break;
 [e $U 1659  ]
-"121
-[; ;menus.c: 121:         case 3:
+"125
+[; ;menus.c: 125:         case 3:
 [e :U 1673 ]
-"122
-[; ;menus.c: 122:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
+"126
+[; ;menus.c: 126:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
 [e :U 1676 ]
 {
 [e = . . _LATAbits 0 4 -> ~ -> . . _LATAbits 0 4 `i `uc ]
 }
 [e :U 1675 ]
-"123
-[; ;menus.c: 123:             break;
+"127
+[; ;menus.c: 127:             break;
 [e $U 1659  ]
-"124
-[; ;menus.c: 124:     }
+"128
+[; ;menus.c: 128:     }
 }
 [e $U 1659  ]
 [e :U 1660 ]
@@ -2148,7 +2177,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 1673
  1659 ]
 [e :U 1659 ]
-"125
-[; ;menus.c: 125: }
+"129
+[; ;menus.c: 129: }
 [e :UE 1658 ]
 }

@@ -21325,16 +21325,8 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 780 "./mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 798 "./mcc_generated_files/tmr2.h"
-void TMR2_ISR(void);
-# 816 "./mcc_generated_files/tmr2.h"
- void TMR2_CallBack(void);
-# 833 "./mcc_generated_files/tmr2.h"
- void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-# 851 "./mcc_generated_files/tmr2.h"
-extern void (*TMR2_InterruptHandler)(void);
-# 869 "./mcc_generated_files/tmr2.h"
-void TMR2_DefaultInterruptHandler(void);
+# 818 "./mcc_generated_files/tmr2.h"
+_Bool TMR2_HasOverflowOccured(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adcc.h" 1

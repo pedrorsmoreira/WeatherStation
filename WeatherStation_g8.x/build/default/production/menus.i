@@ -21337,16 +21337,8 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 780 "./mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 798 "./mcc_generated_files/tmr2.h"
-void TMR2_ISR(void);
-# 816 "./mcc_generated_files/tmr2.h"
- void TMR2_CallBack(void);
-# 833 "./mcc_generated_files/tmr2.h"
- void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-# 851 "./mcc_generated_files/tmr2.h"
-extern void (*TMR2_InterruptHandler)(void);
-# 869 "./mcc_generated_files/tmr2.h"
-void TMR2_DefaultInterruptHandler(void);
+# 818 "./mcc_generated_files/tmr2.h"
+_Bool TMR2_HasOverflowOccured(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adcc.h" 1
@@ -21521,8 +21513,8 @@ void write_alaf(uint8_t x);
 
 
 extern uint8_t volatile seconds;
-_Bool btn1State = 0;
-_Bool btn2State = 0;
+_Bool btn1State;
+_Bool btn2State;
 extern _Bool s1flag;
 extern _Bool s2flag;
 extern uint8_t PMON;
@@ -21628,6 +21620,7 @@ void submenu_clock(void){
 
 void submenu_alarm(void){
  ALAF = Update(ALAF, (uint8_t) 1);
+    write_alaf(ALAF);
 }
 
 void submenu_temp(void){
@@ -21639,18 +21632,21 @@ void submenu_temp(void){
   temperature_units = Update(temperature_units, (uint8_t) 9);
   ALAT = temperature_tens*10 + temperature_units;
  }
+    write_alat(ALAT);
 }
 
 void submenu_illum(void){
  ALAL = Update(ALAL, (uint8_t) 3);
+    write_alal(ALAL);
 }
 
 
 void Menus (void) {
     mode = 0;
     ShowOnLEDs(0);
+    (INTCONbits.PEIE = 0);
     TMR1_SetInterruptHandler(Blink);
-
+    (INTCONbits.PEIE = 1);
     while(mode < 4){
         checkButtonS1();
         checkButtonS2();

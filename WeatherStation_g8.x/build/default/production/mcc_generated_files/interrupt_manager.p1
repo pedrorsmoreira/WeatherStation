@@ -86,9 +86,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "367 mcc_generated_files/tmr1.h
 [; ;mcc_generated_files/tmr1.h: 367: void TMR1_ISR(void);
 [v _TMR1_ISR `(v ~T0 @X0 0 ef ]
-"798 mcc_generated_files/tmr2.h
-[; ;mcc_generated_files/tmr2.h: 798: void TMR2_ISR(void);
-[v _TMR2_ISR `(v ~T0 @X0 0 ef ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1804,48 +1801,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 1636  ]
 "73
-[; ;mcc_generated_files/interrupt_manager.c: 73:         else if(PIE4bits.TMR2IE == 1 && PIR4bits.TMR2IF == 1)
+[; ;mcc_generated_files/interrupt_manager.c: 73:         else
 [e :U 1635 ]
-[e $ ! && == -> . . _PIE4bits 0 1 `i -> 1 `i == -> . . _PIR4bits 0 1 `i -> 1 `i 1637  ]
 "74
 [; ;mcc_generated_files/interrupt_manager.c: 74:         {
 {
-"75
-[; ;mcc_generated_files/interrupt_manager.c: 75:             TMR2_ISR();
-[e ( _TMR2_ISR ..  ]
 "76
 [; ;mcc_generated_files/interrupt_manager.c: 76:         }
 }
-[e $U 1638  ]
-"77
-[; ;mcc_generated_files/interrupt_manager.c: 77:         else
-[e :U 1637 ]
-"78
-[; ;mcc_generated_files/interrupt_manager.c: 78:         {
-{
-"80
-[; ;mcc_generated_files/interrupt_manager.c: 80:         }
-}
-[e :U 1638 ]
 [e :U 1636 ]
 [e :U 1634 ]
 [e :U 1632 ]
+"77
+[; ;mcc_generated_files/interrupt_manager.c: 77:     }
+}
+[e $U 1637  ]
+"78
+[; ;mcc_generated_files/interrupt_manager.c: 78:     else
+[e :U 1630 ]
+"79
+[; ;mcc_generated_files/interrupt_manager.c: 79:     {
+{
 "81
 [; ;mcc_generated_files/interrupt_manager.c: 81:     }
 }
-[e $U 1639  ]
-"82
-[; ;mcc_generated_files/interrupt_manager.c: 82:     else
-[e :U 1630 ]
-"83
-[; ;mcc_generated_files/interrupt_manager.c: 83:     {
-{
-"85
-[; ;mcc_generated_files/interrupt_manager.c: 85:     }
-}
-[e :U 1639 ]
+[e :U 1637 ]
 [e :U 1629 ]
-"86
-[; ;mcc_generated_files/interrupt_manager.c: 86: }
+"82
+[; ;mcc_generated_files/interrupt_manager.c: 82: }
 [e :UE 1627 ]
 }

@@ -21325,16 +21325,8 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 780 "./mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 798 "./mcc_generated_files/tmr2.h"
-void TMR2_ISR(void);
-# 816 "./mcc_generated_files/tmr2.h"
- void TMR2_CallBack(void);
-# 833 "./mcc_generated_files/tmr2.h"
- void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-# 851 "./mcc_generated_files/tmr2.h"
-extern void (*TMR2_InterruptHandler)(void);
-# 869 "./mcc_generated_files/tmr2.h"
-void TMR2_DefaultInterruptHandler(void);
+# 818 "./mcc_generated_files/tmr2.h"
+_Bool TMR2_HasOverflowOccured(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/adcc.h" 1
@@ -21496,17 +21488,17 @@ uint8_t get_check_up_value(void){
 
     uint8_t check;
 
-    check = DATAEE_ReadByte(0x7001) + DATAEE_ReadByte(0x7002) + DATAEE_ReadByte(0x7003) +
-            DATAEE_ReadByte(0x7004) + DATAEE_ReadByte(0x7005) + DATAEE_ReadByte(0x7006) +
-            DATAEE_ReadByte(0x7007) + DATAEE_ReadByte(0x7008);
+    check = DATAEE_ReadByte(0xF001) + DATAEE_ReadByte(0xF002) + DATAEE_ReadByte(0xF003) +
+            DATAEE_ReadByte(0xF004) + DATAEE_ReadByte(0xF005) + DATAEE_ReadByte(0xF006) +
+            DATAEE_ReadByte(0xF007) + DATAEE_ReadByte(0xF008);
 
 
 
 
 
 
-    uint8_t wbuf = DATAEE_ReadByte(0x700A);
-    uint8_t rbuf = DATAEE_ReadByte(0x700B);
+    uint8_t wbuf = DATAEE_ReadByte(0xF00A);
+    uint8_t rbuf = DATAEE_ReadByte(0xF00B);
 
 
     check += wbuf + rbuf;
@@ -21536,7 +21528,7 @@ void set_check_up_value(void){
 
 
 
-    DATAEE_WriteByte(0x7000, check);
+    DATAEE_WriteByte(0xF000, check);
 }
 
 
@@ -21544,7 +21536,7 @@ _Bool check_corruption(void){
 
 
 
-    uint8_t check = DATAEE_ReadByte(0x7000);
+    uint8_t check = DATAEE_ReadByte(0xF000);
 
     return get_check_up_value() == check;
 
@@ -21556,35 +21548,35 @@ void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
 
     if (reset_buffer)
-        DATAEE_WriteByte(0x700A, 0);
+        DATAEE_WriteByte(0xF00A, 0);
 
-    DATAEE_WriteByte(0x7001, nreg);
-    DATAEE_WriteByte(0x7002, pmon);
-    DATAEE_WriteByte(0x7003, tala);
-    DATAEE_WriteByte(0x7004, alat);
-    DATAEE_WriteByte(0x7005, alal);
-    DATAEE_WriteByte(0x7006, alaf);
-    DATAEE_WriteByte(0x7007, clkh);
-    DATAEE_WriteByte(0x7008, clkm);
-    DATAEE_WriteByte(0x7009, 0xAA);
+    DATAEE_WriteByte(0xF001, nreg);
+    DATAEE_WriteByte(0xF002, pmon);
+    DATAEE_WriteByte(0xF003, tala);
+    DATAEE_WriteByte(0xF004, alat);
+    DATAEE_WriteByte(0xF005, alal);
+    DATAEE_WriteByte(0xF006, alaf);
+    DATAEE_WriteByte(0xF007, clkh);
+    DATAEE_WriteByte(0xF008, clkm);
+    DATAEE_WriteByte(0xF009, 0xAA);
 }
 
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
-    DATAEE_WriteByte(0x7007, clkh);
-    DATAEE_WriteByte(0x7008, clkm);
+    DATAEE_WriteByte(0xF007, clkh);
+    DATAEE_WriteByte(0xF008, clkm);
 }
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
 
-    uint16_t ring_pos = 0x700B + DATAEE_ReadByte(0x700A);
+    uint16_t ring_pos = 0xF00B + DATAEE_ReadByte(0xF00A);
 
 
     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
         return 0;
 
 
-    if (ring_pos > (0x700B + DATAEE_ReadByte(0x7001) - 5) )
-        ring_pos = 0x700B;
+    if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) )
+        ring_pos = 0xF00B;
 
     DATAEE_WriteByte(ring_pos , h);
     DATAEE_WriteByte(ring_pos+1, m);
@@ -21593,61 +21585,61 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(ring_pos+4, L);
 
 
-    DATAEE_WriteByte(0x700A, ring_pos+5-0x700B);
+    DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
 
     return 1;
 }
 
-_Bool used(void) {return 0xAA == DATAEE_ReadByte(0x7009); }
+_Bool used(void) {return 0xAA == DATAEE_ReadByte(0xF009); }
 
 
-uint8_t read_nreg(void) { return DATAEE_ReadByte(0x7001); }
-uint8_t read_pmon(void) { return DATAEE_ReadByte(0x7002); }
-uint8_t read_tala(void) { return DATAEE_ReadByte(0x7003); }
-uint8_t read_alat(void) { return DATAEE_ReadByte(0x7004); }
-uint8_t read_alal(void) { return DATAEE_ReadByte(0x7005); }
-uint8_t read_alaf(void) { return DATAEE_ReadByte(0x7006); }
-uint8_t read_clkh(void) { return DATAEE_ReadByte(0x7007); }
-uint8_t read_clkm(void) { return DATAEE_ReadByte(0x7008); }
+uint8_t read_nreg(void) { return DATAEE_ReadByte(0xF001); }
+uint8_t read_pmon(void) { return DATAEE_ReadByte(0xF002); }
+uint8_t read_tala(void) { return DATAEE_ReadByte(0xF003); }
+uint8_t read_alat(void) { return DATAEE_ReadByte(0xF004); }
+uint8_t read_alal(void) { return DATAEE_ReadByte(0xF005); }
+uint8_t read_alaf(void) { return DATAEE_ReadByte(0xF006); }
+uint8_t read_clkh(void) { return DATAEE_ReadByte(0xF007); }
+uint8_t read_clkm(void) { return DATAEE_ReadByte(0xF008); }
 
 void write_nreg(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7001));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF001));
 
-    DATAEE_WriteByte(0x7001, x);
+    DATAEE_WriteByte(0xF001, x);
 }
 
 void write_pmon(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7002));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF002));
 
-    DATAEE_WriteByte(0x7002, x);
+    DATAEE_WriteByte(0xF002, x);
 }
 
 void write_tala(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7003));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF003));
 
-    DATAEE_WriteByte(0x7003, x);
+    DATAEE_WriteByte(0xF003, x);
 }
 
 void write_alat(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7004));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF004));
 
-    DATAEE_WriteByte(0x7004, x);
+    DATAEE_WriteByte(0xF004, x);
 }
 
 void write_alal(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7005));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF005));
 
-    DATAEE_WriteByte(0x7005, x);
+    DATAEE_WriteByte(0xF005, x);
 }
 
 void write_alaf(uint8_t x) {
 
-    DATAEE_WriteByte(0x7000, DATAEE_ReadByte(0x7000) + x - DATAEE_ReadByte(0x7006));
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF006));
 
-    DATAEE_WriteByte(0x7006, x);
+    DATAEE_WriteByte(0xF006, x);
 }

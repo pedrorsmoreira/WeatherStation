@@ -21080,29 +21080,10 @@ void TMR2_WriteTimer(uint8_t timerVal);
 void TMR2_Period8BitSet(uint8_t periodVal);
 # 780 "mcc_generated_files/tmr2.h"
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 798 "mcc_generated_files/tmr2.h"
-void TMR2_ISR(void);
-# 816 "mcc_generated_files/tmr2.h"
- void TMR2_CallBack(void);
-# 833 "mcc_generated_files/tmr2.h"
- void TMR2_SetInterruptHandler(void (* InterruptHandler)(void));
-# 851 "mcc_generated_files/tmr2.h"
-extern void (*TMR2_InterruptHandler)(void);
-# 869 "mcc_generated_files/tmr2.h"
-void TMR2_DefaultInterruptHandler(void);
+# 818 "mcc_generated_files/tmr2.h"
+_Bool TMR2_HasOverflowOccured(void);
 # 52 "mcc_generated_files/tmr2.c" 2
-
-
-
-
-
-
-void (*TMR2_InterruptHandler)(void);
-
-
-
-
-
+# 62 "mcc_generated_files/tmr2.c"
 void TMR2_Initialize(void)
 {
 
@@ -21124,12 +21105,6 @@ void TMR2_Initialize(void)
 
 
     PIR4bits.TMR2IF = 0;
-
-
-    PIE4bits.TMR2IE = 1;
-
-
-    TMR2_SetInterruptHandler(TMR2_DefaultInterruptHandler);
 
 
     T2CON = 0x80;
@@ -21204,32 +21179,14 @@ void TMR2_LoadPeriodRegister(uint8_t periodVal)
    TMR2_Period8BitSet(periodVal);
 }
 
-void TMR2_ISR(void)
+_Bool TMR2_HasOverflowOccured(void)
 {
 
-
-    PIR4bits.TMR2IF = 0;
-
-
-
-    TMR2_CallBack();
-}
-
-void TMR2_CallBack(void)
-{
-
-
-    if(TMR2_InterruptHandler)
+    _Bool status = PIR4bits.TMR2IF;
+    if(status)
     {
-        TMR2_InterruptHandler();
+
+        PIR4bits.TMR2IF = 0;
     }
-}
-
-void TMR2_SetInterruptHandler(void (* InterruptHandler)(void)){
-    TMR2_InterruptHandler = InterruptHandler;
-}
-
-void TMR2_DefaultInterruptHandler(void){
-
-
+    return status;
 }

@@ -3,11 +3,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v F12648 `(v ~T0 @X0 0 tf ]
 "8 utils.c
 [; ;utils.c: 8:     return ADCC_GetSingleConversion(ILLUM)>> 14;
-[c E12741 0 60 61 62 63 .. ]
-[n E12741 . ILLUM channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
+[c E12733 0 60 61 62 63 .. ]
+[n E12733 . ILLUM channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "249 ./mcc_generated_files/adcc.h
 [; ;./mcc_generated_files/adcc.h: 249: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12741 ]
+[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12733 ]
 "5309 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 5309: extern volatile unsigned char SSP1CON2 __attribute__((address(0x191)));
 [v _SSP1CON2 `Vuc ~T0 @X0 0 e@401 ]
@@ -1893,7 +1893,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "8
 [; ;utils.c: 8:     return ADCC_GetSingleConversion(ILLUM)>> 14;
-[e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12741 0 `ui -> 14 `i `uc ]
+[e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12733 0 `ui -> 14 `i `uc ]
 [e $UE 1627  ]
 "9
 [; ;utils.c: 9: }
