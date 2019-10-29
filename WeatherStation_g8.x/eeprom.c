@@ -73,17 +73,18 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 }
 
 bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
-    
-    uint16_t ring_pos = RBUF_ + DATAEE_ReadByte(WBUF_);
+    uint16_t ring_pos_ = DATAEE_ReadByte(WBUF_);
+    uint16_t ring_pos = ring_pos_ + RBUF_;
     
     //none of the values changed, exit without writing
     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
         return false;
     
     //check if the writing position reached the end of the ring buffer
-    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_) - 5) )
+    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_) - 5) ){
         ring_pos = RBUF_;
-    
+        DATAEE_WriteByte(USED_, 0x55);
+    }
     DATAEE_WriteByte(ring_pos  , h);
     DATAEE_WriteByte(ring_pos+1, m);
     DATAEE_WriteByte(ring_pos+2, s);
@@ -93,11 +94,19 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     //set the next write position
     DATAEE_WriteByte(WBUF_, ring_pos+5-RBUF_);
     
+    #ifdef CHECKSUM
+    DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + (ring_pos+5-RBUF_) - ring_pos_);
+    #endif
+    
     return true;
 }
 
-bool used(void) {return 0xAA == DATAEE_ReadByte(USED_); }
+bool ring_buffer_laped(void) { return 0x55 == DATAEE_ReadByte(USED_); }
 
+bool used(void) {
+    uint8_t val = DATAEE_ReadByte(USED_);
+    return (0xAA == val || 0x55 == val); 
+}
 
 uint8_t read_nreg(void) { return DATAEE_ReadByte(NREG_); }
 uint8_t read_pmon(void) { return DATAEE_ReadByte(PMON_); }
