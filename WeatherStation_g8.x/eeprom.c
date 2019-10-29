@@ -81,9 +81,10 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
         return false;
     
     //check if the writing position reached the end of the ring buffer
-    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_) - 5) )
+    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_) - 5) ){
         ring_pos = RBUF_;
-    
+        DATAEE_WriteByte(USED_, 0x55);
+    }
     DATAEE_WriteByte(ring_pos  , h);
     DATAEE_WriteByte(ring_pos+1, m);
     DATAEE_WriteByte(ring_pos+2, s);
@@ -100,8 +101,12 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     return true;
 }
 
-bool used(void) {return 0xAA == DATAEE_ReadByte(USED_); }
+bool ring_buffer_laped(void) { return 0x55 == DATAEE_ReadByte(USED_); }
 
+bool used(void) {
+    uint8_t val = DATAEE_ReadByte(USED_);
+    return (0xAA == val || 0x55 == val); 
+}
 
 uint8_t read_nreg(void) { return DATAEE_ReadByte(NREG_); }
 uint8_t read_pmon(void) { return DATAEE_ReadByte(PMON_); }
