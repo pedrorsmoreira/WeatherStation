@@ -21497,24 +21497,6 @@ uint8_t get_check_up_value(void){
 
 
 
-    uint8_t wbuf = DATAEE_ReadByte(0xF00A);
-    uint8_t rbuf = DATAEE_ReadByte(0xF00B);
-
-
-    check += wbuf + rbuf;
-
-
-
-
-    while (rbuf < wbuf){
-
-        check += DATAEE_ReadByte(++rbuf);
-
-
-
-
-    }
-
     return check;
 }
 
@@ -21559,6 +21541,10 @@ void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
     DATAEE_WriteByte(0xF007, clkh);
     DATAEE_WriteByte(0xF008, clkm);
     DATAEE_WriteByte(0xF009, 0xAA);
+
+
+    DATAEE_WriteByte(0xF000, nreg+pmon+tala+alat+alal+alaf+clkh+clkm);
+
 }
 
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm){

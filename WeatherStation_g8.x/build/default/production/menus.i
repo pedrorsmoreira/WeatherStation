@@ -21508,24 +21508,18 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-
-
-
-
+# 35 "./utils.h"
 extern uint8_t volatile seconds;
-_Bool btn1State;
-_Bool btn2State;
 extern _Bool s1flag;
 extern _Bool s2flag;
-extern uint8_t PMON;
-extern uint8_t NREG;
-extern uint8_t TALA;
-extern uint8_t ALAT;
-extern uint8_t ALAL;
-extern uint8_t ALAF;
-extern volatile uint8_t CLKH;
-extern volatile uint8_t CLKM;
-
+extern uint8_t pmon;
+extern uint8_t nreg;
+extern uint8_t tala;
+extern uint8_t alat;
+extern uint8_t alal;
+extern uint8_t alaf;
+extern volatile uint8_t clkh;
+extern volatile uint8_t clkm;
 extern uint8_t illum;
 extern uint8_t temp;
 
@@ -21541,6 +21535,7 @@ void eeprom_default_setup(void);
 void update_clk(void);
 _Bool ring_buffer(void);
 # 17 "./menus.h" 2
+
 
 uint8_t mode = 0;
 void Menu(uint8_t mode);
@@ -21561,6 +21556,7 @@ void Menu(uint8_t mode) {
  switch(mode){
   case 0:
    submenu_clock();
+            __nop();
    break;
   case 1:
    submenu_alarm();
@@ -21597,8 +21593,8 @@ uint8_t Update(uint8_t var, uint8_t thr){
 
 
 void submenu_clock(void){
- uint8_t hours_tens = CLKH/10;
- uint8_t hours_units = CLKH%10;
+ uint8_t hours_tens = clkh/10;
+ uint8_t hours_units = clkh%10;
  hours_tens = Update(hours_tens, (uint8_t) 2);
  if(hours_tens == 2){
   if(hours_units>3) hours_units = 0;
@@ -21606,38 +21602,38 @@ void submenu_clock(void){
  } else
   hours_units = Update(hours_units, (uint8_t) 9);
 
- uint8_t minutes_tens = CLKM/10;
- uint8_t minutes_units = CLKM/10;
+ uint8_t minutes_tens = clkm/10;
+ uint8_t minutes_units = clkm%10;
  minutes_tens = Update(minutes_tens, (uint8_t) 5);
  minutes_units = Update(minutes_units, (uint8_t) 9);
 
- CLKH = 10*hours_tens + hours_units;
- CLKM = 10*minutes_tens + minutes_units;
+ clkh = 10*hours_tens + hours_units;
+ clkm = 10*minutes_tens + minutes_units;
     update_clk();
 }
 
 
 
 void submenu_alarm(void){
- ALAF = Update(ALAF, (uint8_t) 1);
-    write_alaf(ALAF);
+ alaf = Update(alaf, (uint8_t) 1);
+    write_alaf(alaf);
 }
 
 void submenu_temp(void){
- uint8_t temperature_tens = ALAT/10;
- uint8_t temperature_units = ALAT % 10;
+ uint8_t temperature_tens = alat/10;
+ uint8_t temperature_units = alat % 10;
  temperature_tens = Update(temperature_tens, (uint8_t) 5);
- if (temperature_tens == 5) ALAT = 50;
+ if (temperature_tens == 5) alat = 50;
  else {
   temperature_units = Update(temperature_units, (uint8_t) 9);
-  ALAT = temperature_tens*10 + temperature_units;
+  alat = temperature_tens*10 + temperature_units;
  }
-    write_alat(ALAT);
+    write_alat(alat);
 }
 
 void submenu_illum(void){
- ALAL = Update(ALAL, (uint8_t) 3);
-    write_alal(ALAL);
+ alal = Update(alal, (uint8_t) 3);
+    write_alal(alal);
 }
 
 

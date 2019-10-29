@@ -1664,154 +1664,130 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;eeprom.c: 11:     check = DATAEE_ReadByte(0xF001) + DATAEE_ReadByte(0xF002) + DATAEE_ReadByte(0xF003) +
 [e = _check -> + + + + + + + -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61447 `ui `us `i -> ( _DATAEE_ReadByte (1 -> -> 61448 `ui `us `i `uc ]
 "20
-[; ;eeprom.c: 20:     uint8_t wbuf = DATAEE_ReadByte(0xF00A);
-[v _wbuf `uc ~T0 @X0 1 a ]
-[e = _wbuf ( _DATAEE_ReadByte (1 -> -> 61450 `ui `us ]
-"21
-[; ;eeprom.c: 21:     uint8_t rbuf = DATAEE_ReadByte(0xF00B);
-[v _rbuf `uc ~T0 @X0 1 a ]
-[e = _rbuf ( _DATAEE_ReadByte (1 -> -> 61451 `ui `us ]
-"24
-[; ;eeprom.c: 24:     check += wbuf + rbuf;
-[e =+ _check -> + -> _wbuf `i -> _rbuf `i `uc ]
-"29
-[; ;eeprom.c: 29:     while (rbuf < wbuf){
-[e $U 1628  ]
-[e :U 1629 ]
-{
-"31
-[; ;eeprom.c: 31:         check += DATAEE_ReadByte(++rbuf);
-[e =+ _check -> ( _DATAEE_ReadByte (1 -> =+ _rbuf -> -> 1 `i `uc `us `uc ]
-"36
-[; ;eeprom.c: 36:     }
-}
-[e :U 1628 ]
-"29
-[; ;eeprom.c: 29:     while (rbuf < wbuf){
-[e $ < -> _rbuf `i -> _wbuf `i 1629  ]
-[e :U 1630 ]
-"38
-[; ;eeprom.c: 38:     return check;
+[; ;eeprom.c: 20:     return check;
 [e ) _check ]
 [e $UE 1627  ]
-"39
-[; ;eeprom.c: 39: }
+"21
+[; ;eeprom.c: 21: }
 [e :UE 1627 ]
 }
-"42
-[; ;eeprom.c: 42: void set_check_up_value(void){
+"24
+[; ;eeprom.c: 24: void set_check_up_value(void){
 [v _set_check_up_value `(v ~T0 @X0 1 ef ]
 {
 [e :U _set_check_up_value ]
 [f ]
-"47
-[; ;eeprom.c: 47:     uint8_t check = get_check_up_value();
+"29
+[; ;eeprom.c: 29:     uint8_t check = get_check_up_value();
 [v _check `uc ~T0 @X0 1 a ]
 [e = _check ( _get_check_up_value ..  ]
-"51
-[; ;eeprom.c: 51:     DATAEE_WriteByte(0xF000, check);
+"33
+[; ;eeprom.c: 33:     DATAEE_WriteByte(0xF000, check);
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us _check ]
-"52
-[; ;eeprom.c: 52: }
-[e :UE 1631 ]
+"34
+[; ;eeprom.c: 34: }
+[e :UE 1628 ]
 }
-"55
-[; ;eeprom.c: 55: _Bool check_corruption(void){
+"37
+[; ;eeprom.c: 37: _Bool check_corruption(void){
 [v _check_corruption `(a ~T0 @X0 1 ef ]
 {
 [e :U _check_corruption ]
 [f ]
-"59
-[; ;eeprom.c: 59:     uint8_t check = DATAEE_ReadByte(0xF000);
+"41
+[; ;eeprom.c: 41:     uint8_t check = DATAEE_ReadByte(0xF000);
 [v _check `uc ~T0 @X0 1 a ]
 [e = _check ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us ]
-"61
-[; ;eeprom.c: 61:     return get_check_up_value() == check;
+"43
+[; ;eeprom.c: 43:     return get_check_up_value() == check;
 [e ) -> -> == -> ( _get_check_up_value ..  `i -> _check `i `i `a ]
-[e $UE 1632  ]
-"65
-[; ;eeprom.c: 65: }
-[e :UE 1632 ]
+[e $UE 1629  ]
+"47
+[; ;eeprom.c: 47: }
+[e :UE 1629 ]
 }
-"67
-[; ;eeprom.c: 67: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
+"49
+[; ;eeprom.c: 49: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 [v _eeprom_setup `(v ~T0 @X0 1 ef9`a`uc`uc`uc`uc`uc`uc`uc`uc ]
-"68
-[; ;eeprom.c: 68:         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
+"50
+[; ;eeprom.c: 50:         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
 {
 [e :U _eeprom_setup ]
-"67
-[; ;eeprom.c: 67: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
+"49
+[; ;eeprom.c: 49: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 [v _reset_buffer `a ~T0 @X0 1 r1 ]
 [v _nreg `uc ~T0 @X0 1 r2 ]
 [v _pmon `uc ~T0 @X0 1 r3 ]
 [v _tala `uc ~T0 @X0 1 r4 ]
-"68
-[; ;eeprom.c: 68:         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
+"50
+[; ;eeprom.c: 50:         uint8_t alat, uint8_t alal, uint8_t alaf, uint8_t clkh, uint8_t clkm){
 [v _alat `uc ~T0 @X0 1 r5 ]
 [v _alal `uc ~T0 @X0 1 r6 ]
 [v _alaf `uc ~T0 @X0 1 r7 ]
 [v _clkh `uc ~T0 @X0 1 r8 ]
 [v _clkm `uc ~T0 @X0 1 r9 ]
 [f ]
-"70
-[; ;eeprom.c: 70:     if (reset_buffer)
-[e $ ! != -> _reset_buffer `i -> 0 `i 1634  ]
-"71
-[; ;eeprom.c: 71:         DATAEE_WriteByte(0xF00A, 0);
+"52
+[; ;eeprom.c: 52:     if (reset_buffer)
+[e $ ! != -> _reset_buffer `i -> 0 `i 1631  ]
+"53
+[; ;eeprom.c: 53:         DATAEE_WriteByte(0xF00A, 0);
 [e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> -> 0 `i `uc ]
-[e :U 1634 ]
-"73
-[; ;eeprom.c: 73:     DATAEE_WriteByte(0xF001, nreg);
+[e :U 1631 ]
+"55
+[; ;eeprom.c: 55:     DATAEE_WriteByte(0xF001, nreg);
 [e ( _DATAEE_WriteByte (2 , -> -> 61441 `ui `us _nreg ]
-"74
-[; ;eeprom.c: 74:     DATAEE_WriteByte(0xF002, pmon);
+"56
+[; ;eeprom.c: 56:     DATAEE_WriteByte(0xF002, pmon);
 [e ( _DATAEE_WriteByte (2 , -> -> 61442 `ui `us _pmon ]
-"75
-[; ;eeprom.c: 75:     DATAEE_WriteByte(0xF003, tala);
+"57
+[; ;eeprom.c: 57:     DATAEE_WriteByte(0xF003, tala);
 [e ( _DATAEE_WriteByte (2 , -> -> 61443 `ui `us _tala ]
-"76
-[; ;eeprom.c: 76:     DATAEE_WriteByte(0xF004, alat);
+"58
+[; ;eeprom.c: 58:     DATAEE_WriteByte(0xF004, alat);
 [e ( _DATAEE_WriteByte (2 , -> -> 61444 `ui `us _alat ]
-"77
-[; ;eeprom.c: 77:     DATAEE_WriteByte(0xF005, alal);
+"59
+[; ;eeprom.c: 59:     DATAEE_WriteByte(0xF005, alal);
 [e ( _DATAEE_WriteByte (2 , -> -> 61445 `ui `us _alal ]
-"78
-[; ;eeprom.c: 78:     DATAEE_WriteByte(0xF006, alaf);
+"60
+[; ;eeprom.c: 60:     DATAEE_WriteByte(0xF006, alaf);
 [e ( _DATAEE_WriteByte (2 , -> -> 61446 `ui `us _alaf ]
-"79
-[; ;eeprom.c: 79:     DATAEE_WriteByte(0xF007, clkh);
+"61
+[; ;eeprom.c: 61:     DATAEE_WriteByte(0xF007, clkh);
 [e ( _DATAEE_WriteByte (2 , -> -> 61447 `ui `us _clkh ]
-"80
-[; ;eeprom.c: 80:     DATAEE_WriteByte(0xF008, clkm);
+"62
+[; ;eeprom.c: 62:     DATAEE_WriteByte(0xF008, clkm);
 [e ( _DATAEE_WriteByte (2 , -> -> 61448 `ui `us _clkm ]
-"81
-[; ;eeprom.c: 81:     DATAEE_WriteByte(0xF009, 0xAA);
+"63
+[; ;eeprom.c: 63:     DATAEE_WriteByte(0xF009, 0xAA);
 [e ( _DATAEE_WriteByte (2 , -> -> 61449 `ui `us -> -> 170 `i `uc ]
-"82
-[; ;eeprom.c: 82: }
-[e :UE 1633 ]
+"66
+[; ;eeprom.c: 66:     DATAEE_WriteByte(0xF000, nreg+pmon+tala+alat+alal+alaf+clkh+clkm);
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> + + + + + + + -> _nreg `i -> _pmon `i -> _tala `i -> _alat `i -> _alal `i -> _alaf `i -> _clkh `i -> _clkm `i `uc ]
+"68
+[; ;eeprom.c: 68: }
+[e :UE 1630 ]
 }
-"84
-[; ;eeprom.c: 84: void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
+"70
+[; ;eeprom.c: 70: void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 [v _eeprom_clk_update `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _eeprom_clk_update ]
 [v _clkh `uc ~T0 @X0 1 r1 ]
 [v _clkm `uc ~T0 @X0 1 r2 ]
 [f ]
-"85
-[; ;eeprom.c: 85:     DATAEE_WriteByte(0xF007, clkh);
+"71
+[; ;eeprom.c: 71:     DATAEE_WriteByte(0xF007, clkh);
 [e ( _DATAEE_WriteByte (2 , -> -> 61447 `ui `us _clkh ]
-"86
-[; ;eeprom.c: 86:     DATAEE_WriteByte(0xF008, clkm);
+"72
+[; ;eeprom.c: 72:     DATAEE_WriteByte(0xF008, clkm);
 [e ( _DATAEE_WriteByte (2 , -> -> 61448 `ui `us _clkm ]
-"87
-[; ;eeprom.c: 87: }
-[e :UE 1635 ]
+"73
+[; ;eeprom.c: 73: }
+[e :UE 1632 ]
 }
-"89
-[; ;eeprom.c: 89: _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
+"75
+[; ;eeprom.c: 75: _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
 [v _ring_buffer_write `(a ~T0 @X0 1 ef5`uc`uc`uc`uc`uc ]
 {
 [e :U _ring_buffer_write ]
@@ -1821,240 +1797,240 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _T `uc ~T0 @X0 1 r4 ]
 [v _L `uc ~T0 @X0 1 r5 ]
 [f ]
-"91
-[; ;eeprom.c: 91:     uint16_t ring_pos = 0xF00B + DATAEE_ReadByte(0xF00A);
+"77
+[; ;eeprom.c: 77:     uint16_t ring_pos = 0xF00B + DATAEE_ReadByte(0xF00A);
 [v _ring_pos `us ~T0 @X0 1 a ]
 [e = _ring_pos -> + -> 61451 `ui -> ( _DATAEE_ReadByte (1 -> -> 61450 `ui `us `ui `us ]
-"94
-[; ;eeprom.c: 94:     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
-[e $ ! && == -> _T `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 2 `i `ui `us `i == -> _L `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 1 `i `ui `us `i 1637  ]
-"95
-[; ;eeprom.c: 95:         return 0;
+"80
+[; ;eeprom.c: 80:     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
+[e $ ! && == -> _T `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 2 `i `ui `us `i == -> _L `i -> ( _DATAEE_ReadByte (1 -> - -> _ring_pos `ui -> -> 1 `i `ui `us `i 1634  ]
+"81
+[; ;eeprom.c: 81:         return 0;
 [e ) -> -> 0 `i `a ]
-[e $UE 1636  ]
-[e :U 1637 ]
-"98
-[; ;eeprom.c: 98:     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) )
-[e $ ! > -> _ring_pos `ui - + -> 61451 `ui -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `ui -> -> 5 `i `ui 1638  ]
-"99
-[; ;eeprom.c: 99:         ring_pos = 0xF00B;
+[e $UE 1633  ]
+[e :U 1634 ]
+"84
+[; ;eeprom.c: 84:     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) )
+[e $ ! > -> _ring_pos `ui - + -> 61451 `ui -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `ui -> -> 5 `i `ui 1635  ]
+"85
+[; ;eeprom.c: 85:         ring_pos = 0xF00B;
 [e = _ring_pos -> -> 61451 `ui `us ]
-[e :U 1638 ]
-"101
-[; ;eeprom.c: 101:     DATAEE_WriteByte(ring_pos , h);
+[e :U 1635 ]
+"87
+[; ;eeprom.c: 87:     DATAEE_WriteByte(ring_pos , h);
 [e ( _DATAEE_WriteByte (2 , _ring_pos _h ]
-"102
-[; ;eeprom.c: 102:     DATAEE_WriteByte(ring_pos+1, m);
+"88
+[; ;eeprom.c: 88:     DATAEE_WriteByte(ring_pos+1, m);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 1 `i `ui `us _m ]
-"103
-[; ;eeprom.c: 103:     DATAEE_WriteByte(ring_pos+2, s);
+"89
+[; ;eeprom.c: 89:     DATAEE_WriteByte(ring_pos+2, s);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 2 `i `ui `us _s ]
-"104
-[; ;eeprom.c: 104:     DATAEE_WriteByte(ring_pos+3, T);
+"90
+[; ;eeprom.c: 90:     DATAEE_WriteByte(ring_pos+3, T);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 3 `i `ui `us _T ]
-"105
-[; ;eeprom.c: 105:     DATAEE_WriteByte(ring_pos+4, L);
+"91
+[; ;eeprom.c: 91:     DATAEE_WriteByte(ring_pos+4, L);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 4 `i `ui `us _L ]
-"108
-[; ;eeprom.c: 108:     DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
+"94
+[; ;eeprom.c: 94:     DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
 [e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui `uc ]
-"110
-[; ;eeprom.c: 110:     return 1;
+"96
+[; ;eeprom.c: 96:     return 1;
 [e ) -> -> 1 `i `a ]
-[e $UE 1636  ]
-"111
-[; ;eeprom.c: 111: }
-[e :UE 1636 ]
+[e $UE 1633  ]
+"97
+[; ;eeprom.c: 97: }
+[e :UE 1633 ]
 }
-"113
-[; ;eeprom.c: 113: _Bool used(void) {return 0xAA == DATAEE_ReadByte(0xF009); }
+"99
+[; ;eeprom.c: 99: _Bool used(void) {return 0xAA == DATAEE_ReadByte(0xF009); }
 [v _used `(a ~T0 @X0 1 ef ]
 {
 [e :U _used ]
 [f ]
 [e ) -> -> == -> 170 `i -> ( _DATAEE_ReadByte (1 -> -> 61449 `ui `us `i `i `a ]
-[e $UE 1639  ]
-[e :UE 1639 ]
+[e $UE 1636  ]
+[e :UE 1636 ]
 }
-"116
-[; ;eeprom.c: 116: uint8_t read_nreg(void) { return DATAEE_ReadByte(0xF001); }
+"102
+[; ;eeprom.c: 102: uint8_t read_nreg(void) { return DATAEE_ReadByte(0xF001); }
 [v _read_nreg `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_nreg ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us ]
-[e $UE 1640  ]
-[e :UE 1640 ]
+[e $UE 1637  ]
+[e :UE 1637 ]
 }
-"117
-[; ;eeprom.c: 117: uint8_t read_pmon(void) { return DATAEE_ReadByte(0xF002); }
+"103
+[; ;eeprom.c: 103: uint8_t read_pmon(void) { return DATAEE_ReadByte(0xF002); }
 [v _read_pmon `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_pmon ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us ]
-[e $UE 1641  ]
-[e :UE 1641 ]
+[e $UE 1638  ]
+[e :UE 1638 ]
 }
-"118
-[; ;eeprom.c: 118: uint8_t read_tala(void) { return DATAEE_ReadByte(0xF003); }
+"104
+[; ;eeprom.c: 104: uint8_t read_tala(void) { return DATAEE_ReadByte(0xF003); }
 [v _read_tala `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_tala ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us ]
-[e $UE 1642  ]
-[e :UE 1642 ]
+[e $UE 1639  ]
+[e :UE 1639 ]
 }
-"119
-[; ;eeprom.c: 119: uint8_t read_alat(void) { return DATAEE_ReadByte(0xF004); }
+"105
+[; ;eeprom.c: 105: uint8_t read_alat(void) { return DATAEE_ReadByte(0xF004); }
 [v _read_alat `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alat ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us ]
-[e $UE 1643  ]
-[e :UE 1643 ]
+[e $UE 1640  ]
+[e :UE 1640 ]
 }
-"120
-[; ;eeprom.c: 120: uint8_t read_alal(void) { return DATAEE_ReadByte(0xF005); }
+"106
+[; ;eeprom.c: 106: uint8_t read_alal(void) { return DATAEE_ReadByte(0xF005); }
 [v _read_alal `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alal ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us ]
-[e $UE 1644  ]
-[e :UE 1644 ]
+[e $UE 1641  ]
+[e :UE 1641 ]
 }
-"121
-[; ;eeprom.c: 121: uint8_t read_alaf(void) { return DATAEE_ReadByte(0xF006); }
+"107
+[; ;eeprom.c: 107: uint8_t read_alaf(void) { return DATAEE_ReadByte(0xF006); }
 [v _read_alaf `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_alaf ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us ]
-[e $UE 1645  ]
-[e :UE 1645 ]
+[e $UE 1642  ]
+[e :UE 1642 ]
 }
-"122
-[; ;eeprom.c: 122: uint8_t read_clkh(void) { return DATAEE_ReadByte(0xF007); }
+"108
+[; ;eeprom.c: 108: uint8_t read_clkh(void) { return DATAEE_ReadByte(0xF007); }
 [v _read_clkh `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_clkh ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61447 `ui `us ]
-[e $UE 1646  ]
-[e :UE 1646 ]
+[e $UE 1643  ]
+[e :UE 1643 ]
 }
-"123
-[; ;eeprom.c: 123: uint8_t read_clkm(void) { return DATAEE_ReadByte(0xF008); }
+"109
+[; ;eeprom.c: 109: uint8_t read_clkm(void) { return DATAEE_ReadByte(0xF008); }
 [v _read_clkm `(uc ~T0 @X0 1 ef ]
 {
 [e :U _read_clkm ]
 [f ]
 [e ) ( _DATAEE_ReadByte (1 -> -> 61448 `ui `us ]
-[e $UE 1647  ]
-[e :UE 1647 ]
+[e $UE 1644  ]
+[e :UE 1644 ]
 }
-"125
-[; ;eeprom.c: 125: void write_nreg(uint8_t x) {
+"111
+[; ;eeprom.c: 111: void write_nreg(uint8_t x) {
 [v _write_nreg `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_nreg ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"127
-[; ;eeprom.c: 127:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF001));
+"113
+[; ;eeprom.c: 113:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF001));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `i `uc ]
-"129
-[; ;eeprom.c: 129:     DATAEE_WriteByte(0xF001, x);
+"115
+[; ;eeprom.c: 115:     DATAEE_WriteByte(0xF001, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61441 `ui `us _x ]
-"130
-[; ;eeprom.c: 130: }
-[e :UE 1648 ]
+"116
+[; ;eeprom.c: 116: }
+[e :UE 1645 ]
 }
-"132
-[; ;eeprom.c: 132: void write_pmon(uint8_t x) {
+"118
+[; ;eeprom.c: 118: void write_pmon(uint8_t x) {
 [v _write_pmon `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_pmon ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"134
-[; ;eeprom.c: 134:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF002));
+"120
+[; ;eeprom.c: 120:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF002));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61442 `ui `us `i `uc ]
-"136
-[; ;eeprom.c: 136:     DATAEE_WriteByte(0xF002, x);
+"122
+[; ;eeprom.c: 122:     DATAEE_WriteByte(0xF002, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61442 `ui `us _x ]
-"137
-[; ;eeprom.c: 137: }
-[e :UE 1649 ]
+"123
+[; ;eeprom.c: 123: }
+[e :UE 1646 ]
 }
-"139
-[; ;eeprom.c: 139: void write_tala(uint8_t x) {
+"125
+[; ;eeprom.c: 125: void write_tala(uint8_t x) {
 [v _write_tala `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_tala ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"141
-[; ;eeprom.c: 141:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF003));
+"127
+[; ;eeprom.c: 127:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF003));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61443 `ui `us `i `uc ]
-"143
-[; ;eeprom.c: 143:     DATAEE_WriteByte(0xF003, x);
+"129
+[; ;eeprom.c: 129:     DATAEE_WriteByte(0xF003, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61443 `ui `us _x ]
-"144
-[; ;eeprom.c: 144: }
-[e :UE 1650 ]
+"130
+[; ;eeprom.c: 130: }
+[e :UE 1647 ]
 }
-"146
-[; ;eeprom.c: 146: void write_alat(uint8_t x) {
+"132
+[; ;eeprom.c: 132: void write_alat(uint8_t x) {
 [v _write_alat `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_alat ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"148
-[; ;eeprom.c: 148:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF004));
+"134
+[; ;eeprom.c: 134:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF004));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61444 `ui `us `i `uc ]
-"150
-[; ;eeprom.c: 150:     DATAEE_WriteByte(0xF004, x);
+"136
+[; ;eeprom.c: 136:     DATAEE_WriteByte(0xF004, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61444 `ui `us _x ]
-"151
-[; ;eeprom.c: 151: }
-[e :UE 1651 ]
+"137
+[; ;eeprom.c: 137: }
+[e :UE 1648 ]
 }
-"153
-[; ;eeprom.c: 153: void write_alal(uint8_t x) {
+"139
+[; ;eeprom.c: 139: void write_alal(uint8_t x) {
 [v _write_alal `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_alal ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"155
-[; ;eeprom.c: 155:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF005));
+"141
+[; ;eeprom.c: 141:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF005));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61445 `ui `us `i `uc ]
-"157
-[; ;eeprom.c: 157:     DATAEE_WriteByte(0xF005, x);
+"143
+[; ;eeprom.c: 143:     DATAEE_WriteByte(0xF005, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61445 `ui `us _x ]
-"158
-[; ;eeprom.c: 158: }
-[e :UE 1652 ]
+"144
+[; ;eeprom.c: 144: }
+[e :UE 1649 ]
 }
-"160
-[; ;eeprom.c: 160: void write_alaf(uint8_t x) {
+"146
+[; ;eeprom.c: 146: void write_alaf(uint8_t x) {
 [v _write_alaf `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _write_alaf ]
 [v _x `uc ~T0 @X0 1 r1 ]
 [f ]
-"162
-[; ;eeprom.c: 162:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF006));
+"148
+[; ;eeprom.c: 148:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + x - DATAEE_ReadByte(0xF006));
 [e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `i -> _x `i -> ( _DATAEE_ReadByte (1 -> -> 61446 `ui `us `i `uc ]
-"164
-[; ;eeprom.c: 164:     DATAEE_WriteByte(0xF006, x);
+"150
+[; ;eeprom.c: 150:     DATAEE_WriteByte(0xF006, x);
 [e ( _DATAEE_WriteByte (2 , -> -> 61446 `ui `us _x ]
-"165
-[; ;eeprom.c: 165: }
-[e :UE 1653 ]
+"151
+[; ;eeprom.c: 151: }
+[e :UE 1650 ]
 }

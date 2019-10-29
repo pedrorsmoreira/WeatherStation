@@ -21509,24 +21509,18 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-
-
-
-
+# 35 "./utils.h"
 extern uint8_t volatile seconds;
-_Bool btn1State;
-_Bool btn2State;
 extern _Bool s1flag;
 extern _Bool s2flag;
-extern uint8_t PMON;
-extern uint8_t NREG;
-extern uint8_t TALA;
-extern uint8_t ALAT;
-extern uint8_t ALAL;
-extern uint8_t ALAF;
-extern volatile uint8_t CLKH;
-extern volatile uint8_t CLKM;
-
+extern uint8_t pmon;
+extern uint8_t nreg;
+extern uint8_t tala;
+extern uint8_t alat;
+extern uint8_t alal;
+extern uint8_t alaf;
+extern volatile uint8_t clkh;
+extern volatile uint8_t clkm;
 extern uint8_t illum;
 extern uint8_t temp;
 
@@ -21543,6 +21537,7 @@ void update_clk(void);
 _Bool ring_buffer(void);
 # 17 "./menus.h" 2
 
+
 uint8_t mode = 0;
 void Menu(uint8_t mode);
 uint8_t Update(uint8_t var, uint8_t thr);
@@ -21554,54 +21549,54 @@ void Menus(void);
 void Blink(void);
 # 47 "main.c" 2
 # 56 "main.c"
-_Bool s1flag;
-_Bool s2flag;
-
-
-int volatile timer;
-_Bool volatile switch1;
-_Bool volatile flag_timer;
+volatile uint8_t timer;
+volatile _Bool switch1;
+volatile _Bool flag_timer;
 int initial_time;
-uint8_t PMON = 5;
-uint8_t NREG = 30;
-uint8_t TALA = 3;
-uint8_t ALAT = 25;
-uint8_t ALAL = 2;
-uint8_t ALAF = 0;
-volatile uint8_t CLKH = 0;
-volatile uint8_t CLKM = 0;
+uint8_t pmon;
+uint8_t tala;
+uint8_t alat;
+uint8_t alal;
+uint8_t alaf;
+volatile uint8_t clkh;
+volatile uint8_t clkm;
 uint8_t temp;
 uint8_t illum;
 volatile uint8_t seconds;
+_Bool btn1State;
+_Bool btn2State;
 
 _Bool alarm;
 float incr;
 
-volatile _Bool timer1 = 0;
+void sys_init(void){
+    timer = 0;
+    switch1 = 0;
+    flag_timer = 0;
+    initial_time = 0;
+    btn1State = 0;
+    btn2State = 0;
+    alarm = 0;
+}
 
 void Timer(){
     do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
 
-    if(PMON == 0)
-        return;
-
-    if(timer++ >= PMON){
-        timer = 0;
-        timer1 = 1;
-    }
+    if(pmon != 0)
+        timer++;
 
     if(seconds < 59)
         seconds++;
     else{
         seconds = 0;
-        if(CLKM < 59)
-            CLKM++;
+        if(clkm < 59)
+            clkm++;
         else{
-            CLKM = 0;
-            if(CLKH < 23)
-                CLKH++;
+            clkm = 0;
+            if(clkh < 23)
+                clkh++;
             else
-                CLKH = 0;
+                clkh = 0;
         }
     }
 
@@ -21610,16 +21605,15 @@ void Timer(){
     }
 }
 
-void ClearAlarm(){
+void clear_alarm(){
     PWM_Output_D4_Disable();
     do { LATAbits.LATA6 = 0; } while(0);
-
     alarm = 0;
 }
 
 void Switch1(void){
     if(alarm)
-        ClearAlarm();
+        clear_alarm();
     else
         switch1 = 1;
 }
@@ -21629,7 +21623,7 @@ void Alarm(void){
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(250);
     TMR2_StartTimer();
-    initial_time = CLKH * 3600 + CLKM * 60 + seconds;
+    initial_time = clkh * 3600 + clkm * 60 + seconds;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -21639,18 +21633,11 @@ uint8_t xor(uint8_t x, uint8_t y){
 void main(void)
 {
 
-    timer = 0;
-    switch1 = 0;
-    flag_timer = 0;
-    initial_time = 0;
-    btn1State = 0;
-    btn2State = 0;
-    alarm = 0;
-# 158 "main.c"
-    SYSTEM_Initialize();
 
+    SYSTEM_Initialize();
+    sys_init();
     load_eeprom();
-    ClearAlarm();
+    clear_alarm();
 
 
     (INTCONbits.GIE = 1);
@@ -21660,7 +21647,7 @@ void main(void)
 
     TMR1_SetInterruptHandler(Timer);
     INT_SetInterruptHandler(Switch1);
-# 181 "main.c"
+
     i2c1_driver_open();
     TRISCbits.TRISC3 = 1;
     TRISCbits.TRISC4 = 1;
@@ -21674,21 +21661,21 @@ void main(void)
             flag_timer = 0;
             update_clk();
         }
-        if(timer1){
-            timer1 = 0;
+        if(timer >= pmon && pmon != 0){
+            timer = 0;
             (INTCONbits.PEIE = 1);
             illum = ReadIllum();
             LATAbits.LATA4 = illum & 1;
             LATAbits.LATA5 = (illum & 2) >> 1;
             temp = ReadTemp();
             ring_buffer();
-            if((illum < ALAL || temp > ALAT) && ALAF == 1)
+            if((illum < alal || temp > alat) && alaf == 1)
                 if(!alarm) Alarm();
         } else
             (INTCONbits.PEIE = 1);
 
         if(alarm){
-            if(CLKH * 3600 + CLKM * 60 + seconds - initial_time >= TALA){
+            if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 do { LATAbits.LATA6 = 1; } while(0);
                 __asm("sleep");
@@ -21699,8 +21686,6 @@ void main(void)
         (PIE0bits.INTE = 0);
         if(switch1){
             switch1 = 0;
-            s1flag = 0;
-            do { LATBbits.LATB4 = 1; } while(0);
             Menus();
             (INTCONbits.PEIE = 0);
             TMR1_SetInterruptHandler(Timer);

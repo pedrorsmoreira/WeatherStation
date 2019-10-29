@@ -20,10 +20,19 @@ extern "C" {
 #define LEDs                LATA
 #define DELAY               200 //ms
     
+//default values
+#define PMON                5 // monitoring period
+#define NREG                30 // number of registers in the ring buffer
+#define TALA                3 // duration of alarm signal (PWM)
+#define ALAT                25 // threshold for temperature alarm
+#define ALAL                2 // threshold for luminosity level alarm
+#define ALAF                0 // alarm flag ? initially disabled
+#define CLKH                0 // initial value for clock hours
+#define CLKM                0 // initial value for clock minutes
+
+    
     
 extern uint8_t volatile seconds;
-bool btn1State;
-bool btn2State;
 extern bool s1flag; //flag que fica a true quando ha interrupao do S1
 extern bool s2flag; //same mas para S2
 extern uint8_t pmon; // monitoring period
@@ -34,7 +43,6 @@ extern uint8_t alal; // threshold for luminosity level alarm
 extern uint8_t alaf; // alarm flag ? initially disabled
 extern volatile uint8_t clkh; // initial value for clock hours
 extern volatile uint8_t clkm; // initial value for clock minutes
-
 extern uint8_t illum;
 extern uint8_t temp;
 

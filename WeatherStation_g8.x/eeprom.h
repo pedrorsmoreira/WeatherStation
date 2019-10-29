@@ -21,7 +21,7 @@
 #define ALAT_       0xF004
 #define ALAL_       0xF005
 #define ALAF_       0xF006
-#define CLKH_       0xF007
+#define CLKH_       0xF007 
 #define CLKM_       0xF008
 #define USED_       0xF009 //to check if the eeprom was already set  (if so, it holds th value 0xAA)
 #define WBUF_       0xF00A //ring buffer current write position 

@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F12646 `(v ~T0 @X0 0 tf ]
 [v F12648 `(v ~T0 @X0 0 tf ]
-"8 utils.c
-[; ;utils.c: 8:     return ADCC_GetSingleConversion(ILLUM)>> 14;
+"12 utils.c
+[; ;utils.c: 12:     return ADCC_GetSingleConversion(ILLUM)>> 14;
 [c E12733 0 60 61 62 63 .. ]
 [n E12733 . ILLUM channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "249 ./mcc_generated_files/adcc.h
@@ -146,9 +146,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 /Applications/microchip/xc8/v2.10/pic/include/pic.h
 [v __delay `JF12204 ~T0 @X0 0 e ]
 [p i __delay ]
-"26 ./utils.h
-[; ;./utils.h: 26: extern _Bool s1flag;
-[v _s1flag `a ~T0 @X0 0 e ]
 "514 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 514:     struct {
 [s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -160,62 +157,56 @@ Version 4.0 HI-TECH Software Intermediate Code
 "525
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 525: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x00E)));
 [v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
-"27 ./utils.h
-[; ;./utils.h: 27: extern _Bool s2flag;
-[v _s2flag `a ~T0 @X0 0 e ]
 "59 ./eeprom.h
 [; ;./eeprom.h: 59: _Bool used(void);
 [v _used `(a ~T0 @X0 0 ef ]
-"28 ./utils.h
-[; ;./utils.h: 28: extern uint8_t PMON;
-[v _PMON `uc ~T0 @X0 0 e ]
+"38 ./utils.h
+[; ;./utils.h: 38: extern uint8_t pmon;
+[v _pmon `uc ~T0 @X0 0 e ]
 "64 ./eeprom.h
 [; ;./eeprom.h: 64: uint8_t read_pmon(void);
 [v _read_pmon `(uc ~T0 @X0 0 ef ]
-"29 ./utils.h
-[; ;./utils.h: 29: extern uint8_t NREG;
-[v _NREG `uc ~T0 @X0 0 e ]
-"63 ./eeprom.h
+"63
 [; ;./eeprom.h: 63: uint8_t read_nreg(void);
 [v _read_nreg `(uc ~T0 @X0 0 ef ]
-"30 ./utils.h
-[; ;./utils.h: 30: extern uint8_t TALA;
-[v _TALA `uc ~T0 @X0 0 e ]
+"40 ./utils.h
+[; ;./utils.h: 40: extern uint8_t tala;
+[v _tala `uc ~T0 @X0 0 e ]
 "65 ./eeprom.h
 [; ;./eeprom.h: 65: uint8_t read_tala(void);
 [v _read_tala `(uc ~T0 @X0 0 ef ]
-"31 ./utils.h
-[; ;./utils.h: 31: extern uint8_t ALAT;
-[v _ALAT `uc ~T0 @X0 0 e ]
+"41 ./utils.h
+[; ;./utils.h: 41: extern uint8_t alat;
+[v _alat `uc ~T0 @X0 0 e ]
 "66 ./eeprom.h
 [; ;./eeprom.h: 66: uint8_t read_alat(void);
 [v _read_alat `(uc ~T0 @X0 0 ef ]
-"32 ./utils.h
-[; ;./utils.h: 32: extern uint8_t ALAL;
-[v _ALAL `uc ~T0 @X0 0 e ]
+"42 ./utils.h
+[; ;./utils.h: 42: extern uint8_t alal;
+[v _alal `uc ~T0 @X0 0 e ]
 "67 ./eeprom.h
 [; ;./eeprom.h: 67: uint8_t read_alal(void);
 [v _read_alal `(uc ~T0 @X0 0 ef ]
-"33 ./utils.h
-[; ;./utils.h: 33: extern uint8_t ALAF;
-[v _ALAF `uc ~T0 @X0 0 e ]
+"43 ./utils.h
+[; ;./utils.h: 43: extern uint8_t alaf;
+[v _alaf `uc ~T0 @X0 0 e ]
 "68 ./eeprom.h
 [; ;./eeprom.h: 68: uint8_t read_alaf(void);
 [v _read_alaf `(uc ~T0 @X0 0 ef ]
-"34 ./utils.h
-[; ;./utils.h: 34: extern volatile uint8_t CLKH;
-[v _CLKH `Vuc ~T0 @X0 0 e ]
+"44 ./utils.h
+[; ;./utils.h: 44: extern volatile uint8_t clkh;
+[v _clkh `Vuc ~T0 @X0 0 e ]
 "69 ./eeprom.h
 [; ;./eeprom.h: 69: uint8_t read_clkh(void);
 [v _read_clkh `(uc ~T0 @X0 0 ef ]
-"35 ./utils.h
-[; ;./utils.h: 35: extern volatile uint8_t CLKM;
-[v _CLKM `Vuc ~T0 @X0 0 e ]
+"45 ./utils.h
+[; ;./utils.h: 45: extern volatile uint8_t clkm;
+[v _clkm `Vuc ~T0 @X0 0 e ]
 "70 ./eeprom.h
 [; ;./eeprom.h: 70: uint8_t read_clkm(void);
 [v _read_clkm `(uc ~T0 @X0 0 ef ]
-"48 ./utils.h
-[; ;./utils.h: 48: void eeprom_default_setup(void);
+"57 ./utils.h
+[; ;./utils.h: 57: void eeprom_default_setup(void);
 [v _eeprom_default_setup `(v ~T0 @X0 0 ef ]
 "52 ./eeprom.h
 [; ;./eeprom.h: 52: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
@@ -226,14 +217,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "57
 [; ;./eeprom.h: 57: _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L);
 [v _ring_buffer_write `(a ~T0 @X0 0 ef5`uc`uc`uc`uc`uc ]
-"23 ./utils.h
-[; ;./utils.h: 23: extern uint8_t volatile seconds;
+"35 ./utils.h
+[; ;./utils.h: 35: extern uint8_t volatile seconds;
 [v _seconds `Vuc ~T0 @X0 0 e ]
-"38
-[; ;./utils.h: 38: extern uint8_t temp;
+"47
+[; ;./utils.h: 47: extern uint8_t temp;
 [v _temp `uc ~T0 @X0 0 e ]
-"37
-[; ;./utils.h: 37: extern uint8_t illum;
+"46
+[; ;./utils.h: 46: extern uint8_t illum;
 [v _illum `uc ~T0 @X0 0 e ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 54: __asm("INDF0 equ 00h");
@@ -1879,518 +1870,527 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79
 [; ;./mcc_generated_files/i2c1_driver.h: 79: void (*i2c1_driver_i2cISR)(void);
 [v _i2c1_driver_i2cISR `*F12648 ~T0 @X0 1 e ]
-"24 ./utils.h
-[; ;./utils.h: 24: _Bool btn1State;
+"5 utils.c
+[; ;utils.c: 5: _Bool s1flag;
+[v _s1flag `a ~T0 @X0 1 e ]
+"6
+[; ;utils.c: 6: _Bool s2flag;
+[v _s2flag `a ~T0 @X0 1 e ]
+"7
+[; ;utils.c: 7: uint8_t nreg;
+[v _nreg `uc ~T0 @X0 1 e ]
+"8
+[; ;utils.c: 8: _Bool btn1State;
 [v _btn1State `a ~T0 @X0 1 e ]
-"25
-[; ;./utils.h: 25: _Bool btn2State;
+"9
+[; ;utils.c: 9: _Bool btn2State;
 [v _btn2State `a ~T0 @X0 1 e ]
-"7 utils.c
-[; ;utils.c: 7: uint8_t ReadIllum(void){
+"11
+[; ;utils.c: 11: uint8_t ReadIllum(void){
 [v _ReadIllum `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ReadIllum ]
 [f ]
-"8
-[; ;utils.c: 8:     return ADCC_GetSingleConversion(ILLUM)>> 14;
+"12
+[; ;utils.c: 12:     return ADCC_GetSingleConversion(ILLUM)>> 14;
 [e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12733 0 `ui -> 14 `i `uc ]
 [e $UE 1627  ]
-"9
-[; ;utils.c: 9: }
+"13
+[; ;utils.c: 13: }
 [e :UE 1627 ]
 }
-"11
-[; ;utils.c: 11: uint8_t ReadTemp(void){
+"15
+[; ;utils.c: 15: uint8_t ReadTemp(void){
 [v _ReadTemp `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ReadTemp ]
 [f ]
-"12
-[; ;utils.c: 12:  unsigned char value;
+"16
+[; ;utils.c: 16:  unsigned char value;
 [v _value `uc ~T0 @X0 1 a ]
-"13
-[; ;utils.c: 13:     return 10;
+"17
+[; ;utils.c: 17:     return 10;
 [e ) -> -> 10 `i `uc ]
 [e $UE 1628  ]
-"14
-[; ;utils.c: 14:     do{
+"18
+[; ;utils.c: 18:     do{
 [e :U 1631 ]
 {
-"15
-[; ;utils.c: 15:         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"19
+[; ;utils.c: 19:         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1632  ]
 [e :U 1633 ]
 [e :U 1632 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1633  ]
 [e :U 1634 ]
-"16
-[; ;utils.c: 16:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
+"20
+[; ;utils.c: 20:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
 [e $U 1635  ]
 [e :U 1636 ]
-"17
-[; ;utils.c: 17:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"21
+[; ;utils.c: 21:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1635 ]
-"16
-[; ;utils.c: 16:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
+"20
+[; ;utils.c: 20:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1636  ]
 [e :U 1637 ]
-"17
-[; ;utils.c: 17:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"21
+[; ;utils.c: 21:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1638  ]
 [e :U 1639 ]
 [e :U 1638 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1639  ]
 [e :U 1640 ]
-"19
-[; ;utils.c: 19:         WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"23
+[; ;utils.c: 23:         WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
 [e $U 1641  ]
 [e :U 1642 ]
 [e :U 1641 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1642  ]
 [e :U 1643 ]
-"20
-[; ;utils.c: 20:         WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"24
+[; ;utils.c: 24:         WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 1 `i `uc ]
 [e $U 1644  ]
 [e :U 1645 ]
 [e :U 1644 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1645  ]
 [e :U 1646 ]
-"21
-[; ;utils.c: 21:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
+"25
+[; ;utils.c: 25:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
 [e $U 1647  ]
 [e :U 1648 ]
-"22
-[; ;utils.c: 22:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"26
+[; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1647 ]
-"21
-[; ;utils.c: 21:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
+"25
+[; ;utils.c: 25:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1648  ]
 [e :U 1649 ]
-"22
-[; ;utils.c: 22:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"26
+[; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1650  ]
 [e :U 1651 ]
 [e :U 1650 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1651  ]
 [e :U 1652 ]
-"23
-[; ;utils.c: 23:         WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"27
+[; ;utils.c: 27:         WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
 [e $U 1653  ]
 [e :U 1654 ]
 [e :U 1653 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1654  ]
 [e :U 1655 ]
-"24
-[; ;utils.c: 24:         value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"28
+[; ;utils.c: 28:         value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
 [e $U 1656  ]
 [e :U 1657 ]
 [e :U 1656 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1657  ]
 [e :U 1658 ]
-"25
-[; ;utils.c: 25:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
+"29
+[; ;utils.c: 29:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
 [e $U 1659  ]
 [e :U 1660 ]
-"26
-[; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"30
+[; ;utils.c: 30:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1659 ]
-"25
-[; ;utils.c: 25:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
+"29
+[; ;utils.c: 29:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1660  ]
 [e :U 1661 ]
-"26
-[; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"30
+[; ;utils.c: 30:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1662  ]
 [e :U 1663 ]
 [e :U 1662 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1663  ]
 [e :U 1664 ]
-"27
-[; ;utils.c: 27:         SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
+"31
+[; ;utils.c: 31:         SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
 [e $U 1665  ]
 [e :U 1666 ]
 [e :U 1665 ]
 [e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1666  ]
 [e :U 1667 ]
-"28
-[; ;utils.c: 28:     } while (!(value & 0x40));
+"32
+[; ;utils.c: 32:     } while (!(value & 0x40));
 }
 [e $ ! != & -> _value `i -> 64 `i -> 0 `i 1631  ]
 [e :U 1630 ]
-"30
-[; ;utils.c: 30:  while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"34
+[; ;utils.c: 34:  while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1668  ]
 [e :U 1669 ]
 [e :U 1668 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1669  ]
 [e :U 1670 ]
-"31
-[; ;utils.c: 31:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
+"35
+[; ;utils.c: 35:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
 [e $U 1671  ]
 [e :U 1672 ]
-"32
-[; ;utils.c: 32:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"36
+[; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1671 ]
-"31
-[; ;utils.c: 31:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
+"35
+[; ;utils.c: 35:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1672  ]
 [e :U 1673 ]
-"32
-[; ;utils.c: 32:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"36
+[; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1674  ]
 [e :U 1675 ]
 [e :U 1674 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1675  ]
 [e :U 1676 ]
-"33
-[; ;utils.c: 33:  WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"37
+[; ;utils.c: 37:  WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
 [e $U 1677  ]
 [e :U 1678 ]
 [e :U 1677 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1678  ]
 [e :U 1679 ]
-"34
-[; ;utils.c: 34:  WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"38
+[; ;utils.c: 38:  WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 0 `i `uc ]
 [e $U 1680  ]
 [e :U 1681 ]
 [e :U 1680 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1681  ]
 [e :U 1682 ]
-"35
-[; ;utils.c: 35:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
+"39
+[; ;utils.c: 39:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
 [e $U 1683  ]
 [e :U 1684 ]
-"36
-[; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"40
+[; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1683 ]
-"35
-[; ;utils.c: 35:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
+"39
+[; ;utils.c: 39:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1684  ]
 [e :U 1685 ]
-"36
-[; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"40
+[; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1686  ]
 [e :U 1687 ]
 [e :U 1686 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1687  ]
 [e :U 1688 ]
-"37
-[; ;utils.c: 37:  WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"41
+[; ;utils.c: 41:  WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
 [e $U 1689  ]
 [e :U 1690 ]
 [e :U 1689 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1690  ]
 [e :U 1691 ]
-"38
-[; ;utils.c: 38:  value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"42
+[; ;utils.c: 42:  value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
 [e $U 1692  ]
 [e :U 1693 ]
 [e :U 1692 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1693  ]
 [e :U 1694 ]
-"39
-[; ;utils.c: 39:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
+"43
+[; ;utils.c: 43:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
 [e $U 1695  ]
 [e :U 1696 ]
-"40
-[; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"44
+[; ;utils.c: 44:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e :U 1695 ]
-"39
-[; ;utils.c: 39:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
+"43
+[; ;utils.c: 43:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1696  ]
 [e :U 1697 ]
-"40
-[; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
+"44
+[; ;utils.c: 44:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e $U 1698  ]
 [e :U 1699 ]
 [e :U 1698 ]
 [e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1699  ]
 [e :U 1700 ]
-"41
-[; ;utils.c: 41:  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
+"45
+[; ;utils.c: 45:  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
 [e $U 1701  ]
 [e :U 1702 ]
 [e :U 1701 ]
 [e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1702  ]
 [e :U 1703 ]
-"43
-[; ;utils.c: 43:  return (uint8_t) value;
+"47
+[; ;utils.c: 47:  return (uint8_t) value;
 [e ) _value ]
 [e $UE 1628  ]
-"44
-[; ;utils.c: 44: }
+"48
+[; ;utils.c: 48: }
 [e :UE 1628 ]
 }
-"46
-[; ;utils.c: 46: void PWM_Output_D4_Enable (void){
+"50
+[; ;utils.c: 50: void PWM_Output_D4_Enable (void){
 [v _PWM_Output_D4_Enable `(v ~T0 @X0 1 ef ]
 {
 [e :U _PWM_Output_D4_Enable ]
 [f ]
-"47
-[; ;utils.c: 47:     PPSLOCK = 0x55;
-[e = _PPSLOCK -> -> 85 `i `uc ]
-"48
-[; ;utils.c: 48:     PPSLOCK = 0xAA;
-[e = _PPSLOCK -> -> 170 `i `uc ]
-"49
-[; ;utils.c: 49:     PPSLOCKbits.PPSLOCKED = 0x00;
-[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
 "51
-[; ;utils.c: 51:     RA6PPS = 0x0E;
-[e = _RA6PPS -> -> 14 `i `uc ]
-"52
-[; ;utils.c: 52:     PPSLOCK = 0x55;
+[; ;utils.c: 51:     PPSLOCK = 0x55;
 [e = _PPSLOCK -> -> 85 `i `uc ]
-"53
-[; ;utils.c: 53:     PPSLOCK = 0xAA;
+"52
+[; ;utils.c: 52:     PPSLOCK = 0xAA;
 [e = _PPSLOCK -> -> 170 `i `uc ]
-"54
-[; ;utils.c: 54:     PPSLOCKbits.PPSLOCKED = 0x01;
-[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"53
+[; ;utils.c: 53:     PPSLOCKbits.PPSLOCKED = 0x00;
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
 "55
-[; ;utils.c: 55: }
+[; ;utils.c: 55:     RA6PPS = 0x0E;
+[e = _RA6PPS -> -> 14 `i `uc ]
+"56
+[; ;utils.c: 56:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"57
+[; ;utils.c: 57:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"58
+[; ;utils.c: 58:     PPSLOCKbits.PPSLOCKED = 0x01;
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"59
+[; ;utils.c: 59: }
 [e :UE 1704 ]
 }
-"57
-[; ;utils.c: 57: void PWM_Output_D4_Disable (void){
+"61
+[; ;utils.c: 61: void PWM_Output_D4_Disable (void){
 [v _PWM_Output_D4_Disable `(v ~T0 @X0 1 ef ]
 {
 [e :U _PWM_Output_D4_Disable ]
 [f ]
-"58
-[; ;utils.c: 58:     PPSLOCK = 0x55;
-[e = _PPSLOCK -> -> 85 `i `uc ]
-"59
-[; ;utils.c: 59:     PPSLOCK = 0xAA;
-[e = _PPSLOCK -> -> 170 `i `uc ]
-"60
-[; ;utils.c: 60:     PPSLOCKbits.PPSLOCKED = 0x00;
-[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
 "62
-[; ;utils.c: 62:     RA6PPS = 0x00;
-[e = _RA6PPS -> -> 0 `i `uc ]
-"63
-[; ;utils.c: 63:     PPSLOCK = 0x55;
+[; ;utils.c: 62:     PPSLOCK = 0x55;
 [e = _PPSLOCK -> -> 85 `i `uc ]
-"64
-[; ;utils.c: 64:     PPSLOCK = 0xAA;
+"63
+[; ;utils.c: 63:     PPSLOCK = 0xAA;
 [e = _PPSLOCK -> -> 170 `i `uc ]
-"65
-[; ;utils.c: 65:     PPSLOCKbits.PPSLOCKED = 0x01;
-[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"64
+[; ;utils.c: 64:     PPSLOCKbits.PPSLOCKED = 0x00;
+[e = . . _PPSLOCKbits 0 0 -> -> 0 `i `uc ]
 "66
-[; ;utils.c: 66: }
+[; ;utils.c: 66:     RA6PPS = 0x00;
+[e = _RA6PPS -> -> 0 `i `uc ]
+"67
+[; ;utils.c: 67:     PPSLOCK = 0x55;
+[e = _PPSLOCK -> -> 85 `i `uc ]
+"68
+[; ;utils.c: 68:     PPSLOCK = 0xAA;
+[e = _PPSLOCK -> -> 170 `i `uc ]
+"69
+[; ;utils.c: 69:     PPSLOCKbits.PPSLOCKED = 0x01;
+[e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
+"70
+[; ;utils.c: 70: }
 [e :UE 1705 ]
 }
-"68
-[; ;utils.c: 68: void ShowOnLEDs(uint8_t num){
+"72
+[; ;utils.c: 72: void ShowOnLEDs(uint8_t num){
 [v _ShowOnLEDs `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _ShowOnLEDs ]
 [v _num `uc ~T0 @X0 1 r1 ]
 [f ]
-"69
-[; ;utils.c: 69:     LATA = num << 4;
+"73
+[; ;utils.c: 73:     LATA = num << 4;
 [e = _LATA -> << -> _num `i -> 4 `i `uc ]
-"70
-[; ;utils.c: 70: }
+"74
+[; ;utils.c: 74: }
 [e :UE 1706 ]
 }
-"72
-[; ;utils.c: 72: void checkButtonS1(void) {
+"76
+[; ;utils.c: 76: void checkButtonS1(void) {
 [v _checkButtonS1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _checkButtonS1 ]
 [f ]
-"73
-[; ;utils.c: 73:     if (btn1State == 0) {
+"77
+[; ;utils.c: 77:     if (btn1State == 0) {
 [e $ ! == -> _btn1State `i -> 0 `i 1708  ]
 {
-"74
-[; ;utils.c: 74:         if (PORTBbits.RB4 == 0) {
+"78
+[; ;utils.c: 78:         if (PORTBbits.RB4 == 0) {
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1709  ]
 {
-"75
-[; ;utils.c: 75:             _delay((unsigned long)((100)*(1000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
-"76
-[; ;utils.c: 76:             btn1State = 1;
+"79
+[; ;utils.c: 79:             _delay((unsigned long)((200)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
+"80
+[; ;utils.c: 80:             btn1State = 1;
 [e = _btn1State -> -> 1 `i `a ]
-"77
-[; ;utils.c: 77:         }
+"81
+[; ;utils.c: 81:         }
 }
 [e :U 1709 ]
-"78
-[; ;utils.c: 78:     } else if (PORTBbits.RB4 == 1) {
+"82
+[; ;utils.c: 82:     } else if (PORTBbits.RB4 == 1) {
 }
 [e $U 1710  ]
 [e :U 1708 ]
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 1711  ]
 {
-"79
-[; ;utils.c: 79:         btn1State = 0;
+"83
+[; ;utils.c: 83:         btn1State = 0;
 [e = _btn1State -> -> 0 `i `a ]
-"80
-[; ;utils.c: 80:         s1flag = 1;
+"84
+[; ;utils.c: 84:         s1flag = 1;
 [e = _s1flag -> -> 1 `i `a ]
-"81
-[; ;utils.c: 81:     }
+"85
+[; ;utils.c: 85:     }
 }
 [e :U 1711 ]
 [e :U 1710 ]
-"82
-[; ;utils.c: 82: }
+"86
+[; ;utils.c: 86: }
 [e :UE 1707 ]
 }
-"84
-[; ;utils.c: 84: void checkButtonS2(void) {
+"88
+[; ;utils.c: 88: void checkButtonS2(void) {
 [v _checkButtonS2 `(v ~T0 @X0 1 ef ]
 {
 [e :U _checkButtonS2 ]
 [f ]
-"85
-[; ;utils.c: 85:     if (btn2State == 0) {
+"89
+[; ;utils.c: 89:     if (btn2State == 0) {
 [e $ ! == -> _btn2State `i -> 0 `i 1713  ]
 {
-"86
-[; ;utils.c: 86:         if (PORTCbits.RC5 == 0) {
+"90
+[; ;utils.c: 90:         if (PORTCbits.RC5 == 0) {
 [e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 1714  ]
 {
-"87
-[; ;utils.c: 87:             _delay((unsigned long)((100)*(1000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
-"88
-[; ;utils.c: 88:             btn2State = 1;
+"91
+[; ;utils.c: 91:             _delay((unsigned long)((200)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
+"92
+[; ;utils.c: 92:             btn2State = 1;
 [e = _btn2State -> -> 1 `i `a ]
-"89
-[; ;utils.c: 89:         }
+"93
+[; ;utils.c: 93:         }
 }
 [e :U 1714 ]
-"90
-[; ;utils.c: 90:     } else if (PORTCbits.RC5 == 1) {
+"94
+[; ;utils.c: 94:     } else if (PORTCbits.RC5 == 1) {
 }
 [e $U 1715  ]
 [e :U 1713 ]
 [e $ ! == -> . . _PORTCbits 0 5 `i -> 1 `i 1716  ]
 {
-"91
-[; ;utils.c: 91:         btn2State = 0;
+"95
+[; ;utils.c: 95:         btn2State = 0;
 [e = _btn2State -> -> 0 `i `a ]
-"92
-[; ;utils.c: 92:         s2flag = 1;
+"96
+[; ;utils.c: 96:         s2flag = 1;
 [e = _s2flag -> -> 1 `i `a ]
-"93
-[; ;utils.c: 93:     }
+"97
+[; ;utils.c: 97:     }
 }
 [e :U 1716 ]
 [e :U 1715 ]
-"94
-[; ;utils.c: 94: }
+"98
+[; ;utils.c: 98: }
 [e :UE 1712 ]
 }
-"96
-[; ;utils.c: 96: void load_eeprom(void){
+"100
+[; ;utils.c: 100: void load_eeprom(void){
 [v _load_eeprom `(v ~T0 @X0 1 ef ]
 {
 [e :U _load_eeprom ]
 [f ]
-"98
-[; ;utils.c: 98:     if(used()){
+"102
+[; ;utils.c: 102:     if(used()){
 [e $ ! != -> ( _used ..  `i -> 0 `i 1718  ]
 {
-"99
-[; ;utils.c: 99:         PMON = read_pmon();
-[e = _PMON ( _read_pmon ..  ]
-"100
-[; ;utils.c: 100:         NREG = read_nreg();
-[e = _NREG ( _read_nreg ..  ]
-"101
-[; ;utils.c: 101:         TALA = read_tala();
-[e = _TALA ( _read_tala ..  ]
-"102
-[; ;utils.c: 102:         ALAT = read_alat();
-[e = _ALAT ( _read_alat ..  ]
 "103
-[; ;utils.c: 103:         ALAL = read_alal();
-[e = _ALAL ( _read_alal ..  ]
+[; ;utils.c: 103:         pmon = read_pmon();
+[e = _pmon ( _read_pmon ..  ]
 "104
-[; ;utils.c: 104:         ALAF = read_alaf();
-[e = _ALAF ( _read_alaf ..  ]
+[; ;utils.c: 104:         nreg = read_nreg();
+[e = _nreg ( _read_nreg ..  ]
 "105
-[; ;utils.c: 105:         CLKH = read_clkh();
-[e = _CLKH ( _read_clkh ..  ]
+[; ;utils.c: 105:         tala = read_tala();
+[e = _tala ( _read_tala ..  ]
 "106
-[; ;utils.c: 106:         CLKM = read_clkm();
-[e = _CLKM ( _read_clkm ..  ]
+[; ;utils.c: 106:         alat = read_alat();
+[e = _alat ( _read_alat ..  ]
 "107
-[; ;utils.c: 107:     } else
+[; ;utils.c: 107:         alal = read_alal();
+[e = _alal ( _read_alal ..  ]
+"108
+[; ;utils.c: 108:         alaf = read_alaf();
+[e = _alaf ( _read_alaf ..  ]
+"109
+[; ;utils.c: 109:         clkh = read_clkh();
+[e = _clkh ( _read_clkh ..  ]
+"110
+[; ;utils.c: 110:         clkm = read_clkm();
+[e = _clkm ( _read_clkm ..  ]
+"111
+[; ;utils.c: 111:     } else
 }
 [e $U 1719  ]
 [e :U 1718 ]
-"108
-[; ;utils.c: 108:         eeprom_default_setup();
+"112
+[; ;utils.c: 112:         eeprom_default_setup();
 [e ( _eeprom_default_setup ..  ]
 [e :U 1719 ]
-"109
-[; ;utils.c: 109: }
+"113
+[; ;utils.c: 113: }
 [e :UE 1717 ]
 }
-"111
-[; ;utils.c: 111: void eeprom_default_setup(void){
+"115
+[; ;utils.c: 115: void eeprom_default_setup(void){
 [v _eeprom_default_setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _eeprom_default_setup ]
 [f ]
-"112
-[; ;utils.c: 112:     eeprom_setup(1, NREG, PMON, TALA,
-[e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a _NREG _PMON _TALA _ALAT _ALAL _ALAF _CLKH _CLKM ]
-"114
-[; ;utils.c: 114: }
+"116
+[; ;utils.c: 116:     eeprom_setup(1, 30, 5, 3,
+[e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a -> -> 30 `i `uc -> -> 5 `i `uc -> -> 3 `i `uc -> -> 25 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+"118
+[; ;utils.c: 118: }
 [e :UE 1720 ]
 }
-"116
-[; ;utils.c: 116: void update_clk(void){
+"120
+[; ;utils.c: 120: void update_clk(void){
 [v _update_clk `(v ~T0 @X0 1 ef ]
 {
 [e :U _update_clk ]
 [f ]
-"117
-[; ;utils.c: 117:     eeprom_clk_update(CLKH, CLKM);
-[e ( _eeprom_clk_update (2 , _CLKH _CLKM ]
-"118
-[; ;utils.c: 118: }
+"121
+[; ;utils.c: 121:     eeprom_clk_update(clkh, clkm);
+[e ( _eeprom_clk_update (2 , _clkh _clkm ]
+"122
+[; ;utils.c: 122: }
 [e :UE 1721 ]
 }
-"120
-[; ;utils.c: 120: _Bool ring_buffer(void){
+"124
+[; ;utils.c: 124: _Bool ring_buffer(void){
 [v _ring_buffer `(a ~T0 @X0 1 ef ]
 {
 [e :U _ring_buffer ]
 [f ]
-"121
-[; ;utils.c: 121:     return ring_buffer_write(CLKH, CLKM, seconds, temp, illum);
-[e ) ( _ring_buffer_write (4 , , , , _CLKH _CLKM _seconds _temp _illum ]
+"125
+[; ;utils.c: 125:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
+[e ) ( _ring_buffer_write (4 , , , , _clkh _clkm _seconds _temp _illum ]
 [e $UE 1722  ]
-"122
-[; ;utils.c: 122: }
+"126
+[; ;utils.c: 126: }
 [e :UE 1722 ]
 }

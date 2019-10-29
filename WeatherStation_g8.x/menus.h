@@ -15,6 +15,7 @@ extern "C" {
 #include <stdint.h>
 #include "utils.h"
     
+
 uint8_t mode = 0;
 void Menu(uint8_t mode);
 uint8_t Update(uint8_t var, uint8_t thr);

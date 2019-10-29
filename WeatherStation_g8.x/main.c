@@ -57,16 +57,18 @@ volatile uint8_t timer;
 volatile bool switch1;
 volatile bool flag_timer;
 int initial_time;
-uint8_t pmon = 5; // monitoring period
-uint8_t tala = 3; // duration of alarm signal (PWM)
-uint8_t alat = 25; // threshold for temperature alarm
-uint8_t alal = 2; // threshold for luminosity level alarm
-uint8_t alaf = 0; // alarm flag ? initially disabled
-volatile uint8_t clkh = 0; // initial value for clock hours
-volatile uint8_t clkm = 0; // initial value for clock minutes
+uint8_t pmon; // monitoring period
+uint8_t tala; // duration of alarm signal (PWM)
+uint8_t alat; // threshold for temperature alarm
+uint8_t alal; // threshold for luminosity level alarm
+uint8_t alaf; // alarm flag ? initially disabled
+volatile uint8_t clkh; // initial value for clock hours
+volatile uint8_t clkm; // initial value for clock minutes
 uint8_t temp;
 uint8_t illum;
 volatile uint8_t seconds;
+bool btn1State;
+bool btn2State;
 
 bool alarm;
 float incr;
@@ -164,6 +166,7 @@ void main(void)
             update_clk();
         }
         if(timer >= pmon && pmon != 0){
+            NOP();
             timer = 0;
             INTERRUPT_PeripheralInterruptEnable();
             illum = ReadIllum();

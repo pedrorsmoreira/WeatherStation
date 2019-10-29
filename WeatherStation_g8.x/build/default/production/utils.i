@@ -21498,24 +21498,18 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-
-
-
-
+# 35 "./utils.h"
 extern uint8_t volatile seconds;
-_Bool btn1State;
-_Bool btn2State;
 extern _Bool s1flag;
 extern _Bool s2flag;
-extern uint8_t PMON;
-extern uint8_t NREG;
-extern uint8_t TALA;
-extern uint8_t ALAT;
-extern uint8_t ALAL;
-extern uint8_t ALAF;
-extern volatile uint8_t CLKH;
-extern volatile uint8_t CLKM;
-
+extern uint8_t pmon;
+extern uint8_t nreg;
+extern uint8_t tala;
+extern uint8_t alat;
+extern uint8_t alal;
+extern uint8_t alaf;
+extern volatile uint8_t clkh;
+extern volatile uint8_t clkm;
 extern uint8_t illum;
 extern uint8_t temp;
 
@@ -21532,7 +21526,11 @@ void update_clk(void);
 _Bool ring_buffer(void);
 # 4 "utils.c" 2
 
-
+_Bool s1flag;
+_Bool s2flag;
+uint8_t nreg;
+_Bool btn1State;
+_Bool btn2State;
 
 uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
@@ -21602,7 +21600,7 @@ void ShowOnLEDs(uint8_t num){
 void checkButtonS1(void) {
     if (btn1State == 0) {
         if (PORTBbits.RB4 == 0) {
-            _delay((unsigned long)((100)*(1000000/4000.0)));
+            _delay((unsigned long)((200)*(1000000/4000.0)));
             btn1State = 1;
         }
     } else if (PORTBbits.RB4 == 1) {
@@ -21614,7 +21612,7 @@ void checkButtonS1(void) {
 void checkButtonS2(void) {
     if (btn2State == 0) {
         if (PORTCbits.RC5 == 0) {
-            _delay((unsigned long)((100)*(1000000/4000.0)));
+            _delay((unsigned long)((200)*(1000000/4000.0)));
             btn2State = 1;
         }
     } else if (PORTCbits.RC5 == 1) {
@@ -21626,27 +21624,27 @@ void checkButtonS2(void) {
 void load_eeprom(void){
 
     if(used()){
-        PMON = read_pmon();
-        NREG = read_nreg();
-        TALA = read_tala();
-        ALAT = read_alat();
-        ALAL = read_alal();
-        ALAF = read_alaf();
-        CLKH = read_clkh();
-        CLKM = read_clkm();
+        pmon = read_pmon();
+        nreg = read_nreg();
+        tala = read_tala();
+        alat = read_alat();
+        alal = read_alal();
+        alaf = read_alaf();
+        clkh = read_clkh();
+        clkm = read_clkm();
     } else
         eeprom_default_setup();
 }
 
 void eeprom_default_setup(void){
-    eeprom_setup(1, NREG, PMON, TALA,
-            ALAT, ALAL, ALAF, CLKH, CLKM);
+    eeprom_setup(1, 30, 5, 3,
+            25, 2, 0, 0, 0);
 }
 
 void update_clk(void){
-    eeprom_clk_update(CLKH, CLKM);
+    eeprom_clk_update(clkh, clkm);
 }
 
 _Bool ring_buffer(void){
-    return ring_buffer_write(CLKH, CLKM, seconds, temp, illum);
+    return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 }

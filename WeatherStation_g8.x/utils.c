@@ -2,6 +2,12 @@
 #include "I2C/i2c.h"
 #include "utils.h"
 
+bool s1flag;
+bool s2flag;
+uint8_t nreg;
+bool btn1State;
+bool btn2State;
+
 uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
 }
@@ -107,8 +113,8 @@ void load_eeprom(void){
 }
 
 void eeprom_default_setup(void){
-    eeprom_setup(true, nreg, pmon, tala, 
-            alat, alal, alaf, clkh, clkm);
+    eeprom_setup(true, NREG, PMON, TALA, 
+            ALAT, ALAL, ALAF, CLKH, CLKM);
 }
 
 void update_clk(void){

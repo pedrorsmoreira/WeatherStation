@@ -54,7 +54,7 @@ void submenu_clock(void){
 		hours_units = Update(hours_units, (uint8_t) 9);
 	
 	uint8_t minutes_tens = clkm/10; // minutes tens
-	uint8_t minutes_units = clkm/10; //minutes units
+	uint8_t minutes_units = clkm%10; //minutes units
 	minutes_tens = Update(minutes_tens, (uint8_t) 5);
 	minutes_units = Update(minutes_units, (uint8_t) 9);
 	

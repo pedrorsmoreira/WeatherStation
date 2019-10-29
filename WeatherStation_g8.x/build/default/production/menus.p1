@@ -4,60 +4,63 @@ Version 4.0 HI-TECH Software Intermediate Code
 "161 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 161: void TMR1_StopTimer(void);
 [v _TMR1_StopTimer `(v ~T0 @X0 0 ef ]
-"21 ./menus.h
-[; ;./menus.h: 21: void submenu_clock(void);
+"22 ./menus.h
+[; ;./menus.h: 22: void submenu_clock(void);
 [v _submenu_clock `(v ~T0 @X0 0 ef ]
-"22
-[; ;./menus.h: 22: void submenu_alarm(void);
+"31 /Applications/microchip/xc8/v2.10/pic/include/pic.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"23 ./menus.h
+[; ;./menus.h: 23: void submenu_alarm(void);
 [v _submenu_alarm `(v ~T0 @X0 0 ef ]
-"23
-[; ;./menus.h: 23: void submenu_temp(void);
-[v _submenu_temp `(v ~T0 @X0 0 ef ]
 "24
-[; ;./menus.h: 24: void submenu_illum(void);
+[; ;./menus.h: 24: void submenu_temp(void);
+[v _submenu_temp `(v ~T0 @X0 0 ef ]
+"25
+[; ;./menus.h: 25: void submenu_illum(void);
 [v _submenu_illum `(v ~T0 @X0 0 ef ]
 "129 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 129: void TMR1_StartTimer(void);
 [v _TMR1_StartTimer `(v ~T0 @X0 0 ef ]
-"44 ./utils.h
-[; ;./utils.h: 44: void ShowOnLEDs(uint8_t);
+"53 ./utils.h
+[; ;./utils.h: 53: void ShowOnLEDs(uint8_t);
 [v _ShowOnLEDs `(v ~T0 @X0 0 ef1`uc ]
-"45
-[; ;./utils.h: 45: void checkButtonS1(void);
+"54
+[; ;./utils.h: 54: void checkButtonS1(void);
 [v _checkButtonS1 `(v ~T0 @X0 0 ef ]
-"46
-[; ;./utils.h: 46: void checkButtonS2(void);
+"55
+[; ;./utils.h: 55: void checkButtonS2(void);
 [v _checkButtonS2 `(v ~T0 @X0 0 ef ]
-"27
-[; ;./utils.h: 27: extern _Bool s2flag;
+"37
+[; ;./utils.h: 37: extern _Bool s2flag;
 [v _s2flag `a ~T0 @X0 0 e ]
-"26
-[; ;./utils.h: 26: extern _Bool s1flag;
+"36
+[; ;./utils.h: 36: extern _Bool s1flag;
 [v _s1flag `a ~T0 @X0 0 e ]
-"34
-[; ;./utils.h: 34: extern volatile uint8_t CLKH;
-[v _CLKH `Vuc ~T0 @X0 0 e ]
-"35
-[; ;./utils.h: 35: extern volatile uint8_t CLKM;
-[v _CLKM `Vuc ~T0 @X0 0 e ]
-"49
-[; ;./utils.h: 49: void update_clk(void);
+"44
+[; ;./utils.h: 44: extern volatile uint8_t clkh;
+[v _clkh `Vuc ~T0 @X0 0 e ]
+"45
+[; ;./utils.h: 45: extern volatile uint8_t clkm;
+[v _clkm `Vuc ~T0 @X0 0 e ]
+"58
+[; ;./utils.h: 58: void update_clk(void);
 [v _update_clk `(v ~T0 @X0 0 ef ]
-"33
-[; ;./utils.h: 33: extern uint8_t ALAF;
-[v _ALAF `uc ~T0 @X0 0 e ]
+"43
+[; ;./utils.h: 43: extern uint8_t alaf;
+[v _alaf `uc ~T0 @X0 0 e ]
 "76 ./eeprom.h
 [; ;./eeprom.h: 76: void write_alaf(uint8_t x);
 [v _write_alaf `(v ~T0 @X0 0 ef1`uc ]
-"31 ./utils.h
-[; ;./utils.h: 31: extern uint8_t ALAT;
-[v _ALAT `uc ~T0 @X0 0 e ]
+"41 ./utils.h
+[; ;./utils.h: 41: extern uint8_t alat;
+[v _alat `uc ~T0 @X0 0 e ]
 "74 ./eeprom.h
 [; ;./eeprom.h: 74: void write_alat(uint8_t x);
 [v _write_alat `(v ~T0 @X0 0 ef1`uc ]
-"32 ./utils.h
-[; ;./utils.h: 32: extern uint8_t ALAL;
-[v _ALAL `uc ~T0 @X0 0 e ]
+"42 ./utils.h
+[; ;./utils.h: 42: extern uint8_t alal;
+[v _alal `uc ~T0 @X0 0 e ]
 "75 ./eeprom.h
 [; ;./eeprom.h: 75: void write_alal(uint8_t x);
 [v _write_alal `(v ~T0 @X0 0 ef1`uc ]
@@ -76,8 +79,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "385 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12660 ]
-"26 ./menus.h
-[; ;./menus.h: 26: void Blink(void);
+"27 ./menus.h
+[; ;./menus.h: 27: void Blink(void);
 [v _Blink `(v ~T0 @X0 0 ef ]
 "956 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 956:     struct {
@@ -1734,14 +1737,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79
 [; ;./mcc_generated_files/i2c1_driver.h: 79: void (*i2c1_driver_i2cISR)(void);
 [v _i2c1_driver_i2cISR `*F12648 ~T0 @X0 1 e ]
-"24 ./utils.h
-[; ;./utils.h: 24: _Bool btn1State;
-[v _btn1State `a ~T0 @X0 1 e ]
-"25
-[; ;./utils.h: 25: _Bool btn2State;
-[v _btn2State `a ~T0 @X0 1 e ]
-"18 ./menus.h
-[; ;./menus.h: 18: uint8_t mode = 0;
+"19 ./menus.h
+[; ;./menus.h: 19: uint8_t mode = 0;
 [v _mode `uc ~T0 @X0 1 e ]
 [i _mode
 -> -> 0 `i `uc
@@ -1767,37 +1764,40 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;menus.c: 10:    submenu_clock();
 [e ( _submenu_clock ..  ]
 "11
-[; ;menus.c: 11:    break;
-[e $U 1628  ]
+[; ;menus.c: 11:             __nop();
+[e ( ___nop ..  ]
 "12
-[; ;menus.c: 12:   case 1:
-[e :U 1631 ]
+[; ;menus.c: 12:    break;
+[e $U 1628  ]
 "13
-[; ;menus.c: 13:    submenu_alarm();
-[e ( _submenu_alarm ..  ]
+[; ;menus.c: 13:   case 1:
+[e :U 1631 ]
 "14
-[; ;menus.c: 14:    break;
-[e $U 1628  ]
+[; ;menus.c: 14:    submenu_alarm();
+[e ( _submenu_alarm ..  ]
 "15
-[; ;menus.c: 15:   case 2:
-[e :U 1632 ]
+[; ;menus.c: 15:    break;
+[e $U 1628  ]
 "16
-[; ;menus.c: 16:    submenu_temp();
-[e ( _submenu_temp ..  ]
+[; ;menus.c: 16:   case 2:
+[e :U 1632 ]
 "17
-[; ;menus.c: 17:    break;
-[e $U 1628  ]
+[; ;menus.c: 17:    submenu_temp();
+[e ( _submenu_temp ..  ]
 "18
-[; ;menus.c: 18:   case 3:
-[e :U 1633 ]
-"19
-[; ;menus.c: 19:    submenu_illum();
-[e ( _submenu_illum ..  ]
-"20
-[; ;menus.c: 20:    break;
+[; ;menus.c: 18:    break;
 [e $U 1628  ]
+"19
+[; ;menus.c: 19:   case 3:
+[e :U 1633 ]
+"20
+[; ;menus.c: 20:    submenu_illum();
+[e ( _submenu_illum ..  ]
 "21
-[; ;menus.c: 21:  }
+[; ;menus.c: 21:    break;
+[e $U 1628  ]
+"22
+[; ;menus.c: 22:  }
 }
 [e $U 1628  ]
 [e :U 1629 ]
@@ -1807,367 +1807,367 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 1633
  1628 ]
 [e :U 1628 ]
-"22
-[; ;menus.c: 22:     TMR1_StartTimer();
-[e ( _TMR1_StartTimer ..  ]
 "23
-[; ;menus.c: 23:     ShowOnLEDs(0);
-[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+[; ;menus.c: 23:     TMR1_StartTimer();
+[e ( _TMR1_StartTimer ..  ]
 "24
-[; ;menus.c: 24: }
+[; ;menus.c: 24:     ShowOnLEDs(0);
+[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+"25
+[; ;menus.c: 25: }
 [e :UE 1627 ]
 }
-"27
-[; ;menus.c: 27: uint8_t Update(uint8_t var, uint8_t thr){
+"28
+[; ;menus.c: 28: uint8_t Update(uint8_t var, uint8_t thr){
 [v _Update `(uc ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _Update ]
 [v _var `uc ~T0 @X0 1 r1 ]
 [v _thr `uc ~T0 @X0 1 r2 ]
 [f ]
-"28
-[; ;menus.c: 28:  ShowOnLEDs(var);
-[e ( _ShowOnLEDs (1 _var ]
 "29
-[; ;menus.c: 29:  while(1){
+[; ;menus.c: 29:  ShowOnLEDs(var);
+[e ( _ShowOnLEDs (1 _var ]
+"30
+[; ;menus.c: 30:  while(1){
 [e :U 1636 ]
 {
-"30
-[; ;menus.c: 30:         checkButtonS1();
-[e ( _checkButtonS1 ..  ]
 "31
-[; ;menus.c: 31:         checkButtonS2();
-[e ( _checkButtonS2 ..  ]
+[; ;menus.c: 31:         checkButtonS1();
+[e ( _checkButtonS1 ..  ]
 "32
-[; ;menus.c: 32:   if (s2flag){
+[; ;menus.c: 32:         checkButtonS2();
+[e ( _checkButtonS2 ..  ]
+"33
+[; ;menus.c: 33:   if (s2flag){
 [e $ ! != -> _s2flag `i -> 0 `i 1638  ]
 {
-"33
-[; ;menus.c: 33:    s2flag = 0;
-[e = _s2flag -> -> 0 `i `a ]
 "34
-[; ;menus.c: 34:    if (++var > thr)
-[e $ ! > -> =+ _var -> -> 1 `i `uc `i -> _thr `i 1639  ]
+[; ;menus.c: 34:    s2flag = 0;
+[e = _s2flag -> -> 0 `i `a ]
 "35
-[; ;menus.c: 35:     var=0;
+[; ;menus.c: 35:    if (++var > thr)
+[e $ ! > -> =+ _var -> -> 1 `i `uc `i -> _thr `i 1639  ]
+"36
+[; ;menus.c: 36:     var=0;
 [e = _var -> -> 0 `i `uc ]
 [e :U 1639 ]
-"36
-[; ;menus.c: 36:             ShowOnLEDs(var);
-[e ( _ShowOnLEDs (1 _var ]
 "37
-[; ;menus.c: 37:   }
+[; ;menus.c: 37:             ShowOnLEDs(var);
+[e ( _ShowOnLEDs (1 _var ]
+"38
+[; ;menus.c: 38:   }
 }
 [e $U 1640  ]
-"38
-[; ;menus.c: 38:   else if (s1flag){
+"39
+[; ;menus.c: 39:   else if (s1flag){
 [e :U 1638 ]
 [e $ ! != -> _s1flag `i -> 0 `i 1641  ]
 {
-"39
-[; ;menus.c: 39:    s1flag = 0;
-[e = _s1flag -> -> 0 `i `a ]
 "40
-[; ;menus.c: 40:    return var;
+[; ;menus.c: 40:    s1flag = 0;
+[e = _s1flag -> -> 0 `i `a ]
+"41
+[; ;menus.c: 41:    return var;
 [e ) _var ]
 [e $UE 1634  ]
-"41
-[; ;menus.c: 41:   }
+"42
+[; ;menus.c: 42:   }
 }
 [e :U 1641 ]
 [e :U 1640 ]
-"42
-[; ;menus.c: 42:  }
+"43
+[; ;menus.c: 43:  }
 }
 [e :U 1635 ]
 [e $U 1636  ]
 [e :U 1637 ]
-"43
-[; ;menus.c: 43: }
+"44
+[; ;menus.c: 44: }
 [e :UE 1634 ]
 }
-"46
-[; ;menus.c: 46: void submenu_clock(void){
+"47
+[; ;menus.c: 47: void submenu_clock(void){
 [v _submenu_clock `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_clock ]
 [f ]
-"47
-[; ;menus.c: 47:  uint8_t hours_tens = CLKH/10;
-[v _hours_tens `uc ~T0 @X0 1 a ]
-[e = _hours_tens -> / -> _CLKH `i -> 10 `i `uc ]
 "48
-[; ;menus.c: 48:  uint8_t hours_units = CLKH%10;
-[v _hours_units `uc ~T0 @X0 1 a ]
-[e = _hours_units -> % -> _CLKH `i -> 10 `i `uc ]
+[; ;menus.c: 48:  uint8_t hours_tens = clkh/10;
+[v _hours_tens `uc ~T0 @X0 1 a ]
+[e = _hours_tens -> / -> _clkh `i -> 10 `i `uc ]
 "49
-[; ;menus.c: 49:  hours_tens = Update(hours_tens, (uint8_t) 2);
-[e = _hours_tens ( _Update (2 , _hours_tens -> -> 2 `i `uc ]
+[; ;menus.c: 49:  uint8_t hours_units = clkh%10;
+[v _hours_units `uc ~T0 @X0 1 a ]
+[e = _hours_units -> % -> _clkh `i -> 10 `i `uc ]
 "50
-[; ;menus.c: 50:  if(hours_tens == 2){
+[; ;menus.c: 50:  hours_tens = Update(hours_tens, (uint8_t) 2);
+[e = _hours_tens ( _Update (2 , _hours_tens -> -> 2 `i `uc ]
+"51
+[; ;menus.c: 51:  if(hours_tens == 2){
 [e $ ! == -> _hours_tens `i -> 2 `i 1643  ]
 {
-"51
-[; ;menus.c: 51:   if(hours_units>3) hours_units = 0;
+"52
+[; ;menus.c: 52:   if(hours_units>3) hours_units = 0;
 [e $ ! > -> _hours_units `i -> 3 `i 1644  ]
 [e = _hours_units -> -> 0 `i `uc ]
 [e :U 1644 ]
-"52
-[; ;menus.c: 52:   hours_units = Update(hours_units, (uint8_t) 3);
-[e = _hours_units ( _Update (2 , _hours_units -> -> 3 `i `uc ]
 "53
-[; ;menus.c: 53:  } else
+[; ;menus.c: 53:   hours_units = Update(hours_units, (uint8_t) 3);
+[e = _hours_units ( _Update (2 , _hours_units -> -> 3 `i `uc ]
+"54
+[; ;menus.c: 54:  } else
 }
 [e $U 1645  ]
 [e :U 1643 ]
-"54
-[; ;menus.c: 54:   hours_units = Update(hours_units, (uint8_t) 9);
+"55
+[; ;menus.c: 55:   hours_units = Update(hours_units, (uint8_t) 9);
 [e = _hours_units ( _Update (2 , _hours_units -> -> 9 `i `uc ]
 [e :U 1645 ]
-"56
-[; ;menus.c: 56:  uint8_t minutes_tens = CLKM/10;
-[v _minutes_tens `uc ~T0 @X0 1 a ]
-[e = _minutes_tens -> / -> _CLKM `i -> 10 `i `uc ]
 "57
-[; ;menus.c: 57:  uint8_t minutes_units = CLKM/10;
-[v _minutes_units `uc ~T0 @X0 1 a ]
-[e = _minutes_units -> / -> _CLKM `i -> 10 `i `uc ]
+[; ;menus.c: 57:  uint8_t minutes_tens = clkm/10;
+[v _minutes_tens `uc ~T0 @X0 1 a ]
+[e = _minutes_tens -> / -> _clkm `i -> 10 `i `uc ]
 "58
-[; ;menus.c: 58:  minutes_tens = Update(minutes_tens, (uint8_t) 5);
-[e = _minutes_tens ( _Update (2 , _minutes_tens -> -> 5 `i `uc ]
+[; ;menus.c: 58:  uint8_t minutes_units = clkm%10;
+[v _minutes_units `uc ~T0 @X0 1 a ]
+[e = _minutes_units -> % -> _clkm `i -> 10 `i `uc ]
 "59
-[; ;menus.c: 59:  minutes_units = Update(minutes_units, (uint8_t) 9);
+[; ;menus.c: 59:  minutes_tens = Update(minutes_tens, (uint8_t) 5);
+[e = _minutes_tens ( _Update (2 , _minutes_tens -> -> 5 `i `uc ]
+"60
+[; ;menus.c: 60:  minutes_units = Update(minutes_units, (uint8_t) 9);
 [e = _minutes_units ( _Update (2 , _minutes_units -> -> 9 `i `uc ]
-"61
-[; ;menus.c: 61:  CLKH = 10*hours_tens + hours_units;
-[e = _CLKH -> + * -> 10 `i -> _hours_tens `i -> _hours_units `i `uc ]
 "62
-[; ;menus.c: 62:  CLKM = 10*minutes_tens + minutes_units;
-[e = _CLKM -> + * -> 10 `i -> _minutes_tens `i -> _minutes_units `i `uc ]
+[; ;menus.c: 62:  clkh = 10*hours_tens + hours_units;
+[e = _clkh -> + * -> 10 `i -> _hours_tens `i -> _hours_units `i `uc ]
 "63
-[; ;menus.c: 63:     update_clk();
-[e ( _update_clk ..  ]
+[; ;menus.c: 63:  clkm = 10*minutes_tens + minutes_units;
+[e = _clkm -> + * -> 10 `i -> _minutes_tens `i -> _minutes_units `i `uc ]
 "64
-[; ;menus.c: 64: }
+[; ;menus.c: 64:     update_clk();
+[e ( _update_clk ..  ]
+"65
+[; ;menus.c: 65: }
 [e :UE 1642 ]
 }
-"68
-[; ;menus.c: 68: void submenu_alarm(void){
+"69
+[; ;menus.c: 69: void submenu_alarm(void){
 [v _submenu_alarm `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_alarm ]
 [f ]
-"69
-[; ;menus.c: 69:  ALAF = Update(ALAF, (uint8_t) 1);
-[e = _ALAF ( _Update (2 , _ALAF -> -> 1 `i `uc ]
 "70
-[; ;menus.c: 70:     write_alaf(ALAF);
-[e ( _write_alaf (1 _ALAF ]
+[; ;menus.c: 70:  alaf = Update(alaf, (uint8_t) 1);
+[e = _alaf ( _Update (2 , _alaf -> -> 1 `i `uc ]
 "71
-[; ;menus.c: 71: }
+[; ;menus.c: 71:     write_alaf(alaf);
+[e ( _write_alaf (1 _alaf ]
+"72
+[; ;menus.c: 72: }
 [e :UE 1646 ]
 }
-"73
-[; ;menus.c: 73: void submenu_temp(void){
+"74
+[; ;menus.c: 74: void submenu_temp(void){
 [v _submenu_temp `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_temp ]
 [f ]
-"74
-[; ;menus.c: 74:  uint8_t temperature_tens = ALAT/10;
-[v _temperature_tens `uc ~T0 @X0 1 a ]
-[e = _temperature_tens -> / -> _ALAT `i -> 10 `i `uc ]
 "75
-[; ;menus.c: 75:  uint8_t temperature_units = ALAT % 10;
-[v _temperature_units `uc ~T0 @X0 1 a ]
-[e = _temperature_units -> % -> _ALAT `i -> 10 `i `uc ]
+[; ;menus.c: 75:  uint8_t temperature_tens = alat/10;
+[v _temperature_tens `uc ~T0 @X0 1 a ]
+[e = _temperature_tens -> / -> _alat `i -> 10 `i `uc ]
 "76
-[; ;menus.c: 76:  temperature_tens = Update(temperature_tens, (uint8_t) 5);
-[e = _temperature_tens ( _Update (2 , _temperature_tens -> -> 5 `i `uc ]
+[; ;menus.c: 76:  uint8_t temperature_units = alat % 10;
+[v _temperature_units `uc ~T0 @X0 1 a ]
+[e = _temperature_units -> % -> _alat `i -> 10 `i `uc ]
 "77
-[; ;menus.c: 77:  if (temperature_tens == 5) ALAT = 50;
-[e $ ! == -> _temperature_tens `i -> 5 `i 1648  ]
-[e = _ALAT -> -> 50 `i `uc ]
-[e $U 1649  ]
+[; ;menus.c: 77:  temperature_tens = Update(temperature_tens, (uint8_t) 5);
+[e = _temperature_tens ( _Update (2 , _temperature_tens -> -> 5 `i `uc ]
 "78
-[; ;menus.c: 78:  else {
+[; ;menus.c: 78:  if (temperature_tens == 5) alat = 50;
+[e $ ! == -> _temperature_tens `i -> 5 `i 1648  ]
+[e = _alat -> -> 50 `i `uc ]
+[e $U 1649  ]
+"79
+[; ;menus.c: 79:  else {
 [e :U 1648 ]
 {
-"79
-[; ;menus.c: 79:   temperature_units = Update(temperature_units, (uint8_t) 9);
-[e = _temperature_units ( _Update (2 , _temperature_units -> -> 9 `i `uc ]
 "80
-[; ;menus.c: 80:   ALAT = temperature_tens*10 + temperature_units;
-[e = _ALAT -> + * -> _temperature_tens `i -> 10 `i -> _temperature_units `i `uc ]
+[; ;menus.c: 80:   temperature_units = Update(temperature_units, (uint8_t) 9);
+[e = _temperature_units ( _Update (2 , _temperature_units -> -> 9 `i `uc ]
 "81
-[; ;menus.c: 81:  }
+[; ;menus.c: 81:   alat = temperature_tens*10 + temperature_units;
+[e = _alat -> + * -> _temperature_tens `i -> 10 `i -> _temperature_units `i `uc ]
+"82
+[; ;menus.c: 82:  }
 }
 [e :U 1649 ]
-"82
-[; ;menus.c: 82:     write_alat(ALAT);
-[e ( _write_alat (1 _ALAT ]
 "83
-[; ;menus.c: 83: }
+[; ;menus.c: 83:     write_alat(alat);
+[e ( _write_alat (1 _alat ]
+"84
+[; ;menus.c: 84: }
 [e :UE 1647 ]
 }
-"85
-[; ;menus.c: 85: void submenu_illum(void){
+"86
+[; ;menus.c: 86: void submenu_illum(void){
 [v _submenu_illum `(v ~T0 @X0 1 ef ]
 {
 [e :U _submenu_illum ]
 [f ]
-"86
-[; ;menus.c: 86:  ALAL = Update(ALAL, (uint8_t) 3);
-[e = _ALAL ( _Update (2 , _ALAL -> -> 3 `i `uc ]
 "87
-[; ;menus.c: 87:     write_alal(ALAL);
-[e ( _write_alal (1 _ALAL ]
+[; ;menus.c: 87:  alal = Update(alal, (uint8_t) 3);
+[e = _alal ( _Update (2 , _alal -> -> 3 `i `uc ]
 "88
-[; ;menus.c: 88: }
+[; ;menus.c: 88:     write_alal(alal);
+[e ( _write_alal (1 _alal ]
+"89
+[; ;menus.c: 89: }
 [e :UE 1650 ]
 }
-"91
-[; ;menus.c: 91: void Menus (void) {
+"92
+[; ;menus.c: 92: void Menus (void) {
 [v _Menus `(v ~T0 @X0 1 ef ]
 {
 [e :U _Menus ]
 [f ]
-"92
-[; ;menus.c: 92:     mode = 0;
-[e = _mode -> -> 0 `i `uc ]
 "93
-[; ;menus.c: 93:     ShowOnLEDs(0);
-[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
+[; ;menus.c: 93:     mode = 0;
+[e = _mode -> -> 0 `i `uc ]
 "94
-[; ;menus.c: 94:     (INTCONbits.PEIE = 0);
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;menus.c: 94:     ShowOnLEDs(0);
+[e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
 "95
-[; ;menus.c: 95:     TMR1_SetInterruptHandler(Blink);
-[e ( _TMR1_SetInterruptHandler (1 &U _Blink ]
+[; ;menus.c: 95:     (INTCONbits.PEIE = 0);
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "96
-[; ;menus.c: 96:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+[; ;menus.c: 96:     TMR1_SetInterruptHandler(Blink);
+[e ( _TMR1_SetInterruptHandler (1 &U _Blink ]
 "97
-[; ;menus.c: 97:     while(mode < 4){
+[; ;menus.c: 97:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+"98
+[; ;menus.c: 98:     while(mode < 4){
 [e $U 1652  ]
 [e :U 1653 ]
 {
-"98
-[; ;menus.c: 98:         checkButtonS1();
-[e ( _checkButtonS1 ..  ]
 "99
-[; ;menus.c: 99:         checkButtonS2();
-[e ( _checkButtonS2 ..  ]
+[; ;menus.c: 99:         checkButtonS1();
+[e ( _checkButtonS1 ..  ]
 "100
-[; ;menus.c: 100:         if (s1flag){
+[; ;menus.c: 100:         checkButtonS2();
+[e ( _checkButtonS2 ..  ]
+"101
+[; ;menus.c: 101:         if (s1flag){
 [e $ ! != -> _s1flag `i -> 0 `i 1655  ]
 {
-"101
-[; ;menus.c: 101:             s1flag = 0;
-[e = _s1flag -> -> 0 `i `a ]
 "102
-[; ;menus.c: 102:             mode++;
-[e ++ _mode -> -> 1 `i `uc ]
+[; ;menus.c: 102:             s1flag = 0;
+[e = _s1flag -> -> 0 `i `a ]
 "103
-[; ;menus.c: 103:             ShowOnLEDs(0);
+[; ;menus.c: 103:             mode++;
+[e ++ _mode -> -> 1 `i `uc ]
+"104
+[; ;menus.c: 104:             ShowOnLEDs(0);
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"105
-[; ;menus.c: 105:         } else if (s2flag) {
+"106
+[; ;menus.c: 106:         } else if (s2flag) {
 }
 [e $U 1656  ]
 [e :U 1655 ]
 [e $ ! != -> _s2flag `i -> 0 `i 1657  ]
 {
-"106
-[; ;menus.c: 106:             s2flag = 0;
-[e = _s2flag -> -> 0 `i `a ]
 "107
-[; ;menus.c: 107:             ShowOnLEDs(0);
+[; ;menus.c: 107:             s2flag = 0;
+[e = _s2flag -> -> 0 `i `a ]
+"108
+[; ;menus.c: 108:             ShowOnLEDs(0);
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"109
-[; ;menus.c: 109:             Menu(mode++);
-[e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
 "110
-[; ;menus.c: 110:         }
+[; ;menus.c: 110:             Menu(mode++);
+[e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
+"111
+[; ;menus.c: 111:         }
 }
 [e :U 1657 ]
 [e :U 1656 ]
-"111
-[; ;menus.c: 111:  }
+"112
+[; ;menus.c: 112:  }
 }
 [e :U 1652 ]
-"97
-[; ;menus.c: 97:     while(mode < 4){
+"98
+[; ;menus.c: 98:     while(mode < 4){
 [e $ < -> _mode `i -> 4 `i 1653  ]
 [e :U 1654 ]
-"112
-[; ;menus.c: 112: }
+"113
+[; ;menus.c: 113: }
 [e :UE 1651 ]
 }
-"114
-[; ;menus.c: 114: void Blink(void){
+"115
+[; ;menus.c: 115: void Blink(void){
 [v _Blink `(v ~T0 @X0 1 ef ]
 {
 [e :U _Blink ]
 [f ]
-"115
-[; ;menus.c: 115:     switch(mode){
+"116
+[; ;menus.c: 116:     switch(mode){
 [e $U 1660  ]
 {
-"116
-[; ;menus.c: 116:         case 0:
-[e :U 1661 ]
 "117
-[; ;menus.c: 117:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+[; ;menus.c: 117:         case 0:
+[e :U 1661 ]
+"118
+[; ;menus.c: 118:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
 [e :U 1664 ]
 {
 [e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
 }
 [e :U 1663 ]
-"118
-[; ;menus.c: 118:             break;
-[e $U 1659  ]
 "119
-[; ;menus.c: 119:         case 1:
-[e :U 1665 ]
+[; ;menus.c: 119:             break;
+[e $U 1659  ]
 "120
-[; ;menus.c: 120:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
+[; ;menus.c: 120:         case 1:
+[e :U 1665 ]
+"121
+[; ;menus.c: 121:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
 [e :U 1668 ]
 {
 [e = . . _LATAbits 0 6 -> ~ -> . . _LATAbits 0 6 `i `uc ]
 }
 [e :U 1667 ]
-"121
-[; ;menus.c: 121:             break;
-[e $U 1659  ]
 "122
-[; ;menus.c: 122:         case 2:
-[e :U 1669 ]
+[; ;menus.c: 122:             break;
+[e $U 1659  ]
 "123
-[; ;menus.c: 123:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
+[; ;menus.c: 123:         case 2:
+[e :U 1669 ]
+"124
+[; ;menus.c: 124:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
 [e :U 1672 ]
 {
 [e = . . _LATAbits 0 5 -> ~ -> . . _LATAbits 0 5 `i `uc ]
 }
 [e :U 1671 ]
-"124
-[; ;menus.c: 124:             break;
-[e $U 1659  ]
 "125
-[; ;menus.c: 125:         case 3:
-[e :U 1673 ]
+[; ;menus.c: 125:             break;
+[e $U 1659  ]
 "126
-[; ;menus.c: 126:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
+[; ;menus.c: 126:         case 3:
+[e :U 1673 ]
+"127
+[; ;menus.c: 127:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
 [e :U 1676 ]
 {
 [e = . . _LATAbits 0 4 -> ~ -> . . _LATAbits 0 4 `i `uc ]
 }
 [e :U 1675 ]
-"127
-[; ;menus.c: 127:             break;
-[e $U 1659  ]
 "128
-[; ;menus.c: 128:     }
+[; ;menus.c: 128:             break;
+[e $U 1659  ]
+"129
+[; ;menus.c: 129:     }
 }
 [e $U 1659  ]
 [e :U 1660 ]
@@ -2177,7 +2177,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 1673
  1659 ]
 [e :U 1659 ]
-"129
-[; ;menus.c: 129: }
+"130
+[; ;menus.c: 130: }
 [e :UE 1658 ]
 }
