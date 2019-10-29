@@ -88,29 +88,29 @@ channel_FVR_buf1 63
 [v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
 "75
 [v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
-"99
-[v _used used `(a  1 e 1 0 ]
-"102
-[v _read_nreg read_nreg `(uc  1 e 1 0 ]
-"103
-[v _read_pmon read_pmon `(uc  1 e 1 0 ]
-"104
-[v _read_tala read_tala `(uc  1 e 1 0 ]
-"105
-[v _read_alat read_alat `(uc  1 e 1 0 ]
 "106
+[v _used used `(a  1 e 1 0 ]
+"111
+[v _read_nreg read_nreg `(uc  1 e 1 0 ]
+"112
+[v _read_pmon read_pmon `(uc  1 e 1 0 ]
+"113
+[v _read_tala read_tala `(uc  1 e 1 0 ]
+"114
+[v _read_alat read_alat `(uc  1 e 1 0 ]
+"115
 [v _read_alal read_alal `(uc  1 e 1 0 ]
-"107
+"116
 [v _read_alaf read_alaf `(uc  1 e 1 0 ]
-"108
+"117
 [v _read_clkh read_clkh `(uc  1 e 1 0 ]
-"109
+"118
 [v _read_clkm read_clkm `(uc  1 e 1 0 ]
-"132
+"141
 [v _write_alat write_alat `(v  1 e 1 0 ]
-"139
+"148
 [v _write_alal write_alal `(v  1 e 1 0 ]
-"146
+"155
 [v _write_alaf write_alaf `(v  1 e 1 0 ]
 "32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
 [v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
@@ -127,7 +127,7 @@ channel_FVR_buf1 63
 [v _Switch1 Switch1 `(v  1 e 1 0 ]
 "125
 [v _Alarm Alarm `(v  1 e 1 0 ]
-"137
+"136
 [v _main main `(v  1 e 1 0 ]
 "63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
@@ -187,8 +187,6 @@ channel_FVR_buf1 63
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
 "100
 [v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
-"106
-[v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
 "111
 [v _TMR2_Stop TMR2_Stop `(v  1 e 1 0 ]
 "122
@@ -199,19 +197,19 @@ channel_FVR_buf1 63
 [v _TMR2_Period8BitSet TMR2_Period8BitSet `(v  1 e 1 0 ]
 "6 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Menu Menu `(v  1 e 1 0 ]
-"28
+"27
 [v _Update Update `(uc  1 e 1 0 ]
-"47
+"46
 [v _submenu_clock submenu_clock `(v  1 e 1 0 ]
-"69
+"68
 [v _submenu_alarm submenu_alarm `(v  1 e 1 0 ]
-"74
+"73
 [v _submenu_temp submenu_temp `(v  1 e 1 0 ]
-"86
+"85
 [v _submenu_illum submenu_illum `(v  1 e 1 0 ]
-"92
+"91
 [v _Menus Menus `(v  1 e 1 0 ]
-"115
+"114
 [v _Blink Blink `(v  1 e 1 0 ]
 "11 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _ReadIllum ReadIllum `(uc  1 e 1 0 ]
@@ -231,10 +229,10 @@ channel_FVR_buf1 63
 "100
 [v _load_eeprom load_eeprom `(v  1 e 1 0 ]
 "115
-[v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
-"120
+[v _default_setup default_setup `(v  1 e 1 0 ]
+"128
 [v _update_clk update_clk `(v  1 e 1 0 ]
-"124
+"132
 [v _ring_buffer ring_buffer `(a  1 e 1 0 ]
 "78 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/i2c1_driver.h
 [v _i2c1_driver_busCollisionISR i2c1_driver_busCollisionISR `*.37(v  1 e 2 0 ]
@@ -250,7 +248,7 @@ channel_FVR_buf1 63
 "364 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [u S242 . 1 `S237 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES242  1 e 1 @11 ]
-[s S2176 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2174 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -260,9 +258,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "463
-[u S2185 . 1 `S2176 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2185  1 e 1 @13 ]
-[s S2199 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2183 . 1 `S2174 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2183  1 e 1 @13 ]
+[s S2197 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -272,15 +270,15 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "525
-[u S2208 . 1 `S2199 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2208  1 e 1 @14 ]
+[u S2206 . 1 `S2197 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2206  1 e 1 @14 ]
 "670
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "732
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "794
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S1590 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S1589 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -290,8 +288,8 @@ channel_FVR_buf1 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "811
-[u S1599 . 1 `S1590 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES1599  1 e 1 @19 ]
+[u S1598 . 1 `S1589 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1598  1 e 1 @19 ]
 "856
 [v _TRISD TRISD `VEuc  1 e 1 @20 ]
 "918
@@ -888,11 +886,11 @@ channel_FVR_buf1 63
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
 "30046
 [v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3727 ]
-[s S2167 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+[s S2165 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
 ]
 "30056
-[u S2169 . 1 `S2167 1 . 1 0 ]
-[v _PPSLOCKbits PPSLOCKbits `VES2169  1 e 1 @3727 ]
+[u S2167 . 1 `S2165 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES2167  1 e 1 @3727 ]
 "30066
 [v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
 "31672
@@ -1005,82 +1003,86 @@ channel_FVR_buf1 63
 [v _btn1State btn1State `a  1 e 1 0 ]
 "9
 [v _btn2State btn2State `a  1 e 1 0 ]
-"137 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"136 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"202
+"203
 } 0
 "76
 [v _sys_init sys_init `(v  1 e 1 0 ]
 {
 "84
 } 0
-"124 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+"132 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _ring_buffer ring_buffer `(a  1 e 1 0 ]
 {
-"126
+"134
 } 0
 "75 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
 {
 [v ring_buffer_write@h h `uc  1 a 1 wreg ]
 "77
-[v ring_buffer_write@ring_pos ring_pos `us  1 a 2 5 ]
+[v ring_buffer_write@ring_pos ring_pos `us  1 a 2 7 ]
+"76
+[v ring_buffer_write@ring_pos_ ring_pos_ `us  1 a 2 5 ]
 "75
 [v ring_buffer_write@h h `uc  1 a 1 wreg ]
 [v ring_buffer_write@m m `uc  1 p 1 0 ]
 [v ring_buffer_write@s s `uc  1 p 1 1 ]
 [v ring_buffer_write@T T `uc  1 p 1 2 ]
 [v ring_buffer_write@L L `uc  1 p 1 3 ]
-"77
 [v ring_buffer_write@h h `uc  1 a 1 4 ]
-"97
+"102
 } 0
 "100 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _load_eeprom load_eeprom `(v  1 e 1 0 ]
 {
 "113
 } 0
-"99 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+"106 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _used used `(a  1 e 1 0 ]
 {
+"107
+[v used@val val `uc  1 a 1 6 ]
+"109
 } 0
-"104
+"113
 [v _read_tala read_tala `(uc  1 e 1 0 ]
 {
 } 0
-"103
+"112
 [v _read_pmon read_pmon `(uc  1 e 1 0 ]
 {
 } 0
-"102
+"111
 [v _read_nreg read_nreg `(uc  1 e 1 0 ]
 {
 } 0
-"109
+"118
 [v _read_clkm read_clkm `(uc  1 e 1 0 ]
 {
 } 0
-"108
+"117
 [v _read_clkh read_clkh `(uc  1 e 1 0 ]
 {
 } 0
-"105
+"114
 [v _read_alat read_alat `(uc  1 e 1 0 ]
 {
 } 0
-"106
+"115
 [v _read_alal read_alal `(uc  1 e 1 0 ]
 {
 } 0
-"107
+"116
 [v _read_alaf read_alaf `(uc  1 e 1 0 ]
 {
 } 0
 "115 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
-[v _eeprom_default_setup eeprom_default_setup `(v  1 e 1 0 ]
+[v _default_setup default_setup `(v  1 e 1 0 ]
 {
-"118
+"126
 } 0
 "49 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _eeprom_setup eeprom_setup `(v  1 e 1 0 ]
@@ -1169,6 +1171,8 @@ channel_FVR_buf1 63
 "15 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _ReadTemp ReadTemp `(uc  1 e 1 0 ]
 {
+"16
+[v ReadTemp@value value `uc  1 a 1 5 ]
 "48
 } 0
 "47 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
@@ -1199,10 +1203,10 @@ channel_FVR_buf1 63
 [v ADCC_GetSingleConversion@channel channel `E12246  1 a 1 5 ]
 "155
 } 0
-"92 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"91 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Menus Menus `(v  1 e 1 0 ]
 {
-"113
+"112
 } 0
 "178 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
@@ -1216,57 +1220,57 @@ channel_FVR_buf1 63
 [v Menu@mode mode `uc  1 a 1 wreg ]
 [v Menu@mode mode `uc  1 a 1 wreg ]
 [v Menu@mode mode `uc  1 a 1 13 ]
-"25
+"24
 } 0
-"74
+"73
 [v _submenu_temp submenu_temp `(v  1 e 1 0 ]
 {
-"75
+"74
 [v submenu_temp@temperature_tens temperature_tens `uc  1 a 1 8 ]
-"76
+"75
 [v submenu_temp@temperature_units temperature_units `uc  1 a 1 7 ]
-"84
+"83
 } 0
-"132 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+"141 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _write_alat write_alat `(v  1 e 1 0 ]
 {
 [v write_alat@x x `uc  1 a 1 wreg ]
 [v write_alat@x x `uc  1 a 1 wreg ]
-"134
+"143
 [v write_alat@x x `uc  1 a 1 8 ]
-"137
+"146
 } 0
-"86 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"85 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _submenu_illum submenu_illum `(v  1 e 1 0 ]
 {
-"89
+"88
 } 0
-"139 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+"148 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _write_alal write_alal `(v  1 e 1 0 ]
 {
 [v write_alal@x x `uc  1 a 1 wreg ]
 [v write_alal@x x `uc  1 a 1 wreg ]
-"141
+"150
 [v write_alal@x x `uc  1 a 1 8 ]
-"144
+"153
 } 0
-"47 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"46 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _submenu_clock submenu_clock `(v  1 e 1 0 ]
 {
-"49
-[v submenu_clock@hours_units hours_units `uc  1 a 1 10 ]
 "48
+[v submenu_clock@hours_units hours_units `uc  1 a 1 10 ]
+"47
 [v submenu_clock@hours_tens hours_tens `uc  1 a 1 9 ]
-"58
-[v submenu_clock@minutes_units minutes_units `uc  1 a 1 8 ]
 "57
+[v submenu_clock@minutes_units minutes_units `uc  1 a 1 8 ]
+"56
 [v submenu_clock@minutes_tens minutes_tens `uc  1 a 1 7 ]
-"65
+"64
 } 0
-"120 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
+"128 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _update_clk update_clk `(v  1 e 1 0 ]
 {
-"122
+"130
 } 0
 "70 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _eeprom_clk_update eeprom_clk_update `(v  1 e 1 0 ]
@@ -1314,19 +1318,19 @@ channel_FVR_buf1 63
 [v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
 } 0
-"69 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"68 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _submenu_alarm submenu_alarm `(v  1 e 1 0 ]
 {
-"72
+"71
 } 0
-"146 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
+"155 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _write_alaf write_alaf `(v  1 e 1 0 ]
 {
 [v write_alaf@x x `uc  1 a 1 wreg ]
 [v write_alaf@x x `uc  1 a 1 wreg ]
-"148
+"157
 [v write_alaf@x x `uc  1 a 1 8 ]
-"151
+"160
 } 0
 "180 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
 [v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
@@ -1344,14 +1348,14 @@ channel_FVR_buf1 63
 [v DATAEE_ReadByte@bAdd bAdd `us  1 p 2 2 ]
 "212
 } 0
-"28 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"27 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Update Update `(uc  1 e 1 0 ]
 {
 [v Update@var var `uc  1 a 1 wreg ]
 [v Update@var var `uc  1 a 1 wreg ]
 [v Update@thr thr `uc  1 p 1 4 ]
 [v Update@var var `uc  1 a 1 6 ]
-"44
+"43
 } 0
 "88 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _checkButtonS2 checkButtonS2 `(v  1 e 1 0 ]
@@ -1384,7 +1388,7 @@ channel_FVR_buf1 63
 "125 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Alarm Alarm `(v  1 e 1 0 ]
 {
-"131
+"130
 } 0
 "15 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -1395,16 +1399,6 @@ channel_FVR_buf1 63
 [v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
 "53
-} 0
-"106 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
-[v _TMR2_StartTimer TMR2_StartTimer `(v  1 e 1 0 ]
-{
-"109
-} 0
-"100
-[v _TMR2_Start TMR2_Start `(v  1 e 1 0 ]
-{
-"104
 } 0
 "50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _PWM_Output_D4_Enable PWM_Output_D4_Enable `(v  1 e 1 0 ]
@@ -1427,10 +1421,10 @@ channel_FVR_buf1 63
 {
 "175
 } 0
-"115 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
+"114 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/menus.c
 [v _Blink Blink `(v  1 e 1 0 ]
 {
-"130
+"129
 } 0
 "182 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]

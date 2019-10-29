@@ -21524,14 +21524,14 @@ extern uint8_t illum;
 extern uint8_t temp;
 
 uint8_t ReadIllum(void);
-uint8_t ReadTemp(void);
+unsigned char ReadTemp(void);
 void PWM_Output_D4_Enable (void);
 void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
 void load_eeprom(void);
-void eeprom_default_setup(void);
+void default_setup(void);
 void update_clk(void);
 _Bool ring_buffer(void);
 # 17 "./menus.h" 2
@@ -21556,7 +21556,6 @@ void Menu(uint8_t mode) {
  switch(mode){
   case 0:
    submenu_clock();
-            __nop();
    break;
   case 1:
    submenu_alarm();

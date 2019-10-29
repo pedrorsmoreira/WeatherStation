@@ -21514,14 +21514,14 @@ extern uint8_t illum;
 extern uint8_t temp;
 
 uint8_t ReadIllum(void);
-uint8_t ReadTemp(void);
+unsigned char ReadTemp(void);
 void PWM_Output_D4_Enable (void);
 void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
 void load_eeprom(void);
-void eeprom_default_setup(void);
+void default_setup(void);
 void update_clk(void);
 _Bool ring_buffer(void);
 # 4 "utils.c" 2
@@ -21536,9 +21536,9 @@ uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
 }
 
-uint8_t ReadTemp(void){
+unsigned char ReadTemp(void){
  unsigned char value;
-    return 10;
+
     do{
         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
@@ -21568,7 +21568,7 @@ uint8_t ReadTemp(void){
             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 
- return (uint8_t) value;
+ return value;
 }
 
 void PWM_Output_D4_Enable (void){
@@ -21633,10 +21633,18 @@ void load_eeprom(void){
         clkh = read_clkh();
         clkm = read_clkm();
     } else
-        eeprom_default_setup();
+        default_setup();
 }
 
-void eeprom_default_setup(void){
+void default_setup(void){
+    pmon = 5;
+    nreg = 30;
+    tala = 3;
+    alat = 25;
+    alal = 2;
+    alaf = 0;
+    clkh = 0;
+    clkm = 0;
     eeprom_setup(1, 30, 5, 3,
             25, 2, 0, 0, 0);
 }

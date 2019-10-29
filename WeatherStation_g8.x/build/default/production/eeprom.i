@@ -21553,17 +21553,18 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 }
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
-
-    uint16_t ring_pos = 0xF00B + DATAEE_ReadByte(0xF00A);
+    uint16_t ring_pos_ = DATAEE_ReadByte(0xF00A);
+    uint16_t ring_pos = ring_pos_ + 0xF00B;
 
 
     if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
         return 0;
 
 
-    if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) )
+    if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001) - 5) ){
         ring_pos = 0xF00B;
-
+        DATAEE_WriteByte(0xF009, 0x55);
+    }
     DATAEE_WriteByte(ring_pos , h);
     DATAEE_WriteByte(ring_pos+1, m);
     DATAEE_WriteByte(ring_pos+2, s);
@@ -21573,11 +21574,19 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
 
     DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
 
+
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + (ring_pos+5-0xF00B) - ring_pos_);
+
+
     return 1;
 }
 
-_Bool used(void) {return 0xAA == DATAEE_ReadByte(0xF009); }
+_Bool ring_buffer_laped(void) { return 0x55 == DATAEE_ReadByte(0xF009); }
 
+_Bool used(void) {
+    uint8_t val = DATAEE_ReadByte(0xF009);
+    return (0xAA == val || 0x55 == val);
+}
 
 uint8_t read_nreg(void) { return DATAEE_ReadByte(0xF001); }
 uint8_t read_pmon(void) { return DATAEE_ReadByte(0xF002); }

@@ -126,7 +126,6 @@ void Alarm(void){
     alarm = true;
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(PWM_MIN);
-    TMR2_StartTimer();
     initial_time = clkh * 3600 + clkm * 60 + seconds;
 }
 
@@ -166,13 +165,13 @@ void main(void)
             update_clk();
         }
         if(timer >= pmon && pmon != 0){
-            NOP();
             timer = 0;
             INTERRUPT_PeripheralInterruptEnable();
             illum = ReadIllum();
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
+            NOP();
             ring_buffer();
             if((illum < alal || temp > alat) && alaf == 1)
                 if(!alarm) Alarm();

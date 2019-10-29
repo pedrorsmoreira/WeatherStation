@@ -206,8 +206,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./eeprom.h: 70: uint8_t read_clkm(void);
 [v _read_clkm `(uc ~T0 @X0 0 ef ]
 "57 ./utils.h
-[; ;./utils.h: 57: void eeprom_default_setup(void);
-[v _eeprom_default_setup `(v ~T0 @X0 0 ef ]
+[; ;./utils.h: 57: void default_setup(void);
+[v _default_setup `(v ~T0 @X0 0 ef ]
 "52 ./eeprom.h
 [; ;./eeprom.h: 52: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 [v _eeprom_setup `(v ~T0 @X0 0 ef9`a`uc`uc`uc`uc`uc`uc`uc`uc ]
@@ -1900,7 +1900,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1627 ]
 }
 "15
-[; ;utils.c: 15: uint8_t ReadTemp(void){
+[; ;utils.c: 15: unsigned char ReadTemp(void){
 [v _ReadTemp `(uc ~T0 @X0 1 ef ]
 {
 [e :U _ReadTemp ]
@@ -1908,10 +1908,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16
 [; ;utils.c: 16:  unsigned char value;
 [v _value `uc ~T0 @X0 1 a ]
-"17
-[; ;utils.c: 17:     return 10;
-[e ) -> -> 10 `i `uc ]
-[e $UE 1628  ]
 "18
 [; ;utils.c: 18:     do{
 [e :U 1631 ]
@@ -2132,7 +2128,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1702  ]
 [e :U 1703 ]
 "47
-[; ;utils.c: 47:  return (uint8_t) value;
+[; ;utils.c: 47:  return value;
 [e ) _value ]
 [e $UE 1628  ]
 "48
@@ -2347,50 +2343,74 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 1719  ]
 [e :U 1718 ]
 "112
-[; ;utils.c: 112:         eeprom_default_setup();
-[e ( _eeprom_default_setup ..  ]
+[; ;utils.c: 112:         default_setup();
+[e ( _default_setup ..  ]
 [e :U 1719 ]
 "113
 [; ;utils.c: 113: }
 [e :UE 1717 ]
 }
 "115
-[; ;utils.c: 115: void eeprom_default_setup(void){
-[v _eeprom_default_setup `(v ~T0 @X0 1 ef ]
+[; ;utils.c: 115: void default_setup(void){
+[v _default_setup `(v ~T0 @X0 1 ef ]
 {
-[e :U _eeprom_default_setup ]
+[e :U _default_setup ]
 [f ]
 "116
-[; ;utils.c: 116:     eeprom_setup(1, 30, 5, 3,
-[e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a -> -> 30 `i `uc -> -> 5 `i `uc -> -> 3 `i `uc -> -> 25 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;utils.c: 116:     pmon = 5;
+[e = _pmon -> -> 5 `i `uc ]
+"117
+[; ;utils.c: 117:     nreg = 30;
+[e = _nreg -> -> 30 `i `uc ]
 "118
-[; ;utils.c: 118: }
+[; ;utils.c: 118:     tala = 3;
+[e = _tala -> -> 3 `i `uc ]
+"119
+[; ;utils.c: 119:     alat = 25;
+[e = _alat -> -> 25 `i `uc ]
+"120
+[; ;utils.c: 120:     alal = 2;
+[e = _alal -> -> 2 `i `uc ]
+"121
+[; ;utils.c: 121:     alaf = 0;
+[e = _alaf -> -> 0 `i `uc ]
+"122
+[; ;utils.c: 122:     clkh = 0;
+[e = _clkh -> -> 0 `i `uc ]
+"123
+[; ;utils.c: 123:     clkm = 0;
+[e = _clkm -> -> 0 `i `uc ]
+"124
+[; ;utils.c: 124:     eeprom_setup(1, 30, 5, 3,
+[e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a -> -> 30 `i `uc -> -> 5 `i `uc -> -> 3 `i `uc -> -> 25 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
+"126
+[; ;utils.c: 126: }
 [e :UE 1720 ]
 }
-"120
-[; ;utils.c: 120: void update_clk(void){
+"128
+[; ;utils.c: 128: void update_clk(void){
 [v _update_clk `(v ~T0 @X0 1 ef ]
 {
 [e :U _update_clk ]
 [f ]
-"121
-[; ;utils.c: 121:     eeprom_clk_update(clkh, clkm);
+"129
+[; ;utils.c: 129:     eeprom_clk_update(clkh, clkm);
 [e ( _eeprom_clk_update (2 , _clkh _clkm ]
-"122
-[; ;utils.c: 122: }
+"130
+[; ;utils.c: 130: }
 [e :UE 1721 ]
 }
-"124
-[; ;utils.c: 124: _Bool ring_buffer(void){
+"132
+[; ;utils.c: 132: _Bool ring_buffer(void){
 [v _ring_buffer `(a ~T0 @X0 1 ef ]
 {
 [e :U _ring_buffer ]
 [f ]
-"125
-[; ;utils.c: 125:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
+"133
+[; ;utils.c: 133:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 [e ) ( _ring_buffer_write (4 , , , , _clkh _clkm _seconds _temp _illum ]
 [e $UE 1722  ]
-"126
-[; ;utils.c: 126: }
+"134
+[; ;utils.c: 134: }
 [e :UE 1722 ]
 }

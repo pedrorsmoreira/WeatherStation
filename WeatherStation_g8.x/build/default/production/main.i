@@ -21525,14 +21525,14 @@ extern uint8_t illum;
 extern uint8_t temp;
 
 uint8_t ReadIllum(void);
-uint8_t ReadTemp(void);
+unsigned char ReadTemp(void);
 void PWM_Output_D4_Enable (void);
 void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
 void load_eeprom(void);
-void eeprom_default_setup(void);
+void default_setup(void);
 void update_clk(void);
 _Bool ring_buffer(void);
 # 17 "./menus.h" 2
@@ -21622,7 +21622,6 @@ void Alarm(void){
     alarm = 1;
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(250);
-    TMR2_StartTimer();
     initial_time = clkh * 3600 + clkm * 60 + seconds;
 }
 
@@ -21661,6 +21660,7 @@ void main(void)
             flag_timer = 0;
             update_clk();
         }
+        __nop();
         if(timer >= pmon && pmon != 0){
             timer = 0;
             (INTCONbits.PEIE = 1);
@@ -21668,6 +21668,7 @@ void main(void)
             LATAbits.LATA4 = illum & 1;
             LATAbits.LATA5 = (illum & 2) >> 1;
             temp = ReadTemp();
+            __nop();
             ring_buffer();
             if((illum < alal || temp > alat) && alaf == 1)
                 if(!alarm) Alarm();

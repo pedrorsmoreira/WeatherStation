@@ -12,9 +12,9 @@ uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
 }
 
-uint8_t ReadTemp(void){
+unsigned char ReadTemp(void){
 	unsigned char value;
-    return 10;
+
     do{
         IdleI2C();
         StartI2C()
@@ -44,7 +44,7 @@ uint8_t ReadTemp(void){
             ; IdleI2C();
 	StopI2C();
 
-	return (uint8_t) value;
+	return value;
 }
 
 void PWM_Output_D4_Enable (void){
@@ -109,10 +109,18 @@ void load_eeprom(void){
         clkh = read_clkh(); // initial value for clock hours
         clkm = read_clkm(); // initial value for clock minutes
     } else
-        eeprom_default_setup();
+        default_setup();
 }
 
-void eeprom_default_setup(void){
+void default_setup(void){
+    pmon = PMON;
+    nreg = NREG;
+    tala = TALA;
+    alat = ALAT;
+    alal = ALAL;
+    alaf = ALAF;
+    clkh = CLKH;
+    clkm = CLKM;
     eeprom_setup(true, NREG, PMON, TALA, 
             ALAT, ALAL, ALAF, CLKH, CLKM);
 }

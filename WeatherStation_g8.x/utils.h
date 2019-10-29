@@ -18,7 +18,7 @@ extern "C" {
 #include "eeprom.h"
     
 #define LEDs                LATA
-#define DELAY               200 //ms
+#define DELAY               300 //ms
     
 //default values
 #define PMON                5 // monitoring period
@@ -47,14 +47,14 @@ extern uint8_t illum;
 extern uint8_t temp;
 
 uint8_t ReadIllum(void);
-uint8_t ReadTemp(void);
+unsigned char ReadTemp(void);
 void PWM_Output_D4_Enable (void);
 void PWM_Output_D4_Disable (void);
 void ShowOnLEDs(uint8_t);
 void checkButtonS1(void);
 void checkButtonS2(void);
 void load_eeprom(void);
-void eeprom_default_setup(void);
+void default_setup(void);
 void update_clk(void);
 bool ring_buffer(void);
 
