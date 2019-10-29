@@ -17,24 +17,6 @@ uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t)){
             func(DATAEE_ReadByte(CLKH_), DATAEE_ReadByte(CLKM_))))))));
     #endif
 
-    uint8_t wbuf = DATAEE_ReadByte(WBUF_);
-    uint8_t rbuf = DATAEE_ReadByte(RBUF_);
-
-    #ifdef CHECKSUM
-    check += wbuf + rbuf;
-    #else 
-    check = func(check, func(wbuf, rbuf));
-    #endif
-
-    while (rbuf < wbuf){
-        #ifdef CHECKSUM
-        check += DATAEE_ReadByte(++rbuf);
-        #else
-        check = func(check, DATAEE_ReadByte(++rbuf));
-        #endif
-
-    }
-    
     return check;
 }
 
@@ -79,6 +61,10 @@ void eeprom_setup(bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
     DATAEE_WriteByte(CLKH_, clkh);
     DATAEE_WriteByte(CLKM_, clkm);
     DATAEE_WriteByte(USED_, 0xAA);
+    
+    #ifdef CHECKSUM
+    DATAEE_WriteByte(CHECK_, nreg+pmon+tala+alat+alal+alaf+clkh+clkm);
+    
 }
 
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
