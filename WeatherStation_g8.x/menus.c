@@ -44,8 +44,8 @@ uint8_t Update(uint8_t var, uint8_t thr){
 
 //FUNCOES DE CADA SUBMENU
 void submenu_clock(void){
-	uint8_t hours_tens = CLKH/10; //hours tens 
-	uint8_t hours_units = CLKH%10;  //hours units
+	uint8_t hours_tens = clkh/10; //hours tens 
+	uint8_t hours_units = clkh%10;  //hours units
 	hours_tens = Update(hours_tens, (uint8_t) 2);
 	if(hours_tens == 2){
 		if(hours_units>3) hours_units = 0;
@@ -53,38 +53,38 @@ void submenu_clock(void){
 	} else 
 		hours_units = Update(hours_units, (uint8_t) 9);
 	
-	uint8_t minutes_tens = CLKM/10; // minutes tens
-	uint8_t minutes_units = CLKM/10; //minutes units
+	uint8_t minutes_tens = clkm/10; // minutes tens
+	uint8_t minutes_units = clkm/10; //minutes units
 	minutes_tens = Update(minutes_tens, (uint8_t) 5);
 	minutes_units = Update(minutes_units, (uint8_t) 9);
 	
-	CLKH = 10*hours_tens + hours_units;
-	CLKM = 10*minutes_tens + minutes_units;
+	clkh = 10*hours_tens + hours_units;
+	clkm = 10*minutes_tens + minutes_units;
     update_clk();
 }
 
 
 
 void submenu_alarm(void){
-	ALAF = Update(ALAF, (uint8_t) 1);
-    write_alaf(ALAF);
+	alaf = Update(alaf, (uint8_t) 1);
+    write_alaf(alaf);
 }
 
 void submenu_temp(void){
-	uint8_t temperature_tens = ALAT/10; //temperature tens
-	uint8_t temperature_units = ALAT % 10; //temperature units
+	uint8_t temperature_tens = alat/10; //temperature tens
+	uint8_t temperature_units = alat % 10; //temperature units
 	temperature_tens = Update(temperature_tens, (uint8_t) 5);
-	if (temperature_tens == 5) ALAT = 50;
+	if (temperature_tens == 5) alat = 50;
 	else {
 		temperature_units = Update(temperature_units, (uint8_t) 9);
-		ALAT = temperature_tens*10 + temperature_units;
+		alat = temperature_tens*10 + temperature_units;
 	}
-    write_alat(ALAT);
+    write_alat(alat);
 }
 
 void submenu_illum(void){
-	ALAL = Update(ALAL, (uint8_t) 3);
-    write_alal(ALAL);
+	alal = Update(alal, (uint8_t) 3);
+    write_alal(alal);
 }
 
 

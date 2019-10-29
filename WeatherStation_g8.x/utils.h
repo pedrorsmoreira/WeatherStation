@@ -18,6 +18,7 @@ extern "C" {
 #include "eeprom.h"
     
 #define LEDs                LATA
+#define DELAY               200 //ms
     
     
 extern uint8_t volatile seconds;
@@ -25,14 +26,14 @@ bool btn1State;
 bool btn2State;
 extern bool s1flag; //flag que fica a true quando ha interrupao do S1
 extern bool s2flag; //same mas para S2
-extern uint8_t PMON; // monitoring period
-extern uint8_t NREG; // number of data registers
-extern uint8_t TALA; // duration of alarm signal (PWM)
-extern uint8_t ALAT; // threshold for temperature alarm
-extern uint8_t ALAL; // threshold for luminosity level alarm
-extern uint8_t ALAF; // alarm flag ? initially disabled
-extern volatile uint8_t CLKH; // initial value for clock hours
-extern volatile uint8_t CLKM; // initial value for clock minutes
+extern uint8_t pmon; // monitoring period
+extern uint8_t nreg; // number of data registers
+extern uint8_t tala; // duration of alarm signal (PWM)
+extern uint8_t alat; // threshold for temperature alarm
+extern uint8_t alal; // threshold for luminosity level alarm
+extern uint8_t alaf; // alarm flag ? initially disabled
+extern volatile uint8_t clkh; // initial value for clock hours
+extern volatile uint8_t clkm; // initial value for clock minutes
 
 extern uint8_t illum;
 extern uint8_t temp;

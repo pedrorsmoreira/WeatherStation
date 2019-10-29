@@ -2,8 +2,6 @@
 #include "I2C/i2c.h"
 #include "utils.h"
 
-//#include "eeprom.h"
-
 uint8_t ReadIllum(void){
     return ADCC_GetSingleConversion(ILLUM)>> 14;
 }
@@ -72,7 +70,7 @@ void ShowOnLEDs(uint8_t num){
 void checkButtonS1(void) {
     if (btn1State == false) {
         if (SWITCH1_PORT == LOW) {
-            __delay_ms(100);
+            __delay_ms(DELAY);
             btn1State = true;
         }
     } else if (SWITCH1_PORT == HIGH) {
@@ -84,7 +82,7 @@ void checkButtonS1(void) {
 void checkButtonS2(void) {
     if (btn2State == false) {
         if (SWITCH2_PORT == LOW) {
-            __delay_ms(100);
+            __delay_ms(DELAY);
             btn2State = true;
         }
     } else if (SWITCH2_PORT == HIGH) {
@@ -96,27 +94,27 @@ void checkButtonS2(void) {
 void load_eeprom(void){
   //  if(used() && check_corruption()){
     if(used()){
-        PMON = read_pmon(); // monitoring period
-        NREG = read_nreg(); // number of data registers
-        TALA = read_tala(); // duration of alarm signal (PWM)
-        ALAT = read_alat(); // threshold for temperature alarm
-        ALAL = read_alal(); // threshold for luminosity level alarm
-        ALAF = read_alaf(); // alarm flag ? initially disabled
-        CLKH = read_clkh(); // initial value for clock hours
-        CLKM = read_clkm(); // initial value for clock minutes
+        pmon = read_pmon(); // monitoring period
+        nreg = read_nreg(); // number of data registers
+        tala = read_tala(); // duration of alarm signal (PWM)
+        alat = read_alat(); // threshold for temperature alarm
+        alal = read_alal(); // threshold for luminosity level alarm
+        alaf = read_alaf(); // alarm flag ? initially disabled
+        clkh = read_clkh(); // initial value for clock hours
+        clkm = read_clkm(); // initial value for clock minutes
     } else
         eeprom_default_setup();
 }
 
 void eeprom_default_setup(void){
-    eeprom_setup(true, NREG, PMON, TALA, 
-            ALAT, ALAL, ALAF, CLKH, CLKM);
+    eeprom_setup(true, nreg, pmon, tala, 
+            alat, alal, alaf, clkh, clkm);
 }
 
 void update_clk(void){
-    eeprom_clk_update(CLKH, CLKM);
+    eeprom_clk_update(clkh, clkm);
 }
 
 bool ring_buffer(void){
-    return ring_buffer_write(CLKH, CLKM, seconds, temp, illum);
+    return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 }

@@ -53,22 +53,17 @@
                          Main application
  */
 
-bool s1flag; //flag que fica a true quando ha interrupao do S1
-bool s2flag; //same mas para S2
-
-
-int volatile timer;
-bool volatile switch1;
-bool volatile flag_timer;
+volatile uint8_t timer;
+volatile bool switch1;
+volatile bool flag_timer;
 int initial_time;
-uint8_t PMON = 5; // monitoring period
-uint8_t NREG = 30; // number of data registers
-uint8_t TALA = 3; // duration of alarm signal (PWM)
-uint8_t ALAT = 25; // threshold for temperature alarm
-uint8_t ALAL = 2; // threshold for luminosity level alarm
-uint8_t ALAF = 0; // alarm flag ? initially disabled
-volatile uint8_t CLKH = 0; // initial value for clock hours
-volatile uint8_t CLKM = 0; // initial value for clock minutes
+uint8_t pmon = 5; // monitoring period
+uint8_t tala = 3; // duration of alarm signal (PWM)
+uint8_t alat = 25; // threshold for temperature alarm
+uint8_t alal = 2; // threshold for luminosity level alarm
+uint8_t alaf = 0; // alarm flag ? initially disabled
+volatile uint8_t clkh = 0; // initial value for clock hours
+volatile uint8_t clkm = 0; // initial value for clock minutes
 uint8_t temp;
 uint8_t illum;
 volatile uint8_t seconds;
@@ -76,31 +71,34 @@ volatile uint8_t seconds;
 bool alarm;
 float incr;
 
-volatile bool timer1 = false;
+void sys_init(void){
+    timer = 0;
+    switch1 = false;
+    flag_timer = false;
+    initial_time = 0;
+    btn1State = false;
+    btn2State = false;
+    alarm = false;
+}
 
 void Timer(){
     C_Toggle();
     
-    if(PMON == 0)
-        return;
-    
-    if(timer++ >= PMON){
-        timer = 0;
-        timer1 = true;
-    }
+    if(pmon != 0)
+        timer++;
 
     if(seconds < 59)
         seconds++;
     else{
         seconds = 0;
-        if(CLKM < 59)
-            CLKM++;
+        if(clkm < 59)
+            clkm++;
         else{
-            CLKM = 0;
-            if(CLKH < 23)
-                CLKH++;
+            clkm = 0;
+            if(clkh < 23)
+                clkh++;
             else
-                CLKH = 0;
+                clkh = 0;
         }
     }
     
@@ -109,16 +107,15 @@ void Timer(){
     }
 }
 
-void ClearAlarm(){
+void clear_alarm(){
     PWM_Output_D4_Disable();
     A_SetLow();
-    //TMR2_Stop();
     alarm = false;
 }
 
 void Switch1(void){
     if(alarm)
-        ClearAlarm();
+        clear_alarm();
     else
         switch1 = true;
 }
@@ -128,7 +125,7 @@ void Alarm(void){
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(PWM_MIN);
     TMR2_StartTimer();
-    initial_time = CLKH * 3600 + CLKM * 60 + seconds;
+    initial_time = clkh * 3600 + clkm * 60 + seconds;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -137,28 +134,12 @@ uint8_t xor(uint8_t x, uint8_t y){
 
 void main(void)
 {
-    
-    timer = 0;
-    switch1 = false;
-    flag_timer = false;
-    initial_time = 0;
-    btn1State = false;
-    btn2State = false;
-    alarm = false;
-
-    /*
-    #ifdef CHECKSUM
-    set_check_up_value();
-    #else
-    set_check_up_value(xor);
-    #endif
-    */
-    
+   
     // initialize the device
     SYSTEM_Initialize();
-
+    sys_init();
     load_eeprom();
-    ClearAlarm();
+    clear_alarm();
     
     // Enable the Global Interrupts
     INTERRUPT_GlobalInterruptEnable();
@@ -168,15 +149,6 @@ void main(void)
     
     TMR1_SetInterruptHandler(Timer);
     INT_SetInterruptHandler(Switch1);
-   // TMR2_SetInterruptHandler(Timer2);
-
-  //  incr = 1023*1.024/(1000*TALA);
-
-    // Disable the Global Interrupts
-  //  INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
         
     i2c1_driver_open();
     I2C_SCL = 1;
@@ -191,21 +163,21 @@ void main(void)
             flag_timer = false;
             update_clk();
         }
-        if(timer1){
-            timer1 = false;
+        if(timer >= pmon && pmon != 0){
+            timer = 0;
             INTERRUPT_PeripheralInterruptEnable();
             illum = ReadIllum();
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
             ring_buffer();
-            if((illum < ALAL || temp > ALAT) && ALAF == 1)
+            if((illum < alal || temp > alat) && alaf == 1)
                 if(!alarm) Alarm();
         } else
             INTERRUPT_PeripheralInterruptEnable();
         
         if(alarm){
-            if(CLKH * 3600 + CLKM * 60 + seconds - initial_time >= TALA){
+            if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 A_SetHigh();
                 SLEEP();
@@ -216,8 +188,6 @@ void main(void)
         EXT_INT_InterruptDisable();
         if(switch1){
             switch1 = false;
-            s1flag = false;
-            SWITCH1_SetHigh();
             Menus();
             INTERRUPT_PeripheralInterruptDisable();
             TMR1_SetInterruptHandler(Timer);
