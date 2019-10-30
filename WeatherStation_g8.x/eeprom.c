@@ -68,6 +68,9 @@ void eeprom_setup(bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 }
 
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
+    #ifdef CHECKSUM
+    DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + clkh + clkm - DATAEE_ReadByte(CLKH_) - DATAEE_ReadByte(CLKM_));
+    #endif
     DATAEE_WriteByte(CLKH_, clkh);
     DATAEE_WriteByte(CLKM_, clkm);
 }
