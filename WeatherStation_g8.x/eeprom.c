@@ -84,7 +84,7 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
         return false;
     
     //check if the writing position reached the end of the ring buffer
-    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_) - 5) ){
+    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_)*5 - 5) ){
         ring_pos = RBUF_;
         DATAEE_WriteByte(USED_, 0x55);
     }

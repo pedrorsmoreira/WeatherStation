@@ -1025,16 +1025,16 @@ channel_FVR_buf1 63
 {
 [v ring_buffer_write@h h `uc  1 a 1 wreg ]
 "80
-[v ring_buffer_write@ring_pos ring_pos `us  1 a 2 7 ]
+[v ring_buffer_write@ring_pos ring_pos `us  1 a 2 11 ]
 "79
-[v ring_buffer_write@ring_pos_ ring_pos_ `us  1 a 2 5 ]
+[v ring_buffer_write@ring_pos_ ring_pos_ `us  1 a 2 9 ]
 "78
 [v ring_buffer_write@h h `uc  1 a 1 wreg ]
 [v ring_buffer_write@m m `uc  1 p 1 0 ]
 [v ring_buffer_write@s s `uc  1 p 1 1 ]
 [v ring_buffer_write@T T `uc  1 p 1 2 ]
 [v ring_buffer_write@L L `uc  1 p 1 3 ]
-[v ring_buffer_write@h h `uc  1 a 1 4 ]
+[v ring_buffer_write@h h `uc  1 a 1 8 ]
 "105
 } 0
 "100 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
@@ -1411,10 +1411,10 @@ channel_FVR_buf1 63
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 6 ]
+[v ___wmul@product product `ui  1 a 2 8 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 4 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 6 ]
 "53
 } 0
 "50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
