@@ -71,16 +71,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "58 ./utils.h
 [; ;./utils.h: 58: void update_clk(void);
 [v _update_clk `(v ~T0 @X0 0 ef ]
-"31 /Applications/microchip/xc8/v2.10/pic/include/pic.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
-"49 ./utils.h
+"49
 [; ;./utils.h: 49: uint8_t ReadIllum(void);
 [v _ReadIllum `(uc ~T0 @X0 0 ef ]
 "50
 [; ;./utils.h: 50: unsigned char ReadTemp(void);
 [v _ReadTemp `(uc ~T0 @X0 0 ef ]
-"59
+"31 /Applications/microchip/xc8/v2.10/pic/include/pic.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+"59 ./utils.h
 [; ;./utils.h: 59: _Bool ring_buffer(void);
 [v _ring_buffer `(a ~T0 @X0 0 ef ]
 "21840 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
@@ -2086,127 +2086,124 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 1653 ]
 "167
-[; ;main.c: 167:         __nop();
-[e ( ___nop ..  ]
-"168
-[; ;main.c: 168:         if(timer >= pmon && pmon != 0){
+[; ;main.c: 167:         if(timer >= pmon && pmon != 0){
 [e $ ! && >= -> _timer `i -> _pmon `i != -> _pmon `i -> 0 `i 1654  ]
 {
-"169
-[; ;main.c: 169:             timer = 0;
+"168
+[; ;main.c: 168:             timer = 0;
 [e = _timer -> -> 0 `i `uc ]
-"170
-[; ;main.c: 170:             (INTCONbits.PEIE = 1);
+"169
+[; ;main.c: 169:             (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"171
-[; ;main.c: 171:             illum = ReadIllum();
+"170
+[; ;main.c: 170:             illum = ReadIllum();
 [e = _illum ( _ReadIllum ..  ]
-"172
-[; ;main.c: 172:             LATAbits.LATA4 = illum & 1;
+"171
+[; ;main.c: 171:             LATAbits.LATA4 = illum & 1;
 [e = . . _LATAbits 0 4 -> & -> _illum `i -> 1 `i `uc ]
-"173
-[; ;main.c: 173:             LATAbits.LATA5 = (illum & 2) >> 1;
+"172
+[; ;main.c: 172:             LATAbits.LATA5 = (illum & 2) >> 1;
 [e = . . _LATAbits 0 5 -> >> & -> _illum `i -> 2 `i -> 1 `i `uc ]
-"174
-[; ;main.c: 174:             temp = ReadTemp();
+"173
+[; ;main.c: 173:             temp = ReadTemp();
 [e = _temp ( _ReadTemp ..  ]
-"175
-[; ;main.c: 175:             __nop();
+"174
+[; ;main.c: 174:             __nop();
 [e ( ___nop ..  ]
-"176
-[; ;main.c: 176:             ring_buffer();
+"175
+[; ;main.c: 175:             ring_buffer();
 [e ( _ring_buffer ..  ]
-"177
-[; ;main.c: 177:             if((illum < alal || temp > alat) && alaf == 1)
+"176
+[; ;main.c: 176:             if((illum < alal || temp > alat) && alaf == 1)
 [e $ ! && || < -> _illum `i -> _alal `i > -> _temp `i -> _alat `i == -> _alaf `i -> 1 `i 1655  ]
-"178
-[; ;main.c: 178:                 if(!alarm) Alarm();
+"177
+[; ;main.c: 177:                 if(!alarm) Alarm();
 [e $ ! ! != -> _alarm `i -> 0 `i 1656  ]
 [e ( _Alarm ..  ]
 [e :U 1656 ]
 [e :U 1655 ]
-"179
-[; ;main.c: 179:         } else
+"178
+[; ;main.c: 178:         } else
 }
 [e $U 1657  ]
 [e :U 1654 ]
-"180
-[; ;main.c: 180:             (INTCONbits.PEIE = 1);
+"179
+[; ;main.c: 179:             (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
 [e :U 1657 ]
-"182
-[; ;main.c: 182:         if(alarm){
+"181
+[; ;main.c: 181:         if(alarm){
 [e $ ! != -> _alarm `i -> 0 `i 1658  ]
 {
-"183
-[; ;main.c: 183:             if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
+"182
+[; ;main.c: 182:             if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
 [e $ ! >= - + + * -> _clkh `i -> 3600 `i * -> _clkm `i -> 60 `i -> _seconds `i _initial_time -> _tala `i 1659  ]
 {
-"184
-[; ;main.c: 184:                 PWM_Output_D4_Disable();
+"183
+[; ;main.c: 183:                 PWM_Output_D4_Disable();
 [e ( _PWM_Output_D4_Disable ..  ]
-"185
-[; ;main.c: 185:                 do { LATAbits.LATA6 = 1; } while(0);
+"184
+[; ;main.c: 184:                 do { LATAbits.LATA6 = 1; } while(0);
 [e :U 1662 ]
 {
 [e = . . _LATAbits 0 6 -> -> 1 `i `uc ]
 }
 [e :U 1661 ]
-"186
-[; ;main.c: 186:                 __asm("sleep");
+"185
+[; ;main.c: 185:                 __asm("sleep");
 [; <" sleep ;# ">
-"187
-[; ;main.c: 187:             }
+"186
+[; ;main.c: 186:             }
 }
 [e :U 1659 ]
-"188
-[; ;main.c: 188:         } else
+"187
+[; ;main.c: 187:         } else
 }
 [e $U 1663  ]
 [e :U 1658 ]
-"189
-[; ;main.c: 189:             __asm("sleep");
+"188
+[; ;main.c: 188:             __asm("sleep");
 [; <" sleep ;# ">
 [e :U 1663 ]
-"191
-[; ;main.c: 191:         (PIE0bits.INTE = 0);
+"190
+[; ;main.c: 190:         (PIE0bits.INTE = 0);
 [e = . . _PIE0bits 0 0 -> -> 0 `i `uc ]
-"192
-[; ;main.c: 192:         if(switch1){
+"191
+[; ;main.c: 191:         if(switch1){
 [e $ ! != -> _switch1 `i -> 0 `i 1664  ]
 {
-"193
-[; ;main.c: 193:             switch1 = 0;
+"192
+[; ;main.c: 192:             switch1 = 0;
 [e = _switch1 -> -> 0 `i `a ]
-"194
-[; ;main.c: 194:             Menus();
+"193
+[; ;main.c: 193:             Menus();
 [e ( _Menus ..  ]
-"195
-[; ;main.c: 195:             (INTCONbits.PEIE = 0);
+"194
+[; ;main.c: 194:             (INTCONbits.PEIE = 0);
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"196
-[; ;main.c: 196:             TMR1_SetInterruptHandler(Timer);
+"195
+[; ;main.c: 195:             TMR1_SetInterruptHandler(Timer);
 [e ( _TMR1_SetInterruptHandler (1 -> &U _Timer `*F12927 ]
-"197
-[; ;main.c: 197:             (INTCONbits.PEIE = 1);
+"196
+[; ;main.c: 196:             (INTCONbits.PEIE = 1);
 [e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"198
-[; ;main.c: 198:             (PIR0bits.INTF = 0);
+"197
+[; ;main.c: 197:             (PIR0bits.INTF = 0);
 [e = . . _PIR0bits 0 0 -> -> 0 `i `uc ]
-"200
-[; ;main.c: 200:         }
+"199
+[; ;main.c: 199:         }
 }
 [e :U 1664 ]
-"201
-[; ;main.c: 201:         (PIE0bits.INTE = 1);
+"200
+[; ;main.c: 200:         (PIE0bits.INTE = 1);
 [e = . . _PIE0bits 0 0 -> -> 1 `i `uc ]
-"202
-[; ;main.c: 202:     }
+"201
+[; ;main.c: 201:     }
 }
 [e :U 1650 ]
 [e $U 1651  ]
 [e :U 1652 ]
-"203
-[; ;main.c: 203: }
+"202
+[; ;main.c: 202: }
 [e :UE 1649 ]
 }

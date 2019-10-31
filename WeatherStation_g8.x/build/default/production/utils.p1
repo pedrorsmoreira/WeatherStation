@@ -160,6 +160,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59 ./eeprom.h
 [; ;./eeprom.h: 59: _Bool used(void);
 [v _used `(a ~T0 @X0 0 ef ]
+"45
+[; ;./eeprom.h: 45: _Bool check_corruption(void);
+[v _check_corruption `(a ~T0 @X0 0 ef ]
 "38 ./utils.h
 [; ;./utils.h: 38: extern uint8_t pmon;
 [v _pmon `uc ~T0 @X0 0 e ]
@@ -2226,8 +2229,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1709  ]
 {
 "79
-[; ;utils.c: 79:             _delay((unsigned long)((200)*(1000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
+[; ;utils.c: 79:             _delay((unsigned long)((300)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
 "80
 [; ;utils.c: 80:             btn1State = 1;
 [e = _btn1State -> -> 1 `i `a ]
@@ -2272,8 +2275,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 1714  ]
 {
 "91
-[; ;utils.c: 91:             _delay((unsigned long)((200)*(1000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
+[; ;utils.c: 91:             _delay((unsigned long)((300)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 300 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
 "92
 [; ;utils.c: 92:             btn2State = 1;
 [e = _btn2State -> -> 1 `i `a ]
@@ -2309,108 +2312,108 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _load_eeprom ]
 [f ]
-"102
-[; ;utils.c: 102:     if(used()){
-[e $ ! != -> ( _used ..  `i -> 0 `i 1718  ]
+"101
+[; ;utils.c: 101:     if(used() && check_corruption()){
+[e $ ! && != -> ( _used ..  `i -> 0 `i != -> ( _check_corruption ..  `i -> 0 `i 1718  ]
 {
-"103
-[; ;utils.c: 103:         pmon = read_pmon();
+"102
+[; ;utils.c: 102:         pmon = read_pmon();
 [e = _pmon ( _read_pmon ..  ]
-"104
-[; ;utils.c: 104:         nreg = read_nreg();
+"103
+[; ;utils.c: 103:         nreg = read_nreg();
 [e = _nreg ( _read_nreg ..  ]
-"105
-[; ;utils.c: 105:         tala = read_tala();
+"104
+[; ;utils.c: 104:         tala = read_tala();
 [e = _tala ( _read_tala ..  ]
-"106
-[; ;utils.c: 106:         alat = read_alat();
+"105
+[; ;utils.c: 105:         alat = read_alat();
 [e = _alat ( _read_alat ..  ]
-"107
-[; ;utils.c: 107:         alal = read_alal();
+"106
+[; ;utils.c: 106:         alal = read_alal();
 [e = _alal ( _read_alal ..  ]
-"108
-[; ;utils.c: 108:         alaf = read_alaf();
+"107
+[; ;utils.c: 107:         alaf = read_alaf();
 [e = _alaf ( _read_alaf ..  ]
-"109
-[; ;utils.c: 109:         clkh = read_clkh();
+"108
+[; ;utils.c: 108:         clkh = read_clkh();
 [e = _clkh ( _read_clkh ..  ]
-"110
-[; ;utils.c: 110:         clkm = read_clkm();
+"109
+[; ;utils.c: 109:         clkm = read_clkm();
 [e = _clkm ( _read_clkm ..  ]
-"111
-[; ;utils.c: 111:     } else
+"110
+[; ;utils.c: 110:     } else
 }
 [e $U 1719  ]
 [e :U 1718 ]
-"112
-[; ;utils.c: 112:         default_setup();
+"111
+[; ;utils.c: 111:         default_setup();
 [e ( _default_setup ..  ]
 [e :U 1719 ]
-"113
-[; ;utils.c: 113: }
+"112
+[; ;utils.c: 112: }
 [e :UE 1717 ]
 }
-"115
-[; ;utils.c: 115: void default_setup(void){
+"114
+[; ;utils.c: 114: void default_setup(void){
 [v _default_setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _default_setup ]
 [f ]
-"116
-[; ;utils.c: 116:     pmon = 5;
+"115
+[; ;utils.c: 115:     pmon = 5;
 [e = _pmon -> -> 5 `i `uc ]
-"117
-[; ;utils.c: 117:     nreg = 30;
+"116
+[; ;utils.c: 116:     nreg = 30;
 [e = _nreg -> -> 30 `i `uc ]
-"118
-[; ;utils.c: 118:     tala = 3;
+"117
+[; ;utils.c: 117:     tala = 3;
 [e = _tala -> -> 3 `i `uc ]
-"119
-[; ;utils.c: 119:     alat = 25;
+"118
+[; ;utils.c: 118:     alat = 25;
 [e = _alat -> -> 25 `i `uc ]
-"120
-[; ;utils.c: 120:     alal = 2;
+"119
+[; ;utils.c: 119:     alal = 2;
 [e = _alal -> -> 2 `i `uc ]
-"121
-[; ;utils.c: 121:     alaf = 0;
+"120
+[; ;utils.c: 120:     alaf = 0;
 [e = _alaf -> -> 0 `i `uc ]
-"122
-[; ;utils.c: 122:     clkh = 0;
+"121
+[; ;utils.c: 121:     clkh = 0;
 [e = _clkh -> -> 0 `i `uc ]
-"123
-[; ;utils.c: 123:     clkm = 0;
+"122
+[; ;utils.c: 122:     clkm = 0;
 [e = _clkm -> -> 0 `i `uc ]
-"124
-[; ;utils.c: 124:     eeprom_setup(1, 30, 5, 3,
+"123
+[; ;utils.c: 123:     eeprom_setup(1, 30, 5, 3,
 [e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a -> -> 30 `i `uc -> -> 5 `i `uc -> -> 3 `i `uc -> -> 25 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
-"126
-[; ;utils.c: 126: }
+"125
+[; ;utils.c: 125: }
 [e :UE 1720 ]
 }
-"128
-[; ;utils.c: 128: void update_clk(void){
+"127
+[; ;utils.c: 127: void update_clk(void){
 [v _update_clk `(v ~T0 @X0 1 ef ]
 {
 [e :U _update_clk ]
 [f ]
-"129
-[; ;utils.c: 129:     eeprom_clk_update(clkh, clkm);
+"128
+[; ;utils.c: 128:     eeprom_clk_update(clkh, clkm);
 [e ( _eeprom_clk_update (2 , _clkh _clkm ]
-"130
-[; ;utils.c: 130: }
+"129
+[; ;utils.c: 129: }
 [e :UE 1721 ]
 }
-"132
-[; ;utils.c: 132: _Bool ring_buffer(void){
+"131
+[; ;utils.c: 131: _Bool ring_buffer(void){
 [v _ring_buffer `(a ~T0 @X0 1 ef ]
 {
 [e :U _ring_buffer ]
 [f ]
-"133
-[; ;utils.c: 133:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
+"132
+[; ;utils.c: 132:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 [e ) ( _ring_buffer_write (4 , , , , _clkh _clkm _seconds _temp _illum ]
 [e $UE 1722  ]
-"134
-[; ;utils.c: 134: }
+"133
+[; ;utils.c: 133: }
 [e :UE 1722 ]
 }

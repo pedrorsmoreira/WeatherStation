@@ -21660,7 +21660,6 @@ void main(void)
             flag_timer = 0;
             update_clk();
         }
-        __nop();
         if(timer >= pmon && pmon != 0){
             timer = 0;
             (INTCONbits.PEIE = 1);

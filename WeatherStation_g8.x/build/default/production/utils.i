@@ -21600,7 +21600,7 @@ void ShowOnLEDs(uint8_t num){
 void checkButtonS1(void) {
     if (btn1State == 0) {
         if (PORTBbits.RB4 == 0) {
-            _delay((unsigned long)((200)*(1000000/4000.0)));
+            _delay((unsigned long)((300)*(1000000/4000.0)));
             btn1State = 1;
         }
     } else if (PORTBbits.RB4 == 1) {
@@ -21612,7 +21612,7 @@ void checkButtonS1(void) {
 void checkButtonS2(void) {
     if (btn2State == 0) {
         if (PORTCbits.RC5 == 0) {
-            _delay((unsigned long)((200)*(1000000/4000.0)));
+            _delay((unsigned long)((300)*(1000000/4000.0)));
             btn2State = 1;
         }
     } else if (PORTCbits.RC5 == 1) {
@@ -21622,8 +21622,7 @@ void checkButtonS2(void) {
 }
 
 void load_eeprom(void){
-
-    if(used()){
+    if(used() && check_corruption()){
         pmon = read_pmon();
         nreg = read_nreg();
         tala = read_tala();

@@ -98,8 +98,7 @@ void checkButtonS2(void) {
 }
 
 void load_eeprom(void){
-  //  if(used() && check_corruption()){
-    if(used()){
+    if(used() && check_corruption()){
         pmon = read_pmon(); // monitoring period
         nreg = read_nreg(); // number of data registers
         tala = read_tala(); // duration of alarm signal (PWM)
