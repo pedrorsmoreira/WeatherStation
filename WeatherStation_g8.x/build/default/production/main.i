@@ -21660,17 +21660,18 @@ void main(void)
             flag_timer = 0;
             update_clk();
         }
-        if(timer >= pmon && pmon != 0){
-            timer = 0;
+        if((timer == 0 || timer > pmon) && pmon != 0){
+            timer = 1;
             (INTCONbits.PEIE = 1);
             illum = ReadIllum();
             LATAbits.LATA4 = illum & 1;
             LATAbits.LATA5 = (illum & 2) >> 1;
             temp = ReadTemp();
-            __nop();
             ring_buffer();
-            if((illum < alal || temp > alat) && alaf == 1)
-                if(!alarm) Alarm();
+            if((illum < alal || temp > alat) && alaf == 1){
+                if(!alarm)
+                    Alarm();
+            }
         } else
             (INTCONbits.PEIE = 1);
 

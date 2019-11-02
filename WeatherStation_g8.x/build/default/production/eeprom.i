@@ -21490,7 +21490,7 @@ uint8_t get_check_up_value(void){
 
     check = DATAEE_ReadByte(0xF001) + DATAEE_ReadByte(0xF002) + DATAEE_ReadByte(0xF003) +
             DATAEE_ReadByte(0xF004) + DATAEE_ReadByte(0xF005) + DATAEE_ReadByte(0xF006) +
-            DATAEE_ReadByte(0xF007) + DATAEE_ReadByte(0xF008);
+            DATAEE_ReadByte(0xF007) + DATAEE_ReadByte(0xF008) + DATAEE_ReadByte(0xF00A);
 
 
 
@@ -21560,8 +21560,8 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos = ring_pos_ + 0xF00B;
 
 
-    if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
-        return 0;
+
+
 
 
     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001)*5 - 5) ){

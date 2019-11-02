@@ -14,7 +14,7 @@ uint8_t ReadIllum(void){
 
 unsigned char ReadTemp(void){
 	unsigned char value;
-
+    return 10;
     do{
         IdleI2C();
         StartI2C()
@@ -126,8 +126,4 @@ void default_setup(void){
 
 void update_clk(void){
     eeprom_clk_update(clkh, clkm);
-}
-
-bool ring_buffer(void){
-    return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 }

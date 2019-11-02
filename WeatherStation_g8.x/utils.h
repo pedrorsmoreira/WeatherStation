@@ -56,7 +56,6 @@ void checkButtonS2(void);
 void load_eeprom(void);
 void default_setup(void);
 void update_clk(void);
-bool ring_buffer(void);
 
 #ifdef	__cplusplus
 }

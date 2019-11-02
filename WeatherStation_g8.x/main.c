@@ -64,9 +64,12 @@ uint8_t alal; // threshold for luminosity level alarm
 uint8_t alaf; // alarm flag ? initially disabled
 volatile uint8_t clkh; // initial value for clock hours
 volatile uint8_t clkm; // initial value for clock minutes
+volatile uint8_t clks;
+uint8_t hours;
+uint8_t minutes;
+uint8_t seconds;
 uint8_t temp;
 uint8_t illum;
-volatile uint8_t seconds;
 bool btn1State;
 bool btn2State;
 
@@ -89,10 +92,10 @@ void Timer(){
     if(pmon != 0)
         timer++;
 
-    if(seconds < 59)
-        seconds++;
+    if(clks < 59)
+        clks++;
     else{
-        seconds = 0;
+        clks = 0;
         if(clkm < 59)
             clkm++;
         else{
@@ -104,7 +107,7 @@ void Timer(){
         }
     }
     
-    if(seconds == 0){
+    if(clks == 0){
         flag_timer = true;
     }
 }
@@ -126,7 +129,7 @@ void Alarm(void){
     alarm = true;
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(PWM_MIN);
-    initial_time = clkh * 3600 + clkm * 60 + seconds;
+    initial_time = clkh * 3600 + clkm * 60 + clks;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -164,22 +167,26 @@ void main(void)
             flag_timer = false;
             update_clk();
         }
-        if(timer >= pmon && pmon != 0){
-            timer = 0;
+        
+        hours = clkh; minutes = clkm; seconds = clks; // avoid conflicts in interrupt
+
+        if((timer == 0 || timer > pmon) && pmon != 0){
+            timer = 1;
             INTERRUPT_PeripheralInterruptEnable();
             illum = ReadIllum();
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
-            NOP();
-            ring_buffer();
-            if((illum < alal || temp > alat) && alaf == 1)
-                if(!alarm) Alarm();
+            ring_buffer_write(hours, minutes, seconds, temp, illum);
+            if((illum < alal || temp > alat) && alaf == 1){
+                if(!alarm)
+                    Alarm();
+            }
         } else
             INTERRUPT_PeripheralInterruptEnable();
         
         if(alarm){
-            if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
+            if(hours * 3600 + minutes * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 A_SetHigh();
                 SLEEP();

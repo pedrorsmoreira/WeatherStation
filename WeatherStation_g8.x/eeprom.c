@@ -10,7 +10,7 @@ uint8_t get_check_up_value( uint8_t (*func) (uint8_t, uint8_t)){
     #ifdef CHECKSUM
     check = DATAEE_ReadByte(NREG_) + DATAEE_ReadByte(PMON_) + DATAEE_ReadByte(TALA_) +
             DATAEE_ReadByte(ALAT_) + DATAEE_ReadByte(ALAL_) + DATAEE_ReadByte(ALAF_) + 
-            DATAEE_ReadByte(CLKH_) + DATAEE_ReadByte(CLKM_);
+            DATAEE_ReadByte(CLKH_) + DATAEE_ReadByte(CLKM_) + DATAEE_ReadByte(WBUF_);
     #else
     check = func(DATAEE_ReadByte(NREG_), func(DATAEE_ReadByte(PMON_), func(DATAEE_ReadByte(TALA_),
             func(DATAEE_ReadByte(ALAT_), func(DATAEE_ReadByte(ALAL_), func(DATAEE_ReadByte(ALAF_), 
@@ -80,8 +80,8 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos = ring_pos_ + RBUF_;
     
     //none of the values changed, exit without writing
-    if (T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
-        return false;
+   // if (ring_pos_ != 0 && T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
+   //     return false;
     
     //check if the writing position reached the end of the ring buffer
     if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_)*5 - 5) ){

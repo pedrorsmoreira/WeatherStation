@@ -250,7 +250,7 @@ channel_FVR_buf1 63
 "364 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [u S242 . 1 `S237 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES242  1 e 1 @11 ]
-[s S2174 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2173 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -260,9 +260,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "463
-[u S2183 . 1 `S2174 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2183  1 e 1 @13 ]
-[s S2197 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2182 . 1 `S2173 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2182  1 e 1 @13 ]
+[s S2196 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -272,8 +272,8 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "525
-[u S2206 . 1 `S2197 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2206  1 e 1 @14 ]
+[u S2205 . 1 `S2196 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2205  1 e 1 @14 ]
 "670
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "732
@@ -888,11 +888,11 @@ channel_FVR_buf1 63
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
 "30046
 [v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3727 ]
-[s S2165 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+[s S2164 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
 ]
 "30056
-[u S2167 . 1 `S2165 1 . 1 0 ]
-[v _PPSLOCKbits PPSLOCKbits `VES2167  1 e 1 @3727 ]
+[u S2166 . 1 `S2164 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES2166  1 e 1 @3727 ]
 "30066
 [v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
 "31672
@@ -1008,7 +1008,7 @@ channel_FVR_buf1 63
 "136 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"202
+"203
 } 0
 "76
 [v _sys_init sys_init `(v  1 e 1 0 ]
@@ -1187,8 +1187,6 @@ channel_FVR_buf1 63
 "15 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _ReadTemp ReadTemp `(uc  1 e 1 0 ]
 {
-"16
-[v ReadTemp@value value `uc  1 a 1 5 ]
 "48
 } 0
 "47 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/I2C/i2c.c
