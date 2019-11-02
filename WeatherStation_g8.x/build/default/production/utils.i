@@ -21498,8 +21498,7 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-# 35 "./utils.h"
-extern uint8_t volatile seconds;
+# 34 "./utils.h"
 extern _Bool s1flag;
 extern _Bool s2flag;
 extern uint8_t pmon;
@@ -21523,7 +21522,6 @@ void checkButtonS2(void);
 void load_eeprom(void);
 void default_setup(void);
 void update_clk(void);
-_Bool ring_buffer(void);
 # 4 "utils.c" 2
 
 _Bool s1flag;
@@ -21650,8 +21648,4 @@ void default_setup(void){
 
 void update_clk(void){
     eeprom_clk_update(clkh, clkm);
-}
-
-_Bool ring_buffer(void){
-    return ring_buffer_write(clkh, clkm, seconds, temp, illum);
 }

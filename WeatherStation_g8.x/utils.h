@@ -31,8 +31,6 @@ extern "C" {
 #define CLKM                0 // initial value for clock minutes
 
     
-    
-extern uint8_t volatile seconds;
 extern bool s1flag; //flag que fica a true quando ha interrupao do S1
 extern bool s2flag; //same mas para S2
 extern uint8_t pmon; // monitoring period

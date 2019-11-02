@@ -19,44 +19,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "129 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 129: void TMR1_StartTimer(void);
 [v _TMR1_StartTimer `(v ~T0 @X0 0 ef ]
-"53 ./utils.h
-[; ;./utils.h: 53: void ShowOnLEDs(uint8_t);
+"51 ./utils.h
+[; ;./utils.h: 51: void ShowOnLEDs(uint8_t);
 [v _ShowOnLEDs `(v ~T0 @X0 0 ef1`uc ]
-"54
-[; ;./utils.h: 54: void checkButtonS1(void);
+"52
+[; ;./utils.h: 52: void checkButtonS1(void);
 [v _checkButtonS1 `(v ~T0 @X0 0 ef ]
-"55
-[; ;./utils.h: 55: void checkButtonS2(void);
+"53
+[; ;./utils.h: 53: void checkButtonS2(void);
 [v _checkButtonS2 `(v ~T0 @X0 0 ef ]
-"37
-[; ;./utils.h: 37: extern _Bool s2flag;
+"35
+[; ;./utils.h: 35: extern _Bool s2flag;
 [v _s2flag `a ~T0 @X0 0 e ]
-"36
-[; ;./utils.h: 36: extern _Bool s1flag;
+"34
+[; ;./utils.h: 34: extern _Bool s1flag;
 [v _s1flag `a ~T0 @X0 0 e ]
-"44
-[; ;./utils.h: 44: extern volatile uint8_t clkh;
+"42
+[; ;./utils.h: 42: extern volatile uint8_t clkh;
 [v _clkh `Vuc ~T0 @X0 0 e ]
-"45
-[; ;./utils.h: 45: extern volatile uint8_t clkm;
-[v _clkm `Vuc ~T0 @X0 0 e ]
-"58
-[; ;./utils.h: 58: void update_clk(void);
-[v _update_clk `(v ~T0 @X0 0 ef ]
 "43
-[; ;./utils.h: 43: extern uint8_t alaf;
+[; ;./utils.h: 43: extern volatile uint8_t clkm;
+[v _clkm `Vuc ~T0 @X0 0 e ]
+"56
+[; ;./utils.h: 56: void update_clk(void);
+[v _update_clk `(v ~T0 @X0 0 ef ]
+"41
+[; ;./utils.h: 41: extern uint8_t alaf;
 [v _alaf `uc ~T0 @X0 0 e ]
 "76 ./eeprom.h
 [; ;./eeprom.h: 76: void write_alaf(uint8_t x);
 [v _write_alaf `(v ~T0 @X0 0 ef1`uc ]
-"41 ./utils.h
-[; ;./utils.h: 41: extern uint8_t alat;
+"39 ./utils.h
+[; ;./utils.h: 39: extern uint8_t alat;
 [v _alat `uc ~T0 @X0 0 e ]
 "74 ./eeprom.h
 [; ;./eeprom.h: 74: void write_alat(uint8_t x);
 [v _write_alat `(v ~T0 @X0 0 ef1`uc ]
-"42 ./utils.h
-[; ;./utils.h: 42: extern uint8_t alal;
+"40 ./utils.h
+[; ;./utils.h: 40: extern uint8_t alal;
 [v _alal `uc ~T0 @X0 0 e ]
 "75 ./eeprom.h
 [; ;./eeprom.h: 75: void write_alal(uint8_t x);
@@ -2021,7 +2021,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 1650 ]
 }
 "91
-[; ;menus.c: 91: void Menus (void) {
+[; ;menus.c: 91: void Menus(void) {
 [v _Menus `(v ~T0 @X0 1 ef ]
 {
 [e :U _Menus ]
@@ -2065,103 +2065,103 @@ Version 4.0 HI-TECH Software Intermediate Code
 "103
 [; ;menus.c: 103:             ShowOnLEDs(0);
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"105
-[; ;menus.c: 105:         } else if (s2flag) {
+"104
+[; ;menus.c: 104:         } else if (s2flag) {
 }
 [e $U 1656  ]
 [e :U 1655 ]
 [e $ ! != -> _s2flag `i -> 0 `i 1657  ]
 {
-"106
-[; ;menus.c: 106:             s2flag = 0;
+"105
+[; ;menus.c: 105:             s2flag = 0;
 [e = _s2flag -> -> 0 `i `a ]
-"107
-[; ;menus.c: 107:             ShowOnLEDs(0);
+"106
+[; ;menus.c: 106:             ShowOnLEDs(0);
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
-"109
-[; ;menus.c: 109:             Menu(mode++);
+"107
+[; ;menus.c: 107:             Menu(mode++);
 [e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
-"110
-[; ;menus.c: 110:         }
+"108
+[; ;menus.c: 108:         }
 }
 [e :U 1657 ]
 [e :U 1656 ]
-"111
-[; ;menus.c: 111:  }
+"109
+[; ;menus.c: 109:  }
 }
 [e :U 1652 ]
 "97
 [; ;menus.c: 97:     while(mode < 4){
 [e $ < -> _mode `i -> 4 `i 1653  ]
 [e :U 1654 ]
-"112
-[; ;menus.c: 112: }
+"110
+[; ;menus.c: 110: }
 [e :UE 1651 ]
 }
-"114
-[; ;menus.c: 114: void Blink(void){
+"112
+[; ;menus.c: 112: void Blink(void){
 [v _Blink `(v ~T0 @X0 1 ef ]
 {
 [e :U _Blink ]
 [f ]
-"115
-[; ;menus.c: 115:     switch(mode){
+"113
+[; ;menus.c: 113:     switch(mode){
 [e $U 1660  ]
 {
-"116
-[; ;menus.c: 116:         case 0:
+"114
+[; ;menus.c: 114:         case 0:
 [e :U 1661 ]
-"117
-[; ;menus.c: 117:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+"115
+[; ;menus.c: 115:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
 [e :U 1664 ]
 {
 [e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
 }
 [e :U 1663 ]
-"118
-[; ;menus.c: 118:             break;
+"116
+[; ;menus.c: 116:             break;
 [e $U 1659  ]
-"119
-[; ;menus.c: 119:         case 1:
+"117
+[; ;menus.c: 117:         case 1:
 [e :U 1665 ]
-"120
-[; ;menus.c: 120:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
+"118
+[; ;menus.c: 118:             do { LATAbits.LATA6 = ~LATAbits.LATA6; } while(0);
 [e :U 1668 ]
 {
 [e = . . _LATAbits 0 6 -> ~ -> . . _LATAbits 0 6 `i `uc ]
 }
 [e :U 1667 ]
-"121
-[; ;menus.c: 121:             break;
+"119
+[; ;menus.c: 119:             break;
 [e $U 1659  ]
-"122
-[; ;menus.c: 122:         case 2:
+"120
+[; ;menus.c: 120:         case 2:
 [e :U 1669 ]
-"123
-[; ;menus.c: 123:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
+"121
+[; ;menus.c: 121:             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0);
 [e :U 1672 ]
 {
 [e = . . _LATAbits 0 5 -> ~ -> . . _LATAbits 0 5 `i `uc ]
 }
 [e :U 1671 ]
-"124
-[; ;menus.c: 124:             break;
+"122
+[; ;menus.c: 122:             break;
 [e $U 1659  ]
-"125
-[; ;menus.c: 125:         case 3:
+"123
+[; ;menus.c: 123:         case 3:
 [e :U 1673 ]
-"126
-[; ;menus.c: 126:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
+"124
+[; ;menus.c: 124:             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0);
 [e :U 1676 ]
 {
 [e = . . _LATAbits 0 4 -> ~ -> . . _LATAbits 0 4 `i `uc ]
 }
 [e :U 1675 ]
-"127
-[; ;menus.c: 127:             break;
+"125
+[; ;menus.c: 125:             break;
 [e $U 1659  ]
-"128
-[; ;menus.c: 128:     }
+"126
+[; ;menus.c: 126:     }
 }
 [e $U 1659  ]
 [e :U 1660 ]
@@ -2171,7 +2171,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> 3 `i 1673
  1659 ]
 [e :U 1659 ]
-"129
-[; ;menus.c: 129: }
+"127
+[; ;menus.c: 127: }
 [e :UE 1658 ]
 }

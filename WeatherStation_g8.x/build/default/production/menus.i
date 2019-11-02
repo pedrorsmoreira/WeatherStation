@@ -21508,8 +21508,7 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-# 35 "./utils.h"
-extern uint8_t volatile seconds;
+# 34 "./utils.h"
 extern _Bool s1flag;
 extern _Bool s2flag;
 extern uint8_t pmon;
@@ -21533,7 +21532,6 @@ void checkButtonS2(void);
 void load_eeprom(void);
 void default_setup(void);
 void update_clk(void);
-_Bool ring_buffer(void);
 # 17 "./menus.h" 2
 
 
@@ -21636,7 +21634,7 @@ void submenu_illum(void){
 }
 
 
-void Menus (void) {
+void Menus(void) {
     mode = 0;
     ShowOnLEDs(0);
     (INTCONbits.PEIE = 0);
@@ -21649,11 +21647,9 @@ void Menus (void) {
             s1flag = 0;
             mode++;
             ShowOnLEDs(0);
-
         } else if (s2flag) {
             s2flag = 0;
             ShowOnLEDs(0);
-
             Menu(mode++);
         }
  }

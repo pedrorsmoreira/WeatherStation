@@ -21509,8 +21509,7 @@ void write_alat(uint8_t x);
 void write_alal(uint8_t x);
 void write_alaf(uint8_t x);
 # 19 "./utils.h" 2
-# 35 "./utils.h"
-extern uint8_t volatile seconds;
+# 34 "./utils.h"
 extern _Bool s1flag;
 extern _Bool s2flag;
 extern uint8_t pmon;
@@ -21534,7 +21533,6 @@ void checkButtonS2(void);
 void load_eeprom(void);
 void default_setup(void);
 void update_clk(void);
-_Bool ring_buffer(void);
 # 17 "./menus.h" 2
 
 
@@ -21560,9 +21558,12 @@ uint8_t alal;
 uint8_t alaf;
 volatile uint8_t clkh;
 volatile uint8_t clkm;
+volatile uint8_t clks;
+uint8_t hours;
+uint8_t minutes;
+uint8_t seconds;
 uint8_t temp;
 uint8_t illum;
-volatile uint8_t seconds;
 _Bool btn1State;
 _Bool btn2State;
 
@@ -21585,10 +21586,10 @@ void Timer(){
     if(pmon != 0)
         timer++;
 
-    if(seconds < 59)
-        seconds++;
+    if(clks < 59)
+        clks++;
     else{
-        seconds = 0;
+        clks = 0;
         if(clkm < 59)
             clkm++;
         else{
@@ -21600,7 +21601,7 @@ void Timer(){
         }
     }
 
-    if(seconds == 0){
+    if(clks == 0){
         flag_timer = 1;
     }
 }
@@ -21618,11 +21619,11 @@ void Switch1(void){
         switch1 = 1;
 }
 
-void Alarm(void){
+void Alarm(uint8_t h, uint8_t m, uint8_t s){
     alarm = 1;
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(250);
-    initial_time = clkh * 3600 + clkm * 60 + seconds;
+    initial_time = h * 3600 + m * 60 + s;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -21660,6 +21661,9 @@ void main(void)
             flag_timer = 0;
             update_clk();
         }
+
+        hours = clkh; minutes = clkm; seconds = clks;
+
         if((timer == 0 || timer > pmon) && pmon != 0){
             timer = 1;
             (INTCONbits.PEIE = 1);
@@ -21667,16 +21671,16 @@ void main(void)
             LATAbits.LATA4 = illum & 1;
             LATAbits.LATA5 = (illum & 2) >> 1;
             temp = ReadTemp();
-            ring_buffer();
+            ring_buffer_write(hours, minutes, seconds, temp, illum);
             if((illum < alal || temp > alat) && alaf == 1){
                 if(!alarm)
-                    Alarm();
+                    Alarm(hours, minutes, seconds);
             }
         } else
             (INTCONbits.PEIE = 1);
 
         if(alarm){
-            if(clkh * 3600 + clkm * 60 + seconds - initial_time >= tala){
+            if(hours * 3600 + minutes * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 do { LATAbits.LATA6 = 1; } while(0);
                 __asm("sleep");

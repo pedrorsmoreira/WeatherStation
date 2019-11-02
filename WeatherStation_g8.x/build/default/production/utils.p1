@@ -163,8 +163,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "45
 [; ;./eeprom.h: 45: _Bool check_corruption(void);
 [v _check_corruption `(a ~T0 @X0 0 ef ]
-"38 ./utils.h
-[; ;./utils.h: 38: extern uint8_t pmon;
+"36 ./utils.h
+[; ;./utils.h: 36: extern uint8_t pmon;
 [v _pmon `uc ~T0 @X0 0 e ]
 "64 ./eeprom.h
 [; ;./eeprom.h: 64: uint8_t read_pmon(void);
@@ -172,44 +172,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "63
 [; ;./eeprom.h: 63: uint8_t read_nreg(void);
 [v _read_nreg `(uc ~T0 @X0 0 ef ]
-"40 ./utils.h
-[; ;./utils.h: 40: extern uint8_t tala;
+"38 ./utils.h
+[; ;./utils.h: 38: extern uint8_t tala;
 [v _tala `uc ~T0 @X0 0 e ]
 "65 ./eeprom.h
 [; ;./eeprom.h: 65: uint8_t read_tala(void);
 [v _read_tala `(uc ~T0 @X0 0 ef ]
-"41 ./utils.h
-[; ;./utils.h: 41: extern uint8_t alat;
+"39 ./utils.h
+[; ;./utils.h: 39: extern uint8_t alat;
 [v _alat `uc ~T0 @X0 0 e ]
 "66 ./eeprom.h
 [; ;./eeprom.h: 66: uint8_t read_alat(void);
 [v _read_alat `(uc ~T0 @X0 0 ef ]
-"42 ./utils.h
-[; ;./utils.h: 42: extern uint8_t alal;
+"40 ./utils.h
+[; ;./utils.h: 40: extern uint8_t alal;
 [v _alal `uc ~T0 @X0 0 e ]
 "67 ./eeprom.h
 [; ;./eeprom.h: 67: uint8_t read_alal(void);
 [v _read_alal `(uc ~T0 @X0 0 ef ]
-"43 ./utils.h
-[; ;./utils.h: 43: extern uint8_t alaf;
+"41 ./utils.h
+[; ;./utils.h: 41: extern uint8_t alaf;
 [v _alaf `uc ~T0 @X0 0 e ]
 "68 ./eeprom.h
 [; ;./eeprom.h: 68: uint8_t read_alaf(void);
 [v _read_alaf `(uc ~T0 @X0 0 ef ]
-"44 ./utils.h
-[; ;./utils.h: 44: extern volatile uint8_t clkh;
+"42 ./utils.h
+[; ;./utils.h: 42: extern volatile uint8_t clkh;
 [v _clkh `Vuc ~T0 @X0 0 e ]
 "69 ./eeprom.h
 [; ;./eeprom.h: 69: uint8_t read_clkh(void);
 [v _read_clkh `(uc ~T0 @X0 0 ef ]
-"45 ./utils.h
-[; ;./utils.h: 45: extern volatile uint8_t clkm;
+"43 ./utils.h
+[; ;./utils.h: 43: extern volatile uint8_t clkm;
 [v _clkm `Vuc ~T0 @X0 0 e ]
 "70 ./eeprom.h
 [; ;./eeprom.h: 70: uint8_t read_clkm(void);
 [v _read_clkm `(uc ~T0 @X0 0 ef ]
-"57 ./utils.h
-[; ;./utils.h: 57: void default_setup(void);
+"55 ./utils.h
+[; ;./utils.h: 55: void default_setup(void);
 [v _default_setup `(v ~T0 @X0 0 ef ]
 "52 ./eeprom.h
 [; ;./eeprom.h: 52: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
@@ -217,18 +217,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "55
 [; ;./eeprom.h: 55: void eeprom_clk_update(uint8_t clkh, uint8_t clkm);
 [v _eeprom_clk_update `(v ~T0 @X0 0 ef2`uc`uc ]
-"57
-[; ;./eeprom.h: 57: _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L);
-[v _ring_buffer_write `(a ~T0 @X0 0 ef5`uc`uc`uc`uc`uc ]
-"35 ./utils.h
-[; ;./utils.h: 35: extern uint8_t volatile seconds;
-[v _seconds `Vuc ~T0 @X0 0 e ]
-"47
-[; ;./utils.h: 47: extern uint8_t temp;
-[v _temp `uc ~T0 @X0 0 e ]
-"46
-[; ;./utils.h: 46: extern uint8_t illum;
-[v _illum `uc ~T0 @X0 0 e ]
 "54 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -2406,18 +2394,4 @@ Version 4.0 HI-TECH Software Intermediate Code
 "129
 [; ;utils.c: 129: }
 [e :UE 1721 ]
-}
-"131
-[; ;utils.c: 131: _Bool ring_buffer(void){
-[v _ring_buffer `(a ~T0 @X0 1 ef ]
-{
-[e :U _ring_buffer ]
-[f ]
-"132
-[; ;utils.c: 132:     return ring_buffer_write(clkh, clkm, seconds, temp, illum);
-[e ) ( _ring_buffer_write (4 , , , , _clkh _clkm _seconds _temp _illum ]
-[e $UE 1722  ]
-"133
-[; ;utils.c: 133: }
-[e :UE 1722 ]
 }

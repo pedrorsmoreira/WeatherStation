@@ -125,11 +125,11 @@ void Switch1(void){
         switch1 = true;
 }
 
-void Alarm(void){
+void Alarm(uint8_t h, uint8_t m, uint8_t s){
     alarm = true;
     PWM_Output_D4_Enable();
     PWM6_LoadDutyValue(PWM_MIN);
-    initial_time = clkh * 3600 + clkm * 60 + clks;
+    initial_time = h * 3600 + m * 60 + s;
 }
 
 uint8_t xor(uint8_t x, uint8_t y){
@@ -180,7 +180,7 @@ void main(void)
             ring_buffer_write(hours, minutes, seconds, temp, illum);
             if((illum < alal || temp > alat) && alaf == 1){
                 if(!alarm)
-                    Alarm();
+                    Alarm(hours, minutes, seconds);
             }
         } else
             INTERRUPT_PeripheralInterruptEnable();

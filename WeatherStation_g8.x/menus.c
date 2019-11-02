@@ -88,7 +88,7 @@ void submenu_illum(void){
 }
 
 
-void Menus (void) {
+void Menus(void) {
     mode = 0;
     ShowOnLEDs(0);
     INTERRUPT_PeripheralInterruptDisable();
@@ -101,11 +101,9 @@ void Menus (void) {
             s1flag = false;
             mode++;
             ShowOnLEDs(0);
-            //blink_LED(ledslista[i]);
         } else if (s2flag) {
             s2flag = false;
             ShowOnLEDs(0);
-        //	stop_blink(ledslista[i]); //para o led de piscar
             Menu(mode++);
         }
 	}    
