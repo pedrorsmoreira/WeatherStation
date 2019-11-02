@@ -1805,9 +1805,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ring_pos_ `us ~T0 @X0 1 a ]
 [e = _ring_pos_ -> ( _DATAEE_ReadByte (1 -> -> 61450 `ui `us `us ]
 "80
-[; ;eeprom.c: 80:     uint16_t ring_pos = ring_pos_ + 0xF00B;
+[; ;eeprom.c: 80:     uint16_t ring_pos = 5*ring_pos_ + 0xF00B;
 [v _ring_pos `us ~T0 @X0 1 a ]
-[e = _ring_pos -> + -> _ring_pos_ `ui -> 61451 `ui `us ]
+[e = _ring_pos -> + * -> -> 5 `i `ui -> _ring_pos_ `ui -> 61451 `ui `us ]
 "87
 [; ;eeprom.c: 87:     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001)*5 - 5) ){
 [e $ ! > -> _ring_pos `ui - + -> 61451 `ui -> * -> ( _DATAEE_ReadByte (1 -> -> 61441 `ui `us `i -> 5 `i `ui -> -> 5 `i `ui 1634  ]
@@ -1838,11 +1838,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;eeprom.c: 95:     DATAEE_WriteByte(ring_pos+4, L);
 [e ( _DATAEE_WriteByte (2 , -> + -> _ring_pos `ui -> -> 4 `i `ui `us _L ]
 "98
-[; ;eeprom.c: 98:     DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
-[e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui `uc ]
+[; ;eeprom.c: 98:     DATAEE_WriteByte(0xF00A, (ring_pos+5-0xF00B)/5 );
+[e ( _DATAEE_WriteByte (2 , -> -> 61450 `ui `us -> / - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui -> -> 5 `i `ui `uc ]
 "101
-[; ;eeprom.c: 101:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + (ring_pos+5-0xF00B) - ring_pos_);
-[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `ui - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui -> _ring_pos_ `ui `uc ]
+[; ;eeprom.c: 101:     DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + ((ring_pos+5-0xF00B)/5) - ring_pos_);
+[e ( _DATAEE_WriteByte (2 , -> -> 61440 `ui `us -> - + -> ( _DATAEE_ReadByte (1 -> -> 61440 `ui `us `ui / - + -> _ring_pos `ui -> -> 5 `i `ui -> 61451 `ui -> -> 5 `i `ui -> _ring_pos_ `ui `uc ]
 "104
 [; ;eeprom.c: 104:     return 1;
 [e ) -> -> 1 `i `a ]

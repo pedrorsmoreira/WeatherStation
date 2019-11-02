@@ -21536,7 +21536,7 @@ uint8_t ReadIllum(void){
 
 unsigned char ReadTemp(void){
  unsigned char value;
-    return 10;
+
     do{
         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)

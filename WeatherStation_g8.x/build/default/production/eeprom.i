@@ -21557,7 +21557,7 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 
 _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos_ = DATAEE_ReadByte(0xF00A);
-    uint16_t ring_pos = ring_pos_ + 0xF00B;
+    uint16_t ring_pos = 5*ring_pos_ + 0xF00B;
 
 
 
@@ -21575,10 +21575,10 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(ring_pos+4, L);
 
 
-    DATAEE_WriteByte(0xF00A, ring_pos+5-0xF00B);
+    DATAEE_WriteByte(0xF00A, (ring_pos+5-0xF00B)/5 );
 
 
-    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + (ring_pos+5-0xF00B) - ring_pos_);
+    DATAEE_WriteByte(0xF000, DATAEE_ReadByte(0xF000) + ((ring_pos+5-0xF00B)/5) - ring_pos_);
 
 
     return 1;

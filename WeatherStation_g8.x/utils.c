@@ -14,7 +14,7 @@ uint8_t ReadIllum(void){
 
 unsigned char ReadTemp(void){
 	unsigned char value;
-    return 10;
+
     do{
         IdleI2C();
         StartI2C()
