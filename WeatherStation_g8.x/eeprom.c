@@ -77,7 +77,7 @@ void eeprom_clk_update(uint8_t clkh, uint8_t clkm){
 
 bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos_ = DATAEE_ReadByte(WBUF_);
-    uint16_t ring_pos = ring_pos_ + RBUF_;
+    uint16_t ring_pos = 5*ring_pos_ + RBUF_;
     
     //none of the values changed, exit without writing
     if (ring_pos_ != 0 && T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
@@ -95,10 +95,10 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(ring_pos+4, L);
     
     //set the next write position
-    DATAEE_WriteByte(WBUF_, ring_pos+5-RBUF_);
+    DATAEE_WriteByte(WBUF_, (ring_pos+5-RBUF_)/5 );
     
     #ifdef CHECKSUM
-    DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + (ring_pos+5-RBUF_) - ring_pos_);
+    DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + ((ring_pos+5-RBUF_)/5) - ring_pos_);
     #endif
     
     return true;
