@@ -21560,8 +21560,8 @@ _Bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos = 5*ring_pos_ + 0xF00B;
 
 
-
-
+    if (ring_pos_ != 0 && T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1))
+        return 0;
 
 
     if (ring_pos > (0xF00B + DATAEE_ReadByte(0xF001)*5 - 5) ){

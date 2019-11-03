@@ -1,6 +1,6 @@
 /* 
  * File:   eeprom.h
- * Author: pedro
+ * Author: Pedro
  *
  * Created on October 25, 2019, 2:57 PM
  */

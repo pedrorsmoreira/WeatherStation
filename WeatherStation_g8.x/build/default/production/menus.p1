@@ -4,17 +4,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "161 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 161: void TMR1_StopTimer(void);
 [v _TMR1_StopTimer `(v ~T0 @X0 0 ef ]
-"22 ./menus.h
-[; ;./menus.h: 22: void submenu_clock(void);
+"23 ./menus.h
+[; ;./menus.h: 23: void submenu_clock(void);
 [v _submenu_clock `(v ~T0 @X0 0 ef ]
-"23
-[; ;./menus.h: 23: void submenu_alarm(void);
-[v _submenu_alarm `(v ~T0 @X0 0 ef ]
 "24
-[; ;./menus.h: 24: void submenu_temp(void);
-[v _submenu_temp `(v ~T0 @X0 0 ef ]
+[; ;./menus.h: 24: void submenu_alarm(void);
+[v _submenu_alarm `(v ~T0 @X0 0 ef ]
 "25
-[; ;./menus.h: 25: void submenu_illum(void);
+[; ;./menus.h: 25: void submenu_temp(void);
+[v _submenu_temp `(v ~T0 @X0 0 ef ]
+"26
+[; ;./menus.h: 26: void submenu_illum(void);
 [v _submenu_illum `(v ~T0 @X0 0 ef ]
 "129 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 129: void TMR1_StartTimer(void);
@@ -76,8 +76,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "385 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
 [v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12660 ]
-"27 ./menus.h
-[; ;./menus.h: 27: void Blink(void);
+"28 ./menus.h
+[; ;./menus.h: 28: void Blink(void);
 [v _Blink `(v ~T0 @X0 0 ef ]
 "956 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [; ;/Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h: 956:     struct {
@@ -1735,8 +1735,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/i2c1_driver.h: 79: void (*i2c1_driver_i2cISR)(void);
 [v _i2c1_driver_i2cISR `*F12648 ~T0 @X0 1 e ]
 "19 ./menus.h
-[; ;./menus.h: 19: uint8_t mode = 0;
-[v _mode `uc ~T0 @X0 1 e ]
+[; ;./menus.h: 19: volatile uint8_t mode = 0;
+[v _mode `Vuc ~T0 @X0 1 e ]
 [i _mode
 -> -> 0 `i `uc
 ]
@@ -2061,7 +2061,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _s1flag -> -> 0 `i `a ]
 "102
 [; ;menus.c: 102:             mode++;
-[e ++ _mode -> -> 1 `i `uc ]
+[e ++ _mode -> -> 1 `i `Vuc ]
 "103
 [; ;menus.c: 103:             ShowOnLEDs(0);
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
@@ -2080,7 +2080,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _ShowOnLEDs (1 -> -> 0 `i `uc ]
 "107
 [; ;menus.c: 107:             Menu(mode++);
-[e ( _Menu (1 ++ _mode -> -> 1 `i `uc ]
+[e ( _Menu (1 ++ _mode -> -> 1 `i `Vuc ]
 "108
 [; ;menus.c: 108:         }
 }

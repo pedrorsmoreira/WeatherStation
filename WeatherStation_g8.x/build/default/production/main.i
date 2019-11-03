@@ -7,115 +7,6 @@
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 47 "main.c"
-# 1 "./menus.h" 1
-# 15 "./menus.h"
-# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/musl_xc8.h" 1 3
-# 5 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-# 22 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
-# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
-# 127 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long uintptr_t;
-# 142 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
-typedef long intptr_t;
-# 158 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
-typedef signed char int8_t;
-
-
-
-
-typedef short int16_t;
-
-
-
-
-typedef __int24 int24_t;
-
-
-
-
-typedef long int32_t;
-
-
-
-
-
-typedef long long int64_t;
-# 188 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
-typedef long long intmax_t;
-
-
-
-
-
-typedef unsigned char uint8_t;
-
-
-
-
-typedef unsigned short uint16_t;
-
-
-
-
-typedef __uint24 uint24_t;
-
-
-
-
-typedef unsigned long uint32_t;
-
-
-
-
-
-typedef unsigned long long uint64_t;
-# 229 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned long long uintmax_t;
-# 23 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-
-typedef int8_t int_fast8_t;
-
-typedef int64_t int_fast64_t;
-
-
-typedef int8_t int_least8_t;
-typedef int16_t int_least16_t;
-
-typedef int24_t int_least24_t;
-
-typedef int32_t int_least32_t;
-
-typedef int64_t int_least64_t;
-
-
-typedef uint8_t uint_fast8_t;
-
-typedef uint64_t uint_fast64_t;
-
-
-typedef uint8_t uint_least8_t;
-typedef uint16_t uint_least16_t;
-
-typedef uint24_t uint_least24_t;
-
-typedef uint32_t uint_least32_t;
-
-typedef uint64_t uint_least64_t;
-# 139 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
-# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
-typedef int32_t int_fast16_t;
-typedef int32_t int_fast32_t;
-typedef uint32_t uint_fast16_t;
-typedef uint32_t uint_fast32_t;
-# 140 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
-# 16 "./menus.h" 2
-# 1 "./utils.h" 1
-# 15 "./utils.h"
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/xc.h" 1 3
@@ -131,7 +22,16 @@ extern double __fpnormalize(double);
 
 
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 1 3
-# 10 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 3
+
+
+
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 2 3
+
+
+
+
+
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/features.h" 1 3
 # 11 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 2 3
 # 21 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 3
@@ -140,6 +40,10 @@ extern double __fpnormalize(double);
 typedef long int wchar_t;
 # 122 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
 typedef unsigned size_t;
+# 168 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 204 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef __uint24 uint24_t;
 # 22 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdlib.h" 2 3
 
 int atoi (const char *);
@@ -20893,6 +20797,89 @@ void PIN_MANAGER_Initialize (void);
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 1 3
+# 22 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 1 3
+# 127 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uintptr_t;
+# 142 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long intptr_t;
+# 158 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+# 173 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 188 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+# 209 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 229 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 23 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 139 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/bits/stdint.h" 1 3
+typedef int32_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint32_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 140 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdint.h" 2 3
+# 52 "./mcc_generated_files/mcc.h" 2
 
 # 1 "/Applications/microchip/xc8/v2.10/pic/include/c99/stdbool.h" 1 3
 # 53 "./mcc_generated_files/mcc.h" 2
@@ -21445,7 +21432,8 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 102 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 16 "./utils.h" 2
+# 1 "main.c" 2
+
 # 1 "./I2C/i2c.h" 1
 # 154 "./I2C/i2c.h"
 void OpenI2C( unsigned char sync_mode, unsigned char slew );
@@ -21459,7 +21447,10 @@ unsigned char ReadI2C( void );
 signed char WriteI2C( unsigned char data_out );
 
 signed char getsI2C( unsigned char *rdptr, unsigned char length );
-# 17 "./utils.h" 2
+# 2 "main.c" 2
+
+# 1 "./utils.h" 1
+# 17 "./utils.h"
 # 1 "./utils.h" 1
 # 18 "./utils.h" 2
 # 1 "./eeprom.h" 1
@@ -21533,10 +21524,12 @@ void checkButtonS2(void);
 void load_eeprom(void);
 void default_setup(void);
 void update_clk(void);
-# 17 "./menus.h" 2
+# 3 "main.c" 2
 
+# 1 "./menus.h" 1
+# 19 "./menus.h"
+volatile uint8_t mode = 0;
 
-uint8_t mode = 0;
 void Menu(uint8_t mode);
 uint8_t Update(uint8_t var, uint8_t thr);
 void submenu_clock(void);
@@ -21545,8 +21538,8 @@ void submenu_temp(void);
 void submenu_illum(void);
 void Menus(void);
 void Blink(void);
-# 47 "main.c" 2
-# 56 "main.c"
+# 4 "main.c" 2
+# 13 "main.c"
 volatile uint8_t timer;
 volatile _Bool switch1;
 volatile _Bool flag_timer;
@@ -21564,8 +21557,6 @@ uint8_t minutes;
 uint8_t seconds;
 uint8_t temp;
 uint8_t illum;
-_Bool btn1State;
-_Bool btn2State;
 
 _Bool alarm;
 float incr;
@@ -21575,8 +21566,6 @@ void sys_init(void){
     switch1 = 0;
     flag_timer = 0;
     initial_time = 0;
-    btn1State = 0;
-    btn2State = 0;
     alarm = 0;
 }
 

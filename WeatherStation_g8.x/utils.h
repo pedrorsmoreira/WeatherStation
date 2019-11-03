@@ -1,6 +1,6 @@
 /* 
  * File:   utils.h
- * Author: vasco
+ * Author: Vasco & Sofia
  *
  * Created on October 25, 2019, 2:57 PM
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   menus.h
- * Author: vasco
+ * Author: Vasco & Sofia
  *
  * Created on October 25, 2019, 2:56 PM
  */
@@ -16,7 +16,8 @@ extern "C" {
 #include "utils.h"
     
 
-uint8_t mode = 0;
+volatile uint8_t mode = 0;
+
 void Menu(uint8_t mode);
 uint8_t Update(uint8_t var, uint8_t thr);
 void submenu_clock(void);

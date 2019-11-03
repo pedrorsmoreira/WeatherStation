@@ -21535,7 +21535,8 @@ void update_clk(void);
 # 17 "./menus.h" 2
 
 
-uint8_t mode = 0;
+volatile uint8_t mode = 0;
+
 void Menu(uint8_t mode);
 uint8_t Update(uint8_t var, uint8_t thr);
 void submenu_clock(void);
