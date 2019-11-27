@@ -72,6 +72,8 @@ channel_FVR_buf1 63
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "10 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"5 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
 "15 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "4 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul8.c
@@ -82,6 +84,32 @@ channel_FVR_buf1 63
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"69 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/communications.c
+[v _read_clock read_clock `(v  1 e 1 0 ]
+"77
+[v _set_clock set_clock `(v  1 e 1 0 ]
+"83
+[v _read_temp_lum read_temp_lum `(v  1 e 1 0 ]
+"88
+[v _read_param read_param `(v  1 e 1 0 ]
+"93
+[v _modify_pwm modify_pwm `(v  1 e 1 0 ]
+"98
+[v _modify_time_alarm modify_time_alarm `(v  1 e 1 0 ]
+"103
+[v _read_alarms read_alarms `(v  1 e 1 0 ]
+"107
+[v _define_alarm define_alarm `(v  1 e 1 0 ]
+"112
+[v _switch_alarm switch_alarm `(v  1 e 1 0 ]
+"117
+[v _registers_info registers_info `(v  1 e 1 0 ]
+"121
+[v _transfer_registers transfer_registers `(v  1 e 1 0 ]
+"126
+[v _transfer_register transfer_register `(v  1 e 1 0 ]
+"135
+[v _send_msg send_msg `(v  1 e 1 0 ]
 "5 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _get_check_up_value get_check_up_value `(uc  1 e 1 0 ]
 "37
@@ -120,23 +148,53 @@ channel_FVR_buf1 63
 [v _ReadI2C ReadI2C `(uc  1 e 1 0 ]
 "47
 [v _WriteI2C WriteI2C `(c  1 e 1 0 ]
-"34 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _sys_init sys_init `(v  1 e 1 0 ]
-"42
+"40
 [v _Timer Timer `(v  1 e 1 0 ]
-"68
+"66
 [v _clear_alarm clear_alarm `(v  1 e 1 0 ]
 [v i1_clear_alarm clear_alarm `(v  1 e 1 0 ]
-"74
+"72
 [v _Switch1 Switch1 `(v  1 e 1 0 ]
-"81
+"79
 [v _Alarm Alarm `(v  1 e 1 0 ]
-"92
+"90
 [v _main main `(v  1 e 1 0 ]
 "63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
 "130
 [v _ADCC_GetSingleConversion ADCC_GetSingleConversion `(us  1 e 2 0 ]
+"88 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+"151
+[v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
+"173
+[v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
+"201
+[v _putch putch `(v  1 e 1 0 ]
+"206
+[v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
+"225
+[v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
+"249
+[v _EUSART_RxDataHandler EUSART_RxDataHandler `(v  1 e 1 0 ]
+"259
+[v _EUSART_DefaultFramingErrorHandler EUSART_DefaultFramingErrorHandler `(v  1 e 1 0 ]
+"261
+[v _EUSART_DefaultOverrunErrorHandler EUSART_DefaultOverrunErrorHandler `(v  1 e 1 0 ]
+"269
+[v _EUSART_DefaultErrorHandler EUSART_DefaultErrorHandler `(v  1 e 1 0 ]
+"273
+[v _EUSART_SetFramingErrorHandler EUSART_SetFramingErrorHandler `(v  1 e 1 0 ]
+"277
+[v _EUSART_SetOverrunErrorHandler EUSART_SetOverrunErrorHandler `(v  1 e 1 0 ]
+"281
+[v _EUSART_SetErrorHandler EUSART_SetErrorHandler `(v  1 e 1 0 ]
+"285
+[v _EUSART_SetTxInterruptHandler EUSART_SetTxInterruptHandler `(v  1 e 1 0 ]
+"289
+[v _EUSART_SetRxInterruptHandler EUSART_SetRxInterruptHandler `(v  1 e 1 0 ]
 "32 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _INT_ISR INT_ISR `(v  1 e 1 0 ]
 "41
@@ -153,9 +211,9 @@ channel_FVR_buf1 63
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 "50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"62
+"63
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-"76
+"77
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 "58 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
@@ -250,7 +308,7 @@ channel_FVR_buf1 63
 "364 /Applications/microchip/xc8/v2.10/pic/include/pic16f18875.h
 [u S242 . 1 `S237 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES242  1 e 1 @11 ]
-[s S2182 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2403 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -260,9 +318,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "463
-[u S2191 . 1 `S2182 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2191  1 e 1 @13 ]
-[s S2205 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2412 . 1 `S2403 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2412  1 e 1 @13 ]
+[s S2426 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -272,15 +330,15 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "525
-[u S2214 . 1 `S2205 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2214  1 e 1 @14 ]
+[u S2435 . 1 `S2426 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2435  1 e 1 @14 ]
 "670
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "732
 [v _TRISB TRISB `VEuc  1 e 1 @18 ]
 "794
 [v _TRISC TRISC `VEuc  1 e 1 @19 ]
-[s S1589 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S1811 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -290,15 +348,15 @@ channel_FVR_buf1 63
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "811
-[u S1598 . 1 `S1589 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES1598  1 e 1 @19 ]
+[u S1820 . 1 `S1811 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1820  1 e 1 @19 ]
 "856
 [v _TRISD TRISD `VEuc  1 e 1 @20 ]
 "918
 [v _TRISE TRISE `VEuc  1 e 1 @21 ]
 "950
 [v _LATA LATA `VEuc  1 e 1 @22 ]
-[s S1540 . 1 `uc 1 LATA0 1 0 :1:0 
+[s S1762 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
 `uc 1 LATA3 1 0 :1:3 
@@ -308,8 +366,8 @@ channel_FVR_buf1 63
 `uc 1 LATA7 1 0 :1:7 
 ]
 "967
-[u S1549 . 1 `S1540 1 . 1 0 ]
-[v _LATAbits LATAbits `VES1549  1 e 1 @22 ]
+[u S1771 . 1 `S1762 1 . 1 0 ]
+[v _LATAbits LATAbits `VES1771  1 e 1 @22 ]
 "1012
 [v _LATB LATB `VEuc  1 e 1 @23 ]
 "1074
@@ -332,7 +390,7 @@ channel_FVR_buf1 63
 [v _ADACCH ADACCH `VEuc  1 e 1 @145 ]
 "2126
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @147 ]
-[s S503 . 1 `uc 1 ADGO 1 0 :1:0 
+[s S515 . 1 `uc 1 ADGO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM 1 0 :2:2 
 `uc 1 ADCS 1 0 :1:4 
@@ -341,44 +399,44 @@ channel_FVR_buf1 63
 `uc 1 ADON 1 0 :1:7 
 ]
 "2162
-[s S511 . 1 `uc 1 DONE 1 0 :1:0 
+[s S523 . 1 `uc 1 DONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM 1 0 :2:2 
 ]
-[s S515 . 1 `uc 1 nDONE 1 0 :1:0 
+[s S527 . 1 `uc 1 nDONE 1 0 :1:0 
 ]
-[s S517 . 1 `uc 1 GO 1 0 :1:0 
+[s S529 . 1 `uc 1 GO 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFM0 1 0 :1:2 
 `uc 1 ADFM1 1 0 :1:3 
 ]
-[s S522 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+[s S534 . 1 `uc 1 GO_nDONE 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 ADFRM0 1 0 :1:2 
 `uc 1 ADFRM1 1 0 :1:3 
 ]
-[u S527 . 1 `S503 1 . 1 0 `S511 1 . 1 0 `S515 1 . 1 0 `S517 1 . 1 0 `S522 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES527  1 e 1 @147 ]
+[u S539 . 1 `S515 1 . 1 0 `S523 1 . 1 0 `S527 1 . 1 0 `S529 1 . 1 0 `S534 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES539  1 e 1 @147 ]
 "2237
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @148 ]
-[s S658 . 1 `uc 1 ADDSEN 1 0 :1:0 
+[s S670 . 1 `uc 1 ADDSEN 1 0 :1:0 
 `uc 1 . 1 0 :4:1 
 `uc 1 ADGPOL 1 0 :1:5 
 `uc 1 ADIPEN 1 0 :1:6 
 `uc 1 ADPPOL 1 0 :1:7 
 ]
 "2251
-[u S664 . 1 `S658 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES664  1 e 1 @148 ]
+[u S676 . 1 `S670 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES676  1 e 1 @148 ]
 "2276
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @149 ]
-[s S594 . 1 `uc 1 ADMD 1 0 :3:0 
+[s S606 . 1 `uc 1 ADMD 1 0 :3:0 
 `uc 1 ADACLR 1 0 :1:3 
 `uc 1 ADCRS 1 0 :3:4 
 `uc 1 ADPSIS 1 0 :1:7 
 ]
 "2298
-[s S599 . 1 `uc 1 ADMD0 1 0 :1:0 
+[s S611 . 1 `uc 1 ADMD0 1 0 :1:0 
 `uc 1 ADMD1 1 0 :1:1 
 `uc 1 ADMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -386,11 +444,11 @@ channel_FVR_buf1 63
 `uc 1 ADCRS1 1 0 :1:5 
 `uc 1 ADCRS2 1 0 :1:6 
 ]
-[u S607 . 1 `S594 1 . 1 0 `S599 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES607  1 e 1 @149 ]
+[u S619 . 1 `S606 1 . 1 0 `S611 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES619  1 e 1 @149 ]
 "2353
 [v _ADCON3 ADCON3 `VEuc  1 e 1 @150 ]
-[s S564 . 1 `uc 1 ADTMD0 1 0 :1:0 
+[s S576 . 1 `uc 1 ADTMD0 1 0 :1:0 
 `uc 1 ADTMD1 1 0 :1:1 
 `uc 1 ADTMD2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -399,15 +457,15 @@ channel_FVR_buf1 63
 `uc 1 ADCALC2 1 0 :1:6 
 ]
 "2374
-[s S572 . 1 `uc 1 ADTMD 1 0 :3:0 
+[s S584 . 1 `uc 1 ADTMD 1 0 :3:0 
 `uc 1 ADSOI 1 0 :1:3 
 `uc 1 ADCALC 1 0 :3:4 
 ]
-[u S576 . 1 `S564 1 . 1 0 `S572 1 . 1 0 ]
-[v _ADCON3bits ADCON3bits `VES576  1 e 1 @150 ]
+[u S588 . 1 `S576 1 . 1 0 `S584 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES588  1 e 1 @150 ]
 "2424
 [v _ADSTAT ADSTAT `VEuc  1 e 1 @151 ]
-[s S626 . 1 `uc 1 ADSTAT 1 0 :3:0 
+[s S638 . 1 `uc 1 ADSTAT 1 0 :3:0 
 `uc 1 ADMACT 1 0 :1:3 
 `uc 1 ADMATH 1 0 :1:4 
 `uc 1 ADLTHR 1 0 :1:5 
@@ -415,12 +473,12 @@ channel_FVR_buf1 63
 `uc 1 ADAOV 1 0 :1:7 
 ]
 "2444
-[s S633 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+[s S645 . 1 `uc 1 ADSTAT0 1 0 :1:0 
 `uc 1 ADSTAT1 1 0 :1:1 
 `uc 1 ADSTAT2 1 0 :1:2 
 ]
-[u S637 . 1 `S626 1 . 1 0 `S633 1 . 1 0 ]
-[v _ADSTATbits ADSTATbits `VES637  1 e 1 @151 ]
+[u S649 . 1 `S638 1 . 1 0 `S645 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES649  1 e 1 @151 ]
 "2494
 [v _ADCLK ADCLK `VEuc  1 e 1 @152 ]
 "2552
@@ -459,6 +517,44 @@ channel_FVR_buf1 63
 [v _ADERRL ADERRL `VEuc  1 e 1 @278 ]
 "3700
 [v _ADERRH ADERRH `VEuc  1 e 1 @279 ]
+"3770
+[v _RC1REG RC1REG `VEuc  1 e 1 @281 ]
+"3824
+[v _TX1REG TX1REG `VEuc  1 e 1 @282 ]
+"3885
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @283 ]
+"3955
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @284 ]
+"4009
+[v _RC1STA RC1STA `VEuc  1 e 1 @285 ]
+[s S1650 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"4035
+[u S1659 . 1 `S1650 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES1659  1 e 1 @285 ]
+"4189
+[v _TX1STA TX1STA `VEuc  1 e 1 @286 ]
+[s S1628 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"4215
+[u S1637 . 1 `S1628 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES1637  1 e 1 @286 ]
+"4369
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @287 ]
 "4615
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @396 ]
 "4635
@@ -467,7 +563,7 @@ channel_FVR_buf1 63
 [v _SSP1MSK SSP1MSK `VEuc  1 e 1 @398 ]
 "4825
 [v _SSP1STAT SSP1STAT `VEuc  1 e 1 @399 ]
-[s S891 . 1 `uc 1 BF 1 0 :1:0 
+[s S903 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -477,33 +573,33 @@ channel_FVR_buf1 63
 `uc 1 SMP 1 0 :1:7 
 ]
 "4934
-[s S900 . 1 `uc 1 . 1 0 :2:0 
+[s S912 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S905 . 1 `uc 1 . 1 0 :2:0 
+[s S917 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S910 . 1 `uc 1 . 1 0 :2:0 
+[s S922 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S915 . 1 `uc 1 . 1 0 :2:0 
+[s S927 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S920 . 1 `uc 1 . 1 0 :2:0 
+[s S932 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S926 . 1 `uc 1 BF1 1 0 :1:0 
+[s S938 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 R 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
@@ -512,66 +608,66 @@ channel_FVR_buf1 63
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S935 . 1 `uc 1 . 1 0 :2:0 
+[s S947 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S941 . 1 `uc 1 . 1 0 :2:0 
+[s S953 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 I2C_START1 1 0 :1:3 
 `uc 1 I2C_STOP2 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S947 . 1 `uc 1 . 1 0 :2:0 
+[s S959 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ1 1 0 :1:2 
 `uc 1 S2 1 0 :1:3 
 `uc 1 P2 1 0 :1:4 
 `uc 1 DATA_ADDRESS1 1 0 :1:5 
 ]
-[s S953 . 1 `uc 1 . 1 0 :2:0 
+[s S965 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A1 1 0 :1:5 
 ]
-[s S958 . 1 `uc 1 . 1 0 :2:0 
+[s S970 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_nA1 1 0 :1:5 
 ]
-[s S963 . 1 `uc 1 . 1 0 :2:0 
+[s S975 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_nW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT1 1 0 :1:5 
 ]
-[s S968 . 1 `uc 1 . 1 0 :2:0 
+[s S980 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA2 1 0 :1:5 
 ]
-[s S973 . 1 `uc 1 . 1 0 :2:0 
+[s S985 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS1 1 0 :1:5 
 ]
-[u S978 . 1 `S891 1 . 1 0 `S900 1 . 1 0 `S905 1 . 1 0 `S910 1 . 1 0 `S915 1 . 1 0 `S920 1 . 1 0 `S926 1 . 1 0 `S935 1 . 1 0 `S941 1 . 1 0 `S947 1 . 1 0 `S953 1 . 1 0 `S958 1 . 1 0 `S963 1 . 1 0 `S968 1 . 1 0 `S973 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES978  1 e 1 @399 ]
+[u S990 . 1 `S903 1 . 1 0 `S912 1 . 1 0 `S917 1 . 1 0 `S922 1 . 1 0 `S927 1 . 1 0 `S932 1 . 1 0 `S938 1 . 1 0 `S947 1 . 1 0 `S953 1 . 1 0 `S959 1 . 1 0 `S965 1 . 1 0 `S970 1 . 1 0 `S975 1 . 1 0 `S980 1 . 1 0 `S985 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES990  1 e 1 @399 ]
 "5189
 [v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @400 ]
-[s S737 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S749 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5219
-[s S743 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S755 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S748 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S760 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -580,11 +676,11 @@ channel_FVR_buf1 63
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S757 . 1 `S737 1 . 1 0 `S743 1 . 1 0 `S748 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES757  1 e 1 @400 ]
+[u S769 . 1 `S749 1 . 1 0 `S755 1 . 1 0 `S760 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES769  1 e 1 @400 ]
 "5309
 [v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @401 ]
-[s S812 . 1 `uc 1 SEN 1 0 :1:0 
+[s S824 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -594,17 +690,17 @@ channel_FVR_buf1 63
 `uc 1 GCEN 1 0 :1:7 
 ]
 "5356
-[s S821 . 1 `uc 1 . 1 0 :1:0 
+[s S833 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S824 . 1 `uc 1 . 1 0 :1:0 
+[s S836 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S831 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S843 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
@@ -613,15 +709,15 @@ channel_FVR_buf1 63
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S840 . 1 `uc 1 . 1 0 :1:0 
+[s S852 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S847 . 1 `S812 1 . 1 0 `S821 1 . 1 0 `S824 1 . 1 0 `S831 1 . 1 0 `S840 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES847  1 e 1 @401 ]
+[u S859 . 1 `S824 1 . 1 0 `S833 1 . 1 0 `S836 1 . 1 0 `S843 1 . 1 0 `S852 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES859  1 e 1 @401 ]
 "6508
 [v _TMR1L TMR1L `VEuc  1 e 1 @524 ]
 "6678
@@ -679,20 +775,20 @@ channel_FVR_buf1 63
 [v _T1GATE T1GATE `VEuc  1 e 1 @528 ]
 "7256
 [v _T1CLK T1CLK `VEuc  1 e 1 @529 ]
-[s S1263 . 1 `uc 1 C5TSEL 1 0 :2:0 
+[s S1275 . 1 `uc 1 C5TSEL 1 0 :2:0 
 `uc 1 P6TSEL 1 0 :2:2 
 `uc 1 P7TSEL 1 0 :2:4 
 ]
 "9300
-[s S1267 . 1 `uc 1 C5TSEL0 1 0 :1:0 
+[s S1279 . 1 `uc 1 C5TSEL0 1 0 :1:0 
 `uc 1 C5TSEL1 1 0 :1:1 
 `uc 1 P6TSEL0 1 0 :1:2 
 `uc 1 P6TSEL1 1 0 :1:3 
 `uc 1 P7TSEL0 1 0 :1:4 
 `uc 1 P7TSEL1 1 0 :1:5 
 ]
-[u S1274 . 1 `S1263 1 . 1 0 `S1267 1 . 1 0 ]
-[v _CCPTMRS1bits CCPTMRS1bits `VES1274  1 e 1 @543 ]
+[u S1286 . 1 `S1275 1 . 1 0 `S1279 1 . 1 0 ]
+[v _CCPTMRS1bits CCPTMRS1bits `VES1286  1 e 1 @543 ]
 "9350
 [v _T2TMR T2TMR `VEuc  1 e 1 @652 ]
 "9355
@@ -703,16 +799,16 @@ channel_FVR_buf1 63
 [v _PR2 PR2 `VEuc  1 e 1 @653 ]
 "9426
 [v _T2CON T2CON `VEuc  1 e 1 @654 ]
-[s S1440 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S1452 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 CKPS 1 0 :3:4 
 `uc 1 ON 1 0 :1:7 
 ]
 "9462
-[s S1444 . 1 `uc 1 T2OUTPS 1 0 :4:0 
+[s S1456 . 1 `uc 1 T2OUTPS 1 0 :4:0 
 `uc 1 T2CKPS 1 0 :3:4 
 `uc 1 T2ON 1 0 :1:7 
 ]
-[s S1448 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
+[s S1460 . 1 `uc 1 T2OUTPS0 1 0 :1:0 
 `uc 1 T2OUTPS1 1 0 :1:1 
 `uc 1 T2OUTPS2 1 0 :1:2 
 `uc 1 T2OUTPS3 1 0 :1:3 
@@ -720,7 +816,7 @@ channel_FVR_buf1 63
 `uc 1 T2CKPS1 1 0 :1:5 
 `uc 1 T2CKPS2 1 0 :1:6 
 ]
-[s S1456 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S1468 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
@@ -729,58 +825,58 @@ channel_FVR_buf1 63
 `uc 1 CKPS2 1 0 :1:6 
 `uc 1 TMR2ON 1 0 :1:7 
 ]
-[u S1465 . 1 `S1440 1 . 1 0 `S1444 1 . 1 0 `S1448 1 . 1 0 `S1456 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES1465  1 e 1 @654 ]
+[u S1477 . 1 `S1452 1 . 1 0 `S1456 1 . 1 0 `S1460 1 . 1 0 `S1468 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES1477  1 e 1 @654 ]
 "9572
 [v _T2HLT T2HLT `VEuc  1 e 1 @655 ]
-[s S1333 . 1 `uc 1 MODE 1 0 :5:0 
+[s S1345 . 1 `uc 1 MODE 1 0 :5:0 
 `uc 1 CKSYNC 1 0 :1:5 
 `uc 1 CKPOL 1 0 :1:6 
 `uc 1 PSYNC 1 0 :1:7 
 ]
 "9605
-[s S1338 . 1 `uc 1 MODE0 1 0 :1:0 
+[s S1350 . 1 `uc 1 MODE0 1 0 :1:0 
 `uc 1 MODE1 1 0 :1:1 
 `uc 1 MODE2 1 0 :1:2 
 `uc 1 MODE3 1 0 :1:3 
 `uc 1 MODE4 1 0 :1:4 
 ]
-[s S1344 . 1 `uc 1 T2MODE 1 0 :5:0 
+[s S1356 . 1 `uc 1 T2MODE 1 0 :5:0 
 `uc 1 T2CKSYNC 1 0 :1:5 
 `uc 1 T2CKPOL 1 0 :1:6 
 `uc 1 T2PSYNC 1 0 :1:7 
 ]
-[s S1349 . 1 `uc 1 T2MODE0 1 0 :1:0 
+[s S1361 . 1 `uc 1 T2MODE0 1 0 :1:0 
 `uc 1 T2MODE1 1 0 :1:1 
 `uc 1 T2MODE2 1 0 :1:2 
 `uc 1 T2MODE3 1 0 :1:3 
 `uc 1 T2MODE4 1 0 :1:4 
 ]
-[u S1355 . 1 `S1333 1 . 1 0 `S1338 1 . 1 0 `S1344 1 . 1 0 `S1349 1 . 1 0 ]
-[v _T2HLTbits T2HLTbits `VES1355  1 e 1 @655 ]
+[u S1367 . 1 `S1345 1 . 1 0 `S1350 1 . 1 0 `S1356 1 . 1 0 `S1361 1 . 1 0 ]
+[v _T2HLTbits T2HLTbits `VES1367  1 e 1 @655 ]
 "9700
 [v _T2CLKCON T2CLKCON `VEuc  1 e 1 @656 ]
 "9858
 [v _T2RST T2RST `VEuc  1 e 1 @657 ]
-[s S1402 . 1 `uc 1 RSEL 1 0 :5:0 
+[s S1414 . 1 `uc 1 RSEL 1 0 :5:0 
 ]
 "9885
-[s S1404 . 1 `uc 1 RSEL0 1 0 :1:0 
+[s S1416 . 1 `uc 1 RSEL0 1 0 :1:0 
 `uc 1 RSEL1 1 0 :1:1 
 `uc 1 RSEL2 1 0 :1:2 
 `uc 1 RSEL3 1 0 :1:3 
 `uc 1 RSEL4 1 0 :1:4 
 ]
-[s S1410 . 1 `uc 1 T2RSEL 1 0 :5:0 
+[s S1422 . 1 `uc 1 T2RSEL 1 0 :5:0 
 ]
-[s S1412 . 1 `uc 1 T2RSEL0 1 0 :1:0 
+[s S1424 . 1 `uc 1 T2RSEL0 1 0 :1:0 
 `uc 1 T2RSEL1 1 0 :1:1 
 `uc 1 T2RSEL2 1 0 :1:2 
 `uc 1 T2RSEL3 1 0 :1:3 
 `uc 1 T2RSEL4 1 0 :1:4 
 ]
-[u S1418 . 1 `S1402 1 . 1 0 `S1404 1 . 1 0 `S1410 1 . 1 0 `S1412 1 . 1 0 ]
-[v _T2RSTbits T2RSTbits `VES1418  1 e 1 @657 ]
+[u S1430 . 1 `S1414 1 . 1 0 `S1416 1 . 1 0 `S1422 1 . 1 0 `S1424 1 . 1 0 ]
+[v _T2RSTbits T2RSTbits `VES1430  1 e 1 @657 ]
 "12447
 [v _PWM6DCL PWM6DCL `VEuc  1 e 1 @908 ]
 "12513
@@ -863,7 +959,7 @@ channel_FVR_buf1 63
 [v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
 "23437
 [v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
-[s S1193 . 1 `uc 1 RD 1 0 :1:0 
+[s S1205 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -872,8 +968,8 @@ channel_FVR_buf1 63
 `uc 1 NVMREGS 1 0 :1:6 
 ]
 "23503
-[u S1201 . 1 `S1193 1 . 1 0 ]
-[v _NVMCON1bits NVMCON1bits `VES1201  1 e 1 @2078 ]
+[u S1213 . 1 `S1205 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES1213  1 e 1 @2078 ]
 "23543
 [v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
 "23607
@@ -888,23 +984,27 @@ channel_FVR_buf1 63
 [v _OSCFRQ OSCFRQ `VEuc  1 e 1 @2195 ]
 "30046
 [v _PPSLOCK PPSLOCK `VEuc  1 e 1 @3727 ]
-[s S2173 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+[s S2394 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
 ]
 "30056
-[u S2175 . 1 `S2173 1 . 1 0 ]
-[v _PPSLOCKbits PPSLOCKbits `VES2175  1 e 1 @3727 ]
+[u S2396 . 1 `S2394 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES2396  1 e 1 @3727 ]
 "30066
 [v _INTPPS INTPPS `VEuc  1 e 1 @3728 ]
 "31672
 [v _SSP1CLKPPS SSP1CLKPPS `VEuc  1 e 1 @3781 ]
 "31724
 [v _SSP1DATPPS SSP1DATPPS `VEuc  1 e 1 @3782 ]
+"31984
+[v _RXPPS RXPPS `VEuc  1 e 1 @3787 ]
 "32388
 [v _RA6PPS RA6PPS `VEuc  1 e 1 @3862 ]
 "33038
 [v _RC3PPS RC3PPS `VEuc  1 e 1 @3875 ]
 "33088
 [v _RC4PPS RC4PPS `VEuc  1 e 1 @3876 ]
+"33188
+[v _RC6PPS RC6PPS `VEuc  1 e 1 @3878 ]
 "33838
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
 "33900
@@ -959,6 +1059,26 @@ channel_FVR_buf1 63
 [v _WPUC3 WPUC3 `VEb  1 e 0 @31355 ]
 "45039
 [v _WPUC4 WPUC4 `VEb  1 e 0 @31356 ]
+"8 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/communications.c
+[v _clkh clkh `VEuc  1 e 1 0 ]
+"9
+[v _clkm clkm `VEuc  1 e 1 0 ]
+"10
+[v _clks clks `VEuc  1 e 1 0 ]
+"11
+[v _temp temp `uc  1 e 1 0 ]
+"12
+[v _illum illum `uc  1 e 1 0 ]
+"13
+[v _pmon pmon `uc  1 e 1 0 ]
+"14
+[v _tala tala `uc  1 e 1 0 ]
+"15
+[v _alat alat `uc  1 e 1 0 ]
+"16
+[v _alal alal `uc  1 e 1 0 ]
+"17
+[v _alaf alaf `uc  1 e 1 0 ]
 "13 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _timer timer `VEuc  1 e 1 0 ]
 "14
@@ -967,34 +1087,50 @@ channel_FVR_buf1 63
 [v _flag_timer flag_timer `VEa  1 e 1 0 ]
 "16
 [v _initial_time initial_time `i  1 e 2 0 ]
-"17
-[v _pmon pmon `uc  1 e 1 0 ]
-"18
-[v _tala tala `uc  1 e 1 0 ]
-"19
-[v _alat alat `uc  1 e 1 0 ]
-"20
-[v _alal alal `uc  1 e 1 0 ]
-"21
-[v _alaf alaf `uc  1 e 1 0 ]
-"22
-[v _clkh clkh `VEuc  1 e 1 0 ]
-"23
-[v _clkm clkm `VEuc  1 e 1 0 ]
-"24
-[v _clks clks `VEuc  1 e 1 0 ]
 "25
 [v _hours hours `uc  1 e 1 0 ]
 "26
 [v _minutes minutes `uc  1 e 1 0 ]
 "27
 [v _seconds seconds `uc  1 e 1 0 ]
-"28
-[v _temp temp `uc  1 e 1 0 ]
-"29
-[v _illum illum `uc  1 e 1 0 ]
-"31
+"30
 [v _alarm alarm `a  1 e 1 0 ]
+"62 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/eusart.c
+[v _eusartTxHead eusartTxHead `VEuc  1 e 1 0 ]
+"63
+[v _eusartTxTail eusartTxTail `VEuc  1 e 1 0 ]
+"64
+[v _eusartTxBuffer eusartTxBuffer `VE[8]uc  1 e 8 0 ]
+"65
+[v _eusartTxBufferRemaining eusartTxBufferRemaining `VEuc  1 e 1 0 ]
+"67
+[v _eusartRxHead eusartRxHead `VEuc  1 e 1 0 ]
+"68
+[v _eusartRxTail eusartRxTail `VEuc  1 e 1 0 ]
+"69
+[v _eusartRxBuffer eusartRxBuffer `VE[8]uc  1 e 8 0 ]
+[s S1550 . 1 `uc 1 perr 1 0 :1:0 
+`uc 1 ferr 1 0 :1:1 
+`uc 1 oerr 1 0 :1:2 
+`uc 1 reserved 1 0 :5:3 
+]
+"70
+[u S1555 . 1 `S1550 1 . 1 0 `uc 1 status 1 0 ]
+[v _eusartRxStatusBuffer eusartRxStatusBuffer `VE[8]S1555  1 e 8 0 ]
+"71
+[v _eusartRxCount eusartRxCount `VEuc  1 e 1 0 ]
+"72
+[v _eusartRxLastError eusartRxLastError `VES1555  1 e 1 0 ]
+"77
+[v _EUSART_TxDefaultInterruptHandler EUSART_TxDefaultInterruptHandler `*.37(v  1 e 2 0 ]
+"78
+[v _EUSART_RxDefaultInterruptHandler EUSART_RxDefaultInterruptHandler `*.37(v  1 e 2 0 ]
+"80
+[v _EUSART_FramingErrorHandler EUSART_FramingErrorHandler `*.37(v  1 e 2 0 ]
+"81
+[v _EUSART_OverrunErrorHandler EUSART_OverrunErrorHandler `*.37(v  1 e 2 0 ]
+"82
+[v _EUSART_ErrorHandler EUSART_ErrorHandler `*.37(v  1 e 2 0 ]
 "30 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _INT_InterruptHandler INT_InterruptHandler `*.37(v  1 e 2 0 ]
 "57 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
@@ -1011,15 +1147,15 @@ channel_FVR_buf1 63
 [v _btn1State btn1State `a  1 e 1 0 ]
 "9
 [v _btn2State btn2State `a  1 e 1 0 ]
-"92 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"90 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "162
 } 0
-"34
+"32
 [v _sys_init sys_init `(v  1 e 1 0 ]
 {
-"40
+"38
 } 0
 "78 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/eeprom.c
 [v _ring_buffer_write ring_buffer_write `(a  1 e 1 0 ]
@@ -1136,10 +1272,10 @@ channel_FVR_buf1 63
 {
 "96
 } 0
-"68 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"66 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _clear_alarm clear_alarm `(v  1 e 1 0 ]
 {
-"72
+"70
 } 0
 "61 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v _PWM_Output_D4_Disable PWM_Output_D4_Disable `(v  1 e 1 0 ]
@@ -1149,7 +1285,7 @@ channel_FVR_buf1 63
 "50 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"60
+"61
 } 0
 "62 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr2.c
 [v _TMR2_Initialize TMR2_Initialize `(v  1 e 1 0 ]
@@ -1166,20 +1302,20 @@ channel_FVR_buf1 63
 {
 "72
 } 0
-"76 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"77 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
-"90
+"91
 } 0
 "55 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
-"132
+"134
 } 0
-"62 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
+"63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"74
+"75
 } 0
 "59 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/ext_int.c
 [v _EXT_INT_Initialize EXT_INT_Initialize `(v  1 e 1 0 ]
@@ -1191,6 +1327,41 @@ channel_FVR_buf1 63
 {
 [v INT_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 2 ]
 "52
+} 0
+"88 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/eusart.c
+[v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
+{
+"130
+} 0
+"285
+[v _EUSART_SetTxInterruptHandler EUSART_SetTxInterruptHandler `(v  1 e 1 0 ]
+{
+[v EUSART_SetTxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 2 ]
+"287
+} 0
+"289
+[v _EUSART_SetRxInterruptHandler EUSART_SetRxInterruptHandler `(v  1 e 1 0 ]
+{
+[v EUSART_SetRxInterruptHandler@interruptHandler interruptHandler `*.37(v  1 p 2 2 ]
+"291
+} 0
+"277
+[v _EUSART_SetOverrunErrorHandler EUSART_SetOverrunErrorHandler `(v  1 e 1 0 ]
+{
+[v EUSART_SetOverrunErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 2 ]
+"279
+} 0
+"273
+[v _EUSART_SetFramingErrorHandler EUSART_SetFramingErrorHandler `(v  1 e 1 0 ]
+{
+[v EUSART_SetFramingErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 2 ]
+"275
+} 0
+"281
+[v _EUSART_SetErrorHandler EUSART_SetErrorHandler `(v  1 e 1 0 ]
+{
+[v EUSART_SetErrorHandler@interruptHandler interruptHandler `*.37(v  1 p 2 2 ]
+"283
 } 0
 "63 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
@@ -1415,7 +1586,7 @@ channel_FVR_buf1 63
 {
 "103
 } 0
-"81 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"79 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Alarm Alarm `(v  1 e 1 0 ]
 {
 [v Alarm@h h `uc  1 a 1 wreg ]
@@ -1423,7 +1594,7 @@ channel_FVR_buf1 63
 [v Alarm@m m `uc  1 p 1 0 ]
 [v Alarm@s s `uc  1 p 1 1 ]
 [v Alarm@h h `uc  1 a 1 12 ]
-"86
+"84
 } 0
 "15 /Applications/microchip/xc8/v2.10/pic/sources/c99/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -1449,7 +1620,7 @@ channel_FVR_buf1 63
 "52 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
-"82
+"90
 } 0
 "164 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
@@ -1466,10 +1637,10 @@ channel_FVR_buf1 63
 {
 "185
 } 0
-"42 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"40 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Timer Timer `(v  1 e 1 0 ]
 {
-"66
+"64
 } 0
 "127 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/tmr1.c
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
@@ -1492,18 +1663,47 @@ channel_FVR_buf1 63
 {
 "57
 } 0
-"74 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
+"72 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/main.c
 [v _Switch1 Switch1 `(v  1 e 1 0 ]
 {
-"79
+"77
 } 0
-"68
+"66
 [v i1_clear_alarm clear_alarm `(v  1 e 1 0 ]
 {
-"72
+"70
 } 0
 "61 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/utils.c
 [v i1_PWM_Output_D4_Disable PWM_Output_D4_Disable `(v  1 e 1 0 ]
 {
 "70
+} 0
+"206 /Users/vasco/Documents/IST/SCE/Project/WeatherStation/WeatherStation_g8.x/mcc_generated_files/eusart.c
+[v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
+{
+"223
+} 0
+"225
+[v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
+{
+"247
+} 0
+"261
+[v _EUSART_DefaultOverrunErrorHandler EUSART_DefaultOverrunErrorHandler `(v  1 e 1 0 ]
+{
+"267
+} 0
+"259
+[v _EUSART_DefaultFramingErrorHandler EUSART_DefaultFramingErrorHandler `(v  1 e 1 0 ]
+{
+} 0
+"269
+[v _EUSART_DefaultErrorHandler EUSART_DefaultErrorHandler `(v  1 e 1 0 ]
+{
+"271
+} 0
+"249
+[v _EUSART_RxDataHandler EUSART_RxDataHandler `(v  1 e 1 0 ]
+{
+"257
 } 0

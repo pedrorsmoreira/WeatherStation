@@ -119,6 +119,7 @@ uint8_t read_alal(void) { return DATAEE_ReadByte(ALAL_); }
 uint8_t read_alaf(void) { return DATAEE_ReadByte(ALAF_); }
 uint8_t read_clkh(void) { return DATAEE_ReadByte(CLKH_); }
 uint8_t read_clkm(void) { return DATAEE_ReadByte(CLKM_); }
+uint8_t read_iwrt(void) { return DATAEE_ReadByte(WBUF_); }
 
 void write_nreg(uint8_t x) {
     #ifdef CHECKSUM

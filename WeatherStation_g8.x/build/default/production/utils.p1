@@ -208,8 +208,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "70 ./eeprom.h
 [; ;./eeprom.h: 70: uint8_t read_clkm(void);
 [v _read_clkm `(uc ~T0 @X0 0 ef ]
-"55 ./utils.h
-[; ;./utils.h: 55: void default_setup(void);
+"56 ./utils.h
+[; ;./utils.h: 56: void default_setup(void);
 [v _default_setup `(v ~T0 @X0 0 ef ]
 "52 ./eeprom.h
 [; ;./eeprom.h: 52: void eeprom_setup(_Bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
@@ -1885,10 +1885,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12
 [; ;utils.c: 12:     return ADCC_GetSingleConversion(ILLUM)>> 14;
 [e ) -> >> -> ( _ADCC_GetSingleConversion (1 . `E12733 0 `ui -> 14 `i `uc ]
-[e $UE 1627  ]
+[e $UE 1629  ]
 "13
 [; ;utils.c: 13: }
-[e :UE 1627 ]
+[e :UE 1629 ]
 }
 "15
 [; ;utils.c: 15: unsigned char ReadTemp(void){
@@ -1901,230 +1901,230 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _value `uc ~T0 @X0 1 a ]
 "18
 [; ;utils.c: 18:     do{
-[e :U 1631 ]
+[e :U 1633 ]
 {
 "19
 [; ;utils.c: 19:         while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1632  ]
-[e :U 1633 ]
-[e :U 1632 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1633  ]
+[e $U 1634  ]
+[e :U 1635 ]
 [e :U 1634 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1635  ]
+[e :U 1636 ]
 "20
 [; ;utils.c: 20:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
-[e $U 1635  ]
-[e :U 1636 ]
+[e $U 1637  ]
+[e :U 1638 ]
 "21
 [; ;utils.c: 21:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1635 ]
+[e :U 1637 ]
 "20
 [; ;utils.c: 20:         SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
-[e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1636  ]
-[e :U 1637 ]
+[e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1638  ]
+[e :U 1639 ]
 "21
 [; ;utils.c: 21:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1638  ]
-[e :U 1639 ]
-[e :U 1638 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1639  ]
+[e $U 1640  ]
+[e :U 1641 ]
 [e :U 1640 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1641  ]
+[e :U 1642 ]
 "23
 [; ;utils.c: 23:         WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
-[e $U 1641  ]
-[e :U 1642 ]
-[e :U 1641 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1642  ]
+[e $U 1643  ]
+[e :U 1644 ]
 [e :U 1643 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1644  ]
+[e :U 1645 ]
 "24
 [; ;utils.c: 24:         WriteI2C(0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 1 `i `uc ]
-[e $U 1644  ]
-[e :U 1645 ]
-[e :U 1644 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1645  ]
+[e $U 1646  ]
+[e :U 1647 ]
 [e :U 1646 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1647  ]
+[e :U 1648 ]
 "25
 [; ;utils.c: 25:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
-[e $U 1647  ]
-[e :U 1648 ]
+[e $U 1649  ]
+[e :U 1650 ]
 "26
 [; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1647 ]
+[e :U 1649 ]
 "25
 [; ;utils.c: 25:         SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
-[e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1648  ]
-[e :U 1649 ]
+[e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1650  ]
+[e :U 1651 ]
 "26
 [; ;utils.c: 26:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1650  ]
-[e :U 1651 ]
-[e :U 1650 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1651  ]
+[e $U 1652  ]
+[e :U 1653 ]
 [e :U 1652 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1653  ]
+[e :U 1654 ]
 "27
 [; ;utils.c: 27:         WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
-[e $U 1653  ]
-[e :U 1654 ]
-[e :U 1653 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1654  ]
+[e $U 1655  ]
+[e :U 1656 ]
 [e :U 1655 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1656  ]
+[e :U 1657 ]
 "28
 [; ;utils.c: 28:         value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
-[e $U 1656  ]
-[e :U 1657 ]
-[e :U 1656 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1657  ]
+[e $U 1658  ]
+[e :U 1659 ]
 [e :U 1658 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1659  ]
+[e :U 1660 ]
 "29
 [; ;utils.c: 29:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
-[e $U 1659  ]
-[e :U 1660 ]
+[e $U 1661  ]
+[e :U 1662 ]
 "30
 [; ;utils.c: 30:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1659 ]
+[e :U 1661 ]
 "29
 [; ;utils.c: 29:         SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
-[e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1660  ]
-[e :U 1661 ]
+[e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1662  ]
+[e :U 1663 ]
 "30
 [; ;utils.c: 30:                 ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1662  ]
-[e :U 1663 ]
-[e :U 1662 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1663  ]
+[e $U 1664  ]
+[e :U 1665 ]
 [e :U 1664 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1665  ]
+[e :U 1666 ]
 "31
 [; ;utils.c: 31:         SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
-[e $U 1665  ]
-[e :U 1666 ]
-[e :U 1665 ]
-[e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1666  ]
+[e $U 1667  ]
+[e :U 1668 ]
 [e :U 1667 ]
+[e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1668  ]
+[e :U 1669 ]
 "32
 [; ;utils.c: 32:     } while (!(value & 0x40));
 }
-[e $ ! != & -> _value `i -> 64 `i -> 0 `i 1631  ]
-[e :U 1630 ]
+[e $ ! != & -> _value `i -> 64 `i -> 0 `i 1633  ]
+[e :U 1632 ]
 "34
 [; ;utils.c: 34:  while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1668  ]
-[e :U 1669 ]
-[e :U 1668 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1669  ]
+[e $U 1670  ]
+[e :U 1671 ]
 [e :U 1670 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1671  ]
+[e :U 1672 ]
 "35
 [; ;utils.c: 35:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
 [e = . . _SSP1CON2bits 0 0 -> -> 1 `i `uc ]
-[e $U 1671  ]
-[e :U 1672 ]
+[e $U 1673  ]
+[e :U 1674 ]
 "36
 [; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1671 ]
+[e :U 1673 ]
 "35
 [; ;utils.c: 35:  SSP1CON2bits.SEN=1;while(SSP1CON2bits.SEN)
-[e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1672  ]
-[e :U 1673 ]
+[e $ != -> . . _SSP1CON2bits 0 0 `i -> 0 `i 1674  ]
+[e :U 1675 ]
 "36
 [; ;utils.c: 36:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1674  ]
-[e :U 1675 ]
-[e :U 1674 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1675  ]
+[e $U 1676  ]
+[e :U 1677 ]
 [e :U 1676 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1677  ]
+[e :U 1678 ]
 "37
 [; ;utils.c: 37:  WriteI2C(0x9a | 0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 0 `i `uc ]
-[e $U 1677  ]
-[e :U 1678 ]
-[e :U 1677 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1678  ]
+[e $U 1679  ]
+[e :U 1680 ]
 [e :U 1679 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1680  ]
+[e :U 1681 ]
 "38
 [; ;utils.c: 38:  WriteI2C(0x00); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> -> 0 `i `uc ]
-[e $U 1680  ]
-[e :U 1681 ]
-[e :U 1680 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1681  ]
+[e $U 1682  ]
+[e :U 1683 ]
 [e :U 1682 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1683  ]
+[e :U 1684 ]
 "39
 [; ;utils.c: 39:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
 [e = . . _SSP1CON2bits 0 1 -> -> 1 `i `uc ]
-[e $U 1683  ]
-[e :U 1684 ]
+[e $U 1685  ]
+[e :U 1686 ]
 "40
 [; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1683 ]
+[e :U 1685 ]
 "39
 [; ;utils.c: 39:  SSP1CON2bits.RSEN=1;while(SSP1CON2bits.RSEN)
-[e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1684  ]
-[e :U 1685 ]
+[e $ != -> . . _SSP1CON2bits 0 1 `i -> 0 `i 1686  ]
+[e :U 1687 ]
 "40
 [; ;utils.c: 40:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1686  ]
-[e :U 1687 ]
-[e :U 1686 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1687  ]
+[e $U 1688  ]
+[e :U 1689 ]
 [e :U 1688 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1689  ]
+[e :U 1690 ]
 "41
 [; ;utils.c: 41:  WriteI2C(0x9a | 0x01); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e ( _WriteI2C (1 -> | -> 154 `i -> 1 `i `uc ]
-[e $U 1689  ]
-[e :U 1690 ]
-[e :U 1689 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1690  ]
+[e $U 1691  ]
+[e :U 1692 ]
 [e :U 1691 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1692  ]
+[e :U 1693 ]
 "42
 [; ;utils.c: 42:  value = ReadI2C(); while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
 [e = _value ( _ReadI2C ..  ]
-[e $U 1692  ]
-[e :U 1693 ]
-[e :U 1692 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1693  ]
+[e $U 1694  ]
+[e :U 1695 ]
 [e :U 1694 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1695  ]
+[e :U 1696 ]
 "43
 [; ;utils.c: 43:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
 [e = . . _SSP1CON2bits 0 5 -> -> 1 `i `uc ]
 [e = . . _SSP1CON2bits 0 4 -> -> 1 `i `uc ]
-[e $U 1695  ]
-[e :U 1696 ]
+[e $U 1697  ]
+[e :U 1698 ]
 "44
 [; ;utils.c: 44:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e :U 1695 ]
+[e :U 1697 ]
 "43
 [; ;utils.c: 43:  SSP1CON2bits.ACKDT=1;SSP1CON2bits.ACKEN=1;while(SSP1CON2bits.ACKEN)
-[e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1696  ]
-[e :U 1697 ]
+[e $ != -> . . _SSP1CON2bits 0 4 `i -> 0 `i 1698  ]
+[e :U 1699 ]
 "44
 [; ;utils.c: 44:             ; while ((SSP1CON2 & 0x1F) | (SSP1STATbits.R_W));
-[e $U 1698  ]
-[e :U 1699 ]
-[e :U 1698 ]
-[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1699  ]
+[e $U 1700  ]
+[e :U 1701 ]
 [e :U 1700 ]
+[e $ != | & -> _SSP1CON2 `i -> 31 `i -> . . _SSP1STATbits 1 1 `i -> 0 `i 1701  ]
+[e :U 1702 ]
 "45
 [; ;utils.c: 45:  SSP1CON2bits.PEN = 1;while(SSP1CON2bits.PEN);
 [e = . . _SSP1CON2bits 0 2 -> -> 1 `i `uc ]
-[e $U 1701  ]
-[e :U 1702 ]
-[e :U 1701 ]
-[e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1702  ]
+[e $U 1703  ]
+[e :U 1704 ]
 [e :U 1703 ]
+[e $ != -> . . _SSP1CON2bits 0 2 `i -> 0 `i 1704  ]
+[e :U 1705 ]
 "47
 [; ;utils.c: 47:  return value;
 [e ) _value ]
-[e $UE 1628  ]
+[e $UE 1630  ]
 "48
 [; ;utils.c: 48: }
-[e :UE 1628 ]
+[e :UE 1630 ]
 }
 "50
 [; ;utils.c: 50: void PWM_Output_D4_Enable (void){
@@ -2155,7 +2155,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
 "59
 [; ;utils.c: 59: }
-[e :UE 1704 ]
+[e :UE 1706 ]
 }
 "61
 [; ;utils.c: 61: void PWM_Output_D4_Disable (void){
@@ -2186,7 +2186,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _PPSLOCKbits 0 0 -> -> 1 `i `uc ]
 "70
 [; ;utils.c: 70: }
-[e :UE 1705 ]
+[e :UE 1707 ]
 }
 "72
 [; ;utils.c: 72: void ShowOnLEDs(uint8_t num){
@@ -2200,7 +2200,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _LATA -> << -> _num `i -> 4 `i `uc ]
 "74
 [; ;utils.c: 74: }
-[e :UE 1706 ]
+[e :UE 1708 ]
 }
 "76
 [; ;utils.c: 76: void checkButtonS1(void) {
@@ -2210,11 +2210,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "77
 [; ;utils.c: 77:     if (btn1State == 0) {
-[e $ ! == -> _btn1State `i -> 0 `i 1708  ]
+[e $ ! == -> _btn1State `i -> 0 `i 1710  ]
 {
 "78
 [; ;utils.c: 78:         if (PORTBbits.RB4 == 0) {
-[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1709  ]
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 1711  ]
 {
 "79
 [; ;utils.c: 79:             _delay((unsigned long)((300)*(1000000/4000.0)));
@@ -2225,13 +2225,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "81
 [; ;utils.c: 81:         }
 }
-[e :U 1709 ]
+[e :U 1711 ]
 "82
 [; ;utils.c: 82:     } else if (PORTBbits.RB4 == 1) {
 }
-[e $U 1710  ]
-[e :U 1708 ]
-[e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 1711  ]
+[e $U 1712  ]
+[e :U 1710 ]
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 1713  ]
 {
 "83
 [; ;utils.c: 83:         btn1State = 0;
@@ -2242,11 +2242,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "85
 [; ;utils.c: 85:     }
 }
-[e :U 1711 ]
-[e :U 1710 ]
+[e :U 1713 ]
+[e :U 1712 ]
 "86
 [; ;utils.c: 86: }
-[e :UE 1707 ]
+[e :UE 1709 ]
 }
 "88
 [; ;utils.c: 88: void checkButtonS2(void) {
@@ -2256,11 +2256,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "89
 [; ;utils.c: 89:     if (btn2State == 0) {
-[e $ ! == -> _btn2State `i -> 0 `i 1713  ]
+[e $ ! == -> _btn2State `i -> 0 `i 1715  ]
 {
 "90
 [; ;utils.c: 90:         if (PORTCbits.RC5 == 0) {
-[e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 1714  ]
+[e $ ! == -> . . _PORTCbits 0 5 `i -> 0 `i 1716  ]
 {
 "91
 [; ;utils.c: 91:             _delay((unsigned long)((300)*(1000000/4000.0)));
@@ -2271,13 +2271,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "93
 [; ;utils.c: 93:         }
 }
-[e :U 1714 ]
+[e :U 1716 ]
 "94
 [; ;utils.c: 94:     } else if (PORTCbits.RC5 == 1) {
 }
-[e $U 1715  ]
-[e :U 1713 ]
-[e $ ! == -> . . _PORTCbits 0 5 `i -> 1 `i 1716  ]
+[e $U 1717  ]
+[e :U 1715 ]
+[e $ ! == -> . . _PORTCbits 0 5 `i -> 1 `i 1718  ]
 {
 "95
 [; ;utils.c: 95:         btn2State = 0;
@@ -2288,11 +2288,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "97
 [; ;utils.c: 97:     }
 }
-[e :U 1716 ]
-[e :U 1715 ]
+[e :U 1718 ]
+[e :U 1717 ]
 "98
 [; ;utils.c: 98: }
-[e :UE 1712 ]
+[e :UE 1714 ]
 }
 "100
 [; ;utils.c: 100: void load_eeprom(void){
@@ -2302,7 +2302,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "101
 [; ;utils.c: 101:     if(used() && check_corruption()){
-[e $ ! && != -> ( _used ..  `i -> 0 `i != -> ( _check_corruption ..  `i -> 0 `i 1718  ]
+[e $ ! && != -> ( _used ..  `i -> 0 `i != -> ( _check_corruption ..  `i -> 0 `i 1720  ]
 {
 "102
 [; ;utils.c: 102:         pmon = read_pmon();
@@ -2331,15 +2331,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "110
 [; ;utils.c: 110:     } else
 }
-[e $U 1719  ]
-[e :U 1718 ]
+[e $U 1721  ]
+[e :U 1720 ]
 "111
 [; ;utils.c: 111:         default_setup();
 [e ( _default_setup ..  ]
-[e :U 1719 ]
+[e :U 1721 ]
 "112
 [; ;utils.c: 112: }
-[e :UE 1717 ]
+[e :UE 1719 ]
 }
 "114
 [; ;utils.c: 114: void default_setup(void){
@@ -2376,7 +2376,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _eeprom_setup (4 , , , , , , , , -> -> 1 `i `a -> -> 30 `i `uc -> -> 5 `i `uc -> -> 3 `i `uc -> -> 25 `i `uc -> -> 2 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
 "125
 [; ;utils.c: 125: }
-[e :UE 1720 ]
+[e :UE 1722 ]
 }
 "127
 [; ;utils.c: 127: void update_clk(void){
@@ -2389,5 +2389,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _eeprom_clk_update (2 , _clkh _clkm ]
 "129
 [; ;utils.c: 129: }
-[e :UE 1721 ]
+[e :UE 1723 ]
 }

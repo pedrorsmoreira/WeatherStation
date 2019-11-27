@@ -68,6 +68,7 @@ uint8_t read_alal(void);
 uint8_t read_alaf(void);
 uint8_t read_clkh(void);
 uint8_t read_clkm(void);
+uint8_t read_iwrt(void);
 void write_nreg(uint8_t x);
 void write_pmon(uint8_t x);
 void write_tala(uint8_t x);

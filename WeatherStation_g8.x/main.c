@@ -89,7 +89,6 @@ uint8_t xor(uint8_t x, uint8_t y){
 
 void main(void)
 {
-   
     // initialize the device
     SYSTEM_Initialize();
     sys_init();
@@ -136,15 +135,19 @@ void main(void)
         } else
             INTERRUPT_PeripheralInterruptEnable();
         
+        EXT_INT_InterruptDisable();
         if(alarm){
+            EXT_INT_InterruptEnable();
             if(hours * 3600 + minutes * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 A_SetHigh();
                 SLEEP();
             }
-        } else
+        } else {
+            EXT_INT_InterruptEnable();
             SLEEP();
-        
+        }
+
         EXT_INT_InterruptDisable();
         if(switch1){
             switch1 = false;

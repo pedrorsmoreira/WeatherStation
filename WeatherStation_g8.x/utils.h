@@ -43,6 +43,7 @@ extern volatile uint8_t clkh; // initial value for clock hours
 extern volatile uint8_t clkm; // initial value for clock minutes
 extern uint8_t illum;
 extern uint8_t temp;
+extern bool alarm;
 
 uint8_t ReadIllum(void);
 unsigned char ReadTemp(void);

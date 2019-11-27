@@ -20791,9 +20791,9 @@ extern __bank0 __bit __timeout;
 # 50 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/pin_manager.h" 1
-# 258 "./mcc_generated_files/pin_manager.h"
+# 282 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 270 "./mcc_generated_files/pin_manager.h"
+# 294 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
@@ -21084,6 +21084,13 @@ void (*i2c1_driver_busCollisionISR)(void);
 void (*i2c1_driver_i2cISR)(void);
 # 55 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/pwm6.h" 1
+# 102 "./mcc_generated_files/pwm6.h"
+ void PWM6_Initialize(void);
+# 129 "./mcc_generated_files/pwm6.h"
+ void PWM6_LoadDutyValue(uint16_t dutyValue);
+# 56 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/tmr1.h" 1
 # 100 "./mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
@@ -21109,13 +21116,6 @@ void TMR1_ISR(void);
 extern void (*TMR1_InterruptHandler)(void);
 # 421 "./mcc_generated_files/tmr1.h"
 void TMR1_DefaultInterruptHandler(void);
-# 56 "./mcc_generated_files/mcc.h" 2
-
-# 1 "./mcc_generated_files/pwm6.h" 1
-# 102 "./mcc_generated_files/pwm6.h"
- void PWM6_Initialize(void);
-# 129 "./mcc_generated_files/pwm6.h"
- void PWM6_LoadDutyValue(uint16_t dutyValue);
 # 57 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr2.h" 1
@@ -21426,11 +21426,69 @@ extern void (*INT_InterruptHandler)(void);
 # 367 "./mcc_generated_files/ext_int.h"
 void INT_DefaultInterruptHandler(void);
 # 61 "./mcc_generated_files/mcc.h" 2
-# 76 "./mcc_generated_files/mcc.h"
+
+# 1 "./mcc_generated_files/eusart.h" 1
+# 76 "./mcc_generated_files/eusart.h"
+typedef union {
+    struct {
+        unsigned perr : 1;
+        unsigned ferr : 1;
+        unsigned oerr : 1;
+        unsigned reserved : 5;
+    };
+    uint8_t status;
+}eusart_status_t;
+
+
+
+
+extern volatile uint8_t eusartTxBufferRemaining;
+extern volatile uint8_t eusartRxCount;
+
+
+
+
+extern void (*EUSART_TxDefaultInterruptHandler)(void);
+extern void (*EUSART_RxDefaultInterruptHandler)(void);
+# 118 "./mcc_generated_files/eusart.h"
+void EUSART_Initialize(void);
+# 166 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_tx_ready(void);
+# 214 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_rx_ready(void);
+# 261 "./mcc_generated_files/eusart.h"
+_Bool EUSART_is_tx_done(void);
+# 309 "./mcc_generated_files/eusart.h"
+eusart_status_t EUSART_get_last_status(void);
+# 329 "./mcc_generated_files/eusart.h"
+uint8_t EUSART_Read(void);
+# 349 "./mcc_generated_files/eusart.h"
+void EUSART_Write(uint8_t txData);
+
+char getch();
+void putch(char);
+# 373 "./mcc_generated_files/eusart.h"
+void EUSART_Transmit_ISR(void);
+# 394 "./mcc_generated_files/eusart.h"
+void EUSART_Receive_ISR(void);
+# 415 "./mcc_generated_files/eusart.h"
+void EUSART_RxDataHandler(void);
+# 433 "./mcc_generated_files/eusart.h"
+void EUSART_SetFramingErrorHandler(void (* interruptHandler)(void));
+# 451 "./mcc_generated_files/eusart.h"
+void EUSART_SetOverrunErrorHandler(void (* interruptHandler)(void));
+# 469 "./mcc_generated_files/eusart.h"
+void EUSART_SetErrorHandler(void (* interruptHandler)(void));
+# 489 "./mcc_generated_files/eusart.h"
+void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
+# 509 "./mcc_generated_files/eusart.h"
+void EUSART_SetRxInterruptHandler(void (* interruptHandler)(void));
+# 62 "./mcc_generated_files/mcc.h" 2
+# 77 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 89 "./mcc_generated_files/mcc.h"
+# 90 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 102 "./mcc_generated_files/mcc.h"
+# 103 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 1 "main.c" 2
 
@@ -21513,6 +21571,7 @@ extern volatile uint8_t clkh;
 extern volatile uint8_t clkm;
 extern uint8_t illum;
 extern uint8_t temp;
+extern _Bool alarm;
 
 uint8_t ReadIllum(void);
 unsigned char ReadTemp(void);
@@ -21557,9 +21616,7 @@ uint8_t minutes;
 uint8_t seconds;
 uint8_t temp;
 uint8_t illum;
-
 _Bool alarm;
-float incr;
 
 void sys_init(void){
     timer = 0;
@@ -21622,7 +21679,6 @@ uint8_t xor(uint8_t x, uint8_t y){
 void main(void)
 {
 
-
     SYSTEM_Initialize();
     sys_init();
     load_eeprom();
@@ -21668,14 +21724,18 @@ void main(void)
         } else
             (INTCONbits.PEIE = 1);
 
+        (PIE0bits.INTE = 0);
         if(alarm){
+            (PIE0bits.INTE = 1);
             if(hours * 3600 + minutes * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 do { LATAbits.LATA6 = 1; } while(0);
                 __asm("sleep");
             }
-        } else
+        } else {
+            (PIE0bits.INTE = 1);
             __asm("sleep");
+        }
 
         (PIE0bits.INTE = 0);
         if(switch1){
@@ -21685,7 +21745,6 @@ void main(void)
             TMR1_SetInterruptHandler(Timer);
             (INTCONbits.PEIE = 1);
             (PIR0bits.INTF = 0);
-
         }
         (PIE0bits.INTE = 1);
     }
