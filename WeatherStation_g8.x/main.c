@@ -33,7 +33,7 @@ uint8_t illum;
 bool alarm;
 volatile uint8_t msgs;
 uint8_t num_msgs;
-uint8_t iread;
+volatile uint8_t iread;
 
 void sys_init(void){
     iread = 0;
@@ -146,7 +146,7 @@ void main(void)
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
             if(ring_buffer_write(hours, minutes, seconds, temp, illum))
-                notfication_memory();
+                notification_memory();
             if((illum < alal || temp > alat) && alaf == 1){
                 if(!alarm)
                     Alarm(hours, minutes, seconds);

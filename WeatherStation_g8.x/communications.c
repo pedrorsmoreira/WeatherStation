@@ -21,7 +21,7 @@ uint8_t pmon; // monitoring period
 uint8_t tala; // duration of alarm signal (PWM)
 bool alarm;
 volatile uint8_t msgs;
-uint8_t iread;
+volatile uint8_t iread;
 
 void read_msgs() {
     char aux[8];
@@ -85,8 +85,6 @@ void interpret_message(char * msg) {
             break;
         default:
             send_confirmation(cmd, CMD_ERROR);
-        return;
-    }
             break;
     }
 }
@@ -185,7 +183,7 @@ void transfer_n_registers(char * data) {
 }
 
 void transfer_registers_i(char * data) {
-    uint8_t nr = ring_buffer_laped() ? read_nreg() : read_iwrt(), ri = iread, n, i;
+    uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi, ri = iread, n, i;
     bool sanity = true;
     // TODO: same
     if(!data || strlen(data) != 2 || (n = data[0]) > nr || (i = data[1]) > nr - 1) {
@@ -202,7 +200,7 @@ void transfer_registers_i(char * data) {
  }
 
 bool transfer_registers(uint8_t n, uint8_t i) {
-    uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : read_iwrt();
+    uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi;
 
     if(i < wi) {
         if(i + n - 1 >= wi) return false;
@@ -210,12 +208,12 @@ bool transfer_registers(uint8_t n, uint8_t i) {
 
     for(int c = 0; c < n; i = (i + 1) % nr, ++c){
         send_register(i);
-        if(i = iread) iread = (iread + 1) % N;
+        if(i == iread) iread = (iread + 1) % N;
     }    
     return true;
 }
 
-void notfication_memory() {
+void notification_memory() {
     uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi, ri = iread;
     char msg[] = {NMFL, N, nr, ri, wi, '\0'};
     send_msg(msg);

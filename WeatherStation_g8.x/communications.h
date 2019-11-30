@@ -51,6 +51,7 @@ void transfer_registers_i(char *);
 bool transfer_registers(uint8_t, uint8_t);
 void notification_memory(void);
 void send_msg(char *);
+void send_register(uint8_t);
 void send_confirmation(uint8_t, uint8_t);
 void countMsg(void);
 

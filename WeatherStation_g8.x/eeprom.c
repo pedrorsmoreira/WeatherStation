@@ -1,7 +1,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "eeprom.h"
+#include "utils.h"
 
-uint8_t iread;
+volatile uint8_t iread;
 
 #ifdef CHECKSUM
 uint8_t get_check_up_value(void){
@@ -113,7 +114,7 @@ bool used(void) {
     return (0xAA == val || 0x55 == val); 
 }
 
-uint8_t read_buffer(uint8_t i, uint8_t j) { return DATAEE_ReadByte(RBUF_ + i * 5 + j) }
+uint8_t read_buffer(uint8_t i, uint8_t j) { return DATAEE_ReadByte(RBUF_ + i * 5 + j); }
 uint8_t read_nreg(void) { return DATAEE_ReadByte(NREG_); }
 uint8_t read_pmon(void) { return DATAEE_ReadByte(PMON_); }
 uint8_t read_tala(void) { return DATAEE_ReadByte(TALA_); }
@@ -166,4 +167,7 @@ void write_alaf(uint8_t x) {
     DATAEE_WriteByte(ALAF_, x); 
 }
 
-uint8_t not_transferred() { return (uint8_t unread = read_iwrt()) - iread > 0 ? unread : read_nreg() + unread }
+uint8_t not_transferred() {
+    uint8_t unread = read_iwrt() - iread;
+    return unread > 0 ? unread : read_nreg() + unread;
+}

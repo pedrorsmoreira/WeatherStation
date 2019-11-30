@@ -12,4 +12,6 @@ mcc_generated_files/adcc.h  \
 mcc_generated_files/ext_int.h  \
 mcc_generated_files/memory.h  \
 mcc_generated_files/eusart.h  \
-eeprom.h 
+eeprom.h  \
+utils.h  \
+I2C/i2c.h 

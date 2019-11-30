@@ -78,7 +78,7 @@ void write_tala(uint8_t);
 void write_alat(uint8_t);
 void write_alal(uint8_t);
 void write_alaf(uint8_t);
-uint8_t not_transferred();
+uint8_t not_transferred(void);
 
 
 #endif	/* EEPROM_H */
