@@ -1,6 +1,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "eeprom.h"
 
+uint8_t iread;
+
 #ifdef CHECKSUM
 uint8_t get_check_up_value(void){
 #else
@@ -81,7 +83,7 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     
     //none of the values changed, exit without writing
     if (ring_pos_ != 0 && T == DATAEE_ReadByte(ring_pos - 2) && L == DATAEE_ReadByte(ring_pos - 1)) 
-        return false;
+        return not_transferred() > read_nreg()/2;
 
     //check if the writing position reached the end of the ring buffer
     if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_)*5 - 5) ){
@@ -101,7 +103,7 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + ((ring_pos+5-RBUF_)/5) - ring_pos_);
     #endif
     
-    return true;
+    return not_transferred() > read_nreg()/2;
 }
 
 bool ring_buffer_laped(void) { return 0x55 == DATAEE_ReadByte(USED_); }
@@ -111,6 +113,7 @@ bool used(void) {
     return (0xAA == val || 0x55 == val); 
 }
 
+uint8_t read_buffer(uint8_t i, uint8_t j) { return DATAEE_ReadByte(RBUF_ + i * 5 + j) }
 uint8_t read_nreg(void) { return DATAEE_ReadByte(NREG_); }
 uint8_t read_pmon(void) { return DATAEE_ReadByte(PMON_); }
 uint8_t read_tala(void) { return DATAEE_ReadByte(TALA_); }
@@ -162,3 +165,5 @@ void write_alaf(uint8_t x) {
     #endif
     DATAEE_WriteByte(ALAF_, x); 
 }
+
+uint8_t not_transferred() { return (uint8_t unread = read_iwrt()) - iread > 0 ? unread : read_nreg() + unread }

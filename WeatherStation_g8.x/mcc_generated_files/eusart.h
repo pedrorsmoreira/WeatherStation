@@ -348,9 +348,6 @@ uint8_t EUSART_Read(void);
 */
 void EUSART_Write(uint8_t txData);
 
-char getch();
-void putch(char);
-
 /**
   @Summary
     Maintains the driver's transmitter state machine and implements its ISR.
@@ -507,6 +504,11 @@ void EUSART_SetTxInterruptHandler(void (* interruptHandler)(void));
     None
 */
 void EUSART_SetRxInterruptHandler(void (* interruptHandler)(void));
+
+void putch(char);
+char getch(void);
+
+uint8_t EUSART_LastByte(void);
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

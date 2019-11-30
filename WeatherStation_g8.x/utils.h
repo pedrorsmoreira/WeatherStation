@@ -22,7 +22,7 @@ extern "C" {
     
 //default values
 #define PMON                5 // monitoring period
-#define NREG                30 // number of registers in the ring buffer
+#define NREG                33 // number of registers in the ring buffer
 #define TALA                3 // duration of alarm signal (PWM)
 #define ALAT                25 // threshold for temperature alarm
 #define ALAL                2 // threshold for luminosity level alarm
@@ -44,6 +44,8 @@ extern volatile uint8_t clkm; // initial value for clock minutes
 extern uint8_t illum;
 extern uint8_t temp;
 extern bool alarm;
+extern volatile uint8_t msgs;
+extern volatile uint8_t iread;
 
 uint8_t ReadIllum(void);
 unsigned char ReadTemp(void);

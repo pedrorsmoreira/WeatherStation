@@ -55,11 +55,14 @@ void eeprom_setup(bool reset_buffer, uint8_t nreg, uint8_t pmon, uint8_t tala,
 void eeprom_clk_update(uint8_t clkh, uint8_t clkm);
 //returns true when it writes and false when it doesn't
 bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L);
+
+bool ring_buffer_laped(void);
 //returns if the eeprom was already used
 bool used(void);
 
 
 //basic write/read
+uint8_t read_buffer(uint8_t, uint8_t);
 uint8_t read_nreg(void);
 uint8_t read_pmon(void);
 uint8_t read_tala(void);
@@ -69,12 +72,13 @@ uint8_t read_alaf(void);
 uint8_t read_clkh(void);
 uint8_t read_clkm(void);
 uint8_t read_iwrt(void);
-void write_nreg(uint8_t x);
-void write_pmon(uint8_t x);
-void write_tala(uint8_t x);
-void write_alat(uint8_t x);
-void write_alal(uint8_t x);
-void write_alaf(uint8_t x);
+void write_nreg(uint8_t);
+void write_pmon(uint8_t);
+void write_tala(uint8_t);
+void write_alat(uint8_t);
+void write_alal(uint8_t);
+void write_alaf(uint8_t);
+uint8_t not_transferred();
 
 
 #endif	/* EEPROM_H */

@@ -1,7 +1,10 @@
+#include <stdio.h>
+
 #include "mcc_generated_files/mcc.h"
 #include "I2C/i2c.h"
 #include "utils.h"
 #include "menus.h"
+#include "communications.h"
 
 #define PWM_MIN     250
 #define PWM_MAX     1023
@@ -28,8 +31,14 @@ uint8_t seconds;
 uint8_t temp;
 uint8_t illum;
 bool alarm;
+volatile uint8_t msgs;
+uint8_t num_msgs;
+uint8_t iread;
 
 void sys_init(void){
+    iread = 0;
+    msgs = 0;
+    num_msgs = 0;
     timer = 0;
     switch1 = false;
     flag_timer = false;
@@ -103,13 +112,17 @@ void main(void)
     
     TMR1_SetInterruptHandler(Timer);
     INT_SetInterruptHandler(Switch1);
+    EUSART_SetRxInterruptHandler(countMsg);
         
     i2c1_driver_open();
     I2C_SCL = 1;
     I2C_SDA = 1;
     WPUC3 = 1;
     WPUC4 = 1;
-
+    
+    EUSART_Write(0x57);
+    putch(read_nreg());
+    
     while (1)
     {           
         INTERRUPT_PeripheralInterruptDisable();
@@ -120,6 +133,11 @@ void main(void)
         
         hours = clkh; minutes = clkm; seconds = clks; // avoid conflicts in interrupt
 
+        if(msgs) {
+            num_msgs = msgs;
+            msgs = 0;
+        }
+
         if((timer == 0 || timer > pmon) && pmon != 0){
             timer = 1;
             INTERRUPT_PeripheralInterruptEnable();
@@ -127,13 +145,19 @@ void main(void)
             L0_LAT = illum & 1;
             L1_LAT = (illum & 2) >> 1;
             temp = ReadTemp();
-            ring_buffer_write(hours, minutes, seconds, temp, illum);
+            if(ring_buffer_write(hours, minutes, seconds, temp, illum))
+                notfication_memory();
             if((illum < alal || temp > alat) && alaf == 1){
                 if(!alarm)
                     Alarm(hours, minutes, seconds);
             }
         } else
             INTERRUPT_PeripheralInterruptEnable();
+
+        for(int i = 0; i < num_msgs; i++) {
+            read_msgs();
+        }
+        num_msgs = 0;
         
         EXT_INT_InterruptDisable();
         if(alarm){
@@ -141,11 +165,11 @@ void main(void)
             if(hours * 3600 + minutes * 60 + seconds - initial_time >= tala){
                 PWM_Output_D4_Disable();
                 A_SetHigh();
-                SLEEP();
+                // SLEEP();
             }
         } else {
             EXT_INT_InterruptEnable();
-            SLEEP();
+            // SLEEP();
         }
 
         EXT_INT_InterruptDisable();

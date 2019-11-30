@@ -34,20 +34,25 @@ extern "C" {
 #define CMD_ERROR 0xFF /* error in command */
     
 
-void read_clock();
-void set_clock(char * data);
-void read_temp_lum();
-void read_param();
-void modify_pmon(char * data);
-void modify_time_alarm(char * data);
-void read_alarms();
-void define_alarm(char * data);
-void switch_alarm(char * data);
-void registers_info();
-void transfer_registers(char * data);
-void transfer_register(char * data);
-void notification_memory();
+void read_msgs(void);
+void interpret_message(char *);
+void read_clock(void);
+void set_clock(char *);
+void read_temp_lum(void);
+void read_param(void);
+void modify_pmon(char *);
+void modify_time_alarm(char *);
+void read_alarms(void);
+void define_alarm(char *);
+void switch_alarm(char *);
+void registers_info(void);
+void transfer_n_registers(char *);
+void transfer_registers_i(char *);
+bool transfer_registers(uint8_t, uint8_t);
+void notification_memory(void);
 void send_msg(char *);
+void send_confirmation(uint8_t, uint8_t);
+void countMsg(void);
 
 #ifdef	__cplusplus
 }
