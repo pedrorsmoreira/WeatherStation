@@ -351,7 +351,7 @@ void cmd_pr (int argc, char **argv ){
         req->arg[4]=aux[1];
         req->arg[5]=aux[2];
       } else not_valid();
-    else not_valid();
+    }else not_valid();
     cyg_mbox_put(&pro_user_channel_H, req);
     req_other = cyg_mbox_get(&user_pro_channel_H);
     if (req_other->arg[0] == -1){
@@ -369,7 +369,6 @@ void cmd_pr (int argc, char **argv ){
       cyg_mutex_unlock(&stdin_mutex);
     }
   } else not_valid();
-}else not_valid();
 }
 
 
