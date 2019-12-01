@@ -146,8 +146,8 @@ void cmd_mta (int argc, char **argv ){
     printf("%s.\n", ack_other->error? "Not possible to change the time alarm": "Time alarm changed");
     cyg_mutex_unlock(&stdin_mutex);
   } else not_valid();
-  }
 }
+
 void cmd_ra (int argc, char **argv ){
     if (argc==1){
     init_req(req);
@@ -258,9 +258,8 @@ void cmd_tri (int argc, char **argv ){
         i++;
       } else break;
     }
-    if (i==0) not_valid;
+    if (i==0) not_valid();
   } else not_valid();
-  }
 }
 
 // COMANDOS DIRETOS À MEMORIA LOCAL
@@ -333,6 +332,7 @@ void cmd_dttl (int argc, char **argv ){
     cyg_mutex_unlock(&stdin_mutex);
   } else not_valid();
 }
+
 void cmd_pr (int agrc, char **argv ){
   int aux[3];
   if(argc==1 || argc==4 || argc==7){
@@ -369,6 +369,7 @@ void cmd_pr (int agrc, char **argv ){
       cyg_mutex_unlock(&stdin_mutex);
     }
   } else not_valid();
+}
 }
 
 
