@@ -109,7 +109,7 @@ void delete_local(void){
    cyg_mutex_unlock(&local_mutex); 
 }
 
-void process_local(int argv **, request * req){
+void process_local(int ** argv, request * req){
     int c, i, index, i1, i2, h, m, s, n;
     int h1=0 , m1=0, s1=0, h2=23, m2=59, s2=59;
     int max_temperature, min_temperature;
