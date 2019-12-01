@@ -333,7 +333,7 @@ void cmd_dttl (int argc, char **argv ){
   } else not_valid();
 }
 
-void cmd_pr (int agrc, char **argv ){
+void cmd_pr (int argc, char **argv ){
   int aux[3];
   if(argc==1 || argc==4 || argc==7){
     init_req(req);
@@ -369,7 +369,7 @@ void cmd_pr (int agrc, char **argv ){
       cyg_mutex_unlock(&stdin_mutex);
     }
   } else not_valid();
-}
+}else not_valid();
 }
 
 
