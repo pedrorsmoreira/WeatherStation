@@ -37,7 +37,7 @@ extern void list_pmem(void);
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
-void cyg_user_start(void){exit(0);
+/*void cyg_user_start(void){exit(0);
   int i=0;
   printf("POOOOOO CAAARRRAAALLHHHOOOO\n");
   cyg_mbox_create(&user_com_channel_H, &user_com_channel);
@@ -63,7 +63,7 @@ void cyg_user_start(void){exit(0);
     cyg_thread_resume(thread[i]);
 
   cyg_thread_exit();
-}
+}*/
 
 void main_pic(cyg_addrword_t data){
   pic();
