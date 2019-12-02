@@ -210,10 +210,10 @@ void pic(void){
 
 
 
-Cyg_ErrNo err;
-cyg_io_handle_t serH;
+//Cyg_ErrNo err;
+//cyg_io_handle_t serH;
 
-#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
+//#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
 /*
 void send_error(char cmd, char *reply){
     reply[0] = SOM;
