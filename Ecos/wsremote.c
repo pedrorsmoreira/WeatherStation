@@ -30,10 +30,17 @@ extern void cmd_ini (int, char** );
 extern void monitor(void);
 extern void pic(void);
 extern void processing(void);
-extern void periodic();
 extern void init_local(void);
 extern void init_pmem(void);
 extern void list_pmem(void);
+
+
+
+//PPP
+extern void periodic();
+
+
+
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
@@ -51,6 +58,8 @@ void cyg_user_start(void){
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
+  
+  //PPP
   //prioridade desta?!?
   cyg_thread_create(2, main_periodic, (cyg_addrword_t) 0, "periodic",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
@@ -77,6 +86,31 @@ void main_monitor(cyg_addrword_t data){
   monitor();
 }
 
+
+
+//PPPP
+extern cyg_io_handle_t serH;
 void main_periodic(cyg_addrword_t data){
+
+  ////////set to non-blocking mode (needed to set timeouts)///////
+  cyg_uint32 blocking = 0;
+  cyg_uint32 len = sizeof(blocking);
+
+  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_READ_BLOCKING ,&blocking, &len))
+    printf("error setting serH io_read to non-blocking - wsremote.c\n");
+  ///////////////////////////////////////////////////////////////
+
+  /////////////set the timeouts/////////////////////////////////
+  cyg_can_timeout_info_t timeouts;
+  len = sizeof(timeouts);
+  
+  timeouts.rx_timeout = 0; //timeout for reads
+  timeouts.tx_timeout = 0; // timeout for writes
+
+
+  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_CAN_TIMEOUT ,&timeouts, &len))
+    printf("error setting serH io_read to non-blocking - wsremote.c\n");
+  //////////////////////////////////////////////////////////////
+
   periodic();
 }
