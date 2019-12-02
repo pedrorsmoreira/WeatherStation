@@ -26,7 +26,7 @@ cyg_mutex_t stdin_mutex;
 cyg_mutex_t local_mutex;
 
 // functions and variables from other files
-extern void cmd_ini (int, char** );
+//extern void cmd_ini (int, char** );
 extern void monitor(void);
 extern void pic(void);
 extern void processing(void);
