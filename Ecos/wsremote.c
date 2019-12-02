@@ -37,7 +37,7 @@ extern void list_pmem(void);
 
 
 //PPP
-extern void periodic();
+extern void periodic(void);
 
 
 
@@ -90,6 +90,7 @@ void main_monitor(cyg_addrword_t data){
 
 //PPPP
 extern cyg_io_handle_t serH;
+
 void main_periodic(cyg_addrword_t data){
 
   ////////set to non-blocking mode (needed to set timeouts)///////

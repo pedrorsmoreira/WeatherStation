@@ -217,7 +217,7 @@ void pic(void){
 //Cyg_ErrNo err;
 //cyg_io_handle_t serH;
 
-//#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
+#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
 /*
 void send_error(char cmd, char *reply){
     reply[0] = SOM;
@@ -226,7 +226,7 @@ void send_error(char cmd, char *reply){
     reply[3] = EOM;
 }*/
 
-
+extern cyg_io_handle_t serH;
 void periodic(void){
 
     char buff[LARGEST_CMD];
@@ -234,7 +234,7 @@ void periodic(void){
     bool toSend;
     char reply[LARGEST_CMD - 3];
     while(1){
-        cyg_io_read(serH, &buff[0], &len)
+        cyg_io_read(serH, &buff[0], &len);
         printf("SAIUUUU\n");
     }
 /*
