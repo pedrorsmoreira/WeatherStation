@@ -223,6 +223,9 @@ void send_error(char cmd, char *reply){
 }
 
 void periodic(void){
+while (1){printf("oioioi\n");}
+
+/*
     char buff[LARGEST_CMD];
     cyg_uint32 len = 1;
     bool toSend;
@@ -283,5 +286,5 @@ void periodic(void){
         }
 
         if (toSend)
-            cyg_mbox_put(com_user_channel_H, &reply);
+            cyg_mbox_put(com_user_channel_H, &reply);*/
 }
