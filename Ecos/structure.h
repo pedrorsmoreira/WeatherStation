@@ -5,6 +5,14 @@
 //PPP
 #include <cyg/io/io.h>
 
+#include <cyg/infra/testcase.h>         // test macros
+#include <cyg/infra/cyg_ass.h>          // assertion macros
+#include <cyg/infra/diag.h>
+
+#include <pkgconf/kernel.h>
+#include <cyg/io/canio.h>
+
+
 #define REQUEST_SIZE 10
 #define CMD_LEN 5
 #define N_ARGS 7
