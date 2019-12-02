@@ -12,6 +12,11 @@
 #include <pkgconf/kernel.h>
 #include <cyg/io/canio.h>
 
+#include <cyg/hal/hal_arch.h>
+
+#include "can_test_aux.inl" // include CAN test auxiliary functions 
+
+#include <pkgconf/system.h>
 
 #define REQUEST_SIZE 10
 #define CMD_LEN 5
