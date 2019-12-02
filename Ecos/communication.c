@@ -210,6 +210,10 @@ void pic(void){
 
 
 
+
+
+//PPP
+
 //Cyg_ErrNo err;
 //cyg_io_handle_t serH;
 
@@ -222,15 +226,18 @@ void send_error(char cmd, char *reply){
     reply[3] = EOM;
 }*/
 
-void periodic(void){
-while (1){printf("oioioi\n");}
 
-/*
+void periodic(void){
+
     char buff[LARGEST_CMD];
     cyg_uint32 len = 1;
     bool toSend;
     char reply[LARGEST_CMD - 3];
-
+    while(1){
+        cyg_io_read(serH, &buff[0], &len)
+        printf("SAIUUUU\n");
+    }
+/*
     while (1){
         do {
             cyg_io_read(serH, &buff[0], &len)
