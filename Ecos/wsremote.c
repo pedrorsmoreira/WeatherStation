@@ -26,20 +26,20 @@ cyg_mutex_t stdin_mutex;
 cyg_mutex_t local_mutex;
 
 // functions and variables from other files
-//extern void cmd_ini (int, char** );
+extern void cmd_ini (int, char** );
 extern void monitor(void);
 extern void pic(void);
 extern void processing(void);
-extern void periodic(void);
+extern void periodic();
 extern void init_local(void);
 extern void init_pmem(void);
 extern void list_pmem(void);
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
-/*void cyg_user_start(void){exit(0);
+void cyg_user_start(void){
   int i=0;
-  printf("POOOOOO CAAARRRAAALLHHHOOOO\n");
+
   cyg_mbox_create(&user_com_channel_H, &user_com_channel);
   cyg_mbox_create(&com_user_channel_H, &com_user_channel);
   cyg_mbox_create(&pro_user_channel_H, &pro_user_channel);
@@ -63,7 +63,7 @@ extern void list_pmem(void);
     cyg_thread_resume(thread[i]);
 
   cyg_thread_exit();
-}*/
+}
 
 void main_pic(cyg_addrword_t data){
   pic();
