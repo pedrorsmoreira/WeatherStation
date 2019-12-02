@@ -30,6 +30,7 @@ extern void cmd_ini (int, char** );
 extern void monitor(void);
 extern void pic(void);
 extern void processing(void);
+extern void periodic(void);
 extern void init_local(void);
 extern void init_pmem(void);
 extern void list_pmem(void);
