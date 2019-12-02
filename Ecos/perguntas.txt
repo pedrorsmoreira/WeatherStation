@@ -1,0 +1,13 @@
+ver se podemos fazer aquilo do no system initialization (funcao cyg_user_start() no ficheiro wsremote.c) e n ter main.
+
+Ver se n é preciso destruir no fim os mutexes, mailboxes, etc..
+
+pq é que é preciso fazer o threads resume no sys initialization?
+
+ver bem quais as prioridades a definir para as threads
+
+structure.c, linha 82 - cyg_mutex_unlock(&local_mutex); - acho q n está lá a fazer nada pq no for faz-se sempre unlock depois do lock.
+
+é preciso fazer a verificação dos erros das funcoes cyg_io_read? (se sim, o q é suposto fazer se der erro?)
+
+n tenho q ler do cyg_io_read byte a byte pois não?

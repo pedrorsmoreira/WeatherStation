@@ -207,3 +207,81 @@ void pic(void){
     free(reg);
     cyg_thread_exit();
 }
+
+
+
+Cyg_ErrNo err;
+cyg_io_handle_t serH;
+
+#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
+
+void send_error(char cmd, char *reply){
+    reply[0] = SOM;
+    reply[1] = cmd;
+    reply[2] = CMD_ERROR;
+    reply[3] = EOM;
+}
+
+void periodic(void){
+    char buff[LARGEST_CMD];
+    cyg_uint32 len = 1;
+    bool toSend;
+    char reply[LARGEST_CMD - 3];
+
+    while (1){
+        do {
+            cyg_io_read(serH, &buff[0], &len)
+        } while (buff[0] != SOM);
+
+        cyg_io_read(serH, &buff[1], &len);
+        if (buff[len-1] != EOM || buff[len-2] == CMD_ERROR){
+
+        }
+            
+
+
+        switch(buff[1]){
+            case RCLK:
+                toSend = true;
+                break;
+            case SCLK:
+                toSend = false;
+                break;
+            case RTL:
+                toSend = true;
+                break;
+            case RPAR:
+                toSend = true;
+                break;
+            case MMP:
+                toSend = false;
+                break;
+            case MTA:
+                toSend = false;
+                break;
+            case RALA:
+                toSend = true;
+                break;
+            case DATL:
+                toSend = false;
+                break;
+            case AALA:
+                toSend = false;
+                break;
+            case IREG:
+                toSend = true;
+                break;
+            case TRGC:
+                toSend = true;
+                break;
+            case TRGI:
+                toSend = true;
+                break;
+            case NMFL:
+                toSend = true;
+                break; 
+        }
+
+        if (toSend)
+            cyg_mbox_put(com_user_channel_H, &reply);
+}

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <cyg/kernel/kapi.h>
 
-#define NTHREADS 3
+#define NTHREADS 4
 #define STACKSIZE 4096
 #define DEBUG 1
 
@@ -14,6 +14,8 @@ static char stack[NTHREADS][STACKSIZE];
 cyg_thread_entry_t main_processing;
 cyg_thread_entry_t main_pic;
 cyg_thread_entry_t main_monitor;
+
+cyg_thread_entry_t main_periodic;
 
 //Sycronization stuff
 cyg_handle_t user_com_channel_H, com_user_channel_H; //mailbox between the user interface thread and the communication thread
@@ -48,6 +50,9 @@ void cyg_user_start(void){
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
+  //prioridade desta?!?
+  cyg_thread_create(2, main_periodic, (cyg_addrword_t) 0, "periodic",
+                    (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
 
   cmd_ini(0, NULL);
   init_local();
@@ -69,4 +74,8 @@ void main_processing(cyg_addrword_t data){
 
 void main_monitor(cyg_addrword_t data){
   monitor();
+}
+
+void main_periodic(cyg_addrword_t data){
+  periodic();
 }
