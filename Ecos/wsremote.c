@@ -39,7 +39,7 @@ extern void list_pmem(void);
     threads and starts the scheduler */
 void cyg_user_start(void){
   int i=0;
-
+  printf("POOOOOO CAAARRRAAALLHHHOOOO\n");
   cyg_mbox_create(&user_com_channel_H, &user_com_channel);
   cyg_mbox_create(&com_user_channel_H, &com_user_channel);
   cyg_mbox_create(&pro_user_channel_H, &pro_user_channel);
