@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <cyg/kernel/kapi.h>
+#include "structure.h"
 
 #define NTHREADS 4
 #define STACKSIZE 4096
