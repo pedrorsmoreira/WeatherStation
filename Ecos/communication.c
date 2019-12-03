@@ -237,10 +237,11 @@ void periodic(void){
         cyg_io_read(serH, &buff[0], &len);
         printf("SAIUUUU\n");
     }
-/*
+
     while (1){
         do {
             cyg_io_read(serH, &buff[0], &len)
+            printf("TESTE\n");
         } while (buff[0] != SOM);
 
         cyg_io_read(serH, &buff[1], &len);
@@ -293,5 +294,5 @@ void periodic(void){
         }
 
         if (toSend)
-            cyg_mbox_put(com_user_channel_H, &reply);*/
+            cyg_mbox_put(com_user_channel_H, &reply);
 }
