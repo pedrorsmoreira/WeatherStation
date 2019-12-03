@@ -4,7 +4,7 @@
 
 //PPP
 #include <cyg/io/io.h>
-
+/*
 #include <cyg/infra/testcase.h>         // test macros
 #include <cyg/infra/cyg_ass.h>          // assertion macros
 #include <cyg/infra/diag.h>
@@ -16,7 +16,7 @@
 
 #include "can_test_aux.inl" // include CAN test auxiliary functions 
 
-#include <pkgconf/system.h>
+#include <pkgconf/system.h>*/
 
 #define REQUEST_SIZE 10
 #define CMD_LEN 5
