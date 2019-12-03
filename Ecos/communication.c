@@ -234,6 +234,7 @@ void periodic(void){
     bool toSend;
     char reply[LARGEST_CMD - 3];
     while(1){
+        printf("PRE TESTE\n");
         cyg_io_read(serH, &buff[0], &len);
         printf("SAIUUUU\n");
     }
