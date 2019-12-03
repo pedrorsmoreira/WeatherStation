@@ -240,7 +240,7 @@ void periodic(void){
 
     while (1){
         do {
-            cyg_io_read(serH, &buff[0], &len)
+            cyg_io_read(serH, &buff[0], &len);
             printf("TESTE\n");
         } while (buff[0] != SOM);
 
@@ -295,4 +295,5 @@ void periodic(void){
 
         if (toSend)
             cyg_mbox_put(com_user_channel_H, &reply);
+    }
 }
