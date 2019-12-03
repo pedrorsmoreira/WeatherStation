@@ -90,29 +90,29 @@ void main_monitor(cyg_addrword_t data){
 
 
 //PPPP
-extern cyg_io_handle_t serH;
+//extern cyg_io_handle_t serH;
 
 void main_periodic(cyg_addrword_t data){
-
+/*
   ////////set to non-blocking mode (needed to set timeouts)///////
   cyg_uint32 blocking = 0;
   cyg_uint32 len = sizeof(blocking);
 
-  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_READ_BLOCKING ,&blocking, &len))
+  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_SERIAL_READ_BLOCKING ,&blocking, &len))
     printf("error setting serH io_read to non-blocking - wsremote.c\n");
   ///////////////////////////////////////////////////////////////
 
   /////////////set the timeouts/////////////////////////////////
-  cyg_can_timeout_info_t timeouts;
+  cyg_io_timeout_info_t timeouts;
   len = sizeof(timeouts);
   
   timeouts.rx_timeout = 0; //timeout for reads
   timeouts.tx_timeout = 0; // timeout for writes
 
 
-  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_CAN_TIMEOUT ,&timeouts, &len))
+  if (ENOERR != cyg_io_set_config(serH, CYG_IO_SET_CONFIG_CAN_SERI_TIMEOUT ,&timeouts, &len))
     printf("error setting serH io_read to non-blocking - wsremote.c\n");
   //////////////////////////////////////////////////////////////
-
+*/
   periodic();
 }
