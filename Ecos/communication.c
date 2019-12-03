@@ -240,6 +240,7 @@ void periodic(void){
 
     while (1){
         do {
+            printf("TESTE\n");
             cyg_io_read(serH, &buff[0], &len);
             printf("TESTE\n");
         } while (buff[0] != SOM);
