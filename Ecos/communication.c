@@ -213,86 +213,168 @@ void pic(void){
 
 
 //PPP
-
 //Cyg_ErrNo err;
-//cyg_io_handle_t serH;
-
-#define LARGEST_CMD 7 // SOM CMD [4-IREG] EOM -> 3+4
-/*
-void send_error(char cmd, char *reply){
-    reply[0] = SOM;
-    reply[1] = cmd;
-    reply[2] = CMD_ERROR;
-    reply[3] = EOM;
-}*/
-
 extern cyg_io_handle_t serH;
-void periodic(void){
+cyg_uint32 len = 1;
+uint8_t cmd;
+bool toSend;
+request *reply;
+//registers transference
+uint8_t *regs;
+uint8_t n;
+uint8_t i;
 
-    char buff[LARGEST_CMD];
-    cyg_uint32 len = 1;
-    bool toSend;
-    char reply[LARGEST_CMD - 3];
-    while(1){
-        printf("PRE TESTE\n");
-        cyg_io_read(serH, &buff[0], &len);
-        printf("SAIUUUU\n");
+
+void send_error(){
+    acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
+    a.error = false;
+    cyg_mbox_put(com_user_channel_H, a);
+    /*reply = (uint8_t *) malloc(4 * sizeof(uint8_t));
+    reply_err[0] = SOM;
+    reply_err[1] = cmd;
+    reply_err[2] = CMD_ERROR;
+    reply_err[3] = EOM;
+    cyg_mbox_put(com_user_channel_H, reply_err);*/
+}
+
+void send_ack(){
+    acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
+    a.error = false;
+    cyg_mbox_put(com_user_channel_H, a);
+    /*reply = (uint8_t *) malloc(4 * sizeof(uint8_t));
+    reply_err[0] = SOM;
+    reply_err[1] = cmd;
+    reply_err[2] = CMD_OK;
+    reply_err[3] = EOM;
+    cyg_mbox_put(com_user_channel_H, reply_err);*/
+}
+
+bool read_command(int size){
+    reply = (request *) malloc(size * sizeof(request));
+    int i = 0;
+
+    do{
+        cyg_io_read(serH, &reply.arg[i], &len);
+    } while (reply.arg[i++] != CMD_ERROR && i < size);
+
+    if (reply[(i-1] == EOM){
+        reply.cmd = cmd;
+        return true;
+    }
+    
+    send_error();
+    free (reply);
+    return false;
+}
+
+void read_regs(bool index){
+    regs = (uint8_t *) malloc((5*n + 1) * sizeof(uint8_t));
+    int j = 5;
+    for (int i = 0; i < n && j > 0; ++i)
+        for(j = 0; j < 5; ++j)
+            cyg_io_read(&regs[i+j], &len)
+    
+    cyg_io_read(&regs[i+j], &len);
+    if (regs[i+j] != EOM){
+        send_error();
+        return;
     }
 
+    //FAZIFAZI
+    //GUARDAR AS MERDAS EM MEMORIA
+        //code(....) (if (index) memoria...)
+        //free(regs)
+
+    send_ack();
+}
+
+void read_pic(void){
+    uint8_t start;
     while (1){
         do {
-            printf("TESTE\n");
-            cyg_io_read(serH, &buff[0], &len);
-            printf("TESTE\n");
-        } while (buff[0] != SOM);
+            cyg_io_read(serH, &start, &len);
+        } while (start != SOM);
 
-        cyg_io_read(serH, &buff[1], &len);
-        if (buff[len-1] != EOM || buff[len-2] == CMD_ERROR){
+        cyg_io_read(serH, &cmd, &len);         
 
-        }
-            
-
-
-        switch(buff[1]){
+        switch(cmd){
             case RCLK:
-                toSend = true;
+                toSend = read_command(6);
                 break;
             case SCLK:
+                if (read_command(4))
+                    send_ack();
                 toSend = false;
                 break;
             case RTL:
-                toSend = true;
+                toSend = read_command(5);
                 break;
             case RPAR:
-                toSend = true;
+                toSend = read_command(5);
                 break;
             case MMP:
+                if (read_command(4))
+                    send_ack();
                 toSend = false;
                 break;
             case MTA:
+                if (read_command(4))
+                    send_ack();
                 toSend = false;
                 break;
             case RALA:
-                toSend = true;
+                toSend = read_command(6);
                 break;
             case DATL:
+                if (read_command(4))
+                    send_ack();
                 toSend = false;
                 break;
             case AALA:
+                if (read_command(4))
+                    send_ack();
                 toSend = false;
                 break;
             case IREG:
-                toSend = true;
+                toSend = read_command(7);
                 break;
             case TRGC:
-                toSend = true;
+                cyg_io_read(&n, &len);
+                if (n == CMD_ERROR || n == EOM)
+                    send_error();
+                else 
+                    read_regs(false);
+                toSend = false;
                 break;
             case TRGI:
-                toSend = true;
+                cyg_io_read(&n, &len);
+                if (n == CMD_ERROR || n == EOM)
+                    send_error();
+                else 
+                    cyg_io_read(&i, &len);
+                if (i == CMD_ERROR ||i == EOM)
+                    send_error();
+                else
+                    read_regs(true);
+                toSend = false;
                 break;
             case NMFL:
-                toSend = true;
-                break; 
+                if (read_command(7)){
+                    cyg_mutex_lock(&stdin_mutex);
+                    printf("NMFL: N = %d, nr = %d, ri = %d, wi = %d\n", 
+                                reply[1], reply[2], reply[3], reply[4]);
+                    cyg_mutex_unlock(&stdin_mutex);
+                    
+                    //FAZIFAZI
+                    //if ( (iw - ir) == N )
+                    //    alarm_on
+                }
+                toSend = false;
+                break;
+            case default:
+                send_error();
+                toSend = false;
+                break;
         }
 
         if (toSend)

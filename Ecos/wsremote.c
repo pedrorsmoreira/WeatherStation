@@ -2,6 +2,7 @@
 #include <cyg/kernel/kapi.h>
 #include "structure.h"
 
+//PPP mudei de 3 p 4 aqui
 #define NTHREADS 4
 #define STACKSIZE 4096
 #define DEBUG 1
@@ -38,7 +39,7 @@ extern void list_pmem(void);
 
 
 //PPP
-extern void periodic(void);
+extern void read_pic(void);
 
 
 
@@ -62,7 +63,7 @@ void cyg_user_start(void){
   
   //PPP
   //prioridade desta?!?
-  cyg_thread_create(2, main_periodic, (cyg_addrword_t) 0, "periodic",
+  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "periodic",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
 
   cmd_ini(0, NULL);
@@ -92,7 +93,7 @@ void main_monitor(cyg_addrword_t data){
 //PPPP
 //extern cyg_io_handle_t serH;
 
-void main_periodic(cyg_addrword_t data){
+void main_read_pic(cyg_addrword_t data){
 /*
   ////////set to non-blocking mode (needed to set timeouts)///////
   cyg_uint32 blocking = 0;
@@ -114,5 +115,5 @@ void main_periodic(cyg_addrword_t data){
     printf("error setting serH io_read to non-blocking - wsremote.c\n");
   //////////////////////////////////////////////////////////////
 */
-  periodic();
+  read_pic();
 }

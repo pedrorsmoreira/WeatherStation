@@ -11,3 +11,5 @@ structure.c, linha 82 - cyg_mutex_unlock(&local_mutex); - acho q n está lá a f
 é preciso fazer a verificação dos erros das funcoes cyg_io_read? (se sim, o q é suposto fazer se der erro?)
 
 n tenho q ler do cyg_io_read byte a byte pois não?
+
+a task q recebe msgs do read_pic() tem q sr free das msgs.
