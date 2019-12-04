@@ -240,7 +240,7 @@ bool read_command(int size){
         cyg_io_read(serH, &reply.arg[i], &len);
     } while (reply.arg[i++] != CMD_ERROR && i < size);
 
-    if (reply[(i-1] == EOM){
+    if (reply.arg[(i-1] == EOM){
         reply.cmd = cmd;
         return true;
     }
@@ -250,12 +250,12 @@ bool read_command(int size){
     return false;
 }
 
-void read_regs(bool index){
+void read_regs(bool indexed){
     regs = (uint8_t *) malloc((5*n + 1) * sizeof(uint8_t));
     int j = 5;
     for (int i = 0; i < n && j > 0; ++i)
         for(j = 0; j < 5; ++j)
-            cyg_io_read(&regs[i+j], &len)
+            cyg_io_read(&regs[i+j], &len);
     
     cyg_io_read(&regs[i+j], &len);
     if (regs[i+j] != EOM){
@@ -263,11 +263,10 @@ void read_regs(bool index){
         return;
     }
 
-    //FAZIFAZI
-    //GUARDAR AS MERDAS EM MEMORIA
-        //code(....) (if (index) memoria...)
-        //free(regs)
+    for (int i = 0; i < 5*n; i+=5)
+        add_local(regs[i], regs[i+1], regs[i+2], regs[i+3], regs[i+4]);
 
+    free(regs);
     send_ack();
 }
 
@@ -344,14 +343,18 @@ void read_pic(void){
             case NMFL:
                 if (read_command(7)){
                     cyg_mutex_lock(&stdin_mutex);
-                    printf("NMFLreceived:\n N = %d, nr = %d, ri = %d, wi = %d\n\n", 
-                                reply[1], reply[2], reply[3], reply[4]);
+                    printf("NMFL received:\n N = %d, nr = %d, ri = %d, wi = %d\n\n", 
+                            reply.arg[1], reply.arg[2], reply.arg[3], reply.arg[4]);
                     cyg_mutex_unlock(&stdin_mutex);
                     
-                    //FAZIFAZI
-                    //if ( (iw - ir) == N )
-                    //    alarm_on
+                    if ( (iw - ir) == N ){
+                        cyg_mutex_lock(&stdin_mutex);
+                        printf("warning: memory full!\n");
+                        cyg_mutex_unlock(&stdin_mutex);
+                        alarm_on
+                    }
                 }
+                free(reply);
                 toSend = false;
                 break;
             case default:
