@@ -4,7 +4,7 @@
 extern cyg_handle_t user_com_channel_H;
 extern cyg_handle_t com_user_channel_H;
 extern void init_req(request*);
-extern void init_ack(acknowledge* ack);
+extern void init_ack(acknowledge*);
 extern void init_reg(buffer*);
 extern void add_pmem(int, int, int, int, int);
 extern void copy_reg(buffer*, buffer*);
@@ -24,14 +24,14 @@ typedef struct Placa{
     int is_active_alarm;
 } placa;
 
-placa p;
-request *req;
-request *req_user;
-acknowledge *ack;
-acknowledge *ack_user;
-buffer *reg;
+static placa p;
+static request *req = NULL;
+static request *req_user = NULL;
+static acknowledge *ack = NULL;
+static acknowledge *ack_user = NULL;
+static buffer *reg = NULL;
 
-void pic(void);
+// void pic(void);
 
 int getClockHour(void){return p.clock_hour;}
 int getClockMinute(void){return p.clock_minute;}
@@ -209,11 +209,6 @@ void pic(void){
 }
 
 
-
-
-
-//PPP
-//Cyg_ErrNo err;
 extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
 uint8_t cmd;
@@ -229,24 +224,12 @@ void send_error(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a.error = false;
     cyg_mbox_put(com_user_channel_H, a);
-    /*reply = (uint8_t *) malloc(4 * sizeof(uint8_t));
-    reply_err[0] = SOM;
-    reply_err[1] = cmd;
-    reply_err[2] = CMD_ERROR;
-    reply_err[3] = EOM;
-    cyg_mbox_put(com_user_channel_H, reply_err);*/
 }
 
 void send_ack(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a.error = false;
     cyg_mbox_put(com_user_channel_H, a);
-    /*reply = (uint8_t *) malloc(4 * sizeof(uint8_t));
-    reply_err[0] = SOM;
-    reply_err[1] = cmd;
-    reply_err[2] = CMD_OK;
-    reply_err[3] = EOM;
-    cyg_mbox_put(com_user_channel_H, reply_err);*/
 }
 
 bool read_command(int size){
@@ -361,7 +344,7 @@ void read_pic(void){
             case NMFL:
                 if (read_command(7)){
                     cyg_mutex_lock(&stdin_mutex);
-                    printf("NMFL: N = %d, nr = %d, ri = %d, wi = %d\n", 
+                    printf("NMFLreceived:\n N = %d, nr = %d, ri = %d, wi = %d\n\n", 
                                 reply[1], reply[2], reply[3], reply[4]);
                     cyg_mutex_unlock(&stdin_mutex);
                     

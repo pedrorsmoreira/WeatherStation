@@ -7,13 +7,13 @@ extern cyg_handle_t pro_user_channel_H;
 extern cyg_handle_t user_pro_channel_H;
 extern cyg_mutex_t stdin_mutex;
 
-Cyg_ErrNo err;
-cyg_io_handle_t serH;
-request *req;
-request *req_other;
-acknowledge *ack_other;
-acknowledge *ack;
-buffer *reg_other;
+static Cyg_ErrNo err;
+static cyg_io_handle_t serH;
+static request *req = NULL;
+static request *req_other = NULL;
+static acknowledge *ack_other = NULL;
+static acknowledge *ack = NULL;
+static buffer *reg_other = NULL;
 
 extern void init_req(request*);
 extern void init_ack(acknowledge*);
@@ -64,7 +64,7 @@ void cmd_sair (int argc, char **argv){
   cyg_thread_exit();
 }
 
-void cmd_rc ( int argc, char **argv) {
+void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo 
   if (argc==1){
     init_req(req);
     req->cmd=CODE_RC;
@@ -106,7 +106,7 @@ void cmd_rtl (int argc, char **argv ){
     cyg_mbox_put(user_com_channel_H, req); //envia o request
     req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
-    printf("Temperature: %d\nLuminosity:%d\n", req_other->arg[0], req_other->arg[1]);
+    printf("Temperature: %d\nLuminosity: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
   } else not_valid();
 }
@@ -218,7 +218,7 @@ void cmd_trc (int argc, char **argv ){
     cyg_mutex_unlock(&stdin_mutex);
     ack->error=false;
     while (1){
-      reg_other = cyg_mbox_get(com_user_channel_H);
+      reg_other = (buffer *) cyg_mbox_get(com_user_channel_H);
       if(reg_other->hour!=-1){
       cyg_mutex_lock(&stdin_mutex);
       printf("%d - [%d:%d:%d] t=%d, l=%d\n", 
@@ -248,7 +248,7 @@ void cmd_tri (int argc, char **argv ){
     printf("Registers:\n");
     ack->error=false;
     while (1){
-      reg_other = cyg_mbox_get(com_user_channel_H);
+      reg_other = (buffer *) cyg_mbox_get(com_user_channel_H);
       if (reg_other->hour!=-1){
         cyg_mutex_lock(&stdin_mutex);
         printf("%d - [%d:%d:%d] t=%d, l=%d\n", 
@@ -272,7 +272,11 @@ void cmd_lr (int argc, char **argv ){
   int aux[2];
   if (argc ==3 && sscanf(argv[1], "%d", &(aux[0])) == 1 && aux[0]>0 && aux[0]<NRBUF
                && sscanf(argv[2], "%d", &(aux[1])) == 1 && aux[1]>=0 && aux[1]<NRBUF){
-    if(!list_local(aux[0], aux[1])) not_valid();
+    if(!list_local(aux[0], aux[1])){
+      cyg_mutex_lock(&stdin_mutex);
+      printf("No registers to show for the parameters inputed.\n");
+      cyg_mutex_unlock(&stdin_mutex);
+    }
   } else not_valid();
 }
 void cmd_dr (int argc, char **argv ){
@@ -283,11 +287,10 @@ void cmd_dr (int argc, char **argv ){
 // COMANDOS AO PROCESSADOR 
 void cmd_cpt (int argc, char **argv ){
    if(argc==1){
-     init_req(req);
-      //codio para enviar receber e imprinair dados
+      init_req(req);
       req->cmd=CODE_CPT;
-      cyg_mbox_put(&user_pro_channel_H, req);
-      req_other = cyg_mbox_get(&pro_user_channel_H);
+      cyg_mbox_put(user_pro_channel_H, req);
+      req_other = (request *) cyg_mbox_get(pro_user_channel_H);
       cyg_mutex_lock(&stdin_mutex);
       printf("Transference Period: %d min", req_other->arg[0]);
       cyg_mutex_unlock(&stdin_mutex);
@@ -299,8 +302,8 @@ void cmd_mpt (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_MPT;
     req->arg[0]=aux;
-    cyg_mbox_put(&user_pro_channel_H, req);
-    ack_other = cyg_mbox_get(&pro_user_channel_H);
+    cyg_mbox_put(user_pro_channel_H, req);
+    ack_other = (acknowledge *) cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the transference period": "Transference period changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -309,9 +312,9 @@ void cmd_mpt (int argc, char **argv ){
 void cmd_cttl (int argc, char **argv ){
   if(argc==1){
     init_req(req);
-    req->cmd=CODE_CPT;
-    cyg_mbox_put(&user_pro_channel_H, req);
-    req_other = cyg_mbox_get(&pro_user_channel_H);
+    req->cmd=CODE_CTTL;
+    cyg_mbox_put(user_pro_channel_H, req);
+    req_other = (request *)cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature threshold: %d\nLuminosity threshold: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
@@ -325,8 +328,8 @@ void cmd_dttl (int argc, char **argv ){
     req->cmd=CODE_DTTL;
     req->arg[0]=aux[0];
     req->arg[1]=aux[1];
-    cyg_mbox_put(&user_pro_channel_H, req);
-    ack_other = cyg_mbox_get(&pro_user_channel_H);
+    cyg_mbox_put(user_pro_channel_H, req);
+    ack_other = (acknowledge*) cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the thresholds": "Thresholds changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -338,22 +341,35 @@ void cmd_pr (int argc, char **argv ){
   if(argc==1 || argc==4 || argc==7){
     init_req(req);
     req->cmd=CODE_PR;
-    if((argc==4 || argc==7) && sscanf(argv[1], "%d", &(aux[0]))==1 && aux[0]>=0 && aux[0]<24
-                            && sscanf(argv[2], "%d", &(aux[1]))==1 && aux[1]>=0 && aux[1]<59
-                            && sscanf(argv[3], "%d", &(aux[2]))==1 && aux[2]>=0 && aux[2]<59){
-      req->arg[0]=aux[0];
-      req->arg[1]=aux[1];
-      req->arg[2]=aux[2];
-       if (argc==7 && sscanf(argv[4], "%d", &(aux[0]))==1 && aux[0]>=0 && aux[0]<24
-                   && sscanf(argv[5], "%d", &(aux[1]))==1 && aux[1]>=0 && aux[1]<59
-                   && sscanf(argv[6], "%d", &(aux[2]))==1 && aux[2]>=0 && aux[2]<59){
-        req->arg[3]=aux[0];
-        req->arg[4]=aux[1];
-        req->arg[5]=aux[2];
-      } else not_valid();
-    }else not_valid();
-    cyg_mbox_put(&pro_user_channel_H, req);
-    req_other = cyg_mbox_get(&user_pro_channel_H);
+    req->arg[0]=0; //begins with 0 arguments
+    if( argc==4 || argc==7){
+      if(   sscanf(argv[1], "%d", &(aux[0]))==1 && aux[0]>=0 && aux[0]<24
+         && sscanf(argv[2], "%d", &(aux[1]))==1 && aux[1]>=0 && aux[1]<59
+         && sscanf(argv[3], "%d", &(aux[2]))==1 && aux[2]>=0 && aux[2]<59){
+        req->arg[0]=1; //has 1 timestamps in argument
+        req->arg[1]=aux[0];
+        req->arg[2]=aux[1];
+        req->arg[3]=aux[2];
+      } else {
+        not_valid();
+        return;
+      }
+      if (argc==7){
+        if(   sscanf(argv[4], "%d", &(aux[0]))==1 && aux[0]>=0 && aux[0]<24
+           && sscanf(argv[5], "%d", &(aux[1]))==1 && aux[1]>=0 && aux[1]<59
+           && sscanf(argv[6], "%d", &(aux[2]))==1 && aux[2]>=0 && aux[2]<59){
+        req->arg[4]=aux[0];
+        req->arg[5]=aux[1];
+        req->arg[6]=aux[2];
+        req->arg[0]=2; //has 2 timesstamps in argumetns
+        } else {
+          not_valid();
+          return;
+        }
+      }
+    }
+    cyg_mbox_put(user_pro_channel_H, req);
+    req_other = (request*) cyg_mbox_get(pro_user_channel_H);
     if (req_other->arg[0] == -1){
       cyg_mutex_lock(&stdin_mutex);
       printf("Nothing to show as there are no registers in the local memory.");

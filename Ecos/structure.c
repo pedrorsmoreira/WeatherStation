@@ -1,7 +1,7 @@
 #include "structure.h"
 
-local memory;
-pic_memory pmem;
+static local memory;
+static pic_memory pmem;
 
 //sync stuff
 extern cyg_mutex_t stdin_mutex;
@@ -12,7 +12,7 @@ void init_local(void);
 void add_local(int, int, int, int, int);
 bool is_full(void);
 bool list_local(int, int);
-void process_local(int **, request *);
+void process_local(int [], request *);
 void delete_local(void);
 void init_pmem(void);
 void add_pmem(int, int, int, int, int);
@@ -75,7 +75,7 @@ bool list_local(int n, int index){
     }
     for(c=0, i=is_full()?(memory.iwrite+index)%NRBUF:index ; c<n && (i!=memory.iwrite || c==0); i=(i+1)%NRBUF, c++){
         cyg_mutex_lock(&stdin_mutex);
-        printf("%d:[%d:%d:%d] %d %d\n", 
+        printf("%d - [%d:%d:%d] t=%d l=%d\n", 
             i, memory.reg[i].hour, memory.reg[i].minute, memory.reg[i].second, memory.reg[i].temperature, memory.reg[i].luminosity);
         cyg_mutex_unlock(&stdin_mutex);
     }
@@ -86,7 +86,7 @@ bool list_local(int n, int index){
 void info_local(void){
     cyg_mutex_lock(&local_mutex);
     cyg_mutex_lock(&stdin_mutex);
-    printf("NRBUF=%d, nr=%d, iread=%d, iwrite=%d\n",
+    printf("NRBUF: %d\nnr: %d\niread: %d\niwrite: %d\n",
             NRBUF, memory.nr, memory.iread, memory.iwrite);
     cyg_mutex_unlock(&stdin_mutex);
     cyg_mutex_unlock(&local_mutex);
@@ -109,15 +109,14 @@ void delete_local(void){
    cyg_mutex_unlock(&local_mutex); 
 }
 
-void process_local(int ** argv, request * req){
-    int c, i, index, i1, i2, h, m, s, n;
+void process_local(int argv[], request * req){
+    int c, i, n;
     int h1=0 , m1=0, s1=0, h2=23, m2=59, s2=59;
-    int max_temperature, min_temperature;
-    int max_luminosity, min_luminosity;
-    float avg_temperature;
-    float avg_luminosity;
+    int max_temperature = 0, min_temperature = 0;
+    int max_luminosity = 0, min_luminosity = 0 ;
+    float avg_temperature = 0;
+    float avg_luminosity = 0 ;
     bool start;
-
     if(argv[0]>0){
         h1=argv[1];
         m1=argv[2];
@@ -128,7 +127,7 @@ void process_local(int ** argv, request * req){
         m2=argv[5];
         s2=argv[6];
     }
-
+    printf("%d:%d:%d - %d:%d:%d\n", h1, m1, s1, h2, m2, s2);
     cyg_mutex_lock(&local_mutex);
     if  (memory.nr==0){  //nao tem registos na memoria local
         req->arg[0]=-1;
@@ -167,7 +166,7 @@ void process_local(int ** argv, request * req){
     req->arg[2]=avg_temperature/n;
     req->arg[3]=min_luminosity;
     req->arg[4]=max_luminosity;
-    req->arg[5]=avg_temperature/n;
+    req->arg[5]=avg_luminosity/n;
 }
 
 void init_pmem(void){
@@ -225,11 +224,11 @@ void copy_reg(buffer* buf1, buffer* buf2){
 /*-------------------------------------------------------------------------+
 | Function: variable_init - clean das estruturas de request/ack
 +--------------------------------------------------------------------------*/ 
-void init_req(request *req){
+void init_req(request *r){
     int i;
     for (i=0; i<N_ARGS; i++)
-        req->arg[i]=0;
-    req->cmd=0;
+        r->arg[i]=0;
+    r->cmd=0;
 }
 
 void init_ack(acknowledge* ack){

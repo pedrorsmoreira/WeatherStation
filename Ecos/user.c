@@ -70,7 +70,7 @@ struct 	command_d {
   {cmd_mpt,   "mpt",  "<p>\n\t modify period of transference (minutes - 0 deactivate)"},
   {cmd_cttl,  "cttl", "\n\t check threshold temperature luminosity for processing"},
   {cmd_dttl,  "dttl", "<t l>\n\t define threshold temperature and luminosity for processing"},
-  {cmd_cttl,  "cttl", "<[h1 m1 s1 [h2 m2 s2]]\n\t process registers (max, min, mean) between instants t1 and t2 (h, m ,s)"}
+  {cmd_pr,  "pr", "<[h1 m1 s1 [h2 m2 s2]]\n\t process registers (max, min, mean) between instants t1 and t2 (h, m ,s)"}
 };
 
 #define NCOMMANDS  (sizeof(commands)/sizeof(struct command_d))
@@ -86,12 +86,6 @@ void cmd_sos (int argc, char **argv){
   printf("%s\n", TitleMsg);
   for (i=0; i<NCOMMANDS; i++)
     printf("%s %s\n", commands[i].cmd_name, commands[i].cmd_help);
-  cyg_mutex_unlock(&stdin_mutex);
-}
-
-void dbg(char str[]){
-  cyg_mutex_lock(&stdin_mutex);
-  printf("%s", str);
   cyg_mutex_unlock(&stdin_mutex);
 }
 
@@ -122,6 +116,7 @@ int my_getline (char** argv, int argvsize){
 void monitor (void){
   static char *argv[ARGVECSIZE+1], *p;
   int argc, i;
+  
 
   cyg_mutex_lock(&stdin_mutex);
   printf("%s Type sos for help\n", TitleMsg);

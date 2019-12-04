@@ -5,10 +5,11 @@ extern cyg_handle_t user_pro_channel_H;
 extern cyg_handle_t pro_user_channel_H;
 extern void init_req(request *);
 extern void init_ack(acknowledge*);
+extern void process_local(int [], request *);
 
-request * req_user;
-request * req;
-acknowledge * ack;
+static request * req_user = NULL;
+static request * req = NULL;
+static acknowledge * ack = NULL;
 
 typedef struct Process{
     int transference_period;
@@ -16,7 +17,7 @@ typedef struct Process{
     int luminosity_threshold;
 } process;
 
-process pro;
+static process pro;
 
 void processing(void);
 void init_process(void);
@@ -29,7 +30,7 @@ void processing(void){ //TODO: Á medida que as trasnferencias sao feitas, deve 
     init_ack(ack);
     init_req(req);
     while(!exit){
-        req_user = cyg_mbox_get(user_pro_channel_H);
+        req_user = (request *) cyg_mbox_get(user_pro_channel_H);
         switch(req_user->cmd){
         case CODE_CPT:
             init_req(req);
@@ -50,7 +51,7 @@ void processing(void){ //TODO: Á medida que as trasnferencias sao feitas, deve 
         case CODE_DTTL:
             pro.temperature_threshold=req_user->arg[0];
             pro.luminosity_threshold=req_user->arg[1];
-            ack->error=false;
+            ack->error=false;   
             cyg_mbox_put(pro_user_channel_H, ack);
             break;
         case CODE_PR:

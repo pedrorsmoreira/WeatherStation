@@ -1,26 +1,13 @@
+#ifndef STRUCTURE_H
+#define STRUCTURE_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <cyg/kernel/kapi.h>
 
-//PPP
-#include <cyg/io/io.h>
-/*
-#include <cyg/infra/testcase.h>         // test macros
-#include <cyg/infra/cyg_ass.h>          // assertion macros
-#include <cyg/infra/diag.h>
-
-#include <pkgconf/kernel.h>
-#include <cyg/io/canio.h>
-
-#include <cyg/hal/hal_arch.h>
-
-#include "can_test_aux.inl" // include CAN test auxiliary functions 
-
-#include <pkgconf/system.h>*/
-
 #define REQUEST_SIZE 10
 #define CMD_LEN 5
-#define N_ARGS 7
+#define N_ARGS 10
 #define NRBUF 100
 #define NREG 20 //TODO: For debugging only
 
@@ -47,7 +34,6 @@
 #define CODE_DTTL 19
 #define CODE_PR 20
 
-//PPP
 /* It is assumed that SOM and EOM values do not occur in the message */
 #define SOM 0xFD /* start of message */
 #define EOM 0xFE /* end of message */
@@ -66,8 +52,6 @@
 #define NMFL 0XCC /* notification memory (half) full */
 #define CMD_OK 0 /* command successful */
 #define CMD_ERROR 0xFF /* error in command */
-
-
 
 //Request message struct
 typedef struct Request {
@@ -105,5 +89,4 @@ typedef struct PicMemory{
     buffer reg[NREG];
 } pic_memory;
 
-
-
+#endif
