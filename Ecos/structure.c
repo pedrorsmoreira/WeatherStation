@@ -1,7 +1,7 @@
 #include "structure.h"
 
 static local memory;
-static pic_memory pmem;
+extern pic_memory pmem;
 
 //sync stuff
 extern cyg_mutex_t stdin_mutex;
@@ -260,7 +260,7 @@ void alarm_init(void){
     cyg_handle_t alarmCounter;
     cyg_alarm alarm_;
     cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
-    cyg_alarmextern_create(alarmCounter, alarmfn,
+    cyg_alarm_create(alarmCounter, alarmfn,
     (cyg_addrword_t) 0, &alarm.id, &alarm_);
 }
 
