@@ -13,13 +13,13 @@ extern pic_memory pmem;
 
 extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
-uint8_t cmd;
-bool toSend;
+uint8_t cmd=0;
+bool toSend=0;
 request *reply;
 //registers transference
 uint8_t *regs;
-uint8_t n;
-uint8_t i;
+uint8_t n=0;
+uint8_t i=0;
 
 
 typedef struct Placa{
