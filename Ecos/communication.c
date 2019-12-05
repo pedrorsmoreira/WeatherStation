@@ -96,16 +96,16 @@ void pic(void){
     req = (request *)malloc(sizeof(request));
     ack = (acknowledge *)malloc(sizeof(acknowledge));
     reg = (buffer *)malloc(sizeof(buffer));
-    init_placa();
-    //list_pmem();
+    init_placa(void);
+    //list_pmem(void);
     while(!exit){
         req_user = (request *) cyg_mbox_get(user_com_channel_H);
         switch (req_user->cmd){
         case CODE_RC:
             init_req(req);
-            req->arg[0]=getClockHour();
-            req->arg[1]=getClockMinute();
-            req->arg[2]=getClockSecond();
+            req->arg[0]=getClockHour(void);
+            req->arg[1]=getClockMinute(void);
+            req->arg[2]=getClockSecond(void);
             cyg_mbox_put(com_user_channel_H, req);
             break;
         case CODE_SC:
@@ -117,14 +117,14 @@ void pic(void){
             break;
         case CODE_RTL:
             init_req(req);
-            req->arg[0]=getTemperature();
-            req->arg[1]=getLuminosity();
+            req->arg[0]=getTemperature(void);
+            req->arg[1]=getLuminosity(void);
             cyg_mbox_put(com_user_channel_H, req);
             break;
         case CODE_RP:
             init_req(req);
-            req->arg[0]=getPMON();
-            req->arg[1]=getTALA();
+            req->arg[0]=getPMON(void);
+            req->arg[1]=getTALA(void);
             cyg_mbox_put(com_user_channel_H, req);
             break;
         case CODE_MMP:
@@ -139,9 +139,9 @@ void pic(void){
             break;
         case CODE_RA:
             init_req(req);
-            req->arg[0]=getTemperatureAlarm();
-            req->arg[1]=getLuminosityAlarm();
-            req->arg[2]=getIsActiveAlarm();
+            req->arg[0]=getTemperatureAlarm(void);
+            req->arg[1]=getLuminosityAlarm(void);
+            req->arg[2]=getIsActiveAlarm(void);
             cyg_mbox_put(com_user_channel_H, req);
             break;
         case CODE_DTL:
@@ -156,10 +156,10 @@ void pic(void){
             break;
         case CODE_IR:
             init_req(req);
-            req->arg[0]=getNREG();
-            req->arg[1]=getNr();
-            req->arg[2]=getIread();
-            req->arg[3]=getIwrite();
+            req->arg[0]=getNREG(void);
+            req->arg[1]=getNr(void);
+            req->arg[2]=getIread(void);
+            req->arg[3]=getIwrite(void);
             cyg_mbox_put(com_user_channel_H, ack);
             break;
         case CODE_TRC:
@@ -205,7 +205,7 @@ void pic(void){
     free(ack);
     free(req);
     free(reg);
-    cyg_thread_exit();
+    cyg_thread_exit(void);
 }
 
 
@@ -219,8 +219,8 @@ void pic(void){
 ///////////////////////////READ FROM PIC///////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-extern void activateAlarm();
-extern bool IsAlarmActive();
+extern void activateAlarm(void);
+extern bool IsAlarmActive(void);
 extern void setAlarmPeriod(int);
 
 extern cyg_mutex_t stdin_mutex;
@@ -236,13 +236,13 @@ int n;
 int i;
 
 
-void send_error(){
+void send_error(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
 }
 
-void send_ack(){
+void send_ack(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
@@ -261,7 +261,7 @@ bool read_command(int size){
         return true;
     }
     
-    send_error();
+    send_error(void);
     free (reply);
     return false;
 }
@@ -277,7 +277,7 @@ void read_regs(bool indexed){
     
     cyg_io_read(serH, &regs[i_+j], &len);
     if (regs[i_+j] != EOM){
-        send_error();
+        send_error(void);
         return;
     }
 
@@ -285,7 +285,7 @@ void read_regs(bool indexed){
         add_local(regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
 
     free(regs);
-    send_ack();
+    send_ack(void);
 }
 
 void read_pic(void){
@@ -303,7 +303,7 @@ void read_pic(void){
                 break;
             case SCLK:cyg_mbox_put(com_user_channel_H, &reply);
                 if (read_command(4))
-                    send_ack();
+                    send_ack(void);
                 toSend = false;
                 break;
             case RTL:
@@ -314,12 +314,12 @@ void read_pic(void){
                 break;
             case MMP:
                 if (read_command(4))
-                    send_ack();
+                    send_ack(void);
                 toSend = false;
                 break;
             case MTA:
                 if (read_command(4))
-                    send_ack();
+                    send_ack(void);
                 toSend = false;
                 break;
             case RALA:
@@ -327,12 +327,12 @@ void read_pic(void){
                 break;
             case DATL:
                 if (read_command(4))
-                    send_ack();
+                    send_ack(void);
                 toSend = false;
                 break;
             case AALA:
                 if (read_command(4))
-                    send_ack();
+                    send_ack(void);
                 toSend = false;
                 break;
             case IREG:
@@ -341,7 +341,7 @@ void read_pic(void){
             case TRGC:
                 cyg_io_read(serH, &n, &len);
                 if (n == CMD_ERROR || n == EOM)
-                    send_error();
+                    send_error(void);
                 else 
                     read_regs(false);
                 toSend = false;
@@ -349,11 +349,11 @@ void read_pic(void){
             case TRGI:
                 cyg_io_read(serH, &n, &len);
                 if (n == CMD_ERROR || n == EOM)
-                    send_error();
+                    send_error(void);
                 else 
                     cyg_io_read(serH, &i, &len);
                 if (i == CMD_ERROR ||i == EOM)
-                    send_error();
+                    send_error(void);
                 else
                     read_regs(true);
                 toSend = false;
@@ -371,16 +371,16 @@ void read_pic(void){
                         cyg_mutex_unlock(&stdin_mutex);
                     }
 
-                    if (! IsAlarmActive()){
+                    if (! IsAlarmActive(void)){
                         setAlarmPeriod(1);
-                        activateAlarm();
+                        activateAlarm(void);
                     }
                 }
                 free(reply);
                 toSend = false;
                 break;
             default:
-                send_error();
+                send_error(void);
                 toSend = false;
                 break;
         }

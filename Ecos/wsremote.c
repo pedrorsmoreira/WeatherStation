@@ -36,7 +36,7 @@ extern void read_pic(void);
 extern void init_local(void);
 extern void init_pmem(void);
 extern void list_pmem(void);
-extern void alarm_init();
+extern void alarm_init(void);
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
@@ -52,7 +52,7 @@ void cyg_user_start(void){
   cyg_mutex_init(&local_mutex);
 
   //alarm set up
-  alarm_init();
+  alarm_init(void);
 
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
@@ -61,28 +61,28 @@ void cyg_user_start(void){
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
 
   //cmd_ini(0, NULL);
-  init_local();
-  init_pmem(); //TODO: Delete this
+  init_local(void);
+  init_pmem(void); //TODO: Delete this
 
   for(i = 0; i< NTHREADS; i++)
     cyg_thread_resume(thread[i]);
 
-  cyg_thread_exit();
+  cyg_thread_exit(void);
 }
 
 void main_pic(cyg_addrword_t data){
-  pic();
+  pic(void);
 }
 
 void main_processing(cyg_addrword_t data){
-  processing();
+  processing(void);
 }
 
 void main_monitor(cyg_addrword_t data){
   cmd_ini(0, NULL);
-  monitor();
+  monitor(void);
 }
 
 void main_read_pic(cyg_addrword_t data){
-  read_pic();
+  read_pic(void);
 }
