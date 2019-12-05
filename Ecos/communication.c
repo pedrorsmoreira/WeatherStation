@@ -221,14 +221,14 @@ void pic(void){
 
 
 extern cyg_io_handle_t serH;
-cyg_uint32 len = 1;
-uint8_t cmd;
+static cyg_uint32 len = 1;
+static uint8_t cmd;
 bool toSend;
-request *reply;
+static request *reply;
 //registers transference
-uint8_t *regs;
-uint8_t n;
-uint8_t i;
+static uint8_t *regs;
+static uint8_t n;
+static uint8_t i;
 
 
 void send_error(){
