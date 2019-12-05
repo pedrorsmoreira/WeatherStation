@@ -234,3 +234,92 @@ void init_req(request *r){
 void init_ack(acknowledge* ack){
     ack->error=false;
 }
+
+
+
+
+
+
+
+
+
+/////////////////////alarm///////////////////////////
+
+//alarmHandler
+void alarmfn(cyg_handle_t alarmH, cyg_addrword_t data){
+    alarm.issued = true;
+}
+
+void alarm_init(){
+    cyg_mutex_init(&alarm.mutex);
+    alarm.issued = false;
+    alarm.period = 0;
+
+    cyg_handle_t alarmCounter;
+    cyg_alarm alarm_;
+    cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
+    cyg_alarm_create(alarmCounter, alarmfn,
+    (cyg_addrword_t) 0, &alarm.id, &alarm_);
+}
+
+void activateAlarm(){
+    int period;
+    cyg_handle_t id;
+
+    if (period == 0) return;
+
+    cyg_mutex_lock(&alarm.mutex);
+    period = alarm.period;
+    id = alarm.id;
+    cyg_mutex_unlock(&alarm.mutex);
+
+    cyg_alarm_initialize(id, cyg_current_time(), period*100*60);
+}
+
+void deactivateAlarm(){
+    cyg_handle_t id;
+
+    cyg_mutex_lock(&alarm.mutex);
+    id = alarm.id;
+    alarm.period = 0;
+    cyg_mutex_unlock(&alarm.mutex);
+
+    cyg_alarm_disable(id);
+}
+
+bool IsAlarmActive(){
+    bool ret;
+
+    cyg_mutex_lock(&alarm.mutex);
+    ret = alarm.period > 0;
+    cyg_mutex_unlock(&alarm.mutex);
+
+    return ret;
+}
+
+bool IsAlarmIssued(){
+    bool ret;
+
+    cyg_scheduler_lock();
+    ret = alarm.issued;
+    alarm.issued = 0; //se n for só usado no processing p fazer a transferencia, tem q se tirar isto daqui
+    cyg_scheduler_unlock();
+
+    return ret;
+}
+
+int getAlarmPeriod(){
+    bool ret;
+
+    cyg_mutex_lock(&alarm.mutex);
+    ret = alarm.period;
+    cyg_mutex_unlock(&alarm.mutex);
+
+    return ret;
+}
+
+void setAlarmPeriod(int period){
+    cyg_mutex_lock(&alarm.mutex);
+    alarm.period = period;
+    cyg_mutex_unlock(&alarm.mutex);
+}
