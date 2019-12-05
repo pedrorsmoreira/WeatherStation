@@ -245,6 +245,8 @@ void init_ack(acknowledge* ack){
 
 /////////////////////alarm///////////////////////////
 
+static alarmStuff alarm;
+
 //alarmHandler
 void alarmfn(cyg_handle_t alarmH, cyg_addrword_t data){
     alarm.issued = true;
