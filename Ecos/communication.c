@@ -1,8 +1,5 @@
 #include "structure.h"
 
-//alarm
-extern cyg_io_handle_t serH;
-
 //Sycronization stuff
 extern cyg_handle_t user_com_channel_H;
 extern cyg_handle_t com_user_channel_H;
@@ -13,6 +10,17 @@ extern void add_pmem(int, int, int, int, int);
 extern void copy_reg(buffer*, buffer*);
 extern void list_pmem(void);
 extern pic_memory pmem;
+
+extern cyg_io_handle_t serH;
+cyg_uint32 len = 1;
+uint8_t cmd;
+bool toSend;
+request *reply;
+//registers transference
+uint8_t *regs;
+uint8_t n;
+uint8_t i;
+
 
 typedef struct Placa{
     int clock_second;
@@ -221,18 +229,6 @@ void pic(void){
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////READ FROM PIC///////////////////////////
 ///////////////////////////////////////////////////////////////////
-
-
-
-cyg_uint32 len = 1;
-uint8_t cmd;
-bool toSend;
-request *reply;
-//registers transference
-uint8_t *regs;
-uint8_t n;
-uint8_t i;
-
 
 void send_error(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
