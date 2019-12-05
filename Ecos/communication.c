@@ -222,13 +222,13 @@ void pic(void){
 
 extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
-uint8_t cmd;
+int cmd;
 bool toSend;
 request *reply;
 //registers transference
-uint8_t *regs;
-uint8_t n;
-uint8_t i;
+int *regs;
+int n;
+int i;
 
 
 void send_error(){
@@ -262,7 +262,7 @@ bool read_command(int size){
 }
 
 void read_regs(bool indexed){
-    regs = (uint8_t *) malloc((5*n + 1) * sizeof(uint8_t));
+    regs = (int *) malloc((5*n + 1) * sizeof(int));
     int j = 5;
     for (int i = 0; i < n && j > 0; ++i)
         for(j = 0; j < 5; ++j)
@@ -282,7 +282,7 @@ void read_regs(bool indexed){
 }
 
 void read_pic(void){
-    uint8_t start;
+    int start;
     while (1){
         do {
             cyg_io_read(serH, &start, &len);
