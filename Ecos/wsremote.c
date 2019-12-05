@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <cyg/kernel/kapi.h>
 
+#include "structure.h"
+
 #define NTHREADS 4
 #define STACKSIZE 4096
 #define DEBUG 1
@@ -48,13 +50,7 @@ void cyg_user_start(void){
   cyg_mutex_init(&local_mutex);
 
   //alarm set up
-  alarmFlag = 0;
-  cyg_handle_t alarmCounter;
-  cyg_alarm alarm_;
-  cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
-  cyg_alarm_create(alarmCounter, cyg_alarm_t* alarmfn,
-    (cyg_addrword_t) 0, &alarmHandler, &alarm_);
-
+  alarm_init();
 
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
