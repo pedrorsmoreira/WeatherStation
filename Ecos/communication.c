@@ -219,7 +219,8 @@ void pic(void){
 ///////////////////////////READ FROM PIC///////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-
+extern cyg_mutex_t stdin_mutex;
+extern void add_local( int, int, int, int, int);
 extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
 int cmd;
@@ -263,12 +264,14 @@ bool read_command(int size){
 
 void read_regs(bool indexed){
     regs = (int *) malloc((5*n + 1) * sizeof(int));
+    int i = 0;
     int j = 5;
-    for (int i = 0; i < n && j > 0; ++i)
+
+    for (i = 0; i < n && j > 0; ++i)
         for(j = 0; j < 5; ++j)
-            cyg_io_read(&regs[i+j], &len);
+            cyg_io_read(serH, &regs[i+j], &len);
     
-    cyg_io_read(&regs[i+j], &len);
+    cyg_io_read(serH, &regs[i+j], &len);
     if (regs[i+j] != EOM){
         send_error();
         return;
@@ -332,7 +335,7 @@ void read_pic(void){
                 toSend = read_command(7);
                 break;
             case TRGC:
-                cyg_io_read(&n, &len);
+                cyg_io_read(serH, &n, &len);
                 if (n == CMD_ERROR || n == EOM)
                     send_error();
                 else 
@@ -340,11 +343,11 @@ void read_pic(void){
                 toSend = false;
                 break;
             case TRGI:
-                cyg_io_read(&n, &len);
+                cyg_io_read(serH, &n, &len);
                 if (n == CMD_ERROR || n == EOM)
                     send_error();
                 else 
-                    cyg_io_read(&i, &len);
+                    cyg_io_read(serH, &i, &len);
                 if (i == CMD_ERROR ||i == EOM)
                     send_error();
                 else
