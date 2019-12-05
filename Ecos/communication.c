@@ -1,5 +1,8 @@
 #include "structure.h"
 
+//alarm
+extern cyg_io_handle_t serH;
+
 //Sycronization stuff
 extern cyg_handle_t user_com_channel_H;
 extern cyg_handle_t com_user_channel_H;
@@ -220,15 +223,15 @@ void pic(void){
 ///////////////////////////////////////////////////////////////////
 
 
-extern cyg_io_handle_t serH;
-static cyg_uint32 len = 1;
-static uint8_t cmd;
+
+cyg_uint32 len = 1;
+uint8_t cmd;
 bool toSend;
-static request *reply;
+request *reply;
 //registers transference
-static uint8_t *regs;
-static uint8_t n;
-static uint8_t i;
+uint8_t *regs;
+uint8_t n;
+uint8_t i;
 
 
 void send_error(){
