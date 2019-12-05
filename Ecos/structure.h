@@ -100,8 +100,6 @@ typedef struct alarmStuff_{
     cyg_handle_t id;
 } alarmStuff;
 
-alarmStuff alarm;
-
 //alarmHandler
 void alarmfn(cyg_handle_t alarmH, cyg_addrword_t data);
 
