@@ -1,9 +1,10 @@
 #ifndef STRUCTURE_H
 #define STRUCTURE_H
 
+#include <cyg/kernel/kapi.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <cyg/kernel/kapi.h>
+
 
 #define REQUEST_SIZE 10
 #define CMD_LEN 5
