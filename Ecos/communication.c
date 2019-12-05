@@ -3,24 +3,13 @@
 //Sycronization stuff
 extern cyg_handle_t user_com_channel_H;
 extern cyg_handle_t com_user_channel_H;
-extern void init_req(request*);
+/*extern void init_req(request*);
 extern void init_ack(acknowledge*);
 extern void init_reg(buffer*);
 extern void add_pmem(int, int, int, int, int);
 extern void copy_reg(buffer*, buffer*);
 extern void list_pmem(void);
 extern pic_memory pmem;
-
-extern cyg_io_handle_t serH;
-cyg_uint32 len = 1;
-uint8_t cmd=0;
-bool toSend=0;
-request *reply;
-//registers transference
-uint8_t *regs;
-uint8_t n=0;
-uint8_t i=0;
-
 
 typedef struct Placa{
     int clock_second;
@@ -221,14 +210,26 @@ void pic(void){
 
 
 ///////////////////////////////////////////////////////////////////
-///////////////////////////SEND TO PIC/////////////////////////////
+////////////////////////////SEND TO PIC////////////////////////////
 ///////////////////////////////////////////////////////////////////
-
+*/
 
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////READ FROM PIC///////////////////////////
 ///////////////////////////////////////////////////////////////////
+
+
+extern cyg_io_handle_t serH;
+cyg_uint32 len = 1;
+uint8_t cmd;
+bool toSend;
+request *reply;
+//registers transference
+uint8_t *regs;
+uint8_t n;
+uint8_t i;
+
 
 void send_error(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
