@@ -266,7 +266,7 @@ void activateAlarm(){
     int period;
     cyg_handle_t id;
 
-    if (period == 0) return;
+    if (alarm.period == 0) return;
 
     cyg_mutex_lock(&alarm.mutex);
     period = alarm.period;
