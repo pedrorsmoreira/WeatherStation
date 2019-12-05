@@ -277,7 +277,7 @@ void read_regs(bool indexed){
         return;
     }
 
-    for (int i = 0; i < 5*n; i+=5)
+    for (int i_ = 0; i_ < 5*n; i_+=5)
         add_local(regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
 
     free(regs);
