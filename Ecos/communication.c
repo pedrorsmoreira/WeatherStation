@@ -236,13 +236,13 @@ int n;
 int i;
 
 
-void send_error(){
+void send_error(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
 }
 
-void send_ack(){
+void send_ack(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
     a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
