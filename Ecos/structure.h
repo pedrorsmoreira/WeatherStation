@@ -75,7 +75,7 @@ typedef struct Buffer {
 } buffer ;
 
 //Local memory struct
-typedef struct Local {
+typedef struct LoGasparcal {
     int nr;
     int iread;
     int iwrite; //head

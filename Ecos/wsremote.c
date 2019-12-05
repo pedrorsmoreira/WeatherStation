@@ -36,7 +36,7 @@ extern void read_pic(void);
 extern void init_local(void);
 extern void init_pmem(void);
 extern void list_pmem(void);
-//extern void alarm_init();
+extern void alarm_init();
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
