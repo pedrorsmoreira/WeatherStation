@@ -54,7 +54,7 @@ void init_local(void){
 
 void add_local( int temperature, int luminosity, int hour, int minute, int second){
    cyg_mutex_lock(&local_mutex); 
-    if (!is_full(void))
+    if (!is_full())
         memory.nr++;
     add_reg(&(memory.reg[memory.iwrite]), temperature, luminosity, hour, minute, second);
     memory.iwrite=(memory.iwrite+1)%NRBUF;
@@ -73,7 +73,7 @@ bool list_local(int n, int index){
         cyg_mutex_unlock(&local_mutex);
         return false;
     }
-    for(c=0, i=is_full(void)?(memory.iwrite+index)%NRBUF:index ; c<n && (i!=memory.iwrite || c==0); i=(i+1)%NRBUF, c++){
+    for(c=0, i=is_full()?(memory.iwrite+index)%NRBUF:index ; c<n && (i!=memory.iwrite || c==0); i=(i+1)%NRBUF, c++){
         cyg_mutex_lock(&stdin_mutex);
         printf("%d - [%d:%d:%d] t=%d l=%d\n", 
             i, memory.reg[i].hour, memory.reg[i].minute, memory.reg[i].second, memory.reg[i].temperature, memory.reg[i].luminosity);
@@ -95,7 +95,7 @@ void info_local(void){
 void delete_local(void){
     int i;
     cyg_mutex_lock(&local_mutex);
-    int n = is_full(void) ? NRBUF : memory.iwrite;
+    int n = is_full() ? NRBUF : memory.iwrite;
     for(i=0; i<n; i++){
         memory.reg[i].hour=0;
         memory.reg[i].minute=0;
@@ -135,7 +135,7 @@ void process_local(int argv[], request * req){
     }
     start = false;
     n=0;
-    for(c=0, i=is_full(void) ? memory.iwrite : 0 ; i!=memory.iwrite || c==0; i=(i+1)%NRBUF, c++){
+    for(c=0, i=is_full() ? memory.iwrite : 0 ; i!=memory.iwrite || c==0; i=(i+1)%NRBUF, c++){
         if (start){
             if (memory.reg[i].hour>=h2 && memory.reg[i].minute>=m2 && memory.reg[i].second>=s2) break;
             if (min_temperature>memory.reg[i].temperature) min_temperature=memory.reg[i].temperature;
@@ -259,7 +259,7 @@ void alarm_init(void){
 
     cyg_handle_t alarmCounter;
     cyg_alarm alarm_;
-    cyg_clock_to_counter(cyg_real_time_clock(void), &alarmCounter);
+    cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
     cyg_alarmextern_create(alarmCounter, alarmfn,
     (cyg_addrword_t) 0, &alarm.id, &alarm_);
 }
@@ -275,7 +275,7 @@ void activateAlarm(void){
     id = alarm.id;
     cyg_mutex_unlock(&alarm.mutex);
 
-    cyg_alarm_initialize(id, cyg_current_time(void), period*100*60);
+    cyg_alarm_initialize(id, cyg_current_time(), period*100*60);
 }
 
 void deactivateAlarm(void){
@@ -302,10 +302,10 @@ bool IsAlarmActive(void){
 bool IsAlarmIssued(void){
     bool ret;
 
-    cyg_scheduler_lock(void);
+    cyg_scheduler_lock();
     ret = alarm.issued;
     alarm.issued = 0; //se n for só usado no processing p fazer a transferencia, tem q se tirar isto daqui
-    cyg_scheduler_unlock(void);
+    cyg_scheduler_unlock();
 
     return ret;
 }
