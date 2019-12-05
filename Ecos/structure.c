@@ -260,7 +260,7 @@ void alarm_init(){
     cyg_handle_t alarmCounter;
     cyg_alarm alarm_;
     cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
-    cyg_alarmextern extern extern extern extern _create(alarmCounter, alarmfn,
+    cyg_alarmextern_create(alarmCounter, alarmfn,
     (cyg_addrword_t) 0, &alarm.id, &alarm_);
 }
 
