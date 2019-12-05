@@ -1,4 +1,4 @@
-#include"structure.h"
+#include "structure.h"
 
 //Sycronization stuff
 extern cyg_handle_t user_pro_channel_H;
