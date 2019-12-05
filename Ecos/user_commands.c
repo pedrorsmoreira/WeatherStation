@@ -6,9 +6,9 @@ extern cyg_handle_t user_com_channel_H;
 extern cyg_handle_t pro_user_channel_H;
 extern cyg_handle_t user_pro_channel_H;
 extern cyg_mutex_t stdin_mutex;
+extern cyg_io_handle_t serH;
 
 static Cyg_ErrNo err;
-cyg_io_handle_t serH; //no static, needed for communivation tasks
 static request *req = NULL;
 static request *req_other = NULL;
 static acknowledge *ack_other = NULL;

@@ -25,6 +25,7 @@ cyg_handle_t pro_user_channel_H, user_pro_channel_H; //mailbox between the user 
 cyg_mbox pro_user_channel, user_pro_channel;
 cyg_mutex_t stdin_mutex;
 cyg_mutex_t local_mutex;
+cyg_io_handle_t serH;
 
 // functions and variables from other files
 extern void cmd_ini (int, char** );
