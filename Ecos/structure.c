@@ -1,7 +1,7 @@
 #include "structure.h"
 
 static local memory;
-extern pic_memory pmem;
+pic_memory pmem;
 
 //sync stuff
 extern cyg_mutex_t stdin_mutex;
