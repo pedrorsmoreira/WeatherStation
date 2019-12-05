@@ -246,13 +246,13 @@ void send_ack(){
 
 bool read_command(int size){
     reply = (request *) malloc(size * sizeof(request));
-    int i = 0;
+    int i_ = 0;
 
     do{
-        cyg_io_read(serH, &reply.arg[i], &len);
-    } while (reply->arg[i++] != CMD_ERROR && i < size);
+        cyg_io_read(serH, &reply->arg[i_], &len);
+    } while (reply->arg[i_++] != CMD_ERROR && i_ < size);
 
-    if (reply->arg[(i-1] == EOM){
+    if (reply->arg[i_-1] == EOM){
         reply->cmd = cmd;
         return true;
     }
@@ -264,21 +264,21 @@ bool read_command(int size){
 
 void read_regs(bool indexed){
     regs = (int *) malloc((5*n + 1) * sizeof(int));
-    int i = 0;
+    int i_ = 0;
     int j = 5;
 
-    for (i = 0; i < n && j > 0; ++i)
+    for (i_ = 0; i_ < n && j > 0; ++i_)
         for(j = 0; j < 5; ++j)
-            cyg_io_read(serH, &regs[i+j], &len);
+            cyg_io_read(serH, &regs[i_+j], &len);
     
-    cyg_io_read(serH, &regs[i+j], &len);
-    if (regs[i+j] != EOM){
+    cyg_io_read(serH, &regs[i_+j], &len);
+    if (regs[i_+j] != EOM){
         send_error();
         return;
     }
 
     for (int i = 0; i < 5*n; i+=5)
-        add_local(regs[i], regs[i+1], regs[i+2], regs[i+3], regs[i+4]);
+        add_local(regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
 
     free(regs);
     send_ack();
@@ -375,7 +375,7 @@ void read_pic(void){
                 free(reply);
                 toSend = false;
                 break;
-            case default:
+            default:
                 send_error();
                 toSend = false;
                 break;
