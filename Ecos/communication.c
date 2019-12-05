@@ -209,6 +209,17 @@ void pic(void){
 }
 
 
+///////////////////////////////////////////////////////////////////
+///////////////////////////SEND TO PIC/////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////READ FROM PIC///////////////////////////
+///////////////////////////////////////////////////////////////////
+
+
 extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
 uint8_t cmd;
@@ -283,7 +294,7 @@ void read_pic(void){
             case RCLK:
                 toSend = read_command(6);
                 break;
-            case SCLK:
+            case SCLK:cyg_mbox_put(com_user_channel_H, &reply);
                 if (read_command(4))
                     send_ack();
                 toSend = false;
@@ -343,15 +354,19 @@ void read_pic(void){
             case NMFL:
                 if (read_command(7)){
                     cyg_mutex_lock(&stdin_mutex);
-                    printf("NMFL received:\n N = %d, nr = %d, ri = %d, wi = %d\n\n", 
+                    printf("\nNMFL received:\n N = %d, nr = %d, ri = %d, wi = %d\n\nCmd>", 
                             reply.arg[1], reply.arg[2], reply.arg[3], reply.arg[4]);
                     cyg_mutex_unlock(&stdin_mutex);
                     
                     if ( (iw - ir) == N ){
                         cyg_mutex_lock(&stdin_mutex);
-                        printf("warning: memory full!\n");
+                        printf("\nwarning: memory full!\n\nCmd>");
                         cyg_mutex_unlock(&stdin_mutex);
-                        alarm_on
+                    }
+
+                    if (! IsAlarmActive()){
+                        setAlarmPeriod(1);
+                        activateAlarm();
                     }
                 }
                 free(reply);

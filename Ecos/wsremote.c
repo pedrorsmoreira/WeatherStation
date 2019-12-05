@@ -47,6 +47,15 @@ void cyg_user_start(void){
   cyg_mutex_init(&stdin_mutex);
   cyg_mutex_init(&local_mutex);
 
+  //alarm set up
+  alarmFlag = 0;
+  cyg_handle_t alarmCounter;
+  cyg_alarm alarm_;
+  cyg_clock_to_counter(cyg_real_time_clock(), &alarmCounter);
+  cyg_alarm_create(alarmCounter, cyg_alarm_t* alarmfn,
+    (cyg_addrword_t) 0, &alarmHandler, &alarm_);
+
+
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
