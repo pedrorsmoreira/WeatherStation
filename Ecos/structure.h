@@ -125,7 +125,6 @@ void activateAlarm(){
     if (period == 0) return;
 
     cyg_mutex_lock(&alarm.mutex);
-    alarm.active = true;
     period = alarm.period;
     id = alarm.id;
     cyg_mutex_unlock(&alarm.mutex);
@@ -177,9 +176,7 @@ int getAlarmPeriod(){
 
 void setAlarmPeriod(int period){
     cyg_mutex_lock(&alarm.mutex);
-    alarm.active = true;
-    period = alarm.period;
-    id = alarm.id;
+    alarm.period = period;
     cyg_mutex_unlock(&alarm.mutex);
 }
 
