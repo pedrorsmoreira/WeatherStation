@@ -233,13 +233,13 @@ int i;
 
 void send_error(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
-    a.error = false;
+    a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
 }
 
 void send_ack(){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
-    a.error = false;
+    a->error = false;
     cyg_mbox_put(com_user_channel_H, a);
 }
 
@@ -249,10 +249,10 @@ bool read_command(int size){
 
     do{
         cyg_io_read(serH, &reply.arg[i], &len);
-    } while (reply.arg[i++] != CMD_ERROR && i < size);
+    } while (reply->arg[i++] != CMD_ERROR && i < size);
 
-    if (reply.arg[(i-1] == EOM){
-        reply.cmd = cmd;
+    if (reply->arg[(i-1] == EOM){
+        reply->cmd = cmd;
         return true;
     }
     
@@ -355,10 +355,10 @@ void read_pic(void){
                 if (read_command(7)){
                     cyg_mutex_lock(&stdin_mutex);
                     printf("\nNMFL received:\n N = %d, nr = %d, ri = %d, wi = %d\n\nCmd>", 
-                            reply.arg[1], reply.arg[2], reply.arg[3], reply.arg[4]);
+                            reply->arg[1], reply->arg[2], reply->arg[3], reply->arg[4]);
                     cyg_mutex_unlock(&stdin_mutex);
                     
-                    if ( (iw - ir) == N ){
+                    if ( (reply->arg[4] - reply->arg[3]) == reply->arg[1] ){
                         cyg_mutex_lock(&stdin_mutex);
                         printf("\nwarning: memory full!\n\nCmd>");
                         cyg_mutex_unlock(&stdin_mutex);
