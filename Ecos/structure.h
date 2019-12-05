@@ -100,6 +100,7 @@ typedef struct alarmStuff_{
     cyg_handle_t id;
 } alarmStuff;
 
+/*
 //alarmHandler
 void alarmfn(cyg_handle_t alarmH, cyg_addrword_t data);
 
@@ -116,5 +117,5 @@ bool IsAlarmIssued();
 int getAlarmPeriod();
 
 void setAlarmPeriod(int period);
-
+*/
 #endif
