@@ -219,10 +219,6 @@ void pic(void){
 ///////////////////////////READ FROM PIC///////////////////////////
 ///////////////////////////////////////////////////////////////////
 
-extern void activateAlarm();
-extern bool IsAlarmActive();
-extern void setAlarmPeriod(int period);
-
 extern cyg_mutex_t stdin_mutex;
 extern void add_local( int, int, int, int, int);
 extern cyg_io_handle_t serH;
