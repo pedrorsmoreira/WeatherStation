@@ -278,6 +278,7 @@ void write_pic(void){
         default:
             break;
         }
+    free(req_user);
     }
 }
 

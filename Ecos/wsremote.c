@@ -81,8 +81,11 @@ void main_processing(cyg_addrword_t data){
 }
 
 void main_monitor(cyg_addrword_t data){
+  printf("1\n");
   cmd_ini(0, NULL);
+  printf("2\n");
   monitor();
+  printf("3\n");
 }
 
 void main_read_pic(cyg_addrword_t data){
