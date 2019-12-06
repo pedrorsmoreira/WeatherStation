@@ -233,7 +233,7 @@ void send_msg(int cmd, int size){
         msg[pos] = req_user->arg[pos];
 
     cyg_uint32 len_ = sizeof(int)*(size+2);
-    cyg_io_write(serH, message1, &len_;
+    cyg_io_write(serH, message1, &len_);
 }
 
 void write_pic(void){
