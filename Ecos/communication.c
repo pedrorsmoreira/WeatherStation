@@ -228,8 +228,10 @@ void send_msg(int cmd, int size){
     else if (size == 4) msg = message4;
 
     msg[1] = cmd;
-    for (int i_ = 2; i_ <= size; ++i_)
-        msg[i_] = req_user->arg[i_];
+    int pos;
+    for (pos = 2; pos <= size; ++pos)
+        msg[pos] = req_user->arg[pos];
+
     cyg_io_write(serH, message1, sizeof(int)*(size+2) );
 }
 
