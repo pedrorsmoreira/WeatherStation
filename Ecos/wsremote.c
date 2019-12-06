@@ -73,21 +73,24 @@ void cyg_user_start(void){
 }
 
 void main_write_pic(cyg_addrword_t data){
+  printf("ENTROU write\n");
   write_pic();
 }
 
 void main_processing(cyg_addrword_t data){
+  printf("ENTROU processing\n");
   processing();
 }
 
 void main_monitor(cyg_addrword_t data){
-  printf("1\n");
+  printf("ENTROU monitor\n");
   cmd_ini(0, NULL);
-  printf("2\n");
+  printf("1\n");
   monitor();
-  printf("3\n");
+  printf("2\n");
 }
 
 void main_read_pic(cyg_addrword_t data){
+  printf("ENTROU read\n");
   read_pic();
 }
