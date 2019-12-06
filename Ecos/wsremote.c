@@ -61,7 +61,7 @@ void cyg_user_start(void){
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
   cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
-  printf("FFFFFF\n", );
+  printf("FFFFFF\n");
   //cmd_ini(0, NULL);
   init_local();
   init_pmem(); //TODO: Delete this
