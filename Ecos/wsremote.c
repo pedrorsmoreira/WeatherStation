@@ -17,6 +17,8 @@ cyg_thread_entry_t main_processing;
 cyg_thread_entry_t main_pic;
 cyg_thread_entry_t main_monitor;
 cyg_thread_entry_t main_read_pic;
+cyg_thread_entry_t main_write_pic;
+
 
 //Sycronization stuff
 cyg_handle_t user_com_channel_H, com_user_channel_H; //mailbox between the user interface thread and the communication thread
