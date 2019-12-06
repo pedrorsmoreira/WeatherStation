@@ -30,7 +30,7 @@ cyg_io_handle_t serH;
 // functions and variables from other files
 extern void cmd_ini (int, char** );
 extern void monitor(void);
-extern void pic(void);
+extern void write_pic(void);
 extern void processing(void);
 extern void read_pic(void);
 extern void init_local(void);
@@ -55,9 +55,9 @@ void cyg_user_start(void){
   alarm_init();
 
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
-  cyg_thread_create(3, main_pic, (cyg_addrword_t) 0, "communication", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
+  cyg_thread_create(3, main_write_pic, (cyg_addrword_t) 0, "communicationWrite", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
-  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "periodic",
+  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
 
   //cmd_ini(0, NULL);
@@ -70,8 +70,8 @@ void cyg_user_start(void){
   cyg_thread_exit();
 }
 
-void main_pic(cyg_addrword_t data){
-  pic();
+void main_write_pic(cyg_addrword_t data){
+  write_pic();
 }
 
 void main_processing(cyg_addrword_t data){
