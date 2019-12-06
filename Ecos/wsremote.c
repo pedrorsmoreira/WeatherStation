@@ -56,10 +56,10 @@ void cyg_user_start(void){
   //alarm set up
   alarm_init();
   printf("DDDDD\n");
-  cyg_thread_create(7, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
-  cyg_thread_create(7, main_write_pic, (cyg_addrword_t) 0, "communicationWrite", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
-  cyg_thread_create(7, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
-  cyg_thread_create(7, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
+  cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
+  cyg_thread_create(3, main_write_pic, (cyg_addrword_t) 0, "communicationWrite", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
+  cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
+  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
   printf("FFFFFF\n");
   //cmd_ini(0, NULL);
