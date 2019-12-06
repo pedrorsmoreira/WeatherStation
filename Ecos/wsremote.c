@@ -68,7 +68,7 @@ void cyg_user_start(void){
   printf("GGGGGGGG\n");
   for(i = 0; i< NTHREADS; i++)
     cyg_thread_resume(thread[i]);
-
+  printf("HHHHHHH\n");
   cyg_thread_exit();
 }
 
