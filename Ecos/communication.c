@@ -9,7 +9,7 @@ extern void init_reg(buffer*);
 extern void add_pmem(int, int, int, int, int);
 extern void copy_reg(buffer*, buffer*);
 extern void list_pmem(void);
-extern pic_memory pmem;
+/*/extern pic_memory pmem;
 
 typedef struct Placa{
     int clock_second;
@@ -25,9 +25,9 @@ typedef struct Placa{
 } placa;
 
 static placa p;
-static request *req = NULL;
+static request *req = NULL;*/
 static request *req_user = NULL;
-static acknowledge *ack = NULL;
+/*static acknowledge *ack = NULL;
 static acknowledge *ack_user = NULL;
 static buffer *reg = NULL;
 
@@ -207,13 +207,77 @@ void pic(void){
     free(reg);
     cyg_thread_exit();
 }
-
+*/
 
 ///////////////////////////////////////////////////////////////////
 ////////////////////////////SEND TO PIC////////////////////////////
 ///////////////////////////////////////////////////////////////////
 
+extern cyg_io_handle_t serH;
 
+int message1 [1 + 1 + 1] = {SOM, 0, EOM}; // SOM + msg + EOM
+int message2 [1 + 2 + 1] = {SOM, 0, 0, EOM};
+int message3 [1 + 3 + 1] = {SOM, 0, 0, 0, EOM};
+int message4 [1 + 4 + 1] = {SOM, 0, 0, 0, 0, EOM};
+
+void send_msg(int cmd, int size){
+    int * msg;
+    if      (size == 1) msg = message1;
+    else if (size == 2) msg = message2;
+    else if (size == 3) msg = message3;
+    else if (size == 4) msg = message4;
+
+    msg[1] = cmd;
+    for (int i_ = 2; i_ <= size; ++i_)
+        msg[i_] = req_user->arg[i_];
+    cyg_io_write(serH, message1, sizeof(int)*(size+2) );
+}
+
+void write_pic(void){
+    while(1){
+        req_user = (request *) cyg_mbox_get(user_com_channel_H);
+        switch (req_user->cmd){
+        case CODE_RC:
+            send_msg(RCLK, 1);
+            break;
+        case CODE_SC:
+            send_msg(SCLK, 4);
+            break;
+        case CODE_RTL:
+            send_msg( RTL, 1);
+            break;
+        case CODE_RP:
+            send_msg(RPAR, 1);
+            break;
+        case CODE_MMP:
+            send_msg( MMP, 2);
+            break;
+        case CODE_MTA:
+            send_msg( MTA, 2);
+            break;
+        case CODE_RA:
+            send_msg(RALA, 1);
+            break;
+        case CODE_DTL:
+            send_msg(DATL, 3);
+            break;
+        case CODE_AA:
+            send_msg(AALA, 2);
+            break;
+        case CODE_IR:
+            send_msg(IREG, 1);
+            break;
+        case CODE_TRC:
+            send_msg(TRGC, 2);
+            break;
+        case CODE_TRI:
+            send_msg(TRGI, 3);
+            break;
+        default:
+            break;
+        }
+    }
+}
 
 ///////////////////////////////////////////////////////////////////
 ///////////////////////////READ FROM PIC///////////////////////////
@@ -225,7 +289,6 @@ extern void setAlarmPeriod(int);
 
 extern cyg_mutex_t stdin_mutex;
 extern void add_local( int, int, int, int, int);
-extern cyg_io_handle_t serH;
 cyg_uint32 len = 1;
 int cmd;
 bool toSend;
@@ -238,7 +301,7 @@ int i;
 
 void send_error(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
-    a->error = false;
+    a->error = true;
     cyg_mbox_put(com_user_channel_H, a);
 }
 
@@ -301,7 +364,7 @@ void read_pic(void){
             case RCLK:
                 toSend = read_command(6);
                 break;
-            case SCLK:cyg_mbox_put(com_user_channel_H, &reply);
+            case SCLK:
                 if (read_command(4))
                     send_ack();
                 toSend = false;
