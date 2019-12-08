@@ -120,9 +120,6 @@ void main(void)
     WPUC3 = 1;
     WPUC4 = 1;
     
-    EUSART_Write(0x57);
-    putch(read_nreg());
-    
     while (1)
     {           
         INTERRUPT_PeripheralInterruptDisable();

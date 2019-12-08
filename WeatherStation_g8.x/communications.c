@@ -37,8 +37,8 @@ void read_msgs() {
         cmd = EUSART_Read();
         aux[i] = cmd;
     }
-    aux[i] = '\0';
-
+    aux[i-1] = '\0';
+    
     interpret_message(aux);
 }
 
@@ -155,8 +155,9 @@ void define_alarm(char * data) {
 }
 
 void switch_alarm(char * data) {
-    if(!data || strlen(data) != 1 || data[0] > 1) {
+    if(strlen(data) != 1 || data[0] > 1) {
         send_confirmation(AALA, CMD_ERROR);
+        NOP();
         return;
     }
     alaf = data[0];
@@ -229,6 +230,7 @@ void send_msg(char * msg) {
     for(int i = 0; i < strlen(msg); ++i) EUSART_Write(msg[i]);
     //printf(msg);
     EUSART_Write(EOM);
+    NOP();
 }
 
 void send_register(uint8_t i) {
@@ -240,5 +242,6 @@ void countMsg() {
     EUSART_Receive_ISR();
     if(EUSART_LastByte() == EOM) {
         msgs++;
+        NOP();
     }
 }
