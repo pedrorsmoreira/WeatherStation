@@ -6,22 +6,22 @@ extern cyg_handle_t com_user_channel_H;
 extern void init_req(request*);
 extern void init_ack(acknowledge*);
 extern void init_reg(buffer*);
-extern void add_pmem(int, int, int, int, int);
+extern void add_pmem(cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 extern void copy_reg(buffer*, buffer*);
 extern void list_pmem(void);
 /*/extern pic_memory pmem;
 
 typedef struct Placa{
-    int clock_second;
-    int clock_minute;
-    int clock_hour;
-    int temperature;
-    int luminosity;
-    int pmon;
-    int tala;
-    int temperature_alarm;
-    int luminosity_alarm;
-    int is_active_alarm;
+    cyg_uint8 clock_second;
+    cyg_uint8 clock_minute;
+    cyg_uint8 clock_hour;
+    cyg_uint8 temperature;
+    cyg_uint8 luminosity;
+    cyg_uint8 pmon;
+    cyg_uint8 tala;
+    cyg_uint8 temperature_alarm;
+    cyg_uint8 luminosity_alarm;
+    cyg_uint8 is_active_alarm;
 } placa;
 
 static placa p;
@@ -33,29 +33,29 @@ static buffer *reg = NULL;
 
 // void pic(void);
 
-int getClockHour(void){return p.clock_hour;}
-int getClockMinute(void){return p.clock_minute;}
-int getClockSecond(void){return p.clock_second;}
-int getTemperature(void){return p.temperature;}
-int getLuminosity(void){return p.luminosity;}
-int getPMON(void){return p.pmon;}
-int getTALA(void){return p.tala;}
-int getTemperatureAlarm(void){return p.temperature_alarm;}
-int getLuminosityAlarm(void){return p.luminosity_alarm;}
-int getIsActiveAlarm(void){return p.is_active_alarm;}
-int getNREG(void){return NREG;}
-int getNr(void){return pmem.nr;}
-int getIread(void){return pmem.iread;}
-int getIwrite(void){return pmem.iwrite;}
+cyg_uint8 getClockHour(void){return p.clock_hour;}
+cyg_uint8 getClockMinute(void){return p.clock_minute;}
+cyg_uint8 getClockSecond(void){return p.clock_second;}
+cyg_uint8 getTemperature(void){return p.temperature;}
+cyg_uint8 getLuminosity(void){return p.luminosity;}
+cyg_uint8 getPMON(void){return p.pmon;}
+cyg_uint8 getTALA(void){return p.tala;}
+cyg_uint8 getTemperatureAlarm(void){return p.temperature_alarm;}
+cyg_uint8 getLuminosityAlarm(void){return p.luminosity_alarm;}
+cyg_uint8 getIsActiveAlarm(void){return p.is_active_alarm;}
+cyg_uint8 getNREG(void){return NREG;}
+cyg_uint8 getNr(void){return pmem.nr;}
+cyg_uint8 getIread(void){return pmem.iread;}
+cyg_uint8 getIwrite(void){return pmem.iwrite;}
 
-bool setClockHour(int h){p.clock_hour=h;return true;}
-bool setClockMinute(int m){p.clock_minute=m;return true;}
-bool setClockSecond(int s){p.clock_second=s;return true;}
-bool setPMON(int mp){p.pmon=mp;return true;}
-bool setTALA(int a){p.tala=a;return true;}
-bool setTemperatureAlarm(int ta){p.temperature_alarm=ta; return true;}
-bool setLuminosityAlarm(int la){p.luminosity_alarm=la; return true;}
-bool setIsActiveAlarm(int iaa){p.is_active_alarm=iaa; return true;}
+bool setClockHour(cyg_uint8 h){p.clock_hour=h;return true;}
+bool setClockMinute(cyg_uint8 m){p.clock_minute=m;return true;}
+bool setClockSecond(cyg_uint8 s){p.clock_second=s;return true;}
+bool setPMON(cyg_uint8 mp){p.pmon=mp;return true;}
+bool setTALA(cyg_uint8 a){p.tala=a;return true;}
+bool setTemperatureAlarm(cyg_uint8 ta){p.temperature_alarm=ta; return true;}
+bool setLuminosityAlarm(cyg_uint8 la){p.luminosity_alarm=la; return true;}
+bool setIsActiveAlarm(cyg_uint8 iaa){p.is_active_alarm=iaa; return true;}
 
 void init_placa(void){
     p.clock_second=10;
@@ -91,8 +91,8 @@ void init_placa(void){
 
 void pic(void){
     bool exit = false;
-    int i;
-    //int c;
+    cyg_uint8 i;
+    //cyg_uint8 c;
     req = (request *)malloc(sizeof(request));
     ack = (acknowledge *)malloc(sizeof(acknowledge));
     reg = (buffer *)malloc(sizeof(buffer));
@@ -215,32 +215,39 @@ void pic(void){
 
 extern cyg_io_handle_t serH;
 
-int message1 [1 + 1 + 1] = {SOM, 0, EOM}; // SOM + msg + EOM
-int message2 [1 + 2 + 1] = {SOM, 0, 0, EOM};
-int message3 [1 + 3 + 1] = {SOM, 0, 0, 0, EOM};
-int message4 [1 + 4 + 1] = {SOM, 0, 0, 0, 0, EOM};
+cyg_uint8 message1 [1 + 1 + 1] = {SOM, 0, EOM}; // SOM + msg + EOM
+cyg_uint8 message2 [1 + 2 + 1] = {SOM, 0, 0, EOM};
+cyg_uint8 message3 [1 + 3 + 1] = {SOM, 0, 0, 0, EOM};
+cyg_uint8 message4 [1 + 4 + 1] = {SOM, 0, 0, 0, 0, EOM};
 
-void send_msg(int cmd, int size){
-    int * msg;
+void send_msg(cyg_uint8 cmd, unsigned int size){
+    cyg_uint8 * msg = NULL;
     if      (size == 1) msg = message1;
     else if (size == 2) msg = message2;
     else if (size == 3) msg = message3;
     else if (size == 4) msg = message4;
 
-    msg[1] = cmd;
-    int pos;
-    for (pos = 2; pos <= size; ++pos)
-        msg[pos] = req_user->arg[pos];
 
-    cyg_uint32 len_ = sizeof(int)*(size+2);
-    cyg_io_write(serH, message1, &len_);
+    msg[1] = cmd;
+    cyg_uint8 pos;
+    for (pos = 2; pos <= size; ++pos)
+        msg[pos] = req_user->arg[pos-2];
+
+  size += 2;
+
+    cyg_io_write(serH, msg, &size);
+//printf("SENT\n");
 }
 
 void write_pic(void){
+//printf("Write PIC\n");
     while(1){
+//printf("Before user_com_channel\n");
         req_user = (request *) cyg_mbox_get(user_com_channel_H);
+//printf("After user_com_channel HEY: %d\n", req_user->cmd);
         switch (req_user->cmd){
         case CODE_RC:
+//printf("SENDING\n");
             send_msg(RCLK, 1);
             break;
         case CODE_SC:
@@ -279,7 +286,6 @@ void write_pic(void){
         default:
             break;
         }
-    free(req_user);
     }
 }
 
@@ -289,18 +295,18 @@ void write_pic(void){
 
 extern void activateAlarm(void);
 extern bool IsAlarmActive(void);
-extern void setAlarmPeriod(int);
+extern void setAlarmPeriod(cyg_uint8);
 
 extern cyg_mutex_t stdin_mutex;
-extern void add_local( int, int, int, int, int);
+extern void add_local( cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 cyg_uint32 len = 1;
-int cmd;
+cyg_uint8 cmd;
 bool toSend;
 request *reply;
 //registers transference
-int *regs;
-int n;
-int i;
+cyg_uint8 *regs;
+cyg_uint8 n;
+cyg_uint8 i;
 
 
 void send_error(void){
@@ -315,13 +321,15 @@ void send_ack(void){
     cyg_mbox_put(com_user_channel_H, a);
 }
 
-bool read_command(int size){
+bool read_command(cyg_uint8 size){
     reply = (request *) malloc(size * sizeof(request));
-    int i_ = 0;
+    cyg_uint8 i_ = 0;
 
+//printf("read_command\n");
     do{
         cyg_io_read(serH, &reply->arg[i_], &len);
-    } while (reply->arg[i_++] != CMD_ERROR && i_ < size);
+	//printf("read: %d\n", reply->arg[i_]);
+    } while (reply->arg[i_++] != CMD_ERROR && i_ < size && reply->arg[i_-1] != EOM);
 
     if (reply->arg[i_-1] == EOM){
         reply->cmd = cmd;
@@ -334,9 +342,9 @@ bool read_command(int size){
 }
 
 void read_regs(bool indexed){
-    regs = (int *) malloc((5*n + 1) * sizeof(int));
-    int i_ = 0;
-    int j = 5;
+    regs = (cyg_uint8 *) malloc((5*n + 1) * sizeof(cyg_uint8));
+    cyg_uint8 i_ = 0;
+    cyg_uint8 j = 5;
 
     for (i_ = 0; i_ < n && j > 0; ++i_)
         for(j = 0; j < 5; ++j)
@@ -356,10 +364,13 @@ void read_regs(bool indexed){
 }
 
 void read_pic(void){
-    int start;
+    cyg_uint8 start;
     while (1){
+//printf("read_pic while\n");
         do {
+//printf("before read_pic cyg_io_read\n");
             cyg_io_read(serH, &start, &len);
+//printf("after read_pic cyg_io_read %x\n", start);
         } while (start != SOM);
 
         cyg_io_read(serH, &cmd, &len);         
@@ -367,6 +378,7 @@ void read_pic(void){
         switch(cmd){
             case RCLK:
                 toSend = read_command(6);
+		//printf("toSend: %d\n", toSend);
                 break;
             case SCLK:
                 if (read_command(4))
@@ -452,7 +464,11 @@ void read_pic(void){
                 break;
         }
 
-        if (toSend)
+        if (toSend){
+	toSend = false;
+	//printf("toSend\n");
             cyg_mbox_put(com_user_channel_H, &reply);
+	//printf("toSend sent\n");
+	}
     }
 }

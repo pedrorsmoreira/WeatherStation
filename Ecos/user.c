@@ -7,30 +7,30 @@
 /*-------------------------------------------------------------------------+
 | Headers of command functions
 +--------------------------------------------------------------------------*/ 
-extern void cmd_sair (int, char** );
-extern void cmd_rc (int, char** );
-extern void cmd_sc (int, char** );
-extern void cmd_rtl (int, char** );
-extern void cmd_rp (int, char** );
-extern void cmd_mmp (int, char** );
-extern void cmd_mta (int, char** );
-extern void cmd_ra (int, char** );
-extern void cmd_dtl (int, char** );
-extern void cmd_aa (int, char** );
-extern void cmd_ir (int, char** );
-extern void cmd_trc (int, char** );
-extern void cmd_tri (int, char** );
-extern void cmd_irl (int, char** );
-extern void cmd_lr (int, char** );
-extern void cmd_dr (int, char** );
-extern void cmd_cpt (int, char** );
-extern void cmd_mpt (int, char** );
-extern void cmd_cttl (int, char** );
-extern void cmd_dttl (int, char** );
-extern void cmd_pr (int, char** );
+extern void cmd_sair (cyg_uint8, char** );
+extern void cmd_rc (cyg_uint8, char** );
+extern void cmd_sc (cyg_uint8, char** );
+extern void cmd_rtl (cyg_uint8, char** );
+extern void cmd_rp (cyg_uint8, char** );
+extern void cmd_mmp (cyg_uint8, char** );
+extern void cmd_mta (cyg_uint8, char** );
+extern void cmd_ra (cyg_uint8, char** );
+extern void cmd_dtl (cyg_uint8, char** );
+extern void cmd_aa (cyg_uint8, char** );
+extern void cmd_ir (cyg_uint8, char** );
+extern void cmd_trc (cyg_uint8, char** );
+extern void cmd_tri (cyg_uint8, char** );
+extern void cmd_irl (cyg_uint8, char** );
+extern void cmd_lr (cyg_uint8, char** );
+extern void cmd_dr (cyg_uint8, char** );
+extern void cmd_cpt (cyg_uint8, char** );
+extern void cmd_mpt (cyg_uint8, char** );
+extern void cmd_cttl (cyg_uint8, char** );
+extern void cmd_dttl (cyg_uint8, char** );
+extern void cmd_pr (cyg_uint8, char** );
 //this file functions
-       void cmd_sos  (int, char** );
-       void cmd_ini (int, char** );
+       void cmd_sos  (cyg_uint8, char** );
+       void cmd_ini (cyg_uint8, char** );
        void monitor(void);
        //void dbg(char []);
 
@@ -44,7 +44,7 @@ const char TitleMsg[] = "\nWeather Station  - Remote Console (2019/20)\n\tBy: Pe
 const char InvalMsg[] = "\nInvalid command!";
 
 struct 	command_d {
-  void  (*cmd_fnct)(int, char**);
+  void  (*cmd_fnct)(cyg_uint8, char**);
   char*	cmd_name;
   char*	cmd_help;
 } const commands[] = {
@@ -80,8 +80,8 @@ struct 	command_d {
 /*-------------------------------------------------------------------------+
 | Function: cmd_sos - provides a rudimentary help
 +--------------------------------------------------------------------------*/ 
-void cmd_sos (int argc, char **argv){
-  int i;
+void cmd_sos (cyg_uint8 argc, char **argv){
+  cyg_uint8 i;
   cyg_mutex_lock(&stdin_mutex);
   printf("%s\n", TitleMsg);
   for (i=0; i<NCOMMANDS; i++)
@@ -92,15 +92,15 @@ void cmd_sos (int argc, char **argv){
 /*-------------------------------------------------------------------------+
 | Function: getline        (called from monitor) 
 +--------------------------------------------------------------------------*/ 
-int my_getline (char** argv, int argvsize){
+cyg_uint8 my_getline (char** argv, cyg_uint8 argvsize){
   static char line[MAX_LINE];
   char *p;
-  int argc;
+  cyg_uint8 argc;
 
   fgets(line, MAX_LINE, stdin); //o que fazer a isto TODO ?? devo proteger ou nao ?
 
   /* Break command line into an o.s. like argument vector,
-     i.e. compliant with the (int argc, char **argv) specification --------*/
+     i.e. compliant with the (cyg_uint8 argc, char **argv) specification --------*/
   for (argc=0,p=line; (*line != '\0') && (argc < argvsize); p=NULL,argc++){
     p = strtok(p, " \t\n");
     argv[argc] = p;
@@ -115,7 +115,7 @@ int my_getline (char** argv, int argvsize){
 +--------------------------------------------------------------------------*/ 
 void monitor (void){
   static char *argv[ARGVECSIZE+1], *p;
-  int argc, i;
+  cyg_uint8 argc, i;
   
 
   cyg_mutex_lock(&stdin_mutex);

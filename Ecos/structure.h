@@ -13,7 +13,7 @@
 #define NREG 20 //TODO: For debugging only
 
 //Request codes
-#define CODE_EXIT -1
+#define CODE_EXIT 100
 #define CODE_RC 1
 #define CODE_SC 2
 #define CODE_RTL 3
@@ -56,8 +56,8 @@
 
 //Request message struct
 typedef struct Request {
-    int cmd;
-    int arg[N_ARGS];
+    cyg_uint8 cmd;
+    cyg_uint8 arg[N_ARGS];
 } request;
 
 //Acknowledge message struct
@@ -67,26 +67,26 @@ typedef struct Acknowledge {
 
 //Register message struct
 typedef struct Buffer {
-    int temperature;
-    int luminosity;
-    int hour;
-    int minute;
-    int second;
+    cyg_uint8 temperature;
+    cyg_uint8 luminosity;
+    cyg_uint8 hour;
+    cyg_uint8 minute;
+    cyg_uint8 second;
 } buffer ;
 
 //Local memory struct
 typedef struct LoGasparcal {
-    int nr;
-    int iread;
-    int iwrite; //head
+    cyg_uint8 nr;
+    cyg_uint8 iread;
+    cyg_uint8 iwrite; //head
     buffer reg[NRBUF];
 } local;
 
 //Pic memory struct
 typedef struct PicMemory{
-    int nr;
-    int iread;
-    int iwrite;
+    cyg_uint8 nr;
+    cyg_uint8 iread;
+    cyg_uint8 iwrite;
     buffer reg[NREG];
 } pic_memory;
 
@@ -96,7 +96,7 @@ typedef struct PicMemory{
 typedef struct alarmStuff_{
     cyg_mutex_t mutex;
     bool issued;
-    int period;
+    cyg_uint8 period;
     cyg_handle_t id;
 } alarmStuff;
 
@@ -114,8 +114,8 @@ bool IsAlarmActive();
 
 bool IsAlarmIssued();
 
-int getAlarmPeriod();
+cyg_uint8 getAlarmPeriod();
 
-void setAlarmPeriod(int period);
+void setAlarmPeriod(cyg_uint8 period);
 */
 #endif

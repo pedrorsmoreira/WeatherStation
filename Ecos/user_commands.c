@@ -66,10 +66,14 @@ void cmd_sair (int argc, char **argv){
 
 void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo 
   if (argc==1){
+//printf("Valid\n");
     init_req(req);
     req->cmd=CODE_RC;
+//printf("Put\n");
     cyg_mbox_put(user_com_channel_H, req); //envia o request
+//printf("After putting\n");
     req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+//printf("After get request\n");
     cyg_mutex_lock(&stdin_mutex);
     printf("clock: %d:%d:%d\n", req_other->arg[0], req_other->arg[1], req_other->arg[2]);
     cyg_mutex_unlock(&stdin_mutex);

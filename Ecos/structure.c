@@ -9,21 +9,21 @@ extern cyg_mutex_t local_mutex;
 
 //functions declaration
 void init_local(void);
-void add_local(int, int, int, int, int);
+void add_local(cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 bool is_full(void);
-bool list_local(int, int);
-void process_local(int [], request *);
+bool list_local(cyg_uint8, cyg_uint8);
+void process_local(cyg_uint8 [], request *);
 void delete_local(void);
 void init_pmem(void);
-void add_pmem(int, int, int, int, int);
+void add_pmem(cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 void init_reg(buffer *);
-void add_reg(buffer *, int, int, int, int, int);
+void add_reg(buffer *, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 void copy_reg(buffer*, buffer*);
 void init_req(request*);
 void init_ack(acknowledge*);
 
 void init_local(void){
-    int i;
+    cyg_uint8 i;
     cyg_mutex_lock(&local_mutex);
     memory.nr=0;
     memory.iread=0;
@@ -52,7 +52,7 @@ void init_local(void){
     add_local(39,2,17,14,52);
 }
 
-void add_local( int temperature, int luminosity, int hour, int minute, int second){
+void add_local( cyg_uint8 temperature, cyg_uint8 luminosity, cyg_uint8 hour, cyg_uint8 minute, cyg_uint8 second){
    cyg_mutex_lock(&local_mutex); 
     if (!is_full())
         memory.nr++;
@@ -66,8 +66,8 @@ bool is_full(void){
     return !(memory.nr == memory.iwrite);
 }
 
-bool list_local(int n, int index){
-    int c, i;
+bool list_local(cyg_uint8 n, cyg_uint8 index){
+    cyg_uint8 c, i;
     cyg_mutex_lock(&local_mutex);
     if(index>=memory.nr){
         cyg_mutex_unlock(&local_mutex);
@@ -93,9 +93,9 @@ void info_local(void){
 }
 
 void delete_local(void){
-    int i;
+    cyg_uint8 i;
     cyg_mutex_lock(&local_mutex);
-    int n = is_full() ? NRBUF : memory.iwrite;
+    cyg_uint8 n = is_full() ? NRBUF : memory.iwrite;
     for(i=0; i<n; i++){
         memory.reg[i].hour=0;
         memory.reg[i].minute=0;
@@ -109,11 +109,11 @@ void delete_local(void){
    cyg_mutex_unlock(&local_mutex); 
 }
 
-void process_local(int argv[], request * req){
-    int c, i, n;
-    int h1=0 , m1=0, s1=0, h2=23, m2=59, s2=59;
-    int max_temperature = 0, min_temperature = 0;
-    int max_luminosity = 0, min_luminosity = 0 ;
+void process_local(cyg_uint8 argv[], request * req){
+    cyg_uint8 c, i, n;
+    cyg_uint8 h1=0 , m1=0, s1=0, h2=23, m2=59, s2=59;
+    cyg_uint8 max_temperature = 0, min_temperature = 0;
+    cyg_uint8 max_luminosity = 0, min_luminosity = 0 ;
     float avg_temperature = 0;
     float avg_luminosity = 0 ;
     bool start;
@@ -170,7 +170,7 @@ void process_local(int argv[], request * req){
 }
 
 void init_pmem(void){
-    int i;
+    cyg_uint8 i;
     pmem.nr=0;
     pmem.iread=0;
     pmem.iwrite=0;
@@ -178,7 +178,7 @@ void init_pmem(void){
         init_reg(&(pmem.reg[i]));
 }
 
-void add_pmem(int temperature, int luminosity, int hour, int minute, int second){
+void add_pmem(cyg_uint8 temperature, cyg_uint8 luminosity, cyg_uint8 hour, cyg_uint8 minute, cyg_uint8 second){
     add_reg(&(pmem.reg[pmem.iwrite]), temperature, luminosity, hour, minute, second);
     pmem.iwrite++;
     if (pmem.iwrite == NREG) pmem.iwrite=0;
@@ -187,7 +187,7 @@ void add_pmem(int temperature, int luminosity, int hour, int minute, int second)
 
 // PARA DEBUG ONLY
 //void list_pmem(void){
-//    int i;
+//    cyg_uint8 i;
 //    printf("nr:%d\n",pmem.nr);
 //    printf("iread:%d\n",pmem.iread);
 //    printf("iwrite:%d\n",pmem.iwrite);
@@ -205,7 +205,7 @@ void init_reg(buffer* buf){
     buf->second = 0;
 }
 
-void add_reg(buffer * buf, int temperature, int luminosity, int hour, int minute, int second){
+void add_reg(buffer * buf, cyg_uint8 temperature, cyg_uint8 luminosity, cyg_uint8 hour, cyg_uint8 minute, cyg_uint8 second){
     buf->temperature = temperature;
     buf->luminosity = luminosity;
     buf->hour = hour;
@@ -225,7 +225,7 @@ void copy_reg(buffer* buf1, buffer* buf2){
 | Function: variable_init - clean das estruturas de request/ack
 +--------------------------------------------------------------------------*/ 
 void init_req(request *r){
-    int i;
+    cyg_uint8 i;
     for (i=0; i<N_ARGS; i++)
         r->arg[i]=0;
     r->cmd=0;
@@ -265,7 +265,7 @@ void alarm_init(void){
 }
 
 void activateAlarm(void){
-    int period;
+    cyg_uint8 period;
     cyg_handle_t id;
 
     if (alarm.period == 0) return;
@@ -310,7 +310,7 @@ bool IsAlarmIssued(void){
     return ret;
 }
 
-int getAlarmPeriod(void){
+cyg_uint8 getAlarmPeriod(void){
     bool ret;
 
     cyg_mutex_lock(&alarm.mutex);
@@ -320,7 +320,7 @@ int getAlarmPeriod(void){
     return ret;
 }
 
-void setAlarmPeriod(int period){
+void setAlarmPeriod(cyg_uint8 period){
     cyg_mutex_lock(&alarm.mutex);
     alarm.period = period;
     cyg_mutex_unlock(&alarm.mutex);

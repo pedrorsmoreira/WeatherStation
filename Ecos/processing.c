@@ -5,16 +5,16 @@ extern cyg_handle_t user_pro_channel_H;
 extern cyg_handle_t pro_user_channel_H;
 extern void init_req(request *);
 extern void init_ack(acknowledge*);
-extern void process_local(int [], request *);
+extern void process_local(cyg_uint8 [], request *);
 
 static request * req_user = NULL;
 static request * req = NULL;
 static acknowledge * ack = NULL;
 
 typedef struct Process{
-    int transference_period;
-    int temperature_threshold;
-    int luminosity_threshold;
+    cyg_uint8 transference_period;
+    cyg_uint8 temperature_threshold;
+    cyg_uint8 luminosity_threshold;
 } process;
 
 static process pro;
@@ -30,7 +30,9 @@ void processing(void){ //TODO: Á medida que as trasnferencias sao feitas, deve 
     init_ack(ack);
     init_req(req);
     while(!exit){
+//printf("Before processing\n"); 
         req_user = (request *) cyg_mbox_get(user_pro_channel_H);
+//printf("After processing\n"); 
         switch(req_user->cmd){
         case CODE_CPT:
             init_req(req);

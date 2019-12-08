@@ -30,7 +30,7 @@ cyg_mutex_t local_mutex;
 cyg_io_handle_t serH;
 
 // functions and variables from other files
-extern void cmd_ini (int, char** );
+extern void cmd_ini (cyg_uint8, char** );
 extern void monitor(void);
 extern void write_pic(void);
 extern void processing(void);
@@ -42,55 +42,52 @@ extern void alarm_init(void);
 
 /* we install our own startup routine which sets up
     threads and starts the scheduler */
-void cyg_user_start(void){
-  int i=0;
-  printf("AAA\n");
+int main(void){
+  cyg_uint8 i=0;
+
   cyg_mbox_create(&user_com_channel_H, &user_com_channel);
   cyg_mbox_create(&com_user_channel_H, &com_user_channel);
   cyg_mbox_create(&pro_user_channel_H, &pro_user_channel);
   cyg_mbox_create(&user_pro_channel_H, &user_pro_channel);
-  printf("BBBBB\n");
+
   cyg_mutex_init(&stdin_mutex);
   cyg_mutex_init(&local_mutex);
-  printf("CCCCC\n");
+
   //alarm set up
   alarm_init();
-  printf("DDDDD\n");
+
+  cmd_ini(0, NULL);
+
   cyg_thread_create(4, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(3, main_write_pic, (cyg_addrword_t) 0, "communicationWrite", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(20, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
   cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
                     (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
-  printf("FFFFFF\n");
-  //cmd_ini(0, NULL);
+
   init_local();
   init_pmem(); //TODO: Delete this
-  printf("GGGGGGGG\n");
+
   for(i = 0; i< NTHREADS; i++)
     cyg_thread_resume(thread[i]);
-  printf("HHHHHHH\n");
-  cyg_thread_exit();
+
+	return 0;
+  //cyg_thread_exit();
 }
 
 void main_write_pic(cyg_addrword_t data){
-  printf("ENTROU write\n");
   write_pic();
 }
 
 void main_processing(cyg_addrword_t data){
-  printf("ENTROU processing\n");
   processing();
 }
 
 void main_monitor(cyg_addrword_t data){
-  printf("ENTROU monitor\n");
-  cmd_ini(0, NULL);
-  printf("1\n");
+//  cmd_ini(0, NULL);
   monitor();
-  printf("2\n");
 }
 
 void main_read_pic(cyg_addrword_t data){
-  printf("ENTROU read\n");
+//  cmd_ini(0, NULL);
   read_pic();
 }
