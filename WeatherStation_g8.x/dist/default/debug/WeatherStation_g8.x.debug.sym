@@ -1185,8 +1185,8 @@ text94 25E0 25E5 CODE 25E0 0
 text103 6 7 CODE 6 0
 text114 25DE 25DF CODE 25DE 0
 %locals
-dist/default/production\WeatherStation_g8.x.production.o
-C:\Users\Sofia\AppData\Local\Temp\sbf4.s
+dist/default/debug\WeatherStation_g8.x.debug.o
+C:\Users\Sofia\AppData\Local\Temp\salo.s
 20395 57 0 CODE 0
 20398 57 0 CODE 0
 20563 57 0 CODE 0
