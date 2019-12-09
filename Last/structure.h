@@ -12,6 +12,10 @@
 #define NRBUF 100
 #define NREG 20 //TODO: For debugging only
 
+//processing threshold initial values
+#define TMP_THR 25
+#define LUM_THR 3
+
 //Request codes
 #define CODE_EXIT 100
 #define CODE_RC 1

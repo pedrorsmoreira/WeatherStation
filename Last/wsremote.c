@@ -28,6 +28,7 @@ cyg_mbox pro_user_channel, user_pro_channel;
 cyg_mutex_t stdin_mutex;
 cyg_mutex_t local_mutex;
 cyg_io_handle_t serH;
+cyg_flag_t ef;
 
 // functions and variables from other files
 extern void cmd_ini (cyg_uint8, char** );
@@ -53,6 +54,8 @@ int main(void){
   cyg_mutex_init(&stdin_mutex);
   cyg_mutex_init(&local_mutex);
 
+  cyg_flag_init(&ef);
+
   //alarm set up
   alarm_init();
 
@@ -73,6 +76,8 @@ int main(void){
 	return 0;
   //cyg_thread_exit();
 }
+
+
 
 void main_write_pic(cyg_addrword_t data){
   write_pic();

@@ -3,9 +3,13 @@
 static local memory;
 pic_memory pmem;
 
+static cyg_uint8 pro_temperature;
+static cyg_uint8 pro_luminosity;
+
 //sync stuff
 extern cyg_mutex_t stdin_mutex;
 extern cyg_mutex_t local_mutex;
+extern cyg_flag_t ef;
 
 //functions declaration
 void init_local(void);
@@ -21,6 +25,13 @@ void add_reg(buffer *, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8, cyg_uint8);
 void copy_reg(buffer*, buffer*);
 void init_req(request*);
 void init_ack(acknowledge*);
+void init_process(void);
+void process(void);
+void process_register(void);
+void setTemperatureThreshold(cyg_uint8);
+void setLuminosityThreshold(cyg_uint8);
+cyg_uint8 getTemperatureThreshold(void);
+cyg_uint8 getLuminosityThreshold(void);
 
 void init_local(void){
     cyg_uint8 i;
@@ -228,6 +239,7 @@ void copy_reg(buffer* buf1, buffer* buf2){
 | Function: variable_init - clean das estruturas de request/ack
 +--------------------------------------------------------------------------*/ 
 void init_req(request *r){
+    r=(request*)malloc(sizeof(request));
     cyg_uint8 i;
     for (i=0; i<N_ARGS; i++)
         r->arg[i]=0;
@@ -239,20 +251,57 @@ void init_ack(acknowledge* ack){
 }
 
 
+/////// processing stuff /////////////////////////
+void init_process(void){
+	pro_temperature=TMP_THR;
+	pro_luminosity=LUM_THR;
+}
 
+void process(void){
+	cyg_mutex_lock(&local_mutex);
+	while(memory.iread != memory.iwrite)
+		process_register();
+	cyg_mutex_unlock(&local_mutex);
+} 
 
+void process_register(void){
+	if (memory.reg[memory.iread].temperature>=pro_temperature){
+		cyg_mutex_lock(&stdin_mutex);
+		printf("Warning - %d:%d:%d - temperature is %d",
+			memory.reg[memory.iread].hour,
+			memory.reg[memory.iread].minute,
+			memory.reg[memory.iread].second,
+			memory.reg[memory.iread].temperature);
+		cyg_mutex_unlock(&stdin_mutex);	
+	} if (memory.reg[memory.iread].luminosity>=pro_luminosity){
+		cyg_mutex_lock(&stdin_mutex);
+		printf("Warning - %d:%d:%d - luminosity is %d",
+			memory.reg[memory.iread].hour,
+			memory.reg[memory.iread].minute,
+			memory.reg[memory.iread].second,
+			memory.reg[memory.iread].luminosity);
+		cyg_mutex_unlock(&stdin_mutex);	
+	}
+	memory.iread=(memory.iread+1)%NRBUF;	
+}
 
-
-
-
+void setTemperatureThreshold(cyg_uint8 thr){pro_temperature=thr;}
+void setLuminosityThreshold(cyg_uint8 thr){pro_luminosity=thr;}
+cyg_uint8 getTemperatureThreshold(void){return pro_temperature;}
+cyg_uint8 getLuminosityTreshold(void){return pro_luminosity;}
 
 /////////////////////alarm///////////////////////////
 
 static alarmStuff alarm;
 
+//event flag
+extern cyg_flag_t ef;
+
 //alarmHandler
 void alarmfn(cyg_handle_t alarmH, cyg_addrword_t data){
-    alarm.issued = true;
+//awake event flag
+    cyg_flag_value_t efv=0x02;
+    cyg_flag_setbits(&ef, efv);
 }
 
 void alarm_init(void){
@@ -324,7 +373,11 @@ cyg_uint8 getAlarmPeriod(void){
 }
 
 void setAlarmPeriod(cyg_uint8 period){
-    cyg_mutex_lock(&alarm.mutex);
-    alarm.period = period;
-    cyg_mutex_unlock(&alarm.mutex);
+	if (period == 0)
+	deactivateAlarm();
+	else{
+	    cyg_mutex_lock(&alarm.mutex);
+	    alarm.period = period;
+	    cyg_mutex_unlock(&alarm.mutex);
+	}
 }

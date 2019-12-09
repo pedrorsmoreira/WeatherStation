@@ -32,7 +32,7 @@ void cmd_ini(int argc, char **argv){
   //printf("lookup err=%x\n", err);
   
   //init das variáveis das perguntas e respostas
-  req=(request*)malloc(sizeof(request));
+  //req=(request*)malloc(sizeof(request));
   ack=(acknowledge*)malloc(sizeof(acknowledge));
   init_req(req);
   init_ack(ack);

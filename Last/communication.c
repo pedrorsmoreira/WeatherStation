@@ -233,7 +233,7 @@ void send_msg(cyg_uint8 cmd, unsigned int size){
     for (pos = 2; pos <= size; ++pos)
         msg[pos] = req_user->arg[pos-2];
 
-  size += 2;
+  size += 2;
 printf("lalala %x\n", msg[1]);
     cyg_io_write(serH, msg, &size);
 //printf("SENT\n");
@@ -286,6 +286,7 @@ void write_pic(void){
         default:
             break;
         }
+        free(req_user);
     }
 }
 
@@ -303,11 +304,13 @@ cyg_uint32 len = 1;
 cyg_uint8 cmd;
 bool toSend;
 request *reply;
+
 //registers transference
-//cyg_uint8 *regs;
 cyg_uint8 n;
 cyg_uint8 i;
 
+//event flag
+extern cyg_flag_t ef;
 
 void send_error(void){
     acknowledge * a = (acknowledge *) malloc (sizeof(acknowledge));
@@ -330,7 +333,8 @@ bool read_command(cyg_uint8 size){
         cyg_io_read(serH, &reply->arg[i_], &len);
 	//printf("read: %d\n", reply->arg[i_]);
     } while (reply->arg[i_++] != CMD_ERROR && i_ < size && reply->arg[i_-1] != EOM);
-int x; 
+
+int x; 
 	for(x = 0; x < i_; x++) //printf("%do é %u\n", x, reply->arg[x]);
     if (reply->arg[i_-1] == EOM){
 	//printf("HERE\n");
@@ -363,13 +367,17 @@ int x;
     }
 
     for (i_ = 0; i_ < 5*n; i_+=5)
-{
+    {
 	
 	//printf("REG: %d - %d - %d - %d - %d\n", regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
         add_local(regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
-}
+    }
     free(regs);
     send_ack();
+
+    //awake event flag
+    cyg_flag_value_t efv=0x01;
+    cyg_flag_setbits(&ef, efv);
 }
 
 void read_pic(void){
@@ -430,12 +438,14 @@ printf("%x\n", cmd);
                 break;
             case TRGC:
                 cyg_io_read(serH, &n, &len);
-                if (n == CMD_ERROR || n == EOM){
+                if (n == CMD_ERROR || n == EOM)
+{
 			//printf("IF\n");
                     send_error();
 			//printf("IF OUT\n");
 		}
-                else {
+                else 
+{
 			//printf("ELSE\n");
                     read_regs(false);
 			//printf("ELSE OUT\n");
@@ -486,7 +496,8 @@ printf("AQUI\n");
                 break;
         }
 
-        if (toSend){
+        if (toSend)
+{
 	toSend = false;
 	//printf("toSend\n");
             cyg_mbox_put(com_user_channel_H, reply);
