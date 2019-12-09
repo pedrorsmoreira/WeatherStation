@@ -34,8 +34,8 @@ void cmd_ini(int argc, char **argv){
   //init das variáveis das perguntas e respostas
   //req=(request*)malloc(sizeof(request));
   ack=(acknowledge*)malloc(sizeof(acknowledge));
-  init_req(req);
-  init_ack(ack);
+  //init_req(req);
+  //init_ack(ack);
 }
 /*-------------------------------------------------------------------------+
 | Function: cmd_sair - termina a aplicacao
@@ -56,8 +56,8 @@ void cmd_sair (int argc, char **argv){
   init_req(req);
   req->cmd=CODE_EXIT;
   cyg_mbox_put(user_com_channel_H, req); //envia request para a outra thread se desligar
-  free(req); //Desliga-se
-  free(ack);
+  //free(req); //Desliga-se
+  //free(ack);
   cyg_mutex_lock(&stdin_mutex);
   printf("Exiting\n.");
   cyg_mutex_unlock(&stdin_mutex);
@@ -77,6 +77,7 @@ void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo
     cyg_mutex_lock(&stdin_mutex);
     printf("clock: %u:%u:%u\n", req_other->arg[0], req_other->arg[1], req_other->arg[2]);
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_sc (int argc, char **argv ){
@@ -100,6 +101,7 @@ void cmd_sc (int argc, char **argv ){
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
+      free(ack_other);
     } else not_valid();
   } else not_valid();
 }
@@ -112,6 +114,7 @@ void cmd_rtl (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature: %d\nLuminosity: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_rp (int argc, char **argv ){
@@ -123,6 +126,7 @@ void cmd_rp (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("PMON: %d\nTALA: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_mmp (int argc, char **argv ){
@@ -136,6 +140,7 @@ void cmd_mmp (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the monitoring period": "Monitoring period changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_mta (int argc, char **argv ){
@@ -149,6 +154,7 @@ void cmd_mta (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the time alarm": "Time alarm changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(ack_other);
   } else not_valid();
 }
 
@@ -162,6 +168,7 @@ void cmd_ra (int argc, char **argv ){
     printf("Temperature Alarm: %d\nLuminosity Alarm: %d\nActive? %s\n", 
       req_other->arg[0], req_other->arg[1],  req_other->arg[2]? "yes":"no" );
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_dtl (int argc, char **argv ){
@@ -184,6 +191,7 @@ void cmd_dtl (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the parameters" : "Alarms changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(ack_other);
   } else not_valid();
 }
 void cmd_aa (int argc, char **argv ){
@@ -197,6 +205,7 @@ void cmd_aa (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the alarm state": "Alarm state changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(ack_other);
   } else not_valid();
 }
 void cmd_ir (int argc, char **argv ){
@@ -208,6 +217,7 @@ void cmd_ir (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("NREG: %d\nnr: %d\niread: %d\niwrite: %d\n", req_other->arg[0], req_other->arg[1], req_other->arg[2], req_other->arg[3]);
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_trc (int argc, char **argv ){
@@ -222,6 +232,7 @@ printf("HEY\n");
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
+      free(ack_other);
 	return;
     cyg_mutex_lock(&stdin_mutex);
     printf("Registers:\n");
@@ -258,6 +269,7 @@ void cmd_tri (int argc, char **argv ){
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
+      free(ack_other);
 	return;
     //printf("n: %d, i: %d", req->arg[0], req->arg[1]);
     printf("Registers:\n");
@@ -309,6 +321,7 @@ void cmd_cpt (int argc, char **argv ){
       cyg_mutex_lock(&stdin_mutex);
       printf("Transference Period: %d min", req_other->arg[0]);
       cyg_mutex_unlock(&stdin_mutex);
+      
    } else not_valid();
 }
 void cmd_mpt (int argc, char **argv ){
@@ -322,6 +335,7 @@ void cmd_mpt (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the transference period": "Transference period changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(ack_other);
   } else not_valid();
 }
 void cmd_cttl (int argc, char **argv ){
@@ -333,6 +347,7 @@ void cmd_cttl (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature threshold: %d\nLuminosity threshold: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
+    free(req_other);
   } else not_valid();
 }
 void cmd_dttl (int argc, char **argv ){
@@ -348,6 +363,7 @@ void cmd_dttl (int argc, char **argv ){
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the thresholds": "Thresholds changed");
     cyg_mutex_unlock(&stdin_mutex);
+    free(ack_other);
   } else not_valid();
 }
 
@@ -399,6 +415,7 @@ void cmd_pr (int argc, char **argv ){
             req_other->arg[0], req_other->arg[1], req_other->arg[2], req_other->arg[3], req_other->arg[4], req_other->arg[5]);
       cyg_mutex_unlock(&stdin_mutex);
     }
+    free(req_other);
   } else not_valid();
 }
 

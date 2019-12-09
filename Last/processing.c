@@ -30,11 +30,11 @@ void processing(void);
 void processing(void){
     bool exit=false;
     cyg_flag_value_t efv, aux;
-    req = (request *)malloc(sizeof(request));
-    ack = (acknowledge*)malloc(sizeof(acknowledge));
+    //req = (request *)malloc(sizeof(request));
+    //ack = (acknowledge*)malloc(sizeof(acknowledge));
     init_process();
-    init_ack(ack);
-    init_req(req);
+    //init_ack(ack);
+    //init_req(req);
     while(!exit){
         efv = cyg_flag_wait(&ef, 0x07 ,CYG_FLAG_WAITMODE_OR); //devolve o bit ativos no momento
         if ( efv & (aux=0x01)){
@@ -50,6 +50,7 @@ void processing(void){
             cyg_mbox_put(user_com_channel_H, req);
             ack = cyg_mbox_get(com_user_channel_H);
             if (ack->error) exit=true;
+            free(ack);
         } else {//efv & 0x04 
             // user
             aux=0x04;
@@ -88,9 +89,10 @@ void processing(void){
                 exit=true;
                 break;
             }
+            free(req_user);
         }
-        free(req);
-        free(ack);
+        //free(req);
+        //free(ack);
         cyg_thread_exit();
     }
 }
