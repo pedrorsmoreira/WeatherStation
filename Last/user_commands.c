@@ -75,7 +75,7 @@ void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo
     req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
 //printf("After get request\n");
     cyg_mutex_lock(&stdin_mutex);
-    printf("clock: %d:%d:%d\n", req_other->arg[0], req_other->arg[1], req_other->arg[2]);
+    printf("clock: %u:%u:%u\n", req_other->arg[0], req_other->arg[1], req_other->arg[2]);
     cyg_mutex_unlock(&stdin_mutex);
   } else not_valid();
 }
@@ -217,7 +217,13 @@ void cmd_trc (int argc, char **argv ){
     req->cmd=CODE_TRC;
     req->arg[0]=aux; //por o numero de registos nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
-    /*cyg_mutex_lock(&stdin_mutex);
+printf("HEY\n");
+      ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+      cyg_mutex_lock(&stdin_mutex);
+      printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
+      cyg_mutex_unlock(&stdin_mutex);
+	return;
+    cyg_mutex_lock(&stdin_mutex);
     printf("Registers:\n");
     cyg_mutex_unlock(&stdin_mutex);
     ack->error=false;
@@ -248,6 +254,11 @@ void cmd_tri (int argc, char **argv ){
     req->arg[0]=aux[0]; //por o numero de registos nos argumentos
     req->arg[1]=aux[1]; //por o indice do primeiro registo nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
+      ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+      cyg_mutex_lock(&stdin_mutex);
+      printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
+      cyg_mutex_unlock(&stdin_mutex);
+	return;
     //printf("n: %d, i: %d", req->arg[0], req->arg[1]);
     printf("Registers:\n");
     ack->error=false;

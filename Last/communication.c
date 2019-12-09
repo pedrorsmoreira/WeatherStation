@@ -233,8 +233,8 @@ void send_msg(cyg_uint8 cmd, unsigned int size){
     for (pos = 2; pos <= size; ++pos)
         msg[pos] = req_user->arg[pos-2];
 
-  size += 2;
-
+  size += 2;
+printf("lalala %x\n", msg[1]);
     cyg_io_write(serH, msg, &size);
 //printf("SENT\n");
 }
@@ -304,7 +304,7 @@ cyg_uint8 cmd;
 bool toSend;
 request *reply;
 //registers transference
-cyg_uint8 *regs;
+//cyg_uint8 *regs;
 cyg_uint8 n;
 cyg_uint8 i;
 
@@ -330,8 +330,10 @@ bool read_command(cyg_uint8 size){
         cyg_io_read(serH, &reply->arg[i_], &len);
 	//printf("read: %d\n", reply->arg[i_]);
     } while (reply->arg[i_++] != CMD_ERROR && i_ < size && reply->arg[i_-1] != EOM);
-
+int x; 
+	for(x = 0; x < i_; x++) //printf("%do é %u\n", x, reply->arg[x]);
     if (reply->arg[i_-1] == EOM){
+	//printf("HERE\n");
         reply->cmd = cmd;
         return true;
     }
@@ -342,38 +344,47 @@ bool read_command(cyg_uint8 size){
 }
 
 void read_regs(bool indexed){
-    regs = (cyg_uint8 *) malloc((5*n + 1) * sizeof(cyg_uint8));
+    cyg_uint8 * regs = (cyg_uint8 *) malloc((5*n + 1) * sizeof(cyg_uint8));
     cyg_uint8 i_ = 0;
     cyg_uint8 j = 5;
 
+printf("Before xxx\n");
     for (i_ = 0; i_ < n && j > 0; ++i_)
         for(j = 0; j < 5; ++j)
-            cyg_io_read(serH, &regs[i_+j], &len);
-    
-    cyg_io_read(serH, &regs[i_+j], &len);
-    if (regs[i_+j] != EOM){
+            cyg_io_read(serH, &regs[i_*5+j], &len);
+    printf("After xxx\n");
+int x;
+	for(x = 0; x < n * 5; x++) printf("FOR %u\n", regs[x]);
+	
+    cyg_io_read(serH, &regs[i_*5+j], &len);
+    if (regs[i_*5+j] != EOM){
         send_error();
         return;
     }
 
     for (i_ = 0; i_ < 5*n; i_+=5)
+{
+	
+	//printf("REG: %d - %d - %d - %d - %d\n", regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
         add_local(regs[i_], regs[i_+1], regs[i_+2], regs[i_+3], regs[i_+4]);
-
+}
     free(regs);
     send_ack();
 }
 
 void read_pic(void){
     cyg_uint8 start;
+//printf("ENTERING\n");
     while (1){
 //printf("read_pic while\n");
         do {
 //printf("before read_pic cyg_io_read\n");
             cyg_io_read(serH, &start, &len);
-//printf("after read_pic cyg_io_read %x\n", start);
+printf("after read_pic cyg_io_read %x\n", start);
         } while (start != SOM);
 
         cyg_io_read(serH, &cmd, &len);         
+printf("%x\n", cmd);
 
         switch(cmd){
             case RCLK:
@@ -419,20 +430,31 @@ void read_pic(void){
                 break;
             case TRGC:
                 cyg_io_read(serH, &n, &len);
-                if (n == CMD_ERROR || n == EOM){
+                if (n == CMD_ERROR || n == EOM){
+			//printf("IF\n");
                     send_error();
-                }else {}
+			//printf("IF OUT\n");
+		}
+                else {
+			//printf("ELSE\n");
                     read_regs(false);
+			//printf("ELSE OUT\n");
+		}
                 toSend = false;
                 break;
             case TRGI:
+printf("AQUI\n");
                 cyg_io_read(serH, &n, &len);
                 if (n == CMD_ERROR || n == EOM)
                     send_error();
                 else 
                     cyg_io_read(serH, &i, &len);
                 if (i == CMD_ERROR ||i == EOM)
+		{
+	printf("Error\n");
                     send_error();
+			break;
+		}
                 else
                     read_regs(true);
                 toSend = false;
@@ -441,10 +463,10 @@ void read_pic(void){
                 if (read_command(7)){
                     cyg_mutex_lock(&stdin_mutex);
                     printf("\nNMFL received:\n N = %d, nr = %d, ri = %d, wi = %d\n\nCmd>", 
-                            reply->arg[1], reply->arg[2], reply->arg[3], reply->arg[4]);
+                            reply->arg[0], reply->arg[1], reply->arg[2], reply->arg[3]);
                     cyg_mutex_unlock(&stdin_mutex);
                     
-                    if ( (reply->arg[4] - reply->arg[3]) == reply->arg[1] ){
+                    if ( (reply->arg[3] - reply->arg[2]) == reply->arg[0] ){
                         cyg_mutex_lock(&stdin_mutex);
                         printf("\nwarning: memory full!\n\nCmd>");
                         cyg_mutex_unlock(&stdin_mutex);
@@ -464,11 +486,10 @@ void read_pic(void){
                 break;
         }
 
-        if (toSend)
-{
+        if (toSend){
 	toSend = false;
 	//printf("toSend\n");
-            cyg_mbox_put(com_user_channel_H, &reply);
+            cyg_mbox_put(com_user_channel_H, reply);
 	//printf("toSend sent\n");
 	}
     }
