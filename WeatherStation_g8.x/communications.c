@@ -29,6 +29,7 @@ void read_msgs() {
     int i = 0;
 
     do {
+        if(!EUSART_is_rx_ready()) break;
         cmd = EUSART_Read();
        // putch(cmd);
     } while (cmd != SOM && EUSART_is_rx_ready());
@@ -93,31 +94,31 @@ void read_clock() {
     INTERRUPT_PeripheralInterruptDisable();
     uint8_t hours = clkh, minutes = clkm, seconds = clks; // avoid conflicts in interrupt
     INTERRUPT_PeripheralInterruptEnable();
-    char msg[] = {RCLK, hours, minutes, seconds, '\0'};
-    send_msg(msg);
+    char msg[] = {RCLK, hours, minutes, seconds};
+    send_msg(msg, 4);
 }
 
-void set_clock(char * data) {
-    uint8_t hours, minutes, seconds;
-    if(!data || strlen(data) != 3 || (hours = data[0] > 23) || (minutes = data[1] > 59) || (seconds = data[2] > 59)) {
+void set_clock(char * data) {    
+    if(!data || strlen(data) != 3 || data[0] > 23 || data[1] > 59 || data[2] > 59) {
         send_confirmation(SCLK, CMD_ERROR);
         return;
     }
     INTERRUPT_PeripheralInterruptDisable();
-    clkh = hours; clkm = minutes; clks = seconds; // avoid conflicts in interrupt
-    INTERRUPT_PeripheralInterruptEnable();
+    clkh = data[0]; clkm = data[1]; clks = data[2]; // avoid conflicts in interrupt
     update_clk();
+    INTERRUPT_PeripheralInterruptEnable();
+    NOP();
     send_confirmation(SCLK, CMD_OK);
 }
 
 void read_temp_lum() {
-    char msg[] = {RTL, temp, illum, '\0'};
-    send_msg(msg);
+    char msg[] = {RTL, temp, illum};
+    send_msg(msg, 3);
 }
 
 void read_param() {
-    char msg[] = {RPAR, pmon, tala, '\0'};
-    send_msg(msg);
+    char msg[] = {RPAR, pmon, tala};
+    send_msg(msg, 3);
 }
 
 void modify_pmon(char * data) {
@@ -141,8 +142,8 @@ void modify_time_alarm(char * data) {
 }
 
 void read_alarms() {
-    char msg[] = {RALA, alat, alal, alaf, '\0'};
-    send_msg(msg);
+    char msg[] = {RALA, alat, alal, alaf};
+    send_msg(msg, 4);
 }
 
 void define_alarm(char * data) {
@@ -168,45 +169,52 @@ void switch_alarm(char * data) {
 void registers_info() {
     uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi, ri = iread;
     // TODO: change ri & ask about wi
-    char msg[] = {IREG, N, nr, ri, wi, '\0'};
-    send_msg(msg);
+    char msg[] = {IREG, N, nr, ri, wi};
+    send_msg(msg, 5);
 }
 
 void transfer_n_registers(char * data) {
     uint8_t nr = ring_buffer_laped() ? read_nreg() : read_iwrt(), ri = iread, n;
-    if(!data || strlen(data) != 1 || (n = data[0]) > nr) {
+    if(!data || strlen(data) != 1 || data[0] > nr) {
         send_confirmation(TRGC, CMD_ERROR);
         return;
     }
-    if(!transfer_registers(n, iread))
-        send_confirmation(TRGC, CMD_ERROR);
-    else putch(EOM);;
+    putch(SOM);
+    putch(TRGC);
+    if(!transfer_registers(data[0], iread, -1))
+        putch(CMD_ERROR);
+    else putch(EOM);
 }
 
 void transfer_registers_i(char * data) {
     uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi, ri = iread, n, i;
-    bool sanity = true;
+    int aux;
     // TODO: same
-    if(!data || strlen(data) != 2 || (n = data[0]) > nr || (i = data[1]) > nr - 1) {
+    if(data[0] > nr ||  data[1] > nr - 1) {
         send_confirmation(TRGI, CMD_ERROR);
         return;
     }
+    n = data[0];
+    i = data[1];
+    aux = i;
 
     i = (i + wi) % nr; // certo
-
-    if(!transfer_registers(n, i))
+    putch(SOM);
+    putch(TRGI);
+    if(!transfer_registers(n, i, aux))
         send_confirmation(TRGI, CMD_ERROR);
     else putch(EOM);
 
  }
 
-bool transfer_registers(uint8_t n, uint8_t i) {
+bool transfer_registers(uint8_t n, uint8_t i, int aux) {
     uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi;
 
     if(i < wi) {
         if(i + n - 1 >= wi) return false;
-    } else if(i + n > N && i + n - 1 - N > wi) return false;
-
+    } else if(i + n > nr && i + n - 1 - nr > wi) return false;
+    putch(n);
+    if(aux != -1) putch((uint8_t) aux);
     for(int c = 0; c < n; i = (i + 1) % nr, ++c){
         send_register(i);
         if(i == iread) iread = (iread + 1) % N;
@@ -216,20 +224,20 @@ bool transfer_registers(uint8_t n, uint8_t i) {
 
 void notification_memory() {
     uint8_t N = read_nreg(), wi = read_iwrt(), nr = ring_buffer_laped() ? N : wi, ri = iread;
-    char msg[] = {NMFL, N, nr, ri, wi, '\0'};
-    send_msg(msg);
+    char msg[] = {NMFL, N, nr, ri, wi};
+    send_msg(msg, 5);
 }
 
 void send_confirmation(uint8_t cmd, uint8_t error) {
-    char msg[] = {cmd, error, '\0'};
-    send_msg(msg);
+    char msg[] = {cmd, error};
+    send_msg(msg, 2);
 }
 
-void send_msg(char * msg) {
-    EUSART_Write(SOM);
-    for(int i = 0; i < strlen(msg); ++i) EUSART_Write(msg[i]);
+void send_msg(char * msg, uint8_t size) {
+    putch(SOM);
+    for(int i = 0; i < size; ++i) putch(msg[i]);
     //printf(msg);
-    EUSART_Write(EOM);
+    putch(EOM);
     NOP();
 }
 
@@ -240,6 +248,7 @@ void send_register(uint8_t i) {
 
 void countMsg() {
     EUSART_Receive_ISR();
+    NOP();
     if(EUSART_LastByte() == EOM) {
         msgs++;
         NOP();

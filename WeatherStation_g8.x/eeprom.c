@@ -169,5 +169,5 @@ void write_alaf(uint8_t x) {
 
 uint8_t not_transferred() {
     uint8_t unread = read_iwrt() - iread;
-    return unread > 0 ? unread : read_nreg() + unread;
+    return unread >= 0 ? unread : read_nreg() + unread;
 }
