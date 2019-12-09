@@ -288,7 +288,7 @@ void process_register(void){
 void setTemperatureThreshold(cyg_uint8 thr){pro_temperature=thr;}
 void setLuminosityThreshold(cyg_uint8 thr){pro_luminosity=thr;}
 cyg_uint8 getTemperatureThreshold(void){return pro_temperature;}
-cyg_uint8 getLuminosityTreshold(void){return pro_luminosity;}
+cyg_uint8 getLuminosityThreshold(void){return pro_luminosity;}
 
 /////////////////////alarm///////////////////////////
 
