@@ -247,7 +247,7 @@ void init_req(request *r){
 }
 
 void init_ack(acknowledge* ack){
-    r=(acknowledge*)malloc(sizeof(acknowledge));
+    ack=(acknowledge*)malloc(sizeof(acknowledge));
     ack->error=false;
 }
 

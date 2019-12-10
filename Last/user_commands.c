@@ -15,7 +15,7 @@ static request *req = NULL;
 static request *req_other = NULL;
 static acknowledge *ack_other = NULL;
 static acknowledge *ack = NULL;
-static buffer *reg_other = NULL;
+//static buffer *reg_other = NULL;
 
 extern void init_req(request*);
 extern void init_ack(acknowledge*);
@@ -233,7 +233,7 @@ void cmd_ir (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_IR;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (req_other == NULL)
       return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
@@ -243,7 +243,7 @@ void cmd_ir (int argc, char **argv ){
   } else not_valid();
 }
 void cmd_trc (int argc, char **argv ){
-  int aux, i=1;
+  int aux;
   if (argc ==2 && sscanf(argv[1], "%d", &(aux)) == 1 && aux>0 && aux<11){ //n max is 10 (enunciado)
     init_req(req);
     req->cmd=CODE_TRC;
@@ -283,7 +283,7 @@ printf("HEY\n");
   } else not_valid();
 }
 void cmd_tri (int argc, char **argv ){
-  int aux[2], i=0;
+  int aux[2];
   if (argc ==3 && sscanf(argv[1], "%d", &(aux[0])) == 1 && aux[0]>0 && aux[0]<11
                && sscanf(argv[2], "%d", &(aux[1])) == 1 && aux[1]>=0 && aux[1]<NREG){ //n max is 10 (enunciado) e i max é NREG
     init_req(req);
