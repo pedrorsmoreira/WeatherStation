@@ -74,7 +74,7 @@ void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo
 //printf("Put\n");
     cyg_mbox_put(user_com_channel_H, req); //envia o request
 //printf("After putting\n");
-    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (req_other == NULL)
       return; //recebe a resposta
 //printf("After get request\n");
@@ -101,7 +101,7 @@ void cmd_sc (int argc, char **argv ){
       req->cmd=CODE_SC;
       for (i=0; i<3; i++) req->arg[i]=aux[i]; //put the time in the arguments
       cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
       if (ack_other == NULL)
         return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
@@ -116,7 +116,7 @@ void cmd_rtl (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RTL;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (req_other == NULL)
       return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
@@ -130,7 +130,7 @@ void cmd_rp (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RP;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (req_other == NULL)
       return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
@@ -146,7 +146,7 @@ void cmd_mmp (int argc, char **argv ){
     req->cmd=CODE_MMP;
     req->arg[0]=aux; //put the period in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (ack_other == NULL)
       return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
@@ -162,7 +162,7 @@ void cmd_mta (int argc, char **argv ){
     req->cmd=CODE_MTA;
     req->arg[0]=aux; //put the time alarm in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (ack_other == NULL)
       return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
@@ -177,7 +177,7 @@ void cmd_ra (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RA;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (req_other == NULL)
       return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
@@ -203,7 +203,7 @@ void cmd_dtl (int argc, char **argv ){
     req->cmd=CODE_DTL;
     for (i=0; i<2; i++) req->arg[i]=aux[i]; //put the alarms in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (ack_other == NULL)
       return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
@@ -219,7 +219,7 @@ void cmd_aa (int argc, char **argv ){
     req->cmd=CODE_AA;
     req->arg[0]=aux; //put the alarm state in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
     if (ack_other == NULL)
       return; // obter o ok
     cyg_mutex_lock(&stdin_mutex);
@@ -250,7 +250,7 @@ void cmd_trc (int argc, char **argv ){
     req->arg[0]=aux; //por o numero de registos nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
 printf("HEY\n");
-      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
       if (ack_other == NULL)
         return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
@@ -263,7 +263,7 @@ printf("HEY\n");
     cyg_mutex_unlock(&stdin_mutex);
     ack->error=false;
     while (1){
-      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
       if (req == NULL)
           return;
       if(reg_other->hour!=-1){
@@ -291,7 +291,7 @@ void cmd_tri (int argc, char **argv ){
     req->arg[0]=aux[0]; //por o numero de registos nos argumentos
     req->arg[1]=aux[1]; //por o indice do primeiro registo nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
-      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
       if (ack_other == NULL)
         return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
@@ -303,7 +303,7 @@ void cmd_tri (int argc, char **argv ){
     printf("Registers:\n");
     ack->error=false;
     while (1){
-      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_current_time() + 500);
       if ( == NULL)
           return;
       if (reg_other->hour!=-1){
