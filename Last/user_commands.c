@@ -7,7 +7,9 @@ extern cyg_handle_t pro_user_channel_H;
 extern cyg_handle_t user_pro_channel_H;
 extern cyg_mutex_t stdin_mutex;
 extern cyg_io_handle_t serH;
+extern cyg_flag_t ef;
 
+static cyg_flag_value_t efv=0x04;
 static Cyg_ErrNo err;
 static request *req = NULL;
 static request *req_other = NULL;
@@ -72,7 +74,9 @@ void cmd_rc ( int argc, char **argv) { //TODO: Por unidades nisto tudo
 //printf("Put\n");
     cyg_mbox_put(user_com_channel_H, req); //envia o request
 //printf("After putting\n");
-    req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (req_other == NULL)
+      return; //recebe a resposta
 //printf("After get request\n");
     cyg_mutex_lock(&stdin_mutex);
     printf("clock: %u:%u:%u\n", req_other->arg[0], req_other->arg[1], req_other->arg[2]);
@@ -97,7 +101,9 @@ void cmd_sc (int argc, char **argv ){
       req->cmd=CODE_SC;
       for (i=0; i<3; i++) req->arg[i]=aux[i]; //put the time in the arguments
       cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-      ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      if (ack_other == NULL)
+        return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
@@ -110,7 +116,9 @@ void cmd_rtl (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RTL;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (req_other == NULL)
+      return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature: %d\nLuminosity: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
@@ -122,7 +130,9 @@ void cmd_rp (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RP;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (req_other == NULL)
+      return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
     printf("PMON: %d\nTALA: %d\n", req_other->arg[0], req_other->arg[1]);
     cyg_mutex_unlock(&stdin_mutex);
@@ -136,7 +146,9 @@ void cmd_mmp (int argc, char **argv ){
     req->cmd=CODE_MMP;
     req->arg[0]=aux; //put the period in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (ack_other == NULL)
+      return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the monitoring period": "Monitoring period changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -150,7 +162,9 @@ void cmd_mta (int argc, char **argv ){
     req->cmd=CODE_MTA;
     req->arg[0]=aux; //put the time alarm in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (ack_other == NULL)
+      return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the time alarm": "Time alarm changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -163,7 +177,9 @@ void cmd_ra (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_RA;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (req_other == NULL)
+      return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature Alarm: %d\nLuminosity Alarm: %d\nActive? %s\n", 
       req_other->arg[0], req_other->arg[1],  req_other->arg[2]? "yes":"no" );
@@ -187,7 +203,9 @@ void cmd_dtl (int argc, char **argv ){
     req->cmd=CODE_DTL;
     for (i=0; i<2; i++) req->arg[i]=aux[i]; //put the alarms in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (ack_other == NULL)
+      return; // obter o ok 
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the parameters" : "Alarms changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -201,7 +219,9 @@ void cmd_aa (int argc, char **argv ){
     req->cmd=CODE_AA;
     req->arg[0]=aux; //put the alarm state in the arguments
     cyg_mbox_put(user_com_channel_H, req); //enviar o comando
-    ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok
+    ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (ack_other == NULL)
+      return; // obter o ok
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error? "Not possible to change the alarm state": "Alarm state changed");
     cyg_mutex_unlock(&stdin_mutex);
@@ -213,7 +233,9 @@ void cmd_ir (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_IR;
     cyg_mbox_put(user_com_channel_H, req); //envia o request
-    req_other = (request *) cyg_mbox_get(com_user_channel_H); //recebe a resposta
+    req_other = (request *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+    if (req_other == NULL)
+      return; //recebe a resposta
     cyg_mutex_lock(&stdin_mutex);
     printf("NREG: %d\nnr: %d\niread: %d\niwrite: %d\n", req_other->arg[0], req_other->arg[1], req_other->arg[2], req_other->arg[3]);
     cyg_mutex_unlock(&stdin_mutex);
@@ -228,18 +250,22 @@ void cmd_trc (int argc, char **argv ){
     req->arg[0]=aux; //por o numero de registos nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
 printf("HEY\n");
-      ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      if (ack_other == NULL)
+        return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
       free(ack_other);
 	return;
-    cyg_mutex_lock(&stdin_mutex);
+   /* cyg_mutex_lock(&stdin_mutex);
     printf("Registers:\n");
     cyg_mutex_unlock(&stdin_mutex);
     ack->error=false;
     while (1){
-      reg_other = (buffer *) cyg_mbox_get(com_user_channel_H);
+      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      if (req == NULL)
+          return;
       if(reg_other->hour!=-1){
       cyg_mutex_lock(&stdin_mutex);
       printf("%d - [%d:%d:%d] t=%d, l=%d\n", 
@@ -253,7 +279,7 @@ printf("HEY\n");
       cyg_mutex_lock(&stdin_mutex);
       printf("No registers to show.\n");
       cyg_mutex_unlock(&stdin_mutex);
-    }
+    }*/
   } else not_valid();
 }
 void cmd_tri (int argc, char **argv ){
@@ -265,17 +291,21 @@ void cmd_tri (int argc, char **argv ){
     req->arg[0]=aux[0]; //por o numero de registos nos argumentos
     req->arg[1]=aux[1]; //por o indice do primeiro registo nos argumentos
     cyg_mbox_put(user_com_channel_H, req);
-      ack_other = (acknowledge *) cyg_mbox_get(com_user_channel_H); // obter o ok 
+      ack_other = (acknowledge *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      if (ack_other == NULL)
+        return; // obter o ok 
       cyg_mutex_lock(&stdin_mutex);
       printf("%s.\n", ack_other->error ? "Not possible to change the clock" : "Clock changed");
       cyg_mutex_unlock(&stdin_mutex);
       free(ack_other);
 	return;
-    //printf("n: %d, i: %d", req->arg[0], req->arg[1]);
+    /*//printf("n: %d, i: %d", req->arg[0], req->arg[1]);
     printf("Registers:\n");
     ack->error=false;
     while (1){
-      reg_other = (buffer *) cyg_mbox_get(com_user_channel_H);
+      reg_other = (buffer *) cyg_mbox_timed_get(com_user_channel_H, cyg_get_current_time() + 500);
+      if ( == NULL)
+          return;
       if (reg_other->hour!=-1){
         cyg_mutex_lock(&stdin_mutex);
         printf("%d - [%d:%d:%d] t=%d, l=%d\n", 
@@ -285,7 +315,7 @@ void cmd_tri (int argc, char **argv ){
         i++;
       } else break;
     }
-    if (i==0) not_valid();
+    if (i==0) not_valid();*/
   } else not_valid();
 }
 
@@ -317,6 +347,10 @@ void cmd_cpt (int argc, char **argv ){
       init_req(req);
       req->cmd=CODE_CPT;
       cyg_mbox_put(user_pro_channel_H, req);
+
+      //awake event flag
+      cyg_flag_setbits(&ef, efv);
+
       req_other = (request *) cyg_mbox_get(pro_user_channel_H);
       cyg_mutex_lock(&stdin_mutex);
       printf("Transference Period: %d min", req_other->arg[0]);
@@ -331,6 +365,10 @@ void cmd_mpt (int argc, char **argv ){
     req->cmd=CODE_MPT;
     req->arg[0]=aux;
     cyg_mbox_put(user_pro_channel_H, req);
+
+      //awake event flag
+      cyg_flag_setbits(&ef, efv);
+
     ack_other = (acknowledge *) cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the transference period": "Transference period changed");
@@ -343,6 +381,10 @@ void cmd_cttl (int argc, char **argv ){
     init_req(req);
     req->cmd=CODE_CTTL;
     cyg_mbox_put(user_pro_channel_H, req);
+
+      //awake event flag
+      cyg_flag_setbits(&ef, efv);
+
     req_other = (request *)cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("Temperature threshold: %d\nLuminosity threshold: %d\n", req_other->arg[0], req_other->arg[1]);
@@ -359,6 +401,10 @@ void cmd_dttl (int argc, char **argv ){
     req->arg[0]=aux[0];
     req->arg[1]=aux[1];
     cyg_mbox_put(user_pro_channel_H, req);
+
+      //awake event flag
+      cyg_flag_setbits(&ef, efv);
+
     ack_other = (acknowledge*) cyg_mbox_get(pro_user_channel_H);
     cyg_mutex_lock(&stdin_mutex);
     printf("%s.\n", ack_other->error ? "Not possible to change the thresholds": "Thresholds changed");
@@ -400,6 +446,10 @@ void cmd_pr (int argc, char **argv ){
       }
     }
     cyg_mbox_put(user_pro_channel_H, req);
+
+      //awake event flag
+      cyg_flag_setbits(&ef, efv);
+
     req_other = (request*) cyg_mbox_get(pro_user_channel_H);
     if (req_other->arg[0] == -1){
       cyg_mutex_lock(&stdin_mutex);
