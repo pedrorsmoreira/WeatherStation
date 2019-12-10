@@ -51,7 +51,7 @@ void processing(void){
             ack = cyg_mbox_get(com_user_channel_H);
             if (ack->error) exit=true;
             free(ack);
-        } else {//efv & 0x04 
+        } if (efv &(aux=0x04)) {//efv & 0x04 
             // user
             aux=0x04;
             cyg_flag_maskbits(&ef, aux);
