@@ -88,21 +88,24 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     uint16_t ring_pos = 5*ring_pos_ + RBUF_;
     
     uint16_t checking_aux;
+    bool flag = true;
 
     if (ring_pos_ != 0)
         checking_aux = ring_pos;
     else if (ring_buffer_laped())
-        checking_aux = DATAEE_ReadByte(NREG_)*5;
+        checking_aux = DATAEE_ReadByte(NREG_)*5 + RBUF_;
+    else
+        flag = false;
 
     //none of the values changed, exit without writing
-    if (T == DATAEE_ReadByte(checking_aux - 2) && L == DATAEE_ReadByte(checking_aux - 1)) 
+    if (flag && (T == DATAEE_ReadByte(checking_aux - 2) && L == DATAEE_ReadByte(checking_aux - 1)))
         return false;
 
     //check if the writing position reached the end of the ring buffer
-    if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_)*5 - 5) ){
-        ring_pos = RBUF_;
-        DATAEE_WriteByte(USED_, 0x55);
-    }
+    // if (ring_pos > (RBUF_ + DATAEE_ReadByte(NREG_)*5 - 5) ){
+    //     ring_pos = RBUF_;
+    //     DATAEE_WriteByte(USED_, 0x55);
+    // }
     DATAEE_WriteByte(ring_pos  , h);
     DATAEE_WriteByte(ring_pos+1, m);
     DATAEE_WriteByte(ring_pos+2, s);
@@ -118,15 +121,16 @@ bool ring_buffer_write(uint8_t h, uint8_t m, uint8_t s, uint8_t T, uint8_t L){
     if (ring_pos_ + 1 > (DATAEE_ReadByte(NREG_) - 1) ){
         DATAEE_WriteByte(WBUF_, 0);
         DATAEE_WriteByte(USED_, 0x55);
+        #ifdef CHECKSUM
+        DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) - ring_pos);
+        #endif
     }
     else {
         DATAEE_WriteByte(WBUF_, ring_pos_ + 1);
+        #ifdef CHECKSUM
+        DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + ring_pos_ + 1 - ring_pos);
+        #endif
     }
-    
-    #ifdef CHECKSUM
-    DATAEE_WriteByte(CHECK_, DATAEE_ReadByte(CHECK_) + ring_pos_ - ring_pos);
-    #endif
-    
     return get_not_transferred() >= read_nreg()/2;
 }
 

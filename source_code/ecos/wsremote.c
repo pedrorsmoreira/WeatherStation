@@ -62,8 +62,7 @@ int main(void){
   cyg_thread_create(3, main_processing, (cyg_addrword_t) 0, "processing", (void *) stack[0], STACKSIZE, &thread[0], &thread_obj[0]);
   cyg_thread_create(4, main_write_pic, (cyg_addrword_t) 0, "communicationWrite", (void *) stack[1], STACKSIZE, &thread[1], &thread_obj[1]);
   cyg_thread_create(5, main_monitor, (cyg_addrword_t) 0, "user", (void *) stack[2], STACKSIZE, &thread[2], &thread_obj[2]);
-  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead",
-                    (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
+  cyg_thread_create(2, main_read_pic, (cyg_addrword_t) 0, "communicationRead", (void *) stack[3], STACKSIZE, &thread[3], &thread_obj[3]);
 
   //set up of the local memory
   init_local();
